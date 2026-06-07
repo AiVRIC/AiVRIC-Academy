@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Information Assurance | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/information-assurance.html">
+  <meta name="description" content="Operate assurance workflows using Assessment Objectives, Evidence Fabric, Assurance Calendar, exceptions, control drift, and audit reporting. AiVRIC Academy.">
+  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html"><img src="../assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="../AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="../support.html">Support</a>
+        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Information Assurance</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Overview</span><span class="acad-mod-sub">Audience, outcomes, platform areas</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod1" data-module="mod1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Assurance Model</span><span class="acad-mod-sub">Confidence dimensions, not pass/fail</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod2" data-module="mod2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Assessment Objectives</span><span class="acad-mod-sub">AO-level testing and status</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod3" data-module="mod3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Evidence Fabric</span><span class="acad-mod-sub">Artifacts, metadata, reuse</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod4" data-module="mod4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Assurance Calendar</span><span class="acad-mod-sub">Review cadence and workload</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod5" data-module="mod5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Exceptions &amp; Drift</span><span class="acad-mod-sub">Exceptions, Control Drift</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod6" data-module="mod6" onclick="setActive(this)">
+          <div class="acad-mod-icon">6</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Audit Reporting</span><span class="acad-mod-sub">Reports, Vision, audit narratives</span></div>
+        </a>
+        <a class="acad-module-item" href="#certification" data-module="certification" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9670;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Certification &amp; Capstone</span><span class="acad-mod-sub">Exam blueprint and scenario</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="governance.html"><i class="fas fa-arrow-left"></i> Prev: Governance</a>
+      <a class="acad-sidebar-link" href="cloud-security.html"><i class="fas fa-arrow-right"></i> Next: Cloud Security</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <section id="overview" style="scroll-margin-top:80px;">
+        <span class="badge" style="background:rgba(34,197,94,.15);color:var(--ug-green);"><i class="fas fa-shield-check"></i> AiVRIC Information Assurance Foundations &bull; Practitioner</span>
+        <h1 style="margin-top:10px;">Information Assurance</h1>
+        <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">Information assurance is the discipline of proving that controls are implemented, effective, current, and supported by reliable evidence. In CloudSignals+RiskOps, assurance is not reduced to pass/fail compliance status — it is modeled through control applicability, implementation status, effectiveness, evidence freshness, automation coverage, assurance confidence, residual risk, drift risk, exceptions, and Assessment Objective results.</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 24px;">
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> Topic course: ~90 min &bull; Certification path: 5–7 hrs</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 6 modules + capstone</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-signal"></i> Intermediate</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-certificate" style="color:var(--ug-green)"></i> Certification eligible</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;">
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-green);margin-bottom:10px;"><i class="fas fa-users" style="margin-right:5px;"></i>Who this course is for</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Information assurance analysts</li>
+              <li>Internal auditors</li>
+              <li>Compliance managers</li>
+              <li>Control owners and evidence contributors</li>
+              <li>Security program managers</li>
+              <li>MSP audit and assurance operators</li>
+            </ul>
+          </div>
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-green);margin-bottom:10px;"><i class="fas fa-check-circle" style="margin-right:5px;"></i>Prerequisites</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Basic familiarity with controls, evidence, and audit concepts</li>
+              <li>Access to Governance &amp; Assurance workspaces</li>
+              <li>Recommended: Security &amp; Privacy Governance Foundations (or Module 2 at minimum)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-top:0;padding-top:0;border-top:none;">What you will be able to do</h2>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:20px;">
+          <li>Explain assurance as a confidence model rather than a pass/fail checklist.</li>
+          <li>Describe the role of Assessment Objectives in AO-level testing.</li>
+          <li>Evaluate evidence using freshness, trust level, provenance, and validation status.</li>
+          <li>Plan assurance cadence using the Assurance Calendar.</li>
+          <li>Manage exceptions and compensating controls with linked risk records.</li>
+          <li>Identify control drift from aging evidence, recurring failures, and confidence degradation.</li>
+          <li>Generate audit-ready assurance reporting with AI disclaimers where applicable.</li>
+        </ol>
+
+        <div class="callout primary" style="margin-top:16px;">
+          <strong>Platform areas used in this course:</strong> Governance &amp; Assurance, Assessment Objectives, Evidence Fabric, Assurance Calendar, Exceptions, Control Drift, Risk Mapping, Reports, Import Manager, Vision. Navigate to <strong>Governance &amp; Assurance</strong> in the main navigation to begin.
+        </div>
+        <div class="callout warn" style="margin-top:12px;">
+          <strong>AI advisory statement:</strong> Vision and other AI-assisted workflows are advisory. AI-generated audit language must include source attribution, assumptions, and human reviewer attestation before use as governance evidence. AI does not independently certify assurance or compliance.
+        </div>
+      </section>
+
+
+      <section id="mod1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>Assurance Model</h2>
+            <p class="phase-subtitle">15 min &bull; UCB Overview &bull; Explain assurance as a confidence model</p>
+          </div>
+        </div>
+
+        <h3>Assurance is not pass/fail — it is a confidence spectrum</h3>
+        <p>Information assurance answers: <em>How confident are we that this control works?</em> CloudSignals+RiskOps stores multiple assurance dimensions for each control. A single binary pass/fail status cannot capture the nuance that an assessor, AO, or executive needs to make sound residual risk decisions.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Assurance dimension</th><th>What it measures</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Applicability</strong></td><td>Does this control apply to this tenant's scope and environment?</td></tr>
+            <tr><td><strong>Implementation status</strong></td><td>Has the control been deployed or configured?</td></tr>
+            <tr><td><strong>Effectiveness</strong></td><td>Does the control produce the expected risk reduction in practice?</td></tr>
+            <tr><td><strong>Evidence freshness</strong></td><td>Is supporting evidence within the required assessment window?</td></tr>
+            <tr><td><strong>Automation coverage</strong></td><td>What portion of the control's AOs are validated by automated signals?</td></tr>
+            <tr><td><strong>Assurance confidence</strong></td><td>Composite score reflecting freshness, AO completion, and evidence quality.</td></tr>
+            <tr><td><strong>Residual risk</strong></td><td>Risk that remains after all controls are applied, accounting for their effectiveness.</td></tr>
+            <tr><td><strong>Drift risk</strong></td><td>Trend toward degraded assurance — a predictive indicator of future gaps.</td></tr>
+            <tr><td><strong>Exception status</strong></td><td>Is a formal exception or compensating control in place for this control?</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout primary">
+          <strong>Key insight:</strong> A control can be <em>implemented but not effective</em>. Evidence can exist but be <em>stale</em>. An automated signal can support assurance but may not <em>fully prove</em> control operation. Assurance requires context — and the assurance model in CloudSignals+RiskOps is designed to surface that context.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Review assurance dimensions in UCB Overview</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; UCB Overview</strong>. Review the summary metrics: overall assurance confidence, controls with drift risk, and exception count.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select a control marked as <em>Implemented</em> but <em>Not Effective</em>. This is the most important assurance failure pattern — presence without function. Note what evidence or AO gap is causing the effectiveness gap.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Identify one control with high automation coverage and one with low automation coverage. The low-automation control likely requires manual attestation to satisfy its AOs — confirm whether that attestation is current.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod1">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify implemented-but-not-effective controls:</strong> These are your most dangerous assurance gaps — controls that appear present but produce no verified risk reduction.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Record your baseline assurance confidence:</strong> Note the overall assurance confidence percentage and drift risk count as your starting metrics for this course.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Name your AO:</strong> Confirm who in your organization holds Authorizing Official responsibility — the person who accepts residual risk on behalf of the organization based on assurance inputs.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Why is a pass/fail status insufficient for control assurance in a mature governance program?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Pass/fail is a scanner output — governance programs must use human-reviewed status only.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Pass/fail cannot capture that a control can be implemented but not effective, that evidence can be stale, or that automated signals may not fully prove control operation. Assurance requires nine dimensions — including effectiveness, freshness, drift risk, and exception status — to support defensible residual risk decisions.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Pass/fail is sufficient for technical controls; it is only insufficient for policy-based controls that cannot be automated.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Pass/fail is sufficient when combined with a CVSS score, which provides the missing context needed for residual risk decisions.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod1" onclick="markComplete('mod1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you've reviewed the nine assurance dimensions and identified implemented-but-not-effective controls.</span>
+        </div>
+      </section>
+
+
+      <section id="mod2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Assessment Objectives</h2>
+            <p class="phase-subtitle">25 min &bull; Assessment Objectives &bull; Test at AO level with granular status</p>
+          </div>
+        </div>
+
+        <h3>Why Assessment Objectives are first-class governance objects</h3>
+        <p>Instead of testing only at the parent control level, CloudSignals+RiskOps supports <strong>1:N Assessment Objectives</strong> per control. Each AO can store: testing method (observe, examine, interview, test), expected result, frequency (continuous, monthly, quarterly, annual, event-driven), status (Satisfied, Unsatisfied, Partially Satisfied, Not Assessed), assessor name, and inheritance flags (whether the AO is satisfied by a parent or inherited from another system).</p>
+        <p>AO-level testing helps determine which part of a control is <strong>strong</strong>, <strong>weak</strong>, <strong>inherited</strong>, <strong>not applicable</strong>, or <strong>not yet tested</strong>. This granularity is what assessors actually evaluate — a "control is compliant" statement without AO-level detail cannot withstand a Type II or NIST 800-53A assessment. Making AOs first-class objects allows partial satisfaction tracking, individual assessor assignment, and per-AO evidence linkage.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 1: AO-Level Assurance Review</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Assessment Objectives</strong>. Review the status distribution: Satisfied, Unsatisfied, Partially Satisfied, Not Assessed. Focus on the Unsatisfied count.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select a control with multiple AOs. Review each AO: expected result, testing method, and frequency. Determine which AOs are strong, which are weak, and which are not yet tested.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">For an Unsatisfied AO, review whether evidence exists but is stale, or whether evidence is entirely absent. These require different responses: re-collection versus first-time collection.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Assign an assessor to any AO missing one. Assessors receive collection reminders when AO review windows approach. Unassigned AOs cannot be transitioned to Satisfied regardless of evidence quality.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Record your AO assurance review: which part of the control is strong, which is weak, and what is the recommended next action? This is your Lab 1 deliverable: an AO assurance review record.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod2">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify your top 5 Unsatisfied AOs by control criticality:</strong> These are your highest-priority assurance gaps — the assertions that auditors will look for first.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Assign assessors to all active AOs:</strong> Every AO must have a named assessor. Unassigned AOs represent unmanaged assurance obligations.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Trace a Satisfied AO to its evidence chain:</strong> For one AO marked Satisfied, verify the complete evidence lineage — artifact source, collection method, reviewer attestation, and AO linkage.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What makes an Assessment Objective a first-class governance object in CloudSignals+RiskOps?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">AOs are generated automatically by the scanner for each failed check — they become first-class when linked to a remediation ticket.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">AOs store their own testing method, expected result, frequency, status, assessor, and inheritance — enabling partial satisfaction tracking, individual assessor accountability, and per-AO evidence linkage. This granularity is what auditors actually evaluate, not just parent control pass/fail.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">AOs become first-class when they are approved by the CISO and promoted to the UCB control library as standalone requirements.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">AOs are first-class because they replace controls entirely in the assurance model — controls are deprecated once AOs are defined.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod2" onclick="markComplete('mod2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you've completed the AO-level assurance review lab and assigned assessors to all active AOs.</span>
+        </div>
+      </section>
+
+
+      <section id="mod3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Evidence Fabric</h2>
+            <p class="phase-subtitle">25 min &bull; Evidence Fabric &bull; Evaluate, reuse, and manage evidence quality</p>
+          </div>
+        </div>
+
+        <h3>From isolated artifacts to reusable assurance objects</h3>
+        <p>Evidence Fabric turns isolated artifacts into reusable assurance objects. A single evidence artifact — a policy document, screenshot, log export, architecture diagram, vendor attestation, audit report, or automated scan output — can satisfy multiple controls and frameworks simultaneously when it has the right metadata. This is what makes evidence governance efficient: collect once, reference many times.</p>
+
+        <p>Good evidence has ten properties that make it audit-ready and reusable:</p>
+
+        <div class="acad-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0;">
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Source</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Which system or person produced it?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Provenance</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Automated scan, manual export, or attestation?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Timestamp</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">When was it collected?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Freshness</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Within the required assessment window?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Trust level</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Automated (consistent) vs. manual (context-dependent)?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Reviewer</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Named individual who validated it.</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Validation status</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Has the reviewer attested to its accuracy?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Mapped controls</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Which UCB controls does it satisfy?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Mapped AOs</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Which Assessment Objectives does it address?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">AI summary</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Where applicable — with assumptions and disclaimer.</p></div>
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 2: Evidence Reuse</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Evidence Fabric</strong>. Sort by Freshness (oldest first). These aging artifacts are your highest-priority re-collection risks.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select one artifact. Review all ten metadata properties. Note which are missing or degraded. An artifact missing Trust Level, Reviewer, or Validation Status cannot contribute to AO satisfaction.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Identify whether this artifact could satisfy <em>additional</em> controls or AOs beyond those currently mapped. Link it to all applicable controls and AOs — this is the reuse principle in action.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">For an artifact with missing validation, assign a reviewer and set a review deadline. Track through <strong>Assurance Calendar</strong> (Module 4) to confirm the review happens before the artifact's assessment window closes.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Record your evidence mapping: which artifact satisfies which controls and AOs, what its trust level is, and what is missing. This is your Lab 2 deliverable: an evidence mapping note.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod3">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Audit artifacts for missing metadata:</strong> Every artifact lacking Reviewer, Validation Status, or Control/AO mapping is an assurance liability — it exists but cannot contribute to AO satisfaction.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify reuse opportunities:</strong> Find at least one artifact that satisfies multiple controls or frameworks. Link it to all applicable AOs to maximize governance efficiency.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Prioritize stale evidence re-collection:</strong> List all artifacts older than your assessment window. Create collection tasks for the five oldest with the highest-criticality control linkage.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Which five evidence metadata fields are most critical for audit readiness?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">File name, file size, upload date, file type, and storage location — these allow auditors to locate and retrieve artifacts.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Source, provenance, freshness (timestamp relative to assessment window), trust level, and validation status (reviewer attestation) — together these prove the artifact is real, current, reliable, and human-reviewed.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">CVSS score, risk tier, severity level, control domain, and exception status — the risk context of the control the evidence supports.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">AI summary, model version, confidence score, generation timestamp, and disclaimer text — the AI provenance fields required for AI-assisted evidence.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod3" onclick="markComplete('mod3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you've completed the evidence reuse lab and identified your top stale-evidence priorities.</span>
+        </div>
+      </section>
+
+
+      <section id="mod4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>Assurance Calendar</h2>
+            <p class="phase-subtitle">20 min &bull; Assurance Calendar &bull; Plan review cadence and distribute workload</p>
+          </div>
+        </div>
+
+        <h3>Why cadence-driven assurance outperforms event-driven assurance</h3>
+        <p>Assurance requires cadence. Different controls require different review frequencies based on the rate of change in the underlying environment, the regulatory cycle, and the risk impact of assurance drift:</p>
+        <ul>
+          <li><strong>Continuous monitoring:</strong> controls where automated signals provide real-time evidence (e.g., firewall rules, encryption configuration)</li>
+          <li><strong>Quarterly review:</strong> controls requiring periodic human inspection or evidence refresh (e.g., access reviews, patch attestations)</li>
+          <li><strong>Annual attestation:</strong> policy reviews, risk acceptance renewals, and audit-cycle-aligned controls</li>
+          <li><strong>External assessment:</strong> controls tested by external auditors during SOC 2, ISO 27001, or penetration testing engagements</li>
+          <li><strong>Event-driven review:</strong> controls triggered by specific events (significant change, incident, new vendor, regulatory update)</li>
+        </ul>
+        <p>The Assurance Calendar plans upcoming AO reviews, evidence refresh requirements, external assessment dates, attestation deadlines, and result due dates — allowing teams to distribute review workload rather than experiencing assurance scrambles before audits.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Plan review cadence using Assurance Calendar</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Assurance Calendar</strong>. Review the next 30-day view. How many AO reviews are due? How many have assigned reviewers?</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Identify any weeks with workload spikes — more reviews than your team can complete. Shift non-urgent reviews earlier or reassign reviewers to balance capacity.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Click into any AO review due within the next 7 days. Confirm: reviewer notified, evidence collection method documented, automated collection scheduled (where applicable).</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Check for annual-cadence controls with no review activity in 12+ months. These are immediate assurance drift risks — create urgent collection tasks for each.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod4">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Review the 30-day assurance calendar:</strong> Confirm every upcoming AO review has an assigned reviewer and a documented evidence collection method.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Redistribute overloaded review weeks:</strong> Move non-urgent reviews to spread workload. Assurance scrambles degrade evidence quality and reviewer accuracy.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Flag missed annual reviews:</strong> Identify controls with no review in 12+ months. Create urgent tasks — these represent the highest assurance drift risk in your program.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What causes control drift in a CloudSignals+RiskOps assurance program?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Control drift is caused exclusively by scanner configuration errors that cause previously passing checks to fail.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Control drift occurs from four sources: aging evidence exceeding freshness windows, posture deterioration from new findings or configuration changes, recurring control failures that indicate a systemic issue, and declining assurance confidence as AO reviews are missed.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Drift only occurs when a compliance framework is updated — changing framework requirements causes previously compliant controls to appear as drifted.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Drift is a temporary state that self-corrects when the next scan run produces a passing result for a previously failing check.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod4" onclick="markComplete('mod4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you've reviewed the Assurance Calendar and balanced your upcoming review workload.</span>
+        </div>
+      </section>
+
+
+      <section id="mod5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>Exceptions &amp; Control Drift</h2>
+            <p class="phase-subtitle">25 min &bull; Exceptions, Control Drift &bull; Manage degraded assurance formally</p>
+          </div>
+        </div>
+
+        <h3>Exceptions are governance decisions, not governance failures</h3>
+        <p>Exceptions and compensating controls are not failures by themselves — they are <strong>governance decisions that must be documented, approved, reviewed, and linked to risk</strong>. An exception without documentation, approval, or a risk linkage is not a governance decision — it is an ignored gap masquerading as managed risk.</p>
+        <p>A valid exception in CloudSignals+RiskOps must include: <strong>scope</strong> (which control, asset, or system), <strong>reason</strong> (why the control cannot be implemented as required), <strong>compensating controls</strong> (what risk reduction measures are in place), <strong>residual risk</strong> (the risk that remains after compensating controls), <strong>approval</strong> (named approver with authority at the exception's risk tier), <strong>expiration</strong> (time-bounded — exceptions must not be permanent), <strong>review cadence</strong> (when the exception will be re-evaluated), and <strong>linked evidence</strong> (proof that compensating controls are operating).</p>
+
+        <h3>Control Drift: early warning of program degradation</h3>
+        <p>Control Drift shows controls where assurance confidence is declining — the leading indicators of future assurance failures. Drift sources include: aging evidence not refreshed within the assessment window, recurring findings on the same control or asset, missed AO review deadlines, and declining automation coverage. The Control Drift view allows teams to intervene proactively before a drifted control becomes a formal audit finding.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 3: Drift Investigation</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Control Drift</strong>. Review the drift indicators: which controls are showing declining confidence, aging evidence, or recurring failures?</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select the control with the highest drift risk. Review its evidence age, exception status, and recent AO results. Identify the primary drift cause (aging evidence, recurring failure, or missed review).</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Exceptions</strong>. Review existing exceptions — check age, expiry dates, whether compensating controls are documented, and whether linked evidence exists.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">For an exception approaching expiry, review whether the underlying gap has been resolved. If not, prepare a renewal with updated compensating controls and residual risk assessment.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Draft a remediation or review recommendation for the highest-drift control. Then navigate to <strong>Vision</strong> and request a draft audit narrative for this drift finding — validate the output before saving as evidence.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod5">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Review Control Drift:</strong> Identify your top 3 drifting controls. For each, determine the primary drift cause and create a targeted intervention task.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Audit exceptions for completeness:</strong> Every exception must have all eight required elements. Exceptions missing approval, expiry, or linked evidence are not valid governance records.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Flag exceptions expiring within 30 days:</strong> Owners must renew, remediate, or formally close each. Silent expiration is a governance gap — not automatic closure.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">An exception has been renewed four times without any change to the underlying control gap or compensating controls. What does this represent in a governance context?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Normal governance practice — exceptions are expected to be renewed annually as part of the standard assurance calendar.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">A governance failure — repeated renewals without remediation progress or compensating control improvement indicate an ignored liability, not actively managed risk. This pattern requires escalation to the AO with a formal remediation plan or an explicit permanent risk acceptance decision.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Acceptable only if the exception is below the organization's materiality threshold for residual risk reporting.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">An indication that the compensating controls are working — if the risk hasn't materialized after four renewal cycles, renewal is justified.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod5" onclick="markComplete('mod5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you've investigated your top drift controls and audited exceptions for completeness and expiry.</span>
+        </div>
+      </section>
+
+
+      <section id="mod6" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(34,197,94,.2);color:var(--ug-green);">6</div>
+          <div class="phase-head-body">
+            <h2>Audit Reporting</h2>
+            <p class="phase-subtitle">20 min &bull; Reports, Vision &bull; Produce defensible audit narratives</p>
+          </div>
+        </div>
+
+        <h3>What audit reporting must include</h3>
+        <p>Audit reporting in CloudSignals+RiskOps should include the following elements to be defensible in an external assessment:</p>
+        <ul>
+          <li><strong>Source version:</strong> which UCB ontology version and which framework source versions underlie the report</li>
+          <li><strong>Import run:</strong> when the tenant's baseline data was last imported or updated</li>
+          <li><strong>Evidence lineage:</strong> traceable chain from each artifact through its collection method and reviewer to the AO it satisfies</li>
+          <li><strong>Tenant scope:</strong> which tenant, managed entities, and system boundaries are covered</li>
+          <li><strong>Managed-entity scope:</strong> which business units or product teams are included</li>
+          <li><strong>Assumptions:</strong> what conditions were assumed true during the assurance period (e.g., no significant change events occurred)</li>
+          <li><strong>Reviewer metadata:</strong> names and dates of all human reviewers who attested to evidence quality</li>
+          <li><strong>AI disclaimers where applicable:</strong> if Vision or other AI was used, a clear statement that outputs are advisory and were human-reviewed before inclusion</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Generate an audit-ready assurance report</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Reports</strong>. Select <strong>Assurance Report</strong> for your primary compliance framework and assessment period.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Preview the report before exporting. Review: are there controls marked "Not Assessed"? Are any AOs missing evidence? Are exception links present for all formal exceptions? These gaps are visible to an assessor.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Navigate to <strong>Vision</strong> and request a draft audit narrative covering your assurance posture for the selected period. Include your top 3 control confidence gaps and the recommended next actions.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Review the Vision output carefully: check source attribution, verify cited AO states are accurate, and confirm no compliance certification language is present. Add your reviewer attestation and the required AI disclaimer before saving.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Export the final report package including the assurance report and validated Vision narrative. This is audit-ready documentation — suitable for sharing with the AO or external assessors.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod6">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Generate and review an audit report:</strong> Export an assurance report for your primary framework. Note every "Not Assessed" control — each is a gap an assessor will ask about.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Validate and attest a Vision audit narrative:</strong> Correct inaccuracies, add source references, and confirm the AI disclaimer is present before committing the narrative to the evidence record.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Schedule quarterly audit readiness checks:</strong> Block a recurring calendar entry to generate a test report and review completeness — preventing assurance gaps from accumulating between audit cycles.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod6">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">How should AI-generated audit language be handled before inclusion in a governance or assurance report?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">AI-generated language can be used directly if the model's confidence score exceeds 85% — this threshold establishes sufficient reliability for governance reporting.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">AI-generated language must be reviewed for accuracy by a named human reviewer, corrected where needed, have source references added, include an explicit AI advisory disclaimer, and carry the reviewer's attestation — before it becomes part of any governance record.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">AI-generated language is acceptable for internal governance reports but must be replaced with human-authored language for any external audit submission.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">AI-generated language from Vision is pre-approved for governance use since it draws directly from the UCB and does not require additional validation.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod6')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod6"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod6" onclick="markComplete('mod6')">Mark Module 6 complete</button>
+          <span class="mark-complete-hint">Move on when you've generated an audit report and produced an attested Vision narrative.</span>
+        </div>
+      </section>
+
+
+      <section id="certification" style="scroll-margin-top:80px;">
+        <h2>Certification: AiVRIC Information Assurance Practitioner</h2>
+        <p>Completing all six modules makes you eligible for the Information Assurance Practitioner certification exam.</p>
+
+        <table class="acad-table" style="margin-bottom:20px;">
+          <thead><tr><th>Exam domain</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td>Assurance model</td><td>20%</td></tr>
+            <tr><td>Assessment objective testing</td><td>25%</td></tr>
+            <tr><td>Evidence quality and reuse</td><td>25%</td></tr>
+            <tr><td>Exceptions and drift</td><td>20%</td></tr>
+            <tr><td>Audit reporting</td><td>10%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Capstone practical scenario</h3>
+        <p style="color:var(--ug-text-2);">A tenant has a control marked Implemented — but two Assessment Objectives are Not Tested, evidence is stale (9 months old for a quarterly-cadence control), and an exception is pending approval. Your task:</p>
+        <ol style="color:var(--ug-text-2);font-size:14px;line-height:2;">
+          <li>Review the AO-level assurance state and distinguish which AOs are strong vs. weak.</li>
+          <li>Evaluate evidence freshness and validation status against the control's required cadence.</li>
+          <li>Identify drift sources and assess the residual risk created by the gap.</li>
+          <li>Recommend whether to remediate, accept, or apply a compensating control — with rationale linked to risk.</li>
+          <li>Draft an audit-ready assurance statement using Vision, with human validation notes and source references.</li>
+        </ol>
+
+        <div class="callout primary">
+          <strong>Passing criteria:</strong> Does not equate implementation with effectiveness. Uses AO-level detail rather than parent control pass/fail. Identifies evidence freshness issues and links them to confidence degradation. Links exception handling to risk — not just to policy process. Provides defensible reporting language with AI disclaimer and reviewer attestation.
+        </div>
+
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Information Assurance. Your governance program now operates with AO-level confidence rather than binary pass/fail status.</div>
+          <a href="cloud-security.html" class="acad-cert-btn"><i class="fas fa-arrow-right"></i> Next: Cloud Security</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2 &middot; Information Assurance</span>
+  </footer>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'aivric_ia_v1';
+    var MODULES = ['mod1','mod2','mod3','mod4','mod5','mod6'];
+    function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+    function saveState(s) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {} }
+    var state = loadState();
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill'); var pctEl = document.getElementById('progress-pct');
+      if (fill) fill.style.width = pct + '%'; if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) { var cert = document.getElementById('cert-block'); if (cert) cert.classList.add('show'); }
+    }
+    window.setActive = function(el) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); el.classList.add('active'); };
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].complete = true; saveState(state);
+      var btn = document.getElementById('mc-' + moduleId); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      updateProgress();
+    };
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); }); el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = false;
+    };
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if (!selected) return;
+      block.dataset.answered = 'true'; var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = true;
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var feedback = document.getElementById('feedback-' + moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o) { if (o.querySelector('[data-correct="true"]')) o.classList.add('correct'); else if (o === selected && !isCorrect) o.classList.add('wrong'); });
+      if (feedback) {
+        var expl = {
+          mod1:{correct:'Correct. Nine assurance dimensions are needed because controls can be implemented-but-not-effective, evidence can be stale, and automation signals may not fully prove operation.',wrong:'Pass/fail cannot capture the nuance required for residual risk decisions. The nine-dimension assurance model provides the context that a binary status cannot.'},
+          mod2:{correct:'Correct. AOs store their own testing metadata and enable partial satisfaction tracking, individual assessor accountability, and per-AO evidence linkage — the granularity assessors actually evaluate.',wrong:'AOs are not scanner-generated, not CISO-promoted, and they don\'t replace controls. They are first-class because they store their own testable assertion metadata enabling granular assurance tracking.'},
+          mod3:{correct:'Correct. Source, provenance, freshness, trust level, and validation status together prove the artifact is real, current, reliable, and human-reviewed — the five most critical for audit defense.',wrong:'File metadata, risk context, and AI provenance fields are supplementary. The five critical audit-ready metadata fields are about artifact integrity and human accountability.'},
+          mod4:{correct:'Correct. Control drift stems from four sources: aging evidence, posture deterioration, recurring failures, and missed AO reviews — all causing declining assurance confidence.',wrong:'Drift is not scanner-error-caused, not framework-update-caused, and it doesn\'t self-correct on the next scan. It requires active intervention across its four root causes.'},
+          mod5:{correct:'Correct. Repeated renewals without progress represent an ignored liability. This requires AO escalation with a formal remediation plan or an explicit permanent risk acceptance — not another renewal.',wrong:'Repeated exception renewals without change are not normal governance, not acceptable below a materiality threshold, and not justified by non-materialization. They require AO escalation.'},
+          mod6:{correct:'Correct. AI audit language requires human review, correction, source references, an AI advisory disclaimer, and reviewer attestation before inclusion in any governance record.',wrong:'Confidence scores don\'t substitute for human accountability. AI outputs are advisory regardless of whether the report is internal or external. Vision draws from UCB data but requires human validation before governance use.'}
+        };
+        feedback.textContent = ''; var label = document.createElement('strong'); var msg = document.createElement('span');
+        if (isCorrect) { feedback.className = 'quiz-feedback correct'; label.textContent = 'Correct! '; msg.textContent = (expl[moduleId]||{correct:''}).correct; }
+        else { feedback.className = 'quiz-feedback wrong'; label.textContent = 'Not quite. '; msg.textContent = (expl[moduleId]||{wrong:''}).wrong; }
+        feedback.appendChild(label); feedback.appendChild(msg);
+      }
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].quizCorrect = isCorrect; saveState(state);
+    };
+    window.toggleAction = function(el) { el.classList.toggle('checked'); };
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      }
+    });
+    updateProgress();
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { var id = entry.target.id; var link = document.querySelector('[data-module="' + id + '"]'); if (link) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); } } }); }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+  })();
+  </script>
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true">
+    <button class="acad-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img src="" alt=""><div class="acad-lightbox-caption"></div>
+  </div>
+  <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
+</body>
+</html>

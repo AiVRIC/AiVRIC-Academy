@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Security | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/cloud-security.html">
+  <meta name="description" content="Use CloudSignals+RiskOps for multi-cloud CSPM: scan lifecycle, findings, compliance vs UCB boundary, and Vision-assisted remediation. AiVRIC Academy.">
+  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html"><img src="../assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="../AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="../support.html">Support</a>
+        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Cloud Security</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Overview</span><span class="acad-mod-sub">Audience, outcomes, platform areas</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod1" data-module="mod1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Cloud Security Operating Model</span><span class="acad-mod-sub">Overview — posture and risk signals</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod2" data-module="mod2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Scan Lifecycle</span><span class="acad-mod-sub">Scans — scope, freshness, errors</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod3" data-module="mod3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Cloud Asset Posture</span><span class="acad-mod-sub">Assets, Cloud Resources</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod4" data-module="mod4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Findings &amp; Misconfigurations</span><span class="acad-mod-sub">Findings — checks and context</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod5" data-module="mod5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Compliance &amp; UCB Boundary</span><span class="acad-mod-sub">Compliance, Framework Explorer</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod6" data-module="mod6" onclick="setActive(this)">
+          <div class="acad-mod-icon">6</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Remediation &amp; Reporting</span><span class="acad-mod-sub">RiskOps, Vision, Reports</span></div>
+        </a>
+        <a class="acad-module-item" href="#certification" data-module="certification" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9670;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Certification &amp; Capstone</span><span class="acad-mod-sub">Exam blueprint and scenario</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="vulnerability-management.html"><i class="fas fa-arrow-right"></i> Next: Vulnerability Management</a>
+      <a class="acad-sidebar-link" href="../support.html"><i class="fas fa-life-ring"></i> Support</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <section id="overview" style="scroll-margin-top:80px;">
+        <span class="badge" style="background:rgba(6,182,212,.15);color:var(--ug-cyan);"><i class="fas fa-cloud"></i> AiVRIC Cloud Security Foundations &bull; Practitioner</span>
+        <h1 style="margin-top:10px;">Cloud Security</h1>
+        <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">Cloud security requires continuous visibility across providers, accounts, regions, resources, identities, networks, data stores, and configurations. Cloud posture can change quickly, so governance must combine scanning, risk prioritization, remediation, evidence, and reporting. CloudSignals+RiskOps provides multi-cloud posture visibility, scan intelligence, findings analysis, compliance status, asset context, risk prioritization, and remediation workflows.</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 24px;">
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> Topic course: ~90 min &bull; Certification path: 5–7 hrs</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 6 modules + capstone</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-signal"></i> Foundational to Intermediate</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-certificate" style="color:var(--ug-cyan)"></i> Certification eligible</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;">
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-cyan);margin-bottom:10px;"><i class="fas fa-users" style="margin-right:5px;"></i>Who this course is for</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Cloud security engineers</li>
+              <li>Cloud operations teams</li>
+              <li>Security and compliance analysts</li>
+              <li>MSP cloud operators</li>
+              <li>DevSecOps engineers</li>
+            </ul>
+          </div>
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-cyan);margin-bottom:10px;"><i class="fas fa-check-circle" style="margin-right:5px;"></i>Prerequisites</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Basic familiarity with cloud providers and cloud services</li>
+              <li>Basic understanding of security findings and cloud misconfigurations</li>
+              <li>Access to CloudSignals scans, findings, and asset views</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-top:0;padding-top:0;border-top:none;">What you will be able to do</h2>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:20px;">
+          <li>Explain core cloud security domains and posture management concepts.</li>
+          <li>Navigate provider, scan, asset, finding, and compliance views in CloudSignals+RiskOps.</li>
+          <li>Interpret cloud findings and their business impact using asset context.</li>
+          <li>Explain the difference between scanner compliance views and UCB governance assurance.</li>
+          <li>Route cloud security gaps into RiskOps remediation with evidence requirements.</li>
+          <li>Use Vision to investigate findings and draft remediation guidance — with required human validation.</li>
+        </ol>
+
+        <div class="callout primary" style="margin-top:16px;">
+          <strong>Platform areas used in this course:</strong> Overview, Surface, Assets, Cloud Resources, Scans, Findings, Compliance, Governance &amp; Assurance, Framework Explorer, RiskOps, Vision, Reports. Navigate to <strong>Overview</strong> in the main navigation to begin.
+        </div>
+        <div class="callout warn" style="margin-top:12px;">
+          <strong>AI advisory statement:</strong> Vision and other AI-assisted workflows are advisory. Scanner compliance views reflect metadata — they are not certification statements. UCB governance requires evidence and human validation. Vision output must be reviewed and attested before use as governance or audit evidence.
+        </div>
+      </section>
+
+
+      <section id="mod1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>Cloud Security Operating Model</h2>
+            <p class="phase-subtitle">15 min &bull; Overview &bull; Explain posture management and risk signal concepts</p>
+          </div>
+        </div>
+
+        <h3>Continuous visibility across providers, accounts, and resource types</h3>
+        <p>Cloud security posture management (CSPM) provides continuous evaluation of cloud resource configurations against security policy controls. Unlike point-in-time assessments, CloudSignals+RiskOps runs on a defined cadence — evaluating every connected resource against every active policy check and updating the findings inventory in near-real-time. When a resource configuration drifts from the expected state, a finding is created. When a finding is remediated and a subsequent scan confirms the fix, the finding closes.</p>
+        <p>The operating model combines five capabilities: <strong>Scanning</strong> (automated evaluation of cloud resource configurations), <strong>Risk prioritization</strong> (asset context, business impact, exposure, and age applied to findings), <strong>Remediation</strong> (RiskOps treatment plans with owner, due date, and evidence), <strong>Evidence</strong> (scan results and configuration exports linked to UCB controls), and <strong>Reporting</strong> (posture summaries and executive narratives from the Reports and Vision modules).</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Review the Overview dashboard</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Overview</strong>. Review: threat score, findings by severity, findings discovered vs. closed, top risk drivers, and connected provider summary.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Note the provider coverage strip — which cloud providers are connected and contributing findings? Any gap here is a blind spot in your posture visibility.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Review the top risk drivers panel. These are the finding categories currently generating the most risk pressure across your environment — the areas to prioritize for this session's work.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod1">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Confirm all expected providers are connected:</strong> Compare the Overview provider list against your actual cloud footprint. Any missing provider is a governance blind spot.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Note your current threat score:</strong> Record the score as your baseline. Return to this after completing the course's in-platform labs to observe improvement.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify your top three risk drivers:</strong> Note the finding categories driving the most risk pressure — these become your priority focus for Modules 4 and 6.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What does scan scope include in CloudSignals+RiskOps?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Only the resource types flagged as critical by the connected provider's native security service.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Provider, account or subscription, region, service coverage, credential model, scan timestamp, completed versus pending state, and error or missing snapshot state — all of these determine what was actually evaluated in a scan cycle.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">All resources in all regions for all providers connected — scope is always complete once a provider is added.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Only the resources that generated findings in the previous scan — unchanged resources are excluded to reduce scan time.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod1" onclick="markComplete('mod1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you've reviewed the Overview dashboard and noted your top risk drivers.</span>
+        </div>
+      </section>
+
+
+      <section id="mod2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Scan Lifecycle</h2>
+            <p class="phase-subtitle">20 min &bull; Scans &bull; Understand scan execution, scope, and freshness</p>
+          </div>
+        </div>
+
+        <h3>Eight dimensions of scan scope</h3>
+        <p>A completed scan status does not mean all resources were evaluated. Scan scope is constrained by what the connector has permission to see. Resources in accounts, regions, or service types lacking read access are silently excluded — they don't generate findings, but they aren't compliant either. They're invisible. Understanding all eight dimensions of scan scope is essential for understanding what your posture data actually covers:</p>
+
+        <div class="acad-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:16px 0;">
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Provider</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">AWS, Azure, GCP, OCI, Kubernetes, M365</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Account / subscription</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Which accounts are in scope?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Region</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Which regions are evaluated?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Service coverage</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Which resource types are checked?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Credential model</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">What permissions does the connector have?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Scan timestamp</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">When did this scan run?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Completed vs. pending</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Did all checks finish successfully?</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Error / missing snapshot</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Were any services excluded due to errors?</p></div>
+        </div>
+
+        <h3>Why scan freshness matters for governance</h3>
+        <p>A scan that ran 14 days ago is not evidence that your current posture is as described. Resources change — instances are provisioned, permissions are modified, configurations drift. <strong>Scan freshness</strong> is how recent the scan data is relative to the governance period being reported on. For compliance evidence, the scan must have run during the audit period. For active risk management, stale scans mean findings that should have been detected are invisible, and findings that were remediated may still show as open.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 1: Cloud Scan Review</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Scans</strong>. Review the scan list: provider, account, status, last run timestamp, and resource count discovered.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select a completed scan. Review the scope: which accounts, regions, and service types are covered. Compare against your known cloud footprint — note any gaps.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Check scan freshness: how old is the most recent completed scan for each provider? Any scan older than your cadence requirement (typically 24–72 hours) represents a posture visibility gap.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Identify any scans with error or missing snapshot state. Review the error details — these indicate configuration or permission issues that are silently excluding resources from evaluation.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Record your scan review summary: which scans are fresh, which are stale, and which have scope gaps. This is your Lab 1 deliverable.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod2">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Verify all connectors completed successfully:</strong> Any connector with a failed or stale last-scan state represents a posture visibility gap that may be masking open findings.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Cross-reference scope vs. footprint:</strong> For each provider, compare connector scope against your known active accounts, subscriptions, and regions. Document any gap.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Confirm scan cadence alignment:</strong> Verify your scan schedule meets your governance and compliance requirements for scan freshness during evidence collection periods.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Why should scan freshness be reviewed as part of cloud security governance?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Older scans have higher CVSS scores assigned to their findings — freshness affects the severity calculation.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Stale scans mean the posture data doesn't reflect the current cloud state — resources that changed since the last scan are invisible. For compliance evidence, scans must be within the audit period. For active risk management, stale data means undetected exposure and remediated findings that still appear open.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Scan freshness only matters for penetration testing engagements — CSPM scans can be run quarterly without governance impact.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Fresher scans generate more findings — reviewing freshness helps teams prepare for an increase in workload after a scan cycle completes.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod2" onclick="markComplete('mod2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you've reviewed scan scope, freshness, and confirmed all connectors completed successfully.</span>
+        </div>
+      </section>
+
+
+      <section id="mod3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Cloud Asset Posture</h2>
+            <p class="phase-subtitle">20 min &bull; Assets, Cloud Resources &bull; Review cloud resource posture by provider and account</p>
+          </div>
+        </div>
+
+        <h3>Cloud assets as the governance anchor for findings</h3>
+        <p>Cloud assets include resources, identities, storage, workloads, networking components, services, and integrations. In CloudSignals+RiskOps, asset context helps learners understand which findings matter most and where ownership gaps exist. A finding on an unowned asset is an orphaned signal — no one routes it, no one remediates it, and the exposure window stays open indefinitely.</p>
+        <p>The Cloud Resources view groups assets by provider and account, allowing governance teams to identify: which providers contribute the most findings, which accounts have the highest finding density, which resources are internet-facing (highest priority), and which assets lack ownership or managed entity assignment (mapping gaps that inflate risk pressure).</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 2 setup: Inspect cloud asset posture</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Surface &gt; Cloud Resources</strong>. Group by provider. Review asset counts per provider and compare against your expected footprint.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Filter for internet-facing resources (public exposure flag). These are your highest-priority governance targets — public resources with open findings have the shortest path from detection to exploitation.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Navigate to <strong>Surface &gt; All Assets</strong>. Filter for assets with no owner or no managed entity assigned. These ownership gaps create mapping issues that inflate risk pressure scores — prioritize assigning ownership to any Critical or High criticality assets without an owner.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">For the provider with the highest finding count, click into the account breakdown. Identify whether findings are concentrated in one account or distributed. Concentrated findings often indicate an account-level misconfiguration (e.g., missing security baseline policy) rather than individual resource issues.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod3">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Confirm all cloud accounts appear in Cloud Resources:</strong> Any account present in your billing console but absent from Cloud Resources is a scope gap — all findings in that account are invisible.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify your highest-finding account:</strong> Determine whether findings are concentrated (account-level issue) or distributed (individual resource issues). This determines whether your fix is a policy baseline or individual resource remediation.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Assign ownership to unowned high-criticality assets:</strong> Every public-facing and critical-classified cloud asset must have an owner and managed entity before findings can be properly routed for triage.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Name four common cloud misconfiguration categories that CloudSignals+RiskOps detects through policy checks.</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Slow DNS resolution, high memory utilization, unoptimized storage costs, and expired TLS certificates on internal services.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Public exposure (storage/endpoints open to the internet), weak encryption (missing or insufficient at rest/in transit), excessive permissions (overly broad IAM roles or policies), and missing logging (CloudTrail, diagnostic settings, or audit logs disabled).</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Misconfigured backup retention, over-provisioned compute, untagged resources, and orphaned snapshots.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Network latency above SLA threshold, unbalanced load balancer targets, missing health checks, and auto-scaling misconfigurations.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod3" onclick="markComplete('mod3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you've reviewed Cloud Resources, confirmed scope coverage, and assigned ownership to unowned high-criticality assets.</span>
+        </div>
+      </section>
+
+
+      <section id="mod4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>Findings &amp; Misconfigurations</h2>
+            <p class="phase-subtitle">25 min &bull; Findings &bull; Interpret cloud checks and extract business context</p>
+          </div>
+        </div>
+
+        <h3>Evaluating a cloud finding — eight questions</h3>
+        <p>Common cloud findings include public exposure, weak encryption, excessive permissions, missing logging, insecure network rules, unsupported or end-of-life configurations, and lack of monitoring. When investigating any cloud finding, apply these eight questions to extract the full risk context before deciding on a treatment:</p>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:20px;">
+          <li><strong>What service or resource is affected?</strong> — storage bucket, IAM role, database, VM, network security group?</li>
+          <li><strong>Is it internet-facing?</strong> — public exposure shortens the exploitation window significantly.</li>
+          <li><strong>What data or business function is involved?</strong> — PII, financial, regulatory, critical operations?</li>
+          <li><strong>Is there an owner?</strong> — unowned resources can't receive a treatment assignment.</li>
+          <li><strong>Is the finding recurring?</strong> — re-emerging findings after remediation indicate a systemic root cause.</li>
+          <li><strong>What remediation evidence is required?</strong> — define this before creating the treatment plan.</li>
+          <li><strong>What is the finding age?</strong> — findings aging past SLA need immediate escalation.</li>
+          <li><strong>Is this intentionally configured?</strong> — some findings represent known-acceptable states that need suppression or formal acceptance, not remediation.</li>
+        </ol>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 2: Cloud Finding Investigation</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Findings</strong>. Filter to Critical severity, status = Open. Apply the eight-question framework to the top three findings.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">For each finding, click through to the linked asset. Review: resource type, internet-facing status, data type, owner, and business process linkage. Note how asset context changes your prioritization.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Review the remediation guidance in the finding detail. For one finding, document: what specifically needs to change (configuration, permission, policy), the exact cloud provider steps to make the change, and what evidence will confirm the fix (post-fix scan + configuration export).</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">For any finding on an intentionally-configured resource (e.g., a public bucket serving a static website), create a formal acceptance with justification — removing it from the active finding queue with a documented rationale rather than leaving it as an unaddressed signal.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod4">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Apply the eight-question framework to all Critical findings:</strong> No Critical finding should be triaged on severity alone — asset context changes priority in most cases.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define remediation evidence upfront:</strong> For each treatment plan created this session, document the required evidence before assigning the work — not after the engineer asks "how do we close this?"</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Formally accept intentional exceptions:</strong> Any finding representing a known-acceptable state should be formally accepted with justification — not left as an unaddressed open signal polluting your risk score.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What is the difference between scanner compliance views and UCB governance assurance in CloudSignals+RiskOps?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Scanner compliance views are real-time; UCB governance assurance is updated only during quarterly reviews. The difference is timing, not content.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">CloudSignals Compliance views show scanner-derived framework posture for completed scans — metadata about configuration state. Governance &amp; Assurance UCB views represent source-attributed governance mappings and tenant assurance state with human-reviewed evidence. Scanner compliance metadata is not the UCB source of truth and must not be treated as certification evidence.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">UCB governance assurance replaces scanner compliance views for customers who have completed the full UCB onboarding — they are not available simultaneously.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Scanner compliance views apply to cloud providers; UCB governance assurance applies to on-premises systems. They cover different environments.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod4" onclick="markComplete('mod4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you've investigated your top Critical findings with full context and formally accepted any intentional exceptions.</span>
+        </div>
+      </section>
+
+
+      <section id="mod5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>Compliance &amp; UCB Boundary</h2>
+            <p class="phase-subtitle">20 min &bull; Compliance, Framework Explorer &bull; Explain the scanner metadata vs. governance source boundary</p>
+          </div>
+        </div>
+
+        <h3>The boundary that protects governance integrity</h3>
+        <p>This is the most important conceptual boundary in CloudSignals+RiskOps for governance practitioners: <strong>CloudSignals Compliance views show scanner-derived framework posture for completed scans. Governance &amp; Assurance UCB views represent source-attributed governance mappings and tenant assurance state. Learners must not treat scanner compliance metadata as the UCB source of truth.</strong></p>
+        <p>Why does this boundary matter? If a scanner passing a CIS Benchmark check automatically counted as SOC 2 compliance evidence, organizations could achieve compliance certifications without any human-reviewed evidence, without Assessment Objective completion, and without the accountability that makes governance defensible. Scanner metadata is a valuable input — it can contribute to evidence — but it does not certify compliance. The UCB, with its source-attributed mappings, human-reviewed evidence, and AO results, is the governance authority.</p>
+
+        <div class="callout warn">
+          <strong>A high Compliance view score ≠ compliance certification.</strong> Use Compliance views for posture trending and gap identification. Use Governance &amp; Assurance for assurance decisions and audit evidence. These are two different tools for two different purposes.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Review Compliance views and Framework Explorer</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Compliance</strong>. Review your framework posture scores for the most recent completed scans. Note these scores as posture indicators — not compliance certifications.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Identify the three compliance framework categories with the lowest posture scores. These are your technical remediation priorities — the control areas where scanner-detectable gaps are most prevalent.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Framework Explorer</strong>. Select the same framework. Review which UCB controls map to the low-scoring categories. Note: the UCB controls require evidence and AO completion — a passing scanner check satisfies neither by itself.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">For one low-scoring control, navigate to <strong>Evidence Fabric</strong> and check whether evidence exists. A control can have a passing scanner result and still be "Not Assessed" in the UCB — because scanner data alone doesn't satisfy the AO. Confirm what additional evidence is needed.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod5">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Review Compliance view posture for your primary framework:</strong> Note the score and lowest-scoring categories — use these as technical remediation targets, not compliance certification inputs.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Cross-reference with Evidence Fabric:</strong> For your lowest-scoring control categories, confirm whether UCB evidence exists beyond the scanner result. Identify what additional evidence is needed to satisfy the AOs.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Communicate the boundary to your team:</strong> Write a one-paragraph policy statement for your team explaining when to use Compliance views vs. when to use Governance &amp; Assurance for evidence decisions.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">When should a cloud finding become a RiskOps project rather than a standalone treatment plan?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">All cloud findings should be individual treatment plans — RiskOps projects are only for multi-year remediation programs.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Cloud findings should become RiskOps projects when they require multi-team coordination, milestone tracking, external dependencies (vendor patching, migration timeline), executive visibility, SLA policy enforcement, or formal evidence requirements that span multiple work items and owners.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Only Critical severity findings become RiskOps projects — Medium and Low findings remain as standalone treatment plans regardless of complexity.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Findings automatically become RiskOps projects when they exceed 30 days without a treatment record — the platform handles this conversion without manual action.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod5" onclick="markComplete('mod5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you understand the scanner/UCB boundary and have cross-referenced Compliance view gaps with Evidence Fabric.</span>
+        </div>
+      </section>
+
+
+      <section id="mod6" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(6,182,212,.2);color:var(--ug-cyan);">6</div>
+          <div class="phase-head-body">
+            <h2>Remediation &amp; Reporting</h2>
+            <p class="phase-subtitle">25 min &bull; RiskOps, Vision, Reports &bull; Create action plans and executive posture summaries</p>
+          </div>
+        </div>
+
+        <h3>Routing cloud findings into RiskOps</h3>
+        <p>Cloud remediation should be routed into RiskOps when it requires ownership, due dates, evidence, acceptance, or executive visibility. Not every finding needs a formal project — but every finding that touches a crown-jewel asset, a regulatory obligation, or a business-critical service needs a named owner and a verifiable closure path. Vision can help explain cloud findings and draft recommended actions, but all Vision output requires review before use as governance evidence or distribution.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 3: Cloud Posture Executive Summary</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Overview</strong>. Review the top risk drivers, threat score trend, and findings discovered vs. closed. These are the three core metrics for an executive cloud posture summary.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Navigate to <strong>Reports</strong>. Select <strong>AI Intelligence Brief</strong> or <strong>RiskOps Insights</strong>. Generate a posture report for the current period. Review findings by provider, remediation themes, and compliance readiness.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Navigate to <strong>Vision &gt; Ask Vision</strong>. Request a cloud posture executive summary: "Summarize our cloud security posture including top misconfiguration themes, highest-risk findings, and three prioritized remediation recommendations."</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Review the Vision output against your Reports data. Correct any inaccuracies — Vision may reference findings or metrics from earlier in the reporting period. Add your reviewer attestation and AI advisory disclaimer.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Assemble your Lab 3 deliverable: the validated Vision executive summary plus the remediation recommendations from your finding investigations in Module 4. This is a complete cloud posture review package.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod6">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Create RiskOps treatment plans for your Module 4 findings:</strong> Every Critical finding investigated in Module 4 should now have a treatment plan with owner, target date, and evidence requirement.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Generate and validate a Vision executive summary:</strong> Verify against Reports data, correct inaccuracies, add your attestation and AI disclaimer before distributing.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Schedule recurring cloud posture reporting:</strong> Set a monthly calendar entry to generate the posture report and distribute to security leadership. Quarterly is insufficient for active cloud environments.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod6">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A Vision-generated cloud posture summary identifies three critical misconfigurations. What must happen before this summary is distributed to the executive team?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The CISO must approve the summary format — Vision output is automatically accurate but requires executive sign-off for distribution.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">A named reviewer must verify each cited misconfiguration against current platform data, correct any inaccuracies or outdated metrics, add context specific to the organization, and attach a reviewer attestation plus an AI advisory disclaimer before distribution.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">Vision output can be distributed directly to executives — it is drawn from live platform data and does not require additional review before senior distribution.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The three misconfigurations must be fully remediated before the summary can be distributed — executives should only receive posture summaries reflecting a fully remediated state.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod6')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod6"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod6" onclick="markComplete('mod6')">Mark Module 6 complete</button>
+          <span class="mark-complete-hint">Move on when treatment plans are created for your critical findings and you've produced a validated executive posture summary.</span>
+        </div>
+      </section>
+
+
+      <section id="certification" style="scroll-margin-top:80px;">
+        <h2>Certification: AiVRIC Cloud Security Practitioner</h2>
+        <p>Completing all six modules makes you eligible for the Cloud Security Practitioner certification exam.</p>
+
+        <table class="acad-table" style="margin-bottom:20px;">
+          <thead><tr><th>Exam domain</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td>Cloud security concepts</td><td>20%</td></tr>
+            <tr><td>Scan lifecycle and scope</td><td>20%</td></tr>
+            <tr><td>Findings and asset posture</td><td>25%</td></tr>
+            <tr><td>Compliance and UCB boundary</td><td>20%</td></tr>
+            <tr><td>Remediation and reporting</td><td>15%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Capstone practical scenario</h3>
+        <p style="color:var(--ug-text-2);">A tenant has completed an AWS scan showing public exposure findings, weak logging configurations, and excessive IAM permissions on several accounts. Compliance readiness is incomplete and several findings affect critical assets. Your task:</p>
+        <ol style="color:var(--ug-text-2);font-size:14px;line-height:2;">
+          <li>Review scan scope to confirm all accounts and regions were evaluated.</li>
+          <li>Apply the eight-question framework to the top three findings and rank by true risk priority.</li>
+          <li>Explain why the Compliance view score is not a compliance certification — describe what additional evidence is required.</li>
+          <li>Recommend remediation for the highest-priority finding with owner, target date, and evidence requirement.</li>
+          <li>Draft an executive cloud posture summary using Vision, validate it, and attest it with AI disclaimer.</li>
+        </ol>
+
+        <div class="callout primary">
+          <strong>Passing criteria:</strong> Correctly interprets scan scope and identifies any gaps. Prioritizes cloud risks using asset context rather than severity alone. Preserves the UCB governance boundary — does not equate scanner compliance with assurance. Produces actionable remediation with evidence requirements. Vision output is validated, corrected, and attested with AI disclaimer.
+        </div>
+
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Cloud Security. Your CSPM program now connects scan results to governance decisions — with the UCB as the authoritative boundary.</div>
+          <a href="vulnerability-management.html" class="acad-cert-btn"><i class="fas fa-arrow-right"></i> Next: Vulnerability Management</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2 &middot; Cloud Security</span>
+  </footer>
+
+  <script>
+  (function () {
+    var courseKey = 'aivric_cloudsec_v1';
+    var MODULES = ['mod1','mod2','mod3','mod4','mod5','mod6'];
+    function loadState() { try { return JSON.parse(localStorage.getItem(courseKey) || '{}'); } catch(e) { return {}; } }
+    function saveState(s) { try { localStorage.setItem(courseKey, JSON.stringify(s)); } catch(e) {} }
+    var state = loadState();
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill'); var pctEl = document.getElementById('progress-pct');
+      if (fill) fill.style.width = pct + '%'; if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) { var cert = document.getElementById('cert-block'); if (cert) cert.classList.add('show'); }
+    }
+    window.setActive = function(el) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); el.classList.add('active'); };
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].complete = true; saveState(state);
+      var btn = document.getElementById('mc-' + moduleId); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      updateProgress();
+    };
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); }); el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = false;
+    };
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if (!selected) return;
+      block.dataset.answered = 'true'; var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = true;
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var feedback = document.getElementById('feedback-' + moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o) { if (o.querySelector('[data-correct="true"]')) o.classList.add('correct'); else if (o === selected && !isCorrect) o.classList.add('wrong'); });
+      if (feedback) {
+        var expl = {
+          mod1:{correct:'Correct. Scan scope includes eight dimensions — provider, account, region, service coverage, credential model, timestamp, completion state, and error state.',wrong:'Scope is determined by eight dimensions, not just criticality flags. Resources are never auto-included once a provider is added — permissions and regional settings define what is actually evaluated.'},
+          mod2:{correct:'Correct. Stale scan data means the posture doesn\'t reflect current cloud state. Compliance evidence requires scans within the audit period. Active risk management requires current data to detect new exposures and close remediated findings.',wrong:'Scan freshness is critical for both compliance evidence and active risk management — not just for pen testing or severity calculations.'},
+          mod3:{correct:'Correct. Public exposure, weak encryption, excessive permissions, and missing logging are four of the most common cloud misconfiguration categories detected by CSPM.',wrong:'Performance, cost optimization, and operational metrics are not cloud security misconfiguration categories. The four security categories are: public exposure, weak encryption, excessive permissions, and missing logging.'},
+          mod4:{correct:'Correct. Compliance views show scanner-derived metadata for posture trending. Governance & Assurance UCB views represent source-attributed governance assurance with human-reviewed evidence. They serve different purposes and must not be conflated.',wrong:'The difference is not about timing or environment coverage — it is about governance authority. Scanner metadata informs; UCB governance with human-reviewed evidence certifies.'},
+          mod5:{correct:'Correct. RiskOps projects are appropriate when findings require multi-team coordination, milestone tracking, external dependencies, SLA enforcement, or multi-owner evidence requirements.',wrong:'RiskOps projects are not limited to multi-year programs or Critical severity alone, and they don\'t form automatically. They are appropriate based on complexity, accountability requirements, and governance visibility needs.'},
+          mod6:{correct:'Correct. Named reviewer verification, correction of inaccuracies, organizational context addition, reviewer attestation, and AI disclaimer are all required before Vision output is distributed.',wrong:'Vision output is not automatically accurate, does not eliminate the need for reviewer attestation, and should not wait for full remediation before distribution. The requirement is human review and attestation, not remediation completion.'}
+        };
+        feedback.textContent = ''; var label = document.createElement('strong'); var msg = document.createElement('span');
+        if (isCorrect) { feedback.className = 'quiz-feedback correct'; label.textContent = 'Correct! '; msg.textContent = (expl[moduleId]||{correct:''}).correct; }
+        else { feedback.className = 'quiz-feedback wrong'; label.textContent = 'Not quite. '; msg.textContent = (expl[moduleId]||{wrong:''}).wrong; }
+        feedback.appendChild(label); feedback.appendChild(msg);
+      }
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].quizCorrect = isCorrect; saveState(state);
+    };
+    window.toggleAction = function(el) { el.classList.toggle('checked'); };
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      }
+    });
+    updateProgress();
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { var id = entry.target.id; var link = document.querySelector('[data-module="' + id + '"]'); if (link) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); } } }); }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+  })();
+  </script>
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true">
+    <button class="acad-lightbox-close" type="button" onclick="closeLightbox()">&times;</button>
+    <img src="" alt=""><div class="acad-lightbox-caption"></div>
+  </div>
+  <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
+</body>
+</html>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Provider Admin &amp; CRPM Operations | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/provider-admin.html">
+  <meta name="description" content="Master the Provider Console, GRC Administration, RiskOps entitlement control, AI configuration, and the daily/weekly/monthly operating cadence for CloudSignals white-label providers.">
+  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EG2Q8GD30V');
+</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html">
+        <img src="../assets/images/logo/aivric.svg" alt="AiVRIC">
+        <span class="acad-brand-sep"></span>
+        <span class="acad-brand-sub">Academy</span>
+      </a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="crpm-program-guide.html">Program Guide</a>
+        <a href="../support.html">Support</a>
+        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Provider Admin &amp; CRPM Ops</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#a1" data-module="a1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Provider Console</span><span class="acad-mod-sub">Dashboard &amp; daily operations</span></div>
+        </a>
+        <a class="acad-module-item" href="#a2" data-module="a2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Client Lifecycle Management</span><span class="acad-mod-sub">All states, onboard to offboard</span></div>
+        </a>
+        <a class="acad-module-item" href="#a3" data-module="a3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Branding Administration</span><span class="acad-mod-sub">Configure, publish, validate</span></div>
+        </a>
+        <a class="acad-module-item" href="#a4" data-module="a4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">GRC Administration</span><span class="acad-mod-sub">Managed entities &amp; GRC users</span></div>
+        </a>
+        <a class="acad-module-item" href="#a5" data-module="a5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">RiskOps Entitlement</span><span class="acad-mod-sub">Enable, disable, verify</span></div>
+        </a>
+        <a class="acad-module-item" href="#a6" data-module="a6" onclick="setActive(this)">
+          <div class="acad-mod-icon">6</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">AI Configuration</span><span class="acad-mod-sub">Vision AI vs GRC AI</span></div>
+        </a>
+        <a class="acad-module-item" href="#a7" data-module="a7" onclick="setActive(this)">
+          <div class="acad-mod-icon">7</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Operating Cadence &amp; Quality</span><span class="acad-mod-sub">Daily to quarterly rhythm</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="crpm-program-guide.html"><i class="fas fa-map"></i> Program Guide</a>
+      <a class="acad-sidebar-link" href="provider-onboarding.html"><i class="fas fa-building"></i> Provider Onboarding Course</a>
+      <a class="acad-sidebar-link" href="riskops-getting-started.html"><i class="fas fa-shield-alt"></i> RiskOps Course</a>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <span class="badge purple"><i class="fas fa-cogs"></i> Admin Course &bull; P2</span>
+      <h1 style="margin-top:10px;">Provider Admin &amp; CRPM Operations</h1>
+      <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">
+        This course teaches Provider Administrators how to configure and operate the CloudSignals provider instance — from Provider Console daily operations through GRC Administration, RiskOps entitlement control, AI configuration, and the recurring administrative review cadence.
+      </p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 30px;">
+        <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> ~60 minutes</span>
+        <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 7 modules</span>
+        <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-user-shield"></i> Provider Admin, GRC Admin</span>
+      </div>
+      <div class="callout primary">
+        <strong>Prerequisite:</strong> Complete <a href="provider-onboarding.html">Provider Onboarding Foundations</a> (P1) before this course. That course establishes the operating model context this course builds on. Follow this course with <a href="riskops-getting-started.html">Getting Started with RiskOps</a> for the practitioner risk workflow.
+      </div>
+
+      <!-- ═══ MODULE 1 ═══ -->
+      <section id="a1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>Provider Console</h2>
+            <p class="phase-subtitle">Your primary workspace for provider health, client status, and administrative activity.</p>
+          </div>
+        </div>
+
+        <h3>What the Provider Console is</h3>
+        <p>The <strong>Provider Console</strong> is the administration workspace for provider operations. It is where admins manage downstream clients, control entitlements, review billing drafts, track support cases, configure branding, and audit provider team activity. It is not the same as the standard CloudSignals operating workspace that operators use for scans, findings, and risk work.</p>
+
+        <h3>Provider Console dashboard</h3>
+        <p>The dashboard gives a snapshot of provider workspace health. Review these items every day during launch and every week during normal operations:</p>
+        <table class="acad-table">
+          <thead><tr><th>Dashboard item</th><th>What it tells you</th><th>When to act</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Managed client count</strong></td><td>Total active downstream clients</td><td>When the count drops unexpectedly — may indicate an accidental status change</td></tr>
+            <tr><td><strong>Onboarding count</strong></td><td>Clients in onboarding state</td><td>When this number is high and not declining — clients may be stuck</td></tr>
+            <tr><td><strong>Needs action count</strong></td><td>Clients flagged for provider attention</td><td>Immediately — Needs Action means a client has an unresolved issue requiring your team</td></tr>
+            <tr><td><strong>RiskOps module state</strong></td><td>Whether RiskOps is enabled for this tenant</td><td>Whenever the state doesn't match your expectation — mismatched state can affect user navigation</td></tr>
+            <tr><td><strong>Billing exceptions</strong></td><td>Invoice or billing items requiring review</td><td>Before any client-facing billing communication</td></tr>
+            <tr><td><strong>Command queue</strong></td><td>Pending administrative commands or operations</td><td>When items are stuck or erroring</td></tr>
+          </tbody>
+        </table>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Daily Provider Console review</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Open <strong>Provider Console</strong> from the main navigation. This is distinct from the standard CloudSignals workspace view.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Review the <strong>Needs Action count first</strong>. Any client in Needs Action state has an unresolved issue — this is always the highest-priority item to investigate.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Check <strong>Onboarding count</strong>. If clients have been in onboarding state for more than 5 business days, investigate whether the first scan has been completed.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Review <strong>RiskOps module state</strong>. Confirm it matches your configuration intent. Mismatched state (showing disabled when you believe it's enabled) should be investigated and resolved before users begin work.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Review the <strong>command queue</strong> for stuck or erroring items. Contact AiVRIC support if commands remain in an error state after retry.</div></div>
+          </div>
+        </div>
+
+        <!-- Screenshot: Provider Console Dashboard -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Live app &mdash; Provider Console</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/riskops-entitlement-toggle.png" alt="Provider Console Dashboard showing KPI tiles, RiskOps Module state with Enable RiskOps toggle, Command Queue with client work items, and Workspace Snapshot metrics" loading="lazy">
+          <figcaption class="acad-caption"><strong>Provider Console Dashboard</strong> — the daily admin starting point. KPI tiles (managed clients, onboarding, needs action, billing exceptions), RiskOps module state, command queue with client actions, and workspace snapshot — all in one view.</figcaption>
+        </figure>
+
+        <div class="quiz-block" id="quiz-a1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">How often should a Provider Administrator review the Provider Console during an active client onboarding?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'a1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Daily — during launch and active onboarding, the Provider Console should be reviewed every day to catch stuck clients, Needs Action items, and command queue issues.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Weekly — the Provider Console is a strategic tool and weekly review is sufficient even during onboarding.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Monthly — only billing-related items require regular review; client onboarding is tracked in external project tools.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Only when a client reports a problem — the dashboard is reactive, not a proactive monitoring tool.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('a1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-a1"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-a1" onclick="markComplete('a1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you can identify every dashboard item and explain what action each triggers.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 2 ═══ -->
+      <section id="a2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Client Lifecycle Management</h2>
+            <p class="phase-subtitle">Manage every client from initial onboarding through eventual offboarding.</p>
+          </div>
+        </div>
+
+        <h3>Client lifecycle states</h3>
+        <p>Every client record in the Provider Console has a lifecycle state. Keeping states accurate is essential — it affects reporting, billing, and support priority routing.</p>
+        <table class="acad-table">
+          <thead><tr><th>State</th><th>Meaning</th><th>Key actions</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Prospect / Planned</strong></td><td>Client is approved but not yet onboarding</td><td>Create client record, assign provider owner, document package</td></tr>
+            <tr><td><strong>Onboarding</strong></td><td>Environment connection and first scan in progress</td><td>Connect cloud environment, run first scan, validate findings, schedule first review</td></tr>
+            <tr><td><strong>Active</strong></td><td>Fully onboarded, receiving ongoing service</td><td>Monitor scan health, track findings/risk treatment, deliver recurring reports</td></tr>
+            <tr><td><strong>Needs Action</strong></td><td>Something requires provider attention</td><td>Investigate root cause immediately — this should not sit unresolved</td></tr>
+            <tr><td><strong>Paused</strong></td><td>Service activity paused, typically for commercial reasons</td><td>Confirm reason, pause scans, preserve records, communicate with client owner</td></tr>
+            <tr><td><strong>Offboarding</strong></td><td>Client is leaving the service</td><td>Confirm termination date, export final reports, remove access, stop scans</td></tr>
+            <tr><td><strong>Archived</strong></td><td>Client is fully offboarded; records retained per policy</td><td>Follow data retention and deletion requirements; document closure</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Expanding a client</h3>
+        <p>When an active client adds new cloud accounts, services, or environments:</p>
+        <ul>
+          <li>Confirm that the expanded scope is within the client's current package entitlement.</li>
+          <li>Confirm updated pricing or package change with the provider commercial owner before connecting new environments.</li>
+          <li>Add the new environment in CloudSignals, run a validation scan, and update the client's managed entity mapping.</li>
+          <li>Update the reporting scope and support expectations to reflect the expanded footprint.</li>
+        </ul>
+
+        <h3>Offboarding a client — checklist</h3>
+        <div class="action-checklist" id="offboard-checklist">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Confirm termination date and any data retention obligations with the provider commercial owner.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Export required final reports and deliver to the client or retain per policy.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Stop scheduled scans and remove cloud access credentials.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Remove or deactivate client user access in CloudSignals.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Archive the client record and document the closure reason.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Confirm data deletion requirements and timeline per the client contract and applicable regulations.</div></div>
+        </div>
+
+        <!-- Screenshot: Downstream Clients lifecycle view -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Provider Console &mdash; Clients</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/provider-clients-list.png" alt="Downstream Clients tab showing client table with package, lifecycle, health, and environment counts, plus Create Downstream Client form with all required fields" loading="lazy">
+          <figcaption class="acad-caption"><strong>Clients &amp; Environments</strong> — every row is a client with current lifecycle state, health, and open case count visible. The Create Client panel on the right captures all onboarding fields before any cloud environment is connected.</figcaption>
+        </figure>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-a2" onclick="markComplete('a2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you can describe every lifecycle state and the required actions at each transition.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 3 ═══ -->
+      <section id="a3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Branding Administration</h2>
+            <p class="phase-subtitle">Configure, publish, and validate provider branding for light and dark mode.</p>
+          </div>
+        </div>
+
+        <h3>The publish vs. save distinction</h3>
+        <p>This is the single most common branding mistake: <strong>saving a draft does not apply changes</strong>. The branding workflow has two steps — save (stores your configuration) and publish (applies it to the live portal). Many providers spend time troubleshooting why branding isn't appearing after saving, when the issue is simply that the draft was never published.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Complete branding workflow</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Open <strong>Provider Console &gt; Branding</strong>.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Enter or update: <strong>Company name, support email, light logo URL, dark logo URL, favicon URL</strong>, and both light and dark palette colors.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">For any logo URL, open it in a <strong>private/incognito browser tab</strong> and confirm the image loads without sign-in. If it requires authentication, the logo will silently fail to load in the portal.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Click <strong>Save draft</strong> to store the configuration.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Click <strong>Publish draft</strong>. This is the step that applies the changes to the live portal.</div></div>
+            <div class="ip-step"><div class="ip-step-num">6</div><div class="ip-step-body"><strong>Hard-refresh</strong> the portal (Ctrl+Shift+R / Cmd+Shift+R). Regular refresh may serve cached assets.</div></div>
+            <div class="ip-step"><div class="ip-step-num">7</div><div class="ip-step-body">Verify: logo in light mode, logo in dark mode (toggle theme), favicon in browser tab, button contrast, sidebar readability, and Provider Console preview.</div></div>
+          </div>
+        </div>
+
+        <h3>Troubleshooting: logo does not appear</h3>
+        <table class="acad-table">
+          <thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>Logo URL is correct but image is broken</td><td>File requires sign-in to access</td><td>Move logo to a public CDN, object storage bucket, or your website's static assets folder</td></tr>
+            <tr><td>Logo appears in light mode but not dark mode</td><td>No dark logo URL configured</td><td>Add a dark-mode specific logo URL, or ensure the light logo has a transparent background that works on dark backgrounds</td></tr>
+            <tr><td>Logo still shows old version after updating</td><td>Draft was saved but not published, or browser cache</td><td>Publish the draft, then hard-refresh</td></tr>
+            <tr><td>Logo displays externally but not inside the portal</td><td>Content-Security-Policy or CORS restriction on the hosting origin</td><td>Host the logo on a permissive HTTPS origin (CDN or your own domain); escalate to AiVRIC if the issue persists</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Screenshot: Branding Studio -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Provider Console &mdash; Branding</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/provider-console-dashboard.png" alt="Branding Studio showing company name, support email, logo URL fields for light and dark mode, favicon URL, color palette pickers, brand preview panel, and published state" loading="lazy">
+          <figcaption class="acad-caption"><strong>Branding Studio</strong> — configure display name, logo URLs (light + dark), favicon, and color palettes. The Brand Preview panel shows exactly how the portal will render. <em>Save draft</em> stores configuration; <em>Publish draft</em> applies it to the live portal.</figcaption>
+        </figure>
+
+        <div class="quiz-block" id="quiz-a3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A provider saves a new logo URL in the branding settings but the old logo still appears after refreshing the portal. What is the most likely cause?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'a3')"><div class="quiz-radio"></div><div class="quiz-opt-text">The logo file format is unsupported — CloudSignals only renders SVG logos.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">The draft was saved but not published — saving stores the configuration but changes are not applied until the draft is explicitly published, followed by a hard-refresh.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Branding changes require AiVRIC support to deploy — save is only a request, not an automatic update.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a3')"><div class="quiz-radio"></div><div class="quiz-opt-text">The logo URL must use a root-relative path, not an HTTPS URL.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('a3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-a3"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-a3" onclick="markComplete('a3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you can complete the branding workflow including publish and have verified both light and dark mode rendering.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 4 ═══ -->
+      <section id="a4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>GRC Administration</h2>
+            <p class="phase-subtitle">Create managed entities and GRC users in the correct order to enable risk operations.</p>
+          </div>
+        </div>
+
+        <h3>The two-object GRC model</h3>
+        <p>GRC Administration manages two core record types that power RiskOps workflows:</p>
+        <div class="acad-grid">
+          <div class="acad-card">
+            <h3><i class="fas fa-building" style="color:var(--ug-cyan);margin-right:6px;"></i>Managed Entities</h3>
+            <p>An organizational profile representing a client, business unit, subsidiary, or internal reporting scope. Managed entities are the GRC anchor for risk records, asset ownership, business process mapping, and regulatory context.</p>
+            <p style="margin:0;font-size:13px;color:var(--ug-muted-2);">Create these <strong>first</strong>, before creating GRC users.</p>
+          </div>
+          <div class="acad-card">
+            <h3><i class="fas fa-user-tie" style="color:var(--ug-green);margin-right:6px;"></i>GRC Users</h3>
+            <p>A governance user profile with skills, roles, regulatory scope, and ownership relationships. GRC users are linked to managed entities to define who is responsible for each entity's risk and compliance activity.</p>
+            <p style="margin:0;font-size:13px;color:var(--ug-muted-2);">Create these <strong>after</strong> managed entities exist.</p>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <strong>Order matters.</strong> Managed entities must be created before you can associate GRC users to them. If you create a GRC user and then try to associate a managed entity that doesn't exist yet, the entity won't appear in the association selector. Always create entities first.
+        </div>
+
+        <h3>Creating a managed entity</h3>
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Managed entity setup</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Settings &gt; GRC Administration &gt; Managed Entities</strong>.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Click <strong>Create managed entity</strong>. Enter the legal name and vanity (display) name. Use consistent naming — once entities are referenced in risk records and reports, renaming them creates confusion.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Set <strong>status to Active</strong>, confirm country, and assign a criticality level. Add business context and any applicable regulatory requirement IDs (e.g., SOC 2 scope, GDPR jurisdiction).</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body"><strong>Save the managed entity.</strong> It is now available for GRC user association, asset mapping, and RiskOps records.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Repeat for each client or business unit that needs its own risk and compliance scope.</div></div>
+          </div>
+        </div>
+
+        <h3>Creating a GRC user</h3>
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — GRC user setup</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Settings &gt; GRC Administration &gt; GRC Users</strong>.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Click <strong>Create GRC user</strong>. Enter identity details: name, email, title, and department.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body"><strong>Link to an app user</strong> only when this person needs project or POA&M permissions in the platform. The GRC user profile provides governance context; the app user link provides platform access.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Assign <strong>GRC roles</strong>, select skills and regulatory framework coverage, set backup user and reporting relationship.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body"><strong>Associate managed entities.</strong> Select every entity this user supports. The entity selector shows active managed entities — if an expected entity is missing, return to Managed Entities and confirm it is active.</div></div>
+            <div class="ip-step"><div class="ip-step-num">6</div><div class="ip-step-body">Save the GRC user. Verify the entity associations appear in the user's profile view.</div></div>
+          </div>
+        </div>
+
+        <h3>Common GRC setup issues</h3>
+        <table class="acad-table">
+          <thead><tr><th>Issue</th><th>Cause</th><th>Resolution</th></tr></thead>
+          <tbody>
+            <tr><td>Managed entities don't appear in GRC user association</td><td>Entities don't exist yet, or they are in an inactive state</td><td>Create active entities first; then return to GRC user profile and search by name</td></tr>
+            <tr><td>GRC user can't access RiskOps records</td><td>GRC role not assigned, or RiskOps entitlement not enabled for the tenant</td><td>Assign the appropriate GRC role; confirm RiskOps entitlement is on (see Module 5)</td></tr>
+            <tr><td>Entity association shows in create mode but not edit mode</td><td>Edit mode may not reload the full entity list automatically</td><td>Refresh the page; confirm entity is active; escalate if issue persists</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Screenshot: Data Governance settings (GRC admin context) -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Settings — Data Governance</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/settings-data-governance.png" alt="Data Governance settings showing tenant administration with advanced exception watch, advanced exceptions, resolution requests, certificates, evidence, and policy configuration tabs" loading="lazy">
+          <figcaption class="acad-caption"><strong>Data Governance</strong> — the tenant administration layer for GRC operations. Tabs cover advanced exceptions, resolution requests, certificates &amp; evidence, and policy configuration — all the administrative controls that underpin RiskOps workflows.</figcaption>
+        </figure>
+
+        <div class="quiz-block" id="quiz-a4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">In what order must you create GRC records to successfully associate a GRC user with a managed entity?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'a4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Create the GRC user first, then create the managed entity and link it retroactively — the platform handles retroactive linking automatically.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Create the managed entity first (and confirm it is active), then create the GRC user and associate the entity — the entity selector only shows active, existing entities.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a4')"><div class="quiz-radio"></div><div class="quiz-opt-text">The order doesn't matter — you can create GRC users and managed entities in any order and link them afterward.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Create a client record in the Provider Console first — this automatically generates a managed entity and GRC user template.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('a4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-a4"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-a4" onclick="markComplete('a4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you have created at least one active managed entity and one GRC user with entity association in your tenant.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 5 ═══ -->
+      <section id="a5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>RiskOps Entitlement</h2>
+            <p class="phase-subtitle">Enable or disable RiskOps and verify the expected state in navigation and GRC.</p>
+          </div>
+        </div>
+
+        <h3>What RiskOps entitlement controls</h3>
+        <p>The RiskOps entitlement toggle controls whether the RiskOps module — business processes, scenarios, risk register, treatments, quantification, and security exceptions — is accessible in a tenant. <strong>GRC Administration is always available to provider administrators regardless of RiskOps entitlement state</strong> — disabling RiskOps removes the operational risk workflows but does not remove managed entities, GRC users, or GRC AI settings.</p>
+
+        <h3>Default behavior</h3>
+        <ul>
+          <li>Provider and white-label tenants default RiskOps to <strong>disabled</strong> at provisioning.</li>
+          <li>Provider Admins can enable or disable RiskOps for their own tenant (when allowed by their entitlement configuration).</li>
+          <li>Provider Admins can enable or disable RiskOps for downstream clients.</li>
+          <li>Existing commercial CloudSignals tenants keep their current RiskOps behavior — the toggle does not retroactively change behavior for tenants where RiskOps was already active.</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Enable RiskOps for a tenant</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Open <strong>Provider Console &gt; Dashboard</strong> or navigate to the client entitlement area.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Review the current <strong>RiskOps module state</strong> — confirm whether you are enabling for your own provider tenant or for a specific downstream client.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body"><strong>Enable RiskOps</strong> and save the entitlement change. Wait for confirmation from the platform before navigating away.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body"><strong>Refresh the page</strong> or navigate to Overview. Permission caches need to refresh after role or entitlement changes. If RiskOps does not appear, sign out and sign back in.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Verify the following appear: <strong>RiskOps menu, risk governance pages, GRC Users page, Managed Entities page</strong>, and that managed entity reference options load in GRC user association.</div></div>
+          </div>
+        </div>
+
+        <h3>After enabling RiskOps — verification checklist</h3>
+        <div class="action-checklist" id="riskops-enable-checklist">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">RiskOps menu appears in the left navigation.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Risk Governance pages open without errors.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Business Processes, Scenario Intelligence, and Risk Register are accessible.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">GRC Administration (Settings &gt; GRC Administration) remains accessible to Provider Admins.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">GRC Users page opens and managed entity reference options load.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Provider Admin can access all required RiskOps settings.</div></div>
+        </div>
+
+        <h3>After disabling RiskOps — verification checklist</h3>
+        <div class="action-checklist" id="riskops-disable-checklist">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">RiskOps menu is hidden or blocked in the left navigation.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">GRC Administration (Settings &gt; GRC Administration) remains accessible to Provider Admins.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Existing GRC users and managed entities remain visible and intact.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">No GRC roles have been deleted — GRC roles should persist through entitlement state changes.</div></div>
+        </div>
+
+        <!-- Screenshot: RiskOps Module entitlement panel -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Provider Console &mdash; RiskOps Module</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/riskops-entitlement-toggle.png" alt="Provider Console Dashboard with RiskOps Module section showing Current State Active, Default Disabled, last update timestamp, and Enable RiskOps toggle with Save RiskOps access button" loading="lazy">
+          <figcaption class="acad-caption"><strong>RiskOps Module panel</strong> — shows current state, the default for new clients, last update timestamp, and the Enable/Disable toggle. After saving, refresh the portal and verify navigation before confirming to users.</figcaption>
+        </figure>
+
+        <div class="quiz-block" id="quiz-a5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">When RiskOps is disabled for a tenant, which GRC capability must remain available to Provider Administrators?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'a5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Nothing — disabling RiskOps removes all GRC and risk-related capabilities until re-enabled.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Only the Risk Register — risk items already created are preserved in read-only mode.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">GRC Administration (managed entities, GRC users, GRC AI settings) remains available to Provider Admins when GRC is enabled — disabling RiskOps hides operational risk workflows but not the GRC configuration layer.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Only the AI settings — model configuration is not part of RiskOps and always remains accessible.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('a5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-a5"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-a5" onclick="markComplete('a5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you have verified the enable and disable checklists at least once in your tenant.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 6 ═══ -->
+      <section id="a6" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(0,209,255,.1);border-color:rgba(0,209,255,.3);color:var(--ug-cyan);">6</div>
+          <div class="phase-head-body">
+            <h2>AI Configuration</h2>
+            <p class="phase-subtitle">Configure Vision AI and GRC AI independently — they are not the same setting.</p>
+          </div>
+        </div>
+
+        <h3>Two AI configuration areas — two separate controls</h3>
+        <p>CloudSignals has <strong>two separate AI configuration areas</strong>. This is the most common source of AI-related support tickets: providers configure one area and expect it to apply to both. It does not.</p>
+
+        <div class="acad-grid">
+          <div class="acad-card" style="border-top:3px solid var(--ug-cyan);">
+            <h3><i class="fas fa-eye" style="color:var(--ug-cyan);margin-right:6px;"></i>Vision AI Configuration</h3>
+            <p><strong>Controls:</strong> Vision Chat, Prompt Vault assisted runs, Model Insights, and Vision-oriented analysis.</p>
+            <p><strong>Location:</strong> Vision &gt; AI Signals Config (or Vision Model Configuration)</p>
+            <p style="margin:0;font-size:13px;color:var(--ug-muted-2);">Changing this does <em>not</em> update GRC AI features.</p>
+          </div>
+          <div class="acad-card" style="border-top:3px solid var(--ug-purple);">
+            <h3><i class="fas fa-balance-scale" style="color:var(--ug-purple);margin-right:6px;"></i>GRC AI Configuration</h3>
+            <p><strong>Controls:</strong> GRC and RiskOps AI support, risk narrative assistance, governance summaries, GRC administrative AI features.</p>
+            <p><strong>Location:</strong> Settings &gt; GRC Administration &gt; AI Settings</p>
+            <p style="margin:0;font-size:13px;color:var(--ug-muted-2);">Changing this does <em>not</em> update Vision Chat.</p>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <strong>If Vision Chat isn't working:</strong> Check Vision AI configuration — not GRC AI.<br>
+          <strong>If GRC risk narratives aren't working:</strong> Check GRC AI settings — not Vision AI.<br>
+          Configuring one area does not configure the other. If your provider instance uses both Vision and GRC/RiskOps AI, you must configure both areas.
+        </div>
+
+        <h3>Required fields for AI configuration (both areas)</h3>
+        <ul>
+          <li><strong>Configuration name</strong> — a descriptive name for this configuration record.</li>
+          <li><strong>Provider</strong> — e.g., OpenAI, Azure OpenAI.</li>
+          <li><strong>Endpoint or model deployment reference</strong> — the API endpoint for the configured model.</li>
+          <li><strong>Model</strong> — the specific model version (e.g., gpt-4o, claude-3-5-sonnet).</li>
+          <li><strong>Temperature</strong> — keep low (0.1–0.3) for security and compliance analysis. Higher temperature increases creative variation, which is not desirable for factual risk outputs.</li>
+          <li><strong>Max tokens</strong> — sufficient context window for long findings, reports, and evidence summaries.</li>
+          <li><strong>API key or credential reference</strong> — rotate per your provider key policy.</li>
+          <li><strong>Business context</strong> — a brief description of the provider or client context; used by the model to calibrate responses.</li>
+        </ul>
+
+        <h3>Validation after configuration</h3>
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-check-double"></i> Validate AI configuration — both areas</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">After configuring <strong>Vision AI</strong>: navigate to Vision &gt; Chat and send a simple test prompt such as "Summarize the top 3 risks in this environment." Confirm a coherent response is returned.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">After configuring <strong>GRC AI</strong>: navigate to a risk record in RiskOps and attempt to generate a risk narrative or governance summary. Confirm AI output is returned without an error.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">If either test fails: re-check the endpoint URL, model name, API key, and token limits. Confirm the key has not expired and the model is available from the configured provider.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body"><strong>Security check:</strong> confirm that no secrets, private keys, access tokens, passwords, or regulated data were included in test prompts. Treat AI prompts as data that may be logged.</div></div>
+          </div>
+        </div>
+
+        <!-- Side-by-side: Vision AI config vs GRC AI settings -->
+        <div class="acad-figure-row">
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:var(--ug-cyan);"></i> Vision &mdash; AI Signals Config</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/vision-ai-config.png" alt="Vision AI Signals Config page showing integration control with endpoint, API key fields, connection routine settings, and Test Integration button" loading="lazy">
+            <figcaption class="acad-caption"><strong>Vision AI Config</strong> — controls Vision Chat, Prompt Vault, and Model Insights. Configured separately from GRC AI.</figcaption>
+          </figure>
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:var(--ug-purple);"></i> Settings &mdash; GRC AI</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/grc-ai-settings.png" alt="Overview dashboard shown when GRC AI settings page navigation was attempted — illustrating that this is a separate path from Vision AI config" loading="lazy">
+            <figcaption class="acad-caption"><strong>GRC AI Settings</strong> — controls risk narrative support and governance summaries. Navigate via Settings &gt; GRC Administration &gt; AI Settings.</figcaption>
+          </figure>
+        </div>
+
+        <div class="quiz-block" id="quiz-a6">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A provider reports that Vision Chat works correctly but GRC AI risk narratives return errors. What should you investigate?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'a6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The Vision AI configuration — if Vision Chat works but GRC AI doesn't, the problem is a misconfiguration in the Vision AI settings.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a6')"><div class="quiz-radio"></div><div class="quiz-opt-text">RiskOps entitlement — GRC AI is only available when RiskOps is fully enabled and all modules are active.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a6')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">The GRC AI settings (Settings &gt; GRC Administration &gt; AI Settings) — Vision AI and GRC AI are separate configuration areas. Working Vision Chat proves the Vision AI config is correct, but GRC AI has its own endpoint, model, and key configuration.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'a6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The provider's AI usage limit — one AI configuration handles all AI features and may have hit a rate limit.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('a6')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-a6"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-a6" onclick="markComplete('a6')">Mark Module 6 complete</button>
+          <span class="mark-complete-hint">Move on when you have validated both Vision AI and GRC AI configurations with test prompts.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 7 ═══ -->
+      <section id="a7" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(148,163,184,.1);border-color:rgba(148,163,184,.3);color:var(--ug-muted-2);">7</div>
+          <div class="phase-head-body">
+            <h2>Operating Cadence &amp; Quality</h2>
+            <p class="phase-subtitle">The recurring administrative rhythm that keeps the provider service healthy.</p>
+          </div>
+        </div>
+
+        <h3>Provider Admin operating cadence</h3>
+        <table class="acad-table">
+          <thead><tr><th>Cadence</th><th>Key activities</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Daily</strong></td>
+              <td>Review Provider Console dashboard (Needs Action, stuck onboarding, command queue). Check scan failures and stale scan status. Review critical and high finding changes. Check urgent support cases.</td>
+            </tr>
+            <tr>
+              <td><strong>Weekly</strong></td>
+              <td>Review asset ownership gaps. Review unassigned findings and overdue remediation. Review RiskOps work queues. Review managed entity mapping changes (after any client onboarding/offboarding). Review open security exceptions. Prepare client operating notes.</td>
+            </tr>
+            <tr>
+              <td><strong>Monthly</strong></td>
+              <td>Review provider user access — remove stale accounts. Review Provider Admin and GRC Admin roles. Review client package and entitlement alignment. Review branding (confirm it still renders correctly in both themes). Review report distribution recipients. Review accepted risks and exceptions. Review AI settings and key rotation schedule.</td>
+            </tr>
+            <tr>
+              <td><strong>Quarterly</strong></td>
+              <td>Review role model — is every role assignment still appropriate? Review service package definitions. Review scan coverage across all clients. Review offboarded clients and inactive users. Review data retention and reporting practices. Update training material if product has changed significantly.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Screenshots: My Work + Manage Groups (admin daily review context) -->
+        <div class="acad-figure-row">
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /risks/my-work</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/riskops-my-work.png" alt="My Work execution queue showing assigned risk items, overdue count, active tasks by priority, and operational match panel" loading="lazy">
+            <figcaption class="acad-caption"><strong>My Work</strong> — the daily operational starting point for provider operators. All assigned risk decisions, pending approvals, and overdue items surface here. Review this queue at the start of every session before switching to the Provider Console dashboard.</figcaption>
+          </figure>
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Provider Console — Groups</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/settings-manage-groups.png" alt="Provider Group Management page showing group creation form and existing groups table with All Providers, Customer Service, Marketing, and AWS Provider entries" loading="lazy">
+            <figcaption class="acad-caption"><strong>Provider Group Management</strong> — create and maintain provider groups that control role access and provider visibility without changing the underlying group workflow. Use groups to scope client access and apply role changes at scale.</figcaption>
+          </figure>
+        </div>
+
+        <h3>Provider quality standards</h3>
+        <div class="action-checklist" id="quality-checklist">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Clear ownership on all Critical and High findings — no unowned findings older than 5 days.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Current scan data — no client with a scan older than the agreed cadence without documented reason.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Accurate managed entity mapping — every active client has a managed entity with assigned owner.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">No stale Provider Admin access — users who have left or changed roles have been deactivated.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">No secrets in prompts, notes, tickets, or reports — ever.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Documented rationale for every accepted risk and security exception.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Repeatable monthly reporting cadence — every active client receiving a report on schedule.</div></div>
+        </div>
+
+        <h3>When to escalate to AiVRIC</h3>
+        <p>The following conditions should be escalated to AiVRIC support — do not attempt to resolve these through provider-side configuration changes alone:</p>
+        <ul>
+          <li>Provider portal is unavailable or returns 5xx errors.</li>
+          <li>Branding does not render after publishing and validating the URL.</li>
+          <li>RiskOps entitlement state does not match navigation or API behavior after re-enabling.</li>
+          <li>GRC Administration endpoints return errors for a valid Provider Admin.</li>
+          <li>Managed entities don't appear in GRC user association after being created and confirmed active.</li>
+          <li>AI model configuration fails with confirmed valid credentials and endpoint.</li>
+          <li>Scan failures persist after cloud access has been re-validated.</li>
+          <li>Dashboards show inconsistent data that doesn't update after scan completion and refresh.</li>
+          <li>A security, privacy, or data exposure concern is suspected.</li>
+        </ul>
+        <div class="callout primary">
+          <strong>When escalating, always include:</strong> Provider name, portal URL, affected user email, client or managed entity name (if applicable), page URL, timestamp, screenshot, and steps to reproduce. <strong>Never include</strong> secrets, tokens, or private keys.
+        </div>
+
+        <!-- Completion banner -->
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Provider Admin &amp; CRPM Operations. Your provider instance is configured, your operating cadence is established, and you're ready to run a production-grade CloudSignals service.</div>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <a href="riskops-getting-started.html" class="acad-cert-btn"><i class="fas fa-shield-alt"></i> Next: Getting Started with RiskOps</a>
+            <a href="index.html" class="acad-cert-btn" style="background:var(--ug-surface);color:var(--ug-cyan);border:1px solid rgba(0,209,255,.3);">All courses</a>
+          </div>
+        </div>
+
+        <!-- Motion clip: Treatments workflow -->
+        <figure class="acad-video-wrap">
+          <span class="fig-chip"><i class="fas fa-play-circle" style="color:var(--ug-purple);"></i> Interaction recording</span>
+          <video autoplay loop muted playsinline preload="none" poster="screenshots/treatments-list.png">
+            <source src="screenshots/clip-treatments.webm" type="video/webm">
+          </video>
+          <figcaption class="acad-caption--video">Treatment Execution Workspace in motion — rows highlight on hover, showing how a provider operator reviews and acts on active treatment plans during the weekly RiskOps review.</figcaption>
+        </figure>
+
+        <div class="mark-complete-wrap" style="margin-top:20px;">
+          <button class="mark-complete-btn" id="mc-a7" onclick="markComplete('a7')">Mark Module 7 complete</button>
+          <span class="mark-complete-hint">Complete this module to unlock your course completion.</span>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v1 &middot; P2 Provider Admin &amp; CRPM Operations</span>
+  </footer>
+
+  <script>
+  (function(){
+    var STORAGE_KEY = 'provider_admin_v1';
+    var MODULES = ['a1','a2','a3','a4','a5','a6','a7'];
+    function loadState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'); }catch(e){ return {}; } }
+    function saveState(s){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }catch(e){} }
+    var state = loadState();
+
+    function updateProgress(){
+      var done = MODULES.filter(function(m){ return state[m]&&state[m].complete; }).length;
+      var pct = Math.round((done/MODULES.length)*100);
+      var fill = document.getElementById('progress-fill');
+      var pctEl = document.getElementById('progress-pct');
+      if(fill) fill.style.width = pct+'%';
+      if(pctEl) pctEl.textContent = pct+'%';
+      if(pct===100){ var cert=document.getElementById('cert-block'); if(cert) cert.classList.add('show'); }
+    }
+
+    window.setActive = function(el){
+      document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); });
+      el.classList.add('active');
+    };
+
+    window.markComplete = function(moduleId){
+      if(!state[moduleId]) state[moduleId]={};
+      state[moduleId].complete = true;
+      saveState(state);
+      var btn = document.getElementById('mc-'+moduleId);
+      if(btn){ btn.textContent='Module complete ✓'; btn.classList.add('done'); btn.disabled=true; }
+      var sideItem = document.querySelector('[data-module="'+moduleId+'"]');
+      if(sideItem){ sideItem.classList.add('completed'); var icon=sideItem.querySelector('.acad-mod-icon'); if(icon) icon.textContent='✓'; }
+      updateProgress();
+    };
+
+    window.selectOption = function(el, moduleId){
+      var block = document.getElementById('quiz-'+moduleId);
+      if(!block || block.dataset.answered==='true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); });
+      el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if(btn) btn.disabled=false;
+    };
+
+    window.checkAnswer = function(moduleId){
+      var block = document.getElementById('quiz-'+moduleId);
+      if(!block || block.dataset.answered==='true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if(!selected) return;
+      block.dataset.answered='true';
+      var btn = block.querySelector('.quiz-btn'); if(btn) btn.disabled=true;
+      var isCorrect = selected.querySelector('[data-correct="true"]')!==null;
+      var feedback = document.getElementById('feedback-'+moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o){
+        if(o.querySelector('[data-correct="true"]')) o.classList.add('correct');
+        else if(o===selected&&!isCorrect) o.classList.add('wrong');
+      });
+      var explanations = {
+        a1:{ correct:'Daily review is required during launch and active onboarding. The Provider Console dashboard is a proactive monitoring tool, not a reactive one. Needs Action items and stuck onboarding states require same-day attention.', wrong:'Daily review is the correct answer during onboarding. The Provider Console is a proactive monitoring tool — waiting for client reports before checking means problems will persist longer than necessary.' },
+        a3:{ correct:'Saving stores the draft configuration but does not apply it. Publishing is the required second step. After publishing, a hard-refresh clears cached assets and ensures the new branding is loaded.', wrong:'Saving alone does not apply branding changes. AiVRIC support is not involved in routine branding publishes. New user sign-ins do not trigger branding activation. Publishing is the required step.' },
+        a4:{ correct:'Managed entities must exist and be active before you can associate them with a GRC user. The entity selector in GRC user creation only shows active, existing entities. Always create entities first.', wrong:'Order matters — the entity selector only shows active, existing entities. Creating a GRC user before entities exist means the association step will have no entities to select.' },
+        a5:{ correct:'GRC Administration (managed entities, GRC users, AI settings) remains available to Provider Administrators even when RiskOps is disabled. The operational risk workflows (risk register, treatments, etc.) are hidden, but the GRC configuration layer stays intact.', wrong:'Disabling RiskOps does not remove all GRC capability. Managed entities, GRC users, GRC AI settings, and GRC roles all remain intact. Only the operational RiskOps navigation is hidden.' },
+        a6:{ correct:'Vision AI and GRC AI are separate configuration areas. Working Vision Chat proves the Vision AI config is correct — but GRC AI has its own configuration in Settings > GRC Administration > AI Settings. Check that area when GRC AI features fail.', wrong:'Vision AI and GRC AI are separate. The problem is in the GRC AI settings area, not Vision AI, not RiskOps entitlement, and not a shared rate limit — each area has its own configuration.' },
+      };
+      if(feedback){
+        var exp = explanations[moduleId]||{correct:'',wrong:''};
+        feedback.textContent = '';
+        var lbl = document.createElement('strong');
+        var txt = document.createElement('span');
+        if(isCorrect){ feedback.className='quiz-feedback correct'; lbl.textContent='Correct! '; txt.textContent=exp.correct; }
+        else{ feedback.className='quiz-feedback wrong'; lbl.textContent='Not quite. '; txt.textContent=exp.wrong; }
+        feedback.appendChild(lbl); feedback.appendChild(txt);
+      }
+    };
+
+    window.toggleAction = function(el){ el.classList.toggle('checked'); };
+
+    MODULES.forEach(function(m){
+      if(state[m]&&state[m].complete){
+        var btn=document.getElementById('mc-'+m); if(btn){ btn.textContent='Module complete ✓'; btn.classList.add('done'); btn.disabled=true; }
+        var si=document.querySelector('[data-module="'+m+'"]'); if(si){ si.classList.add('completed'); var ic=si.querySelector('.acad-mod-icon'); if(ic) ic.textContent='✓'; }
+      }
+    });
+    updateProgress();
+
+    if('IntersectionObserver' in window){
+      var sections=document.querySelectorAll('section[id]');
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            var id=entry.target.id;
+            var link=document.querySelector('[data-module="'+id+'"]');
+            if(link){ document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); }
+          }
+        });
+      },{rootMargin:'-20% 0px -70% 0px'});
+      sections.forEach(function(s){ obs.observe(s); });
+    }
+  })();
+  </script>
+
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
+    <button class="acad-lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+    <img src="" alt="">
+    <div class="acad-lightbox-caption"></div>
+  </div>
+
+  <script>
+  function openLightbox(figure) {
+    var img = figure.querySelector('img');
+    var cap = figure.querySelector('figcaption');
+    var lb  = document.getElementById('acad-lightbox');
+    if (!lb || !img) return;
+    lb.querySelector('img').src = img.src;
+    lb.querySelector('img').alt = img.alt;
+    var lbCap = lb.querySelector('.acad-lightbox-caption');
+    if (lbCap) lbCap.textContent = cap ? cap.textContent.replace('↑','').trim() : '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    var lb = document.getElementById('acad-lightbox');
+    if (lb) { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+  (function(){
+    var obs = ('IntersectionObserver' in window) && new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.04 });
+    document.querySelectorAll('.acad-figure, .acad-figure-row, .acad-video-wrap').forEach(function(el) {
+      if (obs) obs.observe(el); else el.classList.add('visible');
+    });
+  })();
+  </script>
+</body>
+</html>

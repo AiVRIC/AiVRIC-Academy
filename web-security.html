@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Security | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/web-security.html">
+  <meta name="description" content="Govern web-facing risk using CloudSignals+RiskOps: web-facing asset discovery, exposure findings, evidence and controls, RiskOps remediation, and Vision reporting. AiVRIC Academy.">
+  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html"><img src="../assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="../AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="../support.html">Support</a>
+        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Web Security</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Overview</span><span class="acad-mod-sub">Audience, outcomes, platform areas</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod1" data-module="mod1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Web Security Governance</span><span class="acad-mod-sub">Control Library — scope and rationale</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod2" data-module="mod2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Web-Facing Asset Discovery</span><span class="acad-mod-sub">Assets, Cloud Resources — exposure map</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod3" data-module="mod3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Web Findings &amp; Exposure</span><span class="acad-mod-sub">Findings — analyze and prioritize</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod4" data-module="mod4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Evidence &amp; Controls</span><span class="acad-mod-sub">Evidence Fabric, Control Library</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod5" data-module="mod5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">RiskOps Remediation</span><span class="acad-mod-sub">Projects, Risk Treatments</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod6" data-module="mod6" onclick="setActive(this)">
+          <div class="acad-mod-icon">6</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Reporting &amp; Vision</span><span class="acad-mod-sub">Reports, Vision — web risk narratives</span></div>
+        </a>
+        <a class="acad-module-item" href="#certification" data-module="certification" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9670;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Certification &amp; Capstone</span><span class="acad-mod-sub">Exam blueprint and scenario</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="vulnerability-management.html"><i class="fas fa-arrow-left"></i> Prev: Vulnerability Management</a>
+      <a class="acad-sidebar-link" href="../support.html"><i class="fas fa-life-ring"></i> Support</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <section id="overview" style="scroll-margin-top:80px;">
+        <span class="badge" style="background:rgba(239,68,68,.15);color:#ef4444;"><i class="fas fa-globe"></i> AiVRIC Web Security Foundations &bull; Practitioner</span>
+        <h1 style="margin-top:10px;">Web Security</h1>
+        <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">Web security is the governance and operation of controls that protect public-facing applications, APIs, endpoints, identity flows, cloud edge services, and exposed infrastructure. In CloudSignals+RiskOps, web security is approached through asset context, exposure findings, control requirements, evidence, risk treatment, and remediation workflows — not limited to application vulnerability testing.</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 24px;">
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> Topic course: ~90 min &bull; Certification path: 5–7 hrs</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 6 modules + capstone</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-signal"></i> Foundational to Intermediate</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-certificate" style="color:#ef4444"></i> Certification eligible</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;">
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#ef4444;margin-bottom:10px;"><i class="fas fa-users" style="margin-right:5px;"></i>Who this course is for</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Application security analysts</li>
+              <li>Cloud security analysts</li>
+              <li>Web platform owners</li>
+              <li>DevSecOps engineers</li>
+              <li>RiskOps teams</li>
+              <li>Compliance managers</li>
+            </ul>
+          </div>
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#ef4444;margin-bottom:10px;"><i class="fas fa-check-circle" style="margin-right:5px;"></i>Prerequisites</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Basic understanding of web applications, APIs, and internet exposure</li>
+              <li>Familiarity with security findings and remediation workflows</li>
+              <li>Access to Surface, Findings, RiskOps, and Governance &amp; Assurance views</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-top:0;padding-top:0;border-top:none;">What you will be able to do</h2>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:20px;">
+          <li>Explain web security as an asset, control, and risk governance discipline — not just application vulnerability testing.</li>
+          <li>Identify public exposure and web-facing assets using Surface and Cloud Resources views.</li>
+          <li>Prioritize web findings using risk context including business function, data sensitivity, and owner accountability.</li>
+          <li>Map web security gaps to UCB controls and evidence expectations.</li>
+          <li>Route web security remediation through RiskOps projects with owner, SLA, and verification criteria.</li>
+          <li>Use Vision to draft web risk narratives — with required human review and attestation.</li>
+        </ol>
+
+        <div class="callout primary" style="margin-top:16px;">
+          <strong>Platform areas used in this course:</strong> Surface, Assets, Cloud Resources, Findings, Governance &amp; Assurance, Control Library, Evidence Fabric, RiskOps, Projects, Risk Treatments, Reports, Vision. Navigate to <strong>Surface &gt; Assets</strong> to begin.
+        </div>
+        <div class="callout warn" style="margin-top:12px;">
+          <strong>AI advisory statement:</strong> Vision can draft web risk narratives and executive summaries — but all output must be reviewed for accuracy, corrected where needed, have source references added, and carry the reviewer's attestation and AI disclaimer before distribution or use as evidence.
+        </div>
+      </section>
+
+
+      <section id="mod1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>Web Security Governance</h2>
+            <p class="phase-subtitle">15 min &bull; Control Library &bull; Explain web controls, governance scope, and why they exist</p>
+          </div>
+        </div>
+
+        <h3>Web security governance is broader than application vulnerability testing</h3>
+        <p>Web security is not limited to finding SQL injection or XSS vulnerabilities in application code. It includes governance over: <strong>public endpoints</strong> (authentication, API access controls, exposed management interfaces), <strong>authorization and session handling</strong> (token validity, session timeout, privilege escalation paths), <strong>TLS and transport security</strong> (protocol versions, cipher suites, certificate validity), <strong>DNS governance</strong> (subdomain takeover exposure, DNSSEC configuration), <strong>WAF and edge controls</strong> (web application firewall configuration, DDoS protection, rate limiting), <strong>API exposure</strong> (authentication, CORS, authorization checks, rate limiting), <strong>secrets handling</strong> (API keys, credentials, certificates not stored in code or public storage), <strong>logging and monitoring</strong> (access logs, anomaly detection, audit trails for sensitive operations), and <strong>secure change governance</strong> (change review for web-facing components).</p>
+        <p>CloudSignals+RiskOps helps learners connect these web security risks to assets, findings, controls, evidence, and remediation — creating a governance chain from exposure detection through to verified closure.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Identify web security controls in the Control Library</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Control Library</strong>. Search or filter for web-security-relevant domains: Infrastructure Security, Identity &amp; Access Management, Data Protection, and Network Security.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select a web-relevant control (e.g., "Enforce HTTPS on all public endpoints" or "Restrict public storage access"). Review the control's objective, guidance, and applicable dimensions — this is why this control exists, not just what it requires.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Review the Assessment Objectives for the control. Note what evidence types are expected — this will guide Module 4's evidence work. Web security controls often require both automated scanner evidence AND human-reviewed configuration confirmation.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Identify the three UCB controls most relevant to your organization's web-facing infrastructure. These will anchor your labs throughout this course.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod1">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Map web security governance scope:</strong> List which of the nine web governance areas are in scope for your organization (endpoints, auth, TLS, DNS, WAF, API, secrets, logging, change governance).</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify your three anchor controls:</strong> From the Control Library, select the three UCB controls most critical to your web-facing environment. These drive your Module 2–5 work.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Note evidence expectations:</strong> For each anchor control, record what evidence types are expected so you can collect them in Module 4.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Name five types of web-facing assets that should appear in a complete web security asset inventory.</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Virtual machines, databases, Kubernetes clusters, container registries, and CI/CD pipelines.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Public cloud endpoints, load balancers, web applications, APIs and API gateways, and storage buckets with public access — all of which are directly reachable from the internet and represent the organization's web attack surface.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Network security groups, firewall rule sets, DDoS protection policies, VPN configurations, and private DNS zones.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Code repositories, artifact registries, secrets vaults, IaC templates, and configuration management databases.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod1" onclick="markComplete('mod1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you've identified your three anchor UCB controls and noted their evidence expectations.</span>
+        </div>
+      </section>
+
+
+      <section id="mod2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Web-Facing Asset Discovery</h2>
+            <p class="phase-subtitle">20 min &bull; Assets, Cloud Resources &bull; Build a complete web exposure inventory</p>
+          </div>
+        </div>
+
+        <h3>Ten categories of web-facing assets</h3>
+        <p>Web-facing assets are those that are directly reachable from the public internet or indirectly exposed through integrations with internet-facing systems. A complete web exposure inventory covers ten asset categories:</p>
+
+        <div class="acad-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0;">
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Public cloud endpoints</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Direct internet-accessible services with open ports or public IP addresses</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Load balancers</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Internet-facing ingress points routing to backend services</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Web applications</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">HTTP/HTTPS services serving user-facing interfaces</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">APIs</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">REST, GraphQL, or SOAP endpoints with external access</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Storage with public access</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Buckets or blob containers accessible without authentication</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">CDN distributions</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Edge caches that may expose origin URLs or sensitive content</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">DNS records</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Subdomains and records that may expose internal services or be taken over</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Identity endpoints</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Login pages, SSO redirects, OAuth flows accessible to users</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">Internet-facing VMs</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Compute instances with public IPs and open management or service ports</p></div>
+          <div class="acad-card" style="padding:12px 14px;"><strong style="font-size:12px;">SaaS integrations</strong><p style="font-size:12px;margin:4px 0 0;color:var(--ug-text-2);">Third-party platforms with OAuth tokens or API access to your systems</p></div>
+        </div>
+
+        <p>For each web-facing asset, governance requires determining: ownership, business function, data sensitivity, and exposure scope (intentional vs. accidental public access). Unintentional public exposure is your highest-priority finding — an asset that should not be public but is creates direct exploitation opportunity with no exploitation barrier.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 1: Web Exposure Review</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Surface &gt; Assets</strong>. Filter for assets tagged "public" or with the public exposure attribute. Review the list — these are your internet-facing governance targets.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Navigate to <strong>Surface &gt; Cloud Resources</strong>. Filter by the "public access" or "internet-facing" attribute. For each identified asset: confirm the exposure is intentional, note the business function, owner, and data sensitivity.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Identify any assets that should not be publicly accessible. These are your <strong>unintentional exposures</strong> — the highest-priority findings in your web security inventory. Flag each for immediate triage.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">For each web-facing asset, confirm a named owner is assigned. Unowned web-facing assets cannot receive findings for triage — they are the highest-risk governance gap in your web attack surface.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Record your web exposure review: asset count by category, unintentional exposures identified, ownership gaps, and data sensitivity distribution. This is your Lab 1 deliverable.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod2">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Complete a web exposure review across all ten asset categories:</strong> Confirm which categories are present in your environment and which have unintentional or ungoverned exposure.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Assign owners to all unowned web-facing assets:</strong> No web-facing asset should be without an owner. Unowned public assets are the most dangerous governance gap in your environment.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Flag unintentional exposures for immediate escalation:</strong> Any asset that should not be publicly accessible but is requires same-day triage — not next week's sprint.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Why is ownership the most important governance attribute for web-facing assets?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Ownership is required for billing attribution — unowned assets cannot be included in cost center reporting.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Without an owner, findings on a web-facing asset have no recipient for triage assignment — the finding generates as an orphaned signal that no one routes or remediates. Web-facing assets with open findings and no owner represent sustained, unmanaged exposure windows.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Ownership only matters for compliance reporting — operational security teams can triage findings without knowing which team owns the asset.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Web-facing assets don't require individual ownership — they should be owned by the central security team for centralized governance.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod2" onclick="markComplete('mod2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you've completed the web exposure review and assigned owners to all unowned web-facing assets.</span>
+        </div>
+      </section>
+
+
+      <section id="mod3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Web Findings &amp; Exposure</h2>
+            <p class="phase-subtitle">25 min &bull; Findings &bull; Analyze web-related findings and prioritize by business context</p>
+          </div>
+        </div>
+
+        <h3>Nine common web security finding categories</h3>
+        <p>CloudSignals+RiskOps surfaces web security findings from cloud resource configurations — these are configuration-state findings, not runtime application vulnerability findings. Configuration-state findings are persistently present, continuously monitorable, and scanner-verifiable after remediation — which makes them more governable than runtime findings that require manual testing to detect and verify. The nine most common web security finding categories are:</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Finding category</th><th>What it indicates</th><th>Typical severity</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Public exposure</strong></td><td>Storage, endpoints, or services accessible to anyone without authentication</td><td>Critical</td></tr>
+            <tr><td><strong>Weak TLS / insecure transport</strong></td><td>TLS 1.0/1.1 in use, expired certificates, or HTTP accepted on sensitive services</td><td>High</td></tr>
+            <tr><td><strong>Missing logging</strong></td><td>Access logs, audit trails, or activity monitoring disabled on web-facing services</td><td>Medium–High</td></tr>
+            <tr><td><strong>Overly permissive network access</strong></td><td>Security groups or NSGs allowing broad inbound access on web or management ports</td><td>High</td></tr>
+            <tr><td><strong>Weak identity controls</strong></td><td>MFA not enforced on admin consoles, excessive session token validity</td><td>High</td></tr>
+            <tr><td><strong>Misconfigured storage</strong></td><td>Public read/write enabled on buckets containing application or customer data</td><td>Critical</td></tr>
+            <tr><td><strong>Exposed management ports</strong></td><td>SSH, RDP, or database ports open to the internet on production systems</td><td>Critical</td></tr>
+            <tr><td><strong>Missing WAF / edge protections</strong></td><td>No WAF configured on internet-facing applications or APIs</td><td>Medium</td></tr>
+            <tr><td><strong>Unreviewed third-party integrations</strong></td><td>OAuth tokens, API connections, or webhooks to external systems without access review</td><td>Medium</td></tr>
+          </tbody>
+        </table>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 2: Web Finding Prioritization</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Findings</strong>. Filter for findings on your web-facing assets (use asset filter for internet-facing flag or filter by asset tag "public"). Review the finding count and severity distribution.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select three findings across different web finding categories from the table above. For each, note: severity, asset category (load balancer, storage, API), data sensitivity, and business function.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Compare severity against business context. Rank the three findings by actual risk priority — not by severity alone. A High finding on a customer-facing API handling PII may rank above a Critical finding on an internal management service with no external access.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">For any Public Exposure or Exposed Management Port findings (Critical tier), confirm these have same-day treatment plans — these cannot wait for the next sprint review.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Record your web finding priority list with ranked findings and rationale. This is your Lab 2 deliverable.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod3">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Complete the web finding prioritization lab:</strong> Rank your top web-facing findings using business context — severity alone is an insufficient prioritization signal for web security.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Triage all Public Exposure and Exposed Management Port findings same-day:</strong> These are direct exploitation opportunities that require immediate treatment decisions, not queue-based triage.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Confirm no recurring web findings:</strong> For any web finding that has re-emerged after a previous closure, flag it as a systemic issue requiring a project rather than a point-fix treatment plan.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What evidence supports web security assurance beyond a scanner result showing a control passes?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">A penetration test report from any accredited firm within the past 24 months — this serves as the primary web security assurance artifact.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Secure architecture diagrams (showing web control points), web configuration exports (TLS settings, WAF policies, storage access policies), penetration test reports (for runtime behavior), secure code review records, CI/CD security gate results, access review records, and incident response records — together these prove web controls exist, are configured correctly, and are actively governed.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">A scanner passing all CIS Benchmark checks is sufficient web security assurance evidence — no additional artifacts are required for governance purposes.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Bug bounty program activity reports — active external researcher participation demonstrates the web attack surface is being continuously tested.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod3" onclick="markComplete('mod3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you've prioritized web findings using business context and handled same-day triage for critical exposure findings.</span>
+        </div>
+      </section>
+
+
+      <section id="mod4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>Evidence &amp; Controls</h2>
+            <p class="phase-subtitle">20 min &bull; Evidence Fabric, Control Library &bull; Define proof for web security governance</p>
+          </div>
+        </div>
+
+        <h3>Web security evidence types</h3>
+        <p>Web security evidence must prove that controls are configured, operate as intended, and have been reviewed by a named person with knowledge of the system. Scanner results alone satisfy the "configured" dimension — they do not satisfy "operates as intended" or "reviewed." A complete web security evidence package includes multiple artifact types linked to specific UCB controls and Assessment Objectives in the Evidence Fabric:</p>
+
+        <ul>
+          <li><strong>Secure architecture diagrams:</strong> showing web traffic flow, trust boundaries, authentication checkpoints, and WAF/CDN topology — linked to network and identity controls</li>
+          <li><strong>Web configuration exports:</strong> TLS version and cipher configuration, storage access policies, security header settings from cloud console exports</li>
+          <li><strong>TLS configuration reports:</strong> scan output confirming TLS 1.2+ enforced, valid certificates, no deprecated protocols</li>
+          <li><strong>WAF policy screenshots or exports:</strong> confirming rule sets, rate limiting, and OWASP protection coverage</li>
+          <li><strong>Penetration test reports:</strong> testing runtime application behavior (injection, authentication bypass, authorization flaws) that CSPM cannot detect</li>
+          <li><strong>Secure code review records:</strong> documented review sign-offs for web-facing components with security findings and resolution tracking</li>
+          <li><strong>CI/CD security gate results:</strong> SAST, DAST, or dependency scan results from pipeline runs before production deployment</li>
+          <li><strong>Access review records:</strong> periodic confirmation that web-facing service accounts and admin access is scoped to authorized users only</li>
+          <li><strong>Incident response records:</strong> any security event on a web-facing asset and the response taken — governance evidence of the control's ability to detect and respond</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Map evidence to web security controls</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Evidence Fabric</strong>. Filter for evidence linked to your three anchor UCB controls from Module 1. Review what artifacts currently exist and their freshness state.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">For each anchor control, identify which evidence types from the list above are present, partially present, or entirely missing. Document this as a web security evidence gap list.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Upload or link one available web security evidence artifact (TLS configuration export, WAF policy screenshot, or architecture diagram). Set: evidence type, timestamp, control linkage, AO linkage, and assign a reviewer.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">After reviewer attestation, observe the AO satisfaction and confidence score change. A single well-documented artifact linked correctly to the right AO moves the dial — this is why evidence metadata matters.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Identify controls that require penetration test evidence (runtime behavior controls that scanner data cannot satisfy). Confirm a pen test is scheduled and its report will be linked to the relevant AOs upon receipt.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod4">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Build a web security evidence gap list:</strong> For each of your three anchor controls, list which evidence types are present, which are stale, and which are entirely absent.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Link and attest at least one web security artifact:</strong> Upload a real artifact, set its metadata, assign a reviewer, and observe AO satisfaction change after attestation.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Schedule pending evidence collection:</strong> For each gap in your list, create a collection task with an owner and deadline — especially for pen test and code review artifacts that require external scheduling.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">When should a web security finding be escalated to a RiskOps project rather than handled as a standalone treatment plan?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">All web security findings require RiskOps projects — the internet-facing nature of web assets always warrants formal project tracking.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Web findings should become RiskOps projects when remediation spans multiple teams (engineering, cloud ops, identity, vendor), requires milestone tracking over weeks or months, involves a migration or third-party dependency, needs SLA policy enforcement, or requires executive visibility into remediation progress and evidence status.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Only Critical-severity web findings require RiskOps projects — Medium and Low findings can use standalone treatment plans regardless of complexity.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Web findings automatically escalate to RiskOps projects after 7 days without a treatment decision — the platform handles escalation without manual action.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod4" onclick="markComplete('mod4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you've built your evidence gap list and linked at least one artifact with full metadata to your anchor controls.</span>
+        </div>
+      </section>
+
+
+      <section id="mod5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>RiskOps Remediation</h2>
+            <p class="phase-subtitle">25 min &bull; Projects, Risk Treatments &bull; Coordinate accountable web security remediation</p>
+          </div>
+        </div>
+
+        <h3>Web security remediation often spans multiple teams</h3>
+        <p>Web security remediation often spans engineering (application code), cloud operations (infrastructure configuration), identity teams (authentication and session controls), and vendor owners (third-party WAF, CDN, or SaaS platform configurations). RiskOps helps coordinate accountable work across these stakeholders — setting SLA expectations, tracking evidence requirements, and providing executive visibility without requiring manual status collection from each team.</p>
+        <p>The key governance difference between a Jira ticket and a RiskOps treatment: a RiskOps treatment has a UCB control linkage, an evidence requirement, a defined verification step, and an SLA policy timer that escalates if the finding ages past the threshold. When all four are present, web security remediation is tracked from detection to verified closure with full governance accountability.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 3: Web Security Remediation Plan</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Take the highest-priority web finding from your Module 3 prioritization list. Navigate to <strong>RiskOps &gt; Risk Treatments</strong>. Select the appropriate treatment type (Mitigate for deferred remediation with compensating control, or direct remediation).</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Create the treatment record. Complete all required fields: UCB control linkage, assigned owner (the team responsible for the fix), target date aligned to your SLA policy, and evidence requirement (what scan result or configuration export confirms closure).</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">If the finding requires multi-team coordination (e.g., an API gateway misconfiguration that needs cloud ops + application team + security review), navigate to <strong>RiskOps &gt; Projects</strong> and create a project with milestone-based work items for each team's contribution.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">For any web finding where full remediation requires a migration (e.g., moving from HTTP to HTTPS requires application changes and load balancer reconfiguration), create a Mitigate treatment with an interim compensating control (WAF rule blocking HTTP, IP restriction) plus a remediation target date tied to the migration timeline.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Draft a two-paragraph stakeholder update: what the finding is (in business terms), what the team is doing about it, by when, and what evidence will confirm closure. This is your Lab 3 deliverable.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod5">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Create treatment records for all web-facing Critical and High findings:</strong> Every finding on an owned web-facing asset should have a treatment record with UCB linkage, owner, target date, and evidence requirement.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Use Mitigate for deferred remediation:</strong> For findings where the full fix requires a migration or external dependency, create a Mitigate treatment with a compensating control documented and a realistic remediation target date.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Draft a stakeholder update:</strong> For your highest-priority finding, write a non-technical stakeholder communication covering: what is at risk, what is being done, and when it will be resolved.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">How should Vision output be validated before a web security risk narrative is distributed to executives or used as governance evidence?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Vision output drawn from current platform data can be distributed directly — it reflects live posture and doesn't require additional validation steps.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">A named reviewer must verify each cited finding, metric, and risk assessment against current platform data; correct any inaccuracies or outdated metrics; add organization-specific context Vision doesn't have; attach a reviewer attestation; and include an explicit AI advisory disclaimer — before the narrative is distributed or saved as a governance artifact.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Vision outputs require validation only for external distribution — internal executive summaries can be shared directly from Vision without attestation.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Vision validation is only required when the output will be included in an external audit package — regular executive reporting does not require attestation.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod5" onclick="markComplete('mod5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when treatment records are created for your top web findings and you've drafted a stakeholder communication.</span>
+        </div>
+      </section>
+
+
+      <section id="mod6" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(239,68,68,.2);color:#ef4444;">6</div>
+          <div class="phase-head-body">
+            <h2>Reporting &amp; Vision</h2>
+            <p class="phase-subtitle">15 min &bull; Reports, Vision &bull; Produce governance-ready web risk summaries</p>
+          </div>
+        </div>
+
+        <h3>Executive reporting: exposure, impact, status, residual risk</h3>
+        <p>Web security reporting should avoid raw technical detail overload. Executive summaries should explain four things in business language: <strong>exposure</strong> (which internet-facing assets have open security gaps), <strong>business impact</strong> (what a successful exploitation would mean for the organization — customer data, regulatory liability, operational disruption), <strong>remediation status</strong> (what is being done, by whom, by when), and <strong>residual risk</strong> (what risk remains after compensating controls are in place and what the timeline to full remediation is). Vision can accelerate the drafting of this narrative from platform data — but requires human review before distribution.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Produce an executive web risk summary using Vision</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Reports</strong>. Generate a posture report filtered to web-facing assets (or apply the internet-facing filter). Review: finding count by category, severity distribution, and remediation status for your top web risks.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Navigate to <strong>Vision &gt; Ask Vision</strong>. Request a web security executive summary: "Draft an executive web risk summary covering our highest-risk public-facing exposures, business impact, current remediation status, and residual risk."</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Review the Vision output against your Reports data. Verify: are the cited findings current? Are severity levels accurate? Is the business impact framing appropriate for your industry context? Correct any mischaracterizations.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Add organization-specific context: regulatory implications, specific customer impact scenarios, contractual SLA obligations for security incidents. Vision doesn't know these — only you do.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Attach your reviewer attestation and the AI advisory disclaimer. Save to the Evidence Fabric linked to the relevant UCB controls. Export and distribute the validated summary to your CISO or relevant stakeholders.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod6">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Generate a web posture report:</strong> Export a findings report filtered to web-facing assets. Review the data before using it as the basis for an executive narrative.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Draft, validate, and attest a Vision web risk narrative:</strong> Add organization-specific context, correct all inaccuracies, attach reviewer attestation and AI disclaimer before distributing.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Schedule recurring web security reporting:</strong> Set a monthly calendar entry for web posture review with your security leadership team — web attack surface changes too fast for quarterly reporting.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod6">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What makes a web security narrative appropriate for executive audiences rather than a technical audience?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">Executive narratives should include full technical detail — executives need to understand the exact misconfiguration to make informed risk decisions.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Executive narratives translate technical findings into business risk language — clearly stating: what is exposed (the asset and function), what the impact would be if exploited (customer data, regulatory fines, operational disruption), what is being done about it (treatment status), and what risk remains (residual risk and timeline to full resolution).</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">Executive narratives should focus on remediation velocity metrics only — MTTR, findings closed per week, and SLA compliance rates are the only data executives need.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">Executive narratives should include CVSS scores alongside each finding — executives need to understand the technical severity to approve remediation resources.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod6')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod6"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod6" onclick="markComplete('mod6')">Mark Module 6 complete</button>
+          <span class="mark-complete-hint">Move on when you've produced and attested a validated web security executive summary ready for leadership distribution.</span>
+        </div>
+      </section>
+
+
+      <section id="certification" style="scroll-margin-top:80px;">
+        <h2>Certification: AiVRIC Web Security Practitioner</h2>
+        <p>Completing all six modules makes you eligible for the Web Security Practitioner certification exam.</p>
+
+        <table class="acad-table" style="margin-bottom:20px;">
+          <thead><tr><th>Exam domain</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td>Web security governance</td><td>20%</td></tr>
+            <tr><td>Web-facing asset discovery</td><td>20%</td></tr>
+            <tr><td>Findings and exposure analysis</td><td>25%</td></tr>
+            <tr><td>Evidence and controls</td><td>20%</td></tr>
+            <tr><td>Remediation and reporting</td><td>15%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Capstone practical scenario</h3>
+        <p style="color:var(--ug-text-2);">A tenant has several public endpoints, one exposed storage service containing customer data, missing logging on a web workload, and unclear ownership for an API gateway. Your task:</p>
+        <ol style="color:var(--ug-text-2);font-size:14px;line-height:2;">
+          <li>Identify web-facing assets across all ten asset categories present in the tenant environment.</li>
+          <li>Prioritize findings using business context — explain why the priority order differs from severity-only ranking.</li>
+          <li>Map the top three findings to UCB controls and define the required evidence for each.</li>
+          <li>Recommend RiskOps remediation for the highest-priority finding — including compensating controls where full remediation is deferred.</li>
+          <li>Draft an executive web risk summary using Vision, validate it, and attest it — including AI disclaimer and organizational context.</li>
+        </ol>
+
+        <div class="callout primary">
+          <strong>Passing criteria:</strong> Identifies exposure and ownership gaps using the ten-asset-category framework. Prioritizes risk with business context rather than severity alone. Defines evidence linking controls to Assessment Objectives. Routes accountable remediation through RiskOps with SLA alignment. Communicates clearly to non-technical stakeholders — Vision output validated, attested, and disclaimed.
+        </div>
+
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Web Security. Web-facing risk is now governed through your asset inventory, findings posture, UCB control evidence, and RiskOps remediation — with verified closure paths.</div>
+          <a href="index.html" class="acad-cert-btn"><i class="fas fa-th"></i> Explore all courses</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2 &middot; Web Security</span>
+  </footer>
+
+  <script>
+  (function () {
+    var courseId = 'aivric_websec_v1';
+    var MODULES = ['mod1','mod2','mod3','mod4','mod5','mod6'];
+    function loadState() { try { return JSON.parse(localStorage.getItem(courseId) || '{}'); } catch(e) { return {}; } }
+    function saveState(s) { try { localStorage.setItem(courseId, JSON.stringify(s)); } catch(e) {} }
+    var state = loadState();
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill'); var pctEl = document.getElementById('progress-pct');
+      if (fill) fill.style.width = pct + '%'; if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) { var cert = document.getElementById('cert-block'); if (cert) cert.classList.add('show'); }
+    }
+    window.setActive = function(el) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); el.classList.add('active'); };
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].complete = true; saveState(state);
+      var btn = document.getElementById('mc-' + moduleId); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      updateProgress();
+    };
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); }); el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = false;
+    };
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if (!selected) return;
+      block.dataset.answered = 'true'; var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = true;
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var feedback = document.getElementById('feedback-' + moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o) { if (o.querySelector('[data-correct="true"]')) o.classList.add('correct'); else if (o === selected && !isCorrect) o.classList.add('wrong'); });
+      if (feedback) {
+        var expl = {
+          mod1:{correct:'Correct. The five core web-facing asset types are: public cloud endpoints, load balancers, web applications, APIs/API gateways, and storage buckets with public access.',wrong:'The five core web-facing asset types are those directly reachable from the internet — not internal infrastructure, network policies, or development tooling.'},
+          mod2:{correct:'Correct. Without an owner, findings on a web-facing asset are orphaned signals — no one routes or remediates them, creating sustained unmanaged exposure windows.',wrong:'Ownership for web-facing assets is a security governance requirement, not a billing or centralization issue. Individual asset ownership enables finding routing, triage assignment, and accountability.'},
+          mod3:{correct:'Correct. Web security assurance requires multiple evidence types: architecture diagrams, configuration exports, TLS reports, WAF exports, pen test reports, code review records, CI/CD gate results, access reviews, and incident records — together proving existence, configuration, and governance.',wrong:'No single evidence type — not a scanner result, pen test report, or bug bounty program — satisfies web security assurance alone. Multiple types are required to cover configured, operates-as-intended, and actively-governed dimensions.'},
+          mod4:{correct:'Correct. RiskOps projects are appropriate when web security remediation requires multi-team coordination, milestone tracking, external dependencies, SLA enforcement, or executive visibility — complexity and accountability requirements drive the decision.',wrong:'Severity alone, automatic escalation, and all-findings rules don\'t correctly identify when projects are needed. The trigger is coordination complexity and governance accountability requirements.'},
+          mod5:{correct:'Correct. Vision output requires: named reviewer verification against current data, correction of inaccuracies, organizational context addition, reviewer attestation, and AI advisory disclaimer — before any distribution or governance use.',wrong:'Vision output is not self-validating. The reviewer attestation requirement applies to all distribution contexts — internal executive, external audit, and governance artifact use equally.'},
+          mod6:{correct:'Correct. Executive narratives communicate exposure, business impact, remediation status, and residual risk in non-technical language — not raw findings detail, not metrics only, and not CVSS scores.',wrong:'Executive narratives should not include full technical detail or CVSS scores. They should translate technical state into business-risk language: exposure + impact + remediation status + residual risk.'}
+        };
+        feedback.textContent = ''; var label = document.createElement('strong'); var msg = document.createElement('span');
+        if (isCorrect) { feedback.className = 'quiz-feedback correct'; label.textContent = 'Correct! '; msg.textContent = (expl[moduleId]||{correct:''}).correct; }
+        else { feedback.className = 'quiz-feedback wrong'; label.textContent = 'Not quite. '; msg.textContent = (expl[moduleId]||{wrong:''}).wrong; }
+        feedback.appendChild(label); feedback.appendChild(msg);
+      }
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].quizCorrect = isCorrect; saveState(state);
+    };
+    window.toggleAction = function(el) { el.classList.toggle('checked'); };
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      }
+    });
+    updateProgress();
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { var id = entry.target.id; var link = document.querySelector('[data-module="' + id + '"]'); if (link) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); } } }); }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+  })();
+  </script>
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true">
+    <button class="acad-lightbox-close" type="button" onclick="closeLightbox()">&times;</button>
+    <img src="" alt=""><div class="acad-lightbox-caption"></div>
+  </div>
+  <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
+</body>
+</html>

@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Getting Started with RiskOps | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/riskops-getting-started.html">
+  <meta name="description" content="Learn how to implement a complete RiskOps process in AiVRIC CloudSignals — from asset inventory through findings triage, business process mapping, treatment planning, and governance closure.">
+  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EG2Q8GD30V');
+</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html">
+        <img src="../assets/images/logo/aivric.svg" alt="AiVRIC">
+        <span class="acad-brand-sep"></span>
+        <span class="acad-brand-sub">Academy</span>
+      </a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="../AiVRIC-UserGuide/cloudsignals-riskops.html">CloudSignals Docs</a>
+        <a href="../support.html">Support</a>
+        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <!-- Course progress bar -->
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track">
+        <div class="acad-progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+
+    <!-- Sidebar: course outline -->
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Getting Started with RiskOps</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body">
+            <span class="acad-mod-label">Overview</span>
+            <span class="acad-mod-sub">The RiskOps flow model</span>
+          </div>
+        </a>
+        <a class="acad-module-item" href="#phase1" data-module="phase1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body">
+            <span class="acad-mod-label">Asset Inventory</span>
+            <span class="acad-mod-sub">What you own and why it matters</span>
+          </div>
+        </a>
+        <a class="acad-module-item" href="#phase2" data-module="phase2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body">
+            <span class="acad-mod-label">Findings Triage</span>
+            <span class="acad-mod-sub">Control failures &amp; disposition</span>
+          </div>
+        </a>
+        <a class="acad-module-item" href="#phase3" data-module="phase3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body">
+            <span class="acad-mod-label">Business Process Mapping</span>
+            <span class="acad-mod-sub">Connecting risk to impact</span>
+          </div>
+        </a>
+        <a class="acad-module-item" href="#phase4" data-module="phase4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body">
+            <span class="acad-mod-label">Treatment Planning</span>
+            <span class="acad-mod-sub">Remediate, mitigate, or accept</span>
+          </div>
+        </a>
+        <a class="acad-module-item" href="#phase5" data-module="phase5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body">
+            <span class="acad-mod-label">Governance &amp; Closure</span>
+            <span class="acad-mod-sub">Close the decision loop</span>
+          </div>
+        </a>
+        <a class="acad-module-item" href="#health" data-module="health" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9658;</div>
+          <div class="acad-mod-body">
+            <span class="acad-mod-label">Measuring RiskOps Health</span>
+            <span class="acad-mod-sub">KPIs that tell the story</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="../AiVRIC-UserGuide/cloudsignals-riskops.html"><i class="fas fa-book-open"></i> CloudSignals Docs</a>
+      <a class="acad-sidebar-link" href="../support.html"><i class="fas fa-life-ring"></i> Support</a>
+    </aside>
+
+    <!-- Main content -->
+    <main class="acad-content" id="main-content">
+
+      <!-- Course hero -->
+      <span class="badge"><i class="fas fa-shield-alt"></i> Foundation Course</span>
+      <h1 style="margin-top:10px;">Getting Started with RiskOps</h1>
+      <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">
+        RiskOps is the discipline of treating risk management as a continuous operational process — not a quarterly audit. This course teaches you the end-to-end flow used in CloudSignals, the reasons each stage exists, and the exact navigation sequence to execute it in your tenant.
+      </p>
+
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 30px;">
+        <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> ~45 minutes</span>
+        <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 5 modules + knowledge checks</span>
+        <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-signal"></i> Beginner &ndash; Intermediate</span>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           OVERVIEW
+      ═══════════════════════════════════════════════════════ -->
+      <section id="overview" style="scroll-margin-top:80px;">
+
+        <!-- Live app screenshot: overview dashboard -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Live app</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/overview-dashboard.png" alt="CloudSignals Overview dashboard showing the posture command center with threat score, findings count, threat map, and control plane activity" loading="lazy">
+          <figcaption class="acad-caption"><strong>CloudSignals Command Center</strong> — threat score, active findings by severity, threat map, and posture control plane — the daily starting point for every RiskOps session.</figcaption>
+        </figure>
+
+        <h2 style="margin-top:0;padding-top:0;border-top:none;">The RiskOps flow model</h2>
+        <p>
+          Risk in CloudSignals travels as a <strong>chain of linked objects</strong>. Each object in the chain has a specific role: signals flow in one direction, but accountability and closure flow back. Understanding the chain is the prerequisite for everything else.
+        </p>
+
+        <!-- Flow diagram -->
+        <div class="flow-diagram" role="img" aria-label="RiskOps flow: Assets to Findings to Business Processes to Treatments to Governance">
+          <a class="flow-node" href="#phase1">
+            <div class="flow-node-icon"><i class="fas fa-server"></i></div>
+            <div class="flow-node-label">Assets</div>
+            <div class="flow-node-sub">What you own</div>
+          </a>
+          <div class="flow-arrow">&#8594;</div>
+          <a class="flow-node" href="#phase2">
+            <div class="flow-node-icon"><i class="fas fa-bug"></i></div>
+            <div class="flow-node-label">Findings</div>
+            <div class="flow-node-sub">Control failures</div>
+          </a>
+          <div class="flow-arrow">&#8594;</div>
+          <a class="flow-node" href="#phase3">
+            <div class="flow-node-icon"><i class="fas fa-sitemap"></i></div>
+            <div class="flow-node-label">Business Processes</div>
+            <div class="flow-node-sub">Impact context</div>
+          </a>
+          <div class="flow-arrow">&#8594;</div>
+          <a class="flow-node" href="#phase4">
+            <div class="flow-node-icon"><i class="fas fa-tasks"></i></div>
+            <div class="flow-node-label">Treatments</div>
+            <div class="flow-node-sub">Actionable plans</div>
+          </a>
+          <div class="flow-arrow">&#8594;</div>
+          <a class="flow-node" href="#phase5">
+            <div class="flow-node-icon"><i class="fas fa-gavel"></i></div>
+            <div class="flow-node-label">Governance</div>
+            <div class="flow-node-sub">Decision &amp; closure</div>
+          </a>
+        </div>
+
+        <h3>What makes RiskOps different from traditional risk management</h3>
+        <p>Traditional risk management is periodic: a team does an annual risk assessment, produces a spreadsheet, and revisits it twelve months later. By then, the threat landscape, your cloud estate, and your compliance posture have all changed — often significantly.</p>
+        <p>RiskOps treats risk as a <strong>continuous operational signal</strong>, not a static artifact. In practice this means:</p>
+        <ul>
+          <li><strong>Findings are generated automatically</strong> on a 24-hour cadence (or on-demand) as CloudSignals evaluates your connected providers against policy controls.</li>
+          <li><strong>Decisions are made continuously</strong> — every finding that enters the system should be triaged, not queued indefinitely.</li>
+          <li><strong>Governance is operationalized</strong> — risk acceptance, treatment approvals, and evidence collection are tracked in the platform, not in email threads or spreadsheets.</li>
+        </ul>
+
+        <h3>Where flow breaks down</h3>
+        <p>RiskOps health degrades at two predictable bottlenecks:</p>
+        <div class="acad-grid">
+          <div class="acad-card">
+            <h3><i class="fas fa-hourglass-half" style="color:var(--ug-amber);margin-right:6px;"></i>Decision bottleneck</h3>
+            <p>Findings are being discovered faster than they are being dispositioned into treatments or accepted risks. This causes a growing "pending decisions" backlog — a leading indicator that the team's triage process needs structure or capacity.</p>
+          </div>
+          <div class="acad-card">
+            <h3><i class="fas fa-unlink" style="color:var(--ug-red);margin-right:6px;"></i>Mapping bottleneck</h3>
+            <p>Findings and risks lack ownership linkages — no assigned asset owner, no business process connection, no named accountable party. This inflates risk pressure scores and makes prioritization unreliable because severity can't be contextualized against impact.</p>
+          </div>
+        </div>
+
+        <div class="callout primary">
+          <strong>Before you begin:</strong> Make sure at least one cloud provider connector is configured and has completed at least one scan. You'll need findings in the system to execute the steps in each module. Navigate to <strong>Settings &gt; Connectors</strong> if you haven't connected a provider yet. See the <a href="../AiVRIC-UserGuide/connectors.html">Connector Setup Guide</a> for step-by-step instructions.
+        </div>
+      </section>
+
+
+      <!-- ═══════════════════════════════════════════════════════
+           PHASE 1 — ASSETS
+      ═══════════════════════════════════════════════════════ -->
+      <section id="phase1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>Asset Inventory</h2>
+            <p class="phase-subtitle">Establish the anchor for every risk signal in your environment.</p>
+          </div>
+        </div>
+
+        <h3>What assets are</h3>
+        <p>
+          In CloudSignals, <strong>assets</strong> are the cloud resources, managed services, and configured entities in your connected environment — things like virtual machines, storage buckets, databases, Kubernetes clusters, IAM roles, and repositories. Assets are discovered automatically when you connect a provider; they populate your inventory at <code>/assets</code>.
+        </p>
+        <p>
+          Assets serve as the <strong>technical anchor</strong> for the risk chain. When CloudSignals evaluates a policy and finds a misconfiguration, it attaches that finding to the specific resource where the failure occurred. The finding then inherits ownership context from the asset — who owns this resource, which team manages it, what managed entity (business unit, product, environment) it belongs to.
+        </p>
+
+        <h3>Why asset completeness matters</h3>
+        <p>If a finding can't be linked to a properly-owned asset, it becomes an <strong>orphaned signal</strong>. Orphaned signals contribute to mapping gaps in your risk pressure score and make it difficult to route findings to the right person for triage. The two most common causes are:</p>
+        <ul>
+          <li><strong>Missing asset ownership</strong> — resources exist in inventory but have no assigned owner or managed entity. This usually happens with legacy accounts or resources spun up outside a formal process.</li>
+          <li><strong>Unconnected providers</strong> — resources exist in a cloud account that hasn't been connected to CloudSignals yet, so those assets (and their findings) are invisible.</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Review your asset inventory</div>
+          <div class="in-platform-steps">
+            <div class="ip-step">
+              <div class="ip-step-num">1</div>
+              <div class="ip-step-body">Navigate to <strong>Assets</strong> in the main navigation (or go directly to <code>/assets</code>).</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">2</div>
+              <div class="ip-step-body">Review the total asset count and confirm it aligns with your expected inventory size. Large discrepancies may indicate a connector scope issue or recently added accounts.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">3</div>
+              <div class="ip-step-body">Filter by <strong>Provider</strong> to see which cloud accounts are contributing the most assets. Accounts with unexpectedly low asset counts may indicate an incomplete connector scope.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">4</div>
+              <div class="ip-step-body">Look for assets with no assigned <strong>Owner</strong> or no linked <strong>Managed Entity</strong>. These are ownership gaps you'll want to close before findings triage begins — ownership is required for accurate routing.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">5</div>
+              <div class="ip-step-body">For each unowned asset, click into the asset detail and assign a managed entity or tag it to a team. If your identity provider is connected, SCIM provisioning can automate this mapping.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screenshot: Asset inventory -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Live app &mdash; /assets</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/assets-dashboard.png" alt="CloudSignals All Assets view showing 319 discovered assets with ownership coverage, unscanned asset count, and last sync timestamp" loading="lazy">
+          <figcaption class="acad-caption"><strong>Asset inventory</strong> — 319 discovered assets with sync freshness, ownership gap indicators, and quick-filter controls. The unowned count is the first metric to drive toward zero.</figcaption>
+        </figure>
+
+        <h3>Key actions for this phase</h3>
+        <div class="action-checklist" id="checklist-phase1">
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Confirm asset count:</strong> Verify the total asset count reflects your actual environment. Flag unexplained gaps to your cloud team.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Identify unowned assets:</strong> Filter for assets with no owner or managed entity. Prioritize resources tagged as critical or production.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Assign ownership:</strong> For each unowned asset, link to a managed entity and assign a responsible team or individual.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Review connector scope:</strong> Confirm all cloud accounts, regions, and subscriptions are covered by your connectors.</div>
+          </div>
+        </div>
+
+        <!-- Knowledge check -->
+        <div class="quiz-block" id="quiz-phase1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What is the primary role of assets in the RiskOps flow?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'phase1')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">They generate compliance framework scores automatically based on provider configuration.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase1')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text" data-correct="true">They are the anchor that findings attach to, establishing ownership and impact context for each risk signal.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase1')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">They define the SLA and expiry date for treatment plans.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase1')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">They determine which governance decisions require dual approval.</div>
+            </div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('phase1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-phase1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-phase1" onclick="markComplete('phase1')">Mark Phase 1 complete</button>
+          <span class="mark-complete-hint">Completing this phase updates your progress and unlocks the next section.</span>
+        </div>
+      </section>
+
+
+      <!-- ═══════════════════════════════════════════════════════
+           PHASE 2 — FINDINGS
+      ═══════════════════════════════════════════════════════ -->
+      <section id="phase2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Findings Triage</h2>
+            <p class="phase-subtitle">Convert control failures into risk decisions — not a growing backlog.</p>
+          </div>
+        </div>
+
+        <h3>What findings are</h3>
+        <p>
+          A <strong>finding</strong> in CloudSignals is the output of a failed policy evaluation. Each scan compares your connected resources against your active policy controls; when a resource doesn't meet the expected configuration, CloudSignals records a finding. Findings are the primary technical risk signal in the system.
+        </p>
+        <p>Findings are classified by severity:</p>
+
+        <table class="acad-table">
+          <thead>
+            <tr><th>Severity</th><th>Meaning</th><th>Expected response time</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span style="color:#f87171;font-weight:700;">&#9679; Critical</span></td><td>Immediate, high-confidence exposure — often exploitable without authentication or with broad blast radius (e.g., publicly exposed database, over-privileged IAM with admin on sensitive account).</td><td>Same business day</td></tr>
+            <tr><td><span style="color:#fb923c;font-weight:700;">&#9679; High</span></td><td>Significant control gap with realistic exploitation path. Requires context-aware triage to confirm impact before remediation.</td><td>Within 5 business days</td></tr>
+            <tr><td><span style="color:#ffd63a;font-weight:700;">&#9679; Medium</span></td><td>Defense-in-depth gap or configuration drift that increases risk but requires chained conditions to exploit.</td><td>Within 30 days</td></tr>
+            <tr><td><span style="color:#64748b;font-weight:700;">&#9679; Low</span></td><td>Best-practice deviation or hygiene issue with minimal direct exploitation value. Batch remediation is acceptable.</td><td>Next review cycle</td></tr>
+          </tbody>
+        </table>
+
+        <h3>The three triage decisions</h3>
+        <p>Every finding must be dispositioned. There are exactly three valid triage actions:</p>
+        <div class="acad-grid">
+          <div class="acad-card">
+            <h3><i class="fas fa-wrench" style="color:var(--ug-cyan);margin-right:6px;"></i>Remediate</h3>
+            <p>Fix the root cause. The finding is a genuine control failure with a known fix. Create a treatment plan or assign a ticket. Track to closure. This is the preferred outcome for Critical and High findings.</p>
+          </div>
+          <div class="acad-card">
+            <h3><i class="fas fa-shield-alt" style="color:var(--ug-amber);margin-right:6px;"></i>Mitigate</h3>
+            <p>The root cause cannot be fully eliminated right now (technical debt, third-party constraint, migration in-flight). Implement a compensating control that reduces likelihood or impact. Document it as a treatment plan with a target remediation date.</p>
+          </div>
+          <div class="acad-card">
+            <h3><i class="fas fa-check-double" style="color:var(--ug-green);margin-right:6px;"></i>Accept</h3>
+            <p>The residual risk is within your organization's risk appetite — the cost to fix exceeds the benefit, or a business justification makes the current state acceptable. Formal risk acceptance requires: owner, justification, expiry date, and approver. Never use accept as a way to skip triage.</p>
+          </div>
+        </div>
+
+        <!-- Screenshots: Findings list + Finding detail (side by side) -->
+        <div class="acad-figure-row">
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /findings</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/findings-critical-high.png" alt="Findings list filtered to Critical and High severity with AI-grouped analysis showing root cause patterns across findings" loading="lazy">
+            <figcaption class="acad-caption"><strong>Findings — Critical &amp; High filter active.</strong> AI groups related findings by root cause so you treat a pattern, not isolated alerts.</figcaption>
+          </figure>
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Finding detail</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/finding-detail.png" alt="Individual finding detail panel showing affected resource, control description, severity, remediation steps, and linked asset" loading="lazy">
+            <figcaption class="acad-caption"><strong>Finding detail</strong> — affected asset, failing control, remediation guidance, and triage action buttons in one panel.</figcaption>
+          </figure>
+        </div>
+
+        <div class="callout warn">
+          <strong>A finding left in "pending" is a decision you're deferring, not avoiding.</strong> Each pending finding continues to apply risk pressure to your score and represents an unmitigated exposure window. High-volume pending queues almost always indicate that triage hasn't been operationalized into a regular cadence.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Triage your first findings</div>
+          <div class="in-platform-steps">
+            <div class="ip-step">
+              <div class="ip-step-num">1</div>
+              <div class="ip-step-body">Navigate to <strong>Findings</strong> in the main navigation (or go to <code>/findings</code>).</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">2</div>
+              <div class="ip-step-body"><strong>Filter by severity: Critical and High.</strong> Start here — these are the findings that should drive immediate risk decisions. Don't start with Medium or Low; you'll lose the signal in the noise.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">3</div>
+              <div class="ip-step-body">Click into the first Critical finding. Review: the failing resource, the control that failed, the suggested remediation steps, and any related findings on the same resource.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">4</div>
+              <div class="ip-step-body">From the finding detail, <strong>pivot to the affected asset</strong> — confirm the owner, managed entity, and environment (prod/staging/dev). This context determines how urgently to act.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">5</div>
+              <div class="ip-step-body">Make your triage decision: Remediate (create a treatment plan), Mitigate (note compensating control and create a plan), or Accept (fill in owner, justification, expiry date, approver).</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">6</div>
+              <div class="ip-step-body">Repeat for the next Critical finding. Aim to triage all Critical findings in a single session. Schedule a recurring 30-minute weekly slot to work through High findings.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Key actions for this phase</h3>
+        <div class="action-checklist" id="checklist-phase2">
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Triage all Critical findings:</strong> Work through every Critical finding and assign a disposition — no Critical should remain in "pending" status after your first triage session.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Schedule a weekly High triage cadence:</strong> Block 30 minutes per week to work High findings. The goal is zero High findings older than 5 business days without a decision.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Verify asset linkage for each finding:</strong> Confirm that each Critical/High finding links to a properly-owned asset. Findings without asset linkage need ownership investigation before triage.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Establish a triage policy:</strong> Document which team is responsible for which provider or namespace. Finding routing works best when ownership rules are pre-defined, not negotiated per-finding.</div>
+          </div>
+        </div>
+
+        <div class="quiz-block" id="quiz-phase2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">When you encounter a Critical finding, what are the three valid triage dispositions?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'phase2')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">Escalate, Monitor, and Archive</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase2')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">Patch, Quarantine, and Delete</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase2')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text" data-correct="true">Remediate, Mitigate (with compensating control), and Accept (with documented justification)</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase2')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">Alert, Suppress, and Defer</div>
+            </div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('phase2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-phase2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-phase2" onclick="markComplete('phase2')">Mark Phase 2 complete</button>
+          <span class="mark-complete-hint">Move on when you've triaged at least your Critical findings and scheduled a recurring High triage slot.</span>
+        </div>
+      </section>
+
+
+      <!-- ═══════════════════════════════════════════════════════
+           PHASE 3 — BUSINESS PROCESSES
+      ═══════════════════════════════════════════════════════ -->
+      <section id="phase3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Business Process Mapping</h2>
+            <p class="phase-subtitle">Connect technical risk signals to the operational outcomes that matter to your organization.</p>
+          </div>
+        </div>
+
+        <h3>What business processes are in CloudSignals</h3>
+        <p>
+          A <strong>business process</strong> in CloudSignals is an operational area that your organization depends on — things like "Payment Processing," "Customer Data Platform," "Engineering CI/CD Pipeline," "HR Systems," or "Regulatory Reporting." Business processes give you the impact lens that transforms a technical finding into a business risk statement.
+        </p>
+        <p>
+          Without this lens, a finding like "S3 bucket has public read access" is a technical observation. With business process mapping, it becomes: "The S3 bucket hosting customer export files for the Customer Data Platform is publicly readable — risk to confidentiality of customer records, potential regulatory exposure under GDPR."
+        </p>
+
+        <h3>Why mapping gaps inflate risk pressure</h3>
+        <p>
+          Your <strong>risk pressure score</strong> (expressed as a number from 0–100) is a composite measure that accounts for finding severity, asset criticality, and — critically — <strong>mapping completeness</strong>. When findings or risks aren't linked to business processes and process owners, the platform treats them as unaccountable exposure. This directly drives up risk pressure, even if the underlying technical risk is relatively low.
+        </p>
+        <p>
+          Mapping gaps also prevent effective prioritization. You can't triage a finding as "low business impact" if there's no business process linked to assess impact against.
+        </p>
+
+        <!-- Screenshot: Risk Governance Command Center -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /risks</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/riskops-command-center.png" alt="Risk Governance Command Center with open decisions count, threat coverage, treatment plans, Risk Fabric visualization, and AI Governance Intelligence panel" loading="lazy">
+          <figcaption class="acad-caption"><strong>Risk Governance Command Center</strong> — 20,813 open decisions, threat coverage, treatment plans, and the Risk Fabric flow diagram connecting threats through assets to governance decisions. Governance Intelligence surfaces the highest-pressure items on the right.</figcaption>
+        </figure>
+
+        <!-- Side-by-side: Business Processes + Scenarios -->
+        <div class="acad-figure-row">
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /risks/business-processes</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/riskops-business-processes.png" alt="Business Impact Inventory showing business process workspace with BIA process records, managed entity linkage, and ownership columns" loading="lazy">
+            <figcaption class="acad-caption"><strong>Business Impact Inventory</strong> — each business process record has an ID, name, managed entity, owner, and criticality. The process workspace is where you confirm which assets support each process and where risk impact gets anchored.</figcaption>
+          </figure>
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /risks/scenarios</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/riskops-scenarios.png" alt="Scenario Intelligence Studio with scenario library, cloud storage exposure and privileged identity misuse template cards, and scenario quality evaluation panel" loading="lazy">
+            <figcaption class="acad-caption"><strong>Scenario Intelligence</strong> — reusable risk scenarios built from templates link threat events to business impact. Each scenario card shows likelihood, impact, and whether it meets quality standards before publishing to the risk register.</figcaption>
+          </figure>
+        </div>
+
+        <div class="callout success">
+          <strong>Mapping doesn't have to be perfect to be valuable.</strong> Start by identifying your three to five most critical business processes — the ones where a security incident would cause regulatory liability, revenue loss, or material customer harm. Map findings there first. You can expand coverage iteratively.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Map findings to business processes</div>
+          <div class="in-platform-steps">
+            <div class="ip-step">
+              <div class="ip-step-num">1</div>
+              <div class="ip-step-body">Navigate to <strong>Risks</strong> in the main navigation (or go to <code>/risks</code>). This is the hub for business process management, risk register, and portfolio exposure.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">2</div>
+              <div class="ip-step-body">Open the <strong>Business Processes</strong> section. You'll see any processes already defined. If none exist, create your first process — start with the operational area at highest risk based on your findings triage.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">3</div>
+              <div class="ip-step-body">For each business process, click into it and review <strong>supporting assets</strong>. These are the cloud resources whose failure would directly impact this process. Confirm the linkage is accurate.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">4</div>
+              <div class="ip-step-body">From the business process view, see which <strong>open findings</strong> are associated with its supporting assets. These are the findings whose risk most directly threatens this process.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">5</div>
+              <div class="ip-step-body">Assign a <strong>process owner</strong> — the person accountable for the operational outcome of this process. This person should participate in risk acceptance decisions for findings that affect this area.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">6</div>
+              <div class="ip-step-body">Review your <strong>Risk Governance summary</strong> and note your current risk pressure score. After completing this phase, you should see the mapping gap component decrease as you add process definitions and linkages.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Key actions for this phase</h3>
+        <div class="action-checklist" id="checklist-phase3">
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Define your top 3–5 business processes:</strong> Start with the operational areas most critical to revenue, regulatory compliance, or customer trust.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Link supporting assets to each process:</strong> For each process, confirm which cloud resources support it and ensure those assets are correctly linked in the platform.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Assign process owners:</strong> Name an accountable owner for each business process. Owners receive notifications when linked findings are created or change severity.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Note your baseline risk pressure score:</strong> Record your current score so you can measure improvement after the full RiskOps cycle is running.</div>
+          </div>
+        </div>
+
+        <div class="quiz-block" id="quiz-phase3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What does a "mapping gap" mean in the context of risk pressure?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'phase3')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">A compliance framework has controls that no policy pack currently covers.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase3')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">A cloud connector has not been configured for one or more provider accounts.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase3')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text" data-correct="true">A finding or risk has not been linked to a business process or accountable owner, leaving it as unattributed exposure.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase3')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">A treatment plan has exceeded its target remediation date without being updated.</div>
+            </div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('phase3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-phase3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-phase3" onclick="markComplete('phase3')">Mark Phase 3 complete</button>
+          <span class="mark-complete-hint">Move on when you have at least one business process defined with supporting assets and an assigned owner.</span>
+        </div>
+      </section>
+
+
+      <!-- ═══════════════════════════════════════════════════════
+           PHASE 4 — TREATMENTS
+      ═══════════════════════════════════════════════════════ -->
+      <section id="phase4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>Treatment Planning</h2>
+            <p class="phase-subtitle">Turn risk decisions into tracked, accountable work.</p>
+          </div>
+        </div>
+
+        <h3>What treatments are</h3>
+        <p>
+          A <strong>treatment plan</strong> in CloudSignals is the formal record of what your organization is doing about a specific risk or finding. Where findings are passive observations ("this control is failing"), treatments are active commitments ("here is what we're doing, who owns it, by when, and what evidence we'll produce").
+        </p>
+        <p>
+          Treatments are the bridge between the technical risk layer (findings) and the operational risk layer (governance decisions and audit evidence). Without them, risk decisions exist only in meeting notes or tickets that aren't connected to the risk system of record.
+        </p>
+
+        <h3>Treatment types</h3>
+        <table class="acad-table">
+          <thead>
+            <tr><th>Type</th><th>When to use</th><th>What to document</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Remediate</strong></td>
+              <td>The root cause can and should be fixed. This is the preferred path for Critical and High findings.</td>
+              <td>Fix description, assigned engineer, target completion date, testing/verification method, linked ticket.</td>
+            </tr>
+            <tr>
+              <td><strong>Mitigate</strong></td>
+              <td>Full remediation is blocked (technical constraint, migration in-flight, vendor dependency). A compensating control reduces likelihood or impact in the interim.</td>
+              <td>Compensating control description, why remediation is deferred, interim risk residual assessment, future remediation target date.</td>
+            </tr>
+            <tr>
+              <td><strong>Accept</strong></td>
+              <td>The residual risk is within risk appetite and a business justification exists. Requires explicit approval from a named approver.</td>
+              <td>Justification statement, named approver, expiry date (must be time-bounded), conditions that would trigger re-evaluation.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Screenshot + clip: Treatment Execution Workspace -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /risks/treatments</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/treatments-list.png" alt="Treatment Execution Workspace showing active treatment plans with RMR IDs, risk titles, treatment type, assigned owner, due date, and current status" loading="lazy">
+          <figcaption class="acad-caption"><strong>Treatment Execution Workspace</strong> — each row is a formal commitment: risk ID, treatment type, assigned owner, target date, and current status. The stats row shows decision throughput at a glance.</figcaption>
+        </figure>
+
+        <h3>What a good treatment plan includes</h3>
+        <ul>
+          <li><strong>Linked source:</strong> The finding(s) or risk register entry this plan addresses</li>
+          <li><strong>Assigned owner:</strong> A named individual accountable for execution</li>
+          <li><strong>Treatment type:</strong> Remediate, Mitigate, or Accept</li>
+          <li><strong>Description:</strong> What specifically will be done (or why acceptance is justified)</li>
+          <li><strong>Target date:</strong> When the treatment is expected to be complete or next reviewed</li>
+          <li><strong>Evidence requirement:</strong> What proof of completion will be collected (for auditors)</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Create a treatment plan</div>
+          <div class="in-platform-steps">
+            <div class="ip-step">
+              <div class="ip-step-num">1</div>
+              <div class="ip-step-body">Navigate to <strong>Treatments</strong> under the Risks section (or go to <code>/risks/treatments</code>).</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">2</div>
+              <div class="ip-step-body">Click <strong>Create treatment plan</strong>. Link the plan to the finding or risk you triaged in Phase 2. If you're treating multiple related findings, you can link multiple sources to one plan.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">3</div>
+              <div class="ip-step-body">Select the <strong>treatment type</strong> (Remediate / Mitigate / Accept) and fill in the required fields. For Accept, you must supply a justification and expiry date — the platform will enforce this.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">4</div>
+              <div class="ip-step-body">Assign the plan to an <strong>owner</strong>. This person will receive notifications when the target date approaches or if the linked finding re-activates.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">5</div>
+              <div class="ip-step-body">Set a <strong>target date</strong>. For Remediate plans, align with your engineering sprint calendar. For Accept plans, set the expiry within your organization's risk acceptance policy (typically 90–365 days maximum).</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">6</div>
+              <div class="ip-step-body">Submit the plan. It will move to <strong>Pending decisions</strong> status until a governance approver reviews and approves it. Continue creating plans for your remaining Critical and High findings.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Key actions for this phase</h3>
+        <div class="action-checklist" id="checklist-phase4">
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Create treatment plans for all Critical findings:</strong> Every Critical finding triaged as "Remediate" or "Mitigate" should have a treatment plan with an owner and target date before this phase ends.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Document risk acceptance for accepted findings:</strong> Each accepted finding needs: a named approver, a justification statement, and an expiry date.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Review existing treatment plans for completeness:</strong> Check that any treatment plans already in the system have linked findings, assigned owners, and target dates.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Integrate with your project tracker:</strong> If your team uses Jira or ServiceNow, configure the integration so treatment plans auto-create tickets and sync status bidirectionally. This prevents dual-entry and ensures the risk system stays current.</div>
+          </div>
+        </div>
+
+        <div class="quiz-block" id="quiz-phase4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Which treatment type should you use when remediation is blocked by a vendor dependency but you've implemented an additional network control to reduce the risk in the interim?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'phase4')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">Accept — document the vendor constraint as a justification for accepting the risk.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase4')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text" data-correct="true">Mitigate — you're reducing residual risk with a compensating control while remediation remains deferred, with a future target date.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase4')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">Remediate — the compensating control counts as a fix even if the root cause remains.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase4')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">No treatment needed — vendor-caused findings are excluded from your risk score.</div>
+            </div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('phase4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-phase4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-phase4" onclick="markComplete('phase4')">Mark Phase 4 complete</button>
+          <span class="mark-complete-hint">Move on when all Critical findings have an associated treatment plan with an owner and target date.</span>
+        </div>
+      </section>
+
+
+      <!-- ═══════════════════════════════════════════════════════
+           PHASE 5 — GOVERNANCE
+      ═══════════════════════════════════════════════════════ -->
+      <section id="phase5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>Governance &amp; Closure</h2>
+            <p class="phase-subtitle">Close the decision loop so risk doesn't pool at the approval stage.</p>
+          </div>
+        </div>
+
+        <h3>What governance decisions are</h3>
+        <p>
+          A <strong>governance decision</strong> is the formal approval or rejection of a treatment plan by an authorized decision-maker. It is the final step in the RiskOps chain — the moment a risk moves from "being worked" to "formally resolved or accepted."
+        </p>
+        <p>
+          In CloudSignals, governance decisions surface in the <strong>Pending Decisions</strong> queue under Treatments. Each pending item represents a treatment plan that has been submitted and is awaiting a formal disposition. This queue is where most RiskOps programs experience their most significant bottleneck — treatment plans are created, but approvals lag.
+        </p>
+
+        <h3>Decision types</h3>
+        <div class="acad-grid">
+          <div class="acad-card">
+            <h3><i class="fas fa-check" style="color:var(--ug-green);margin-right:6px;"></i>Approve</h3>
+            <p>The treatment plan is accepted as adequate. The risk is now formally governed. Evidence is captured. For remediation plans, the finding will close when the fix is verified. For acceptance plans, the finding is suppressed until the expiry date.</p>
+          </div>
+          <div class="acad-card">
+            <h3><i class="fas fa-redo" style="color:var(--ug-amber);margin-right:6px;"></i>Return for rework</h3>
+            <p>The treatment plan is insufficient — missing information, inadequate controls, or the justification for acceptance doesn't meet policy requirements. The plan is returned to the owner with feedback. This is preferable to rejection; it keeps the work moving.</p>
+          </div>
+          <div class="acad-card">
+            <h3><i class="fas fa-times" style="color:var(--ug-red);margin-right:6px;"></i>Reject</h3>
+            <p>The plan is rejected outright — typically used when an acceptance plan violates policy and the only acceptable path is remediation. Rejection creates a new required action and keeps the finding in active status.</p>
+          </div>
+        </div>
+
+        <!-- Motion clip: Findings triage interaction -->
+        <figure class="acad-video-wrap">
+          <span class="fig-chip"><i class="fas fa-play-circle" style="color:var(--ug-purple);"></i> Interaction recording</span>
+          <video autoplay loop muted playsinline preload="none" poster="screenshots/findings-critical-high.png">
+            <source src="screenshots/clip-findings-triage.webm" type="video/webm">
+          </video>
+          <figcaption class="acad-caption--video">Findings triage in action — filter to Critical, hover to review context, click to open the detail panel and select a treatment disposition.</figcaption>
+        </figure>
+
+        <h3>Why pending decisions queue up</h3>
+        <p>A large pending decisions backlog is almost always a process problem, not a technical one. Common root causes:</p>
+        <ul>
+          <li><strong>No named approver:</strong> Treatment plans are created but not routed to a decision-maker. Every treatment plan needs a named approver who has been informed of their role.</li>
+          <li><strong>Approval authority not defined:</strong> The team hasn't established who can approve what. Create a simple matrix: who can approve remediation plans (team lead), who can approve risk acceptance (manager or CISO), and what dollar threshold or severity tier triggers an escalation.</li>
+          <li><strong>Approvers not notified:</strong> CloudSignals sends notifications — confirm that your approvers have notification rules configured and that alerts aren't routing to a shared inbox that nobody monitors.</li>
+          <li><strong>No governance cadence:</strong> Approvals should happen on a defined schedule — weekly for remediation plans, monthly for acceptance plans. Without a calendar commitment, approvals are perpetually "not urgent enough."</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Work the pending decisions queue</div>
+          <div class="in-platform-steps">
+            <div class="ip-step">
+              <div class="ip-step-num">1</div>
+              <div class="ip-step-body">Navigate to <strong>Treatments</strong> under Risks (or go to <code>/risks/treatments</code>). Click the <strong>Pending Decisions</strong> tab.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">2</div>
+              <div class="ip-step-body"><strong>Sort by linked severity</strong> — work Critical-linked plans first. A remediation plan for a Critical finding should be approved (or returned for rework) before Medium-linked plans.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">3</div>
+              <div class="ip-step-body">Click into the first treatment plan. Review: the linked finding(s), the proposed treatment, the owner, and the target date. Verify the plan is complete and the approach is sound.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">4</div>
+              <div class="ip-step-body">Make your decision: <strong>Approve</strong> (plan is adequate), <strong>Return for rework</strong> (plan needs improvement — add a comment explaining what's missing), or <strong>Reject</strong> (plan is not acceptable and remediation is required).</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">5</div>
+              <div class="ip-step-body">For <strong>risk acceptance plans</strong>, confirm the justification is specific and defensible — not generic. Confirm the expiry date is within policy limits. Add your approver name and submit.</div>
+            </div>
+            <div class="ip-step">
+              <div class="ip-step-num">6</div>
+              <div class="ip-step-body">After your first governance session, review your <strong>Portfolio</strong> view (<code>/risks/portfolio</code>). The portfolio exposure figure represents the aggregate financial value of unmitigated, open risk. As treatment plans are approved and remediation progresses, this figure should decrease over time.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Key actions for this phase</h3>
+        <div class="action-checklist" id="checklist-phase5">
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Process all Critical-linked pending decisions:</strong> Work through every pending decision linked to a Critical finding. None should remain pending after your first governance session.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Establish an approval authority matrix:</strong> Document who can approve remediation plans, who can approve risk acceptance, and at what severity or business process tier escalation is required.</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Configure approval notifications:</strong> Verify that named approvers are receiving pending decision alerts via their preferred channel (email, Slack, or Teams).</div>
+          </div>
+          <div class="action-item" onclick="toggleAction(this)">
+            <div class="action-cb"></div>
+            <div class="action-text"><strong>Schedule a recurring governance review:</strong> Block a bi-weekly or monthly slot for the governance review meeting. This should include: pending decisions review, portfolio exposure trend, and risk acceptance renewals approaching expiry.</div>
+          </div>
+        </div>
+
+        <!-- Screenshots: My Work queue + Security Exceptions -->
+        <div class="acad-figure-row">
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /risks/my-work</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/riskops-my-work.png" alt="My Work execution queue showing 16 assigned items, 0 overdue, active risk tasks with owner assignments and priority levels" loading="lazy">
+            <figcaption class="acad-caption"><strong>My Work</strong> — the personalized execution queue shows every pending risk decision, treatment approval, and remediation task assigned to you. This is the daily starting point for the governance closure phase.</figcaption>
+          </figure>
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /projects/exceptions</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/projects-exceptions.png" alt="Exceptions and Risks page showing security exception requests table with business unit, type, risk tier, status, and approval columns" loading="lazy">
+            <figcaption class="acad-caption"><strong>Exceptions &amp; Risks</strong> — formal security exception requests are tracked with business unit, type, risk tier, and approval status. Every accepted risk requires a documented decision before the governance loop is closed.</figcaption>
+          </figure>
+        </div>
+
+        <div class="quiz-block" id="quiz-phase5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A large pending decisions queue is almost always caused by which of the following?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'phase5')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">Cloud connectors are generating duplicate findings, inflating the decision count.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase5')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">Compliance frameworks are misconfigured, requiring extra approvals per finding.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase5')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text" data-correct="true">Approval authority isn't defined, approvers aren't notified, or there's no recurring governance cadence to work through decisions.</div>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this,'phase5')">
+              <div class="quiz-radio"></div>
+              <div class="quiz-opt-text">The asset inventory is incomplete, blocking finding-to-treatment linkage.</div>
+            </div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('phase5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-phase5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-phase5" onclick="markComplete('phase5')">Mark Phase 5 complete</button>
+          <span class="mark-complete-hint">Move on when you've processed Critical-linked pending decisions and established a governance cadence.</span>
+        </div>
+      </section>
+
+
+      <!-- ═══════════════════════════════════════════════════════
+           HEALTH METRICS
+      ═══════════════════════════════════════════════════════ -->
+      <section id="health" style="scroll-margin-top:80px;">
+        <h2>Measuring RiskOps health</h2>
+        <p>
+          Once the end-to-end flow is running, you need metrics that tell you whether the process is healthy — not just whether it's running. The four metrics below are the core KPIs for an operational RiskOps program.
+        </p>
+
+        <table class="acad-table">
+          <thead>
+            <tr><th>Metric</th><th>What it measures</th><th>Target direction</th><th>Where to find it</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Risk Pressure Score</strong></td>
+              <td>Composite score (0–100) weighted by finding severity, asset criticality, mapping gaps, and ownership gaps. Higher score = more unmanaged exposure.</td>
+              <td>Lower over time; 30 or below is a healthy baseline for a mature program.</td>
+              <td><code>/risks</code> — Risk Governance summary</td>
+            </tr>
+            <tr>
+              <td><strong>Pending Decisions</strong></td>
+              <td>Count of treatment plans awaiting governance approval. A leading indicator of decision bottleneck.</td>
+              <td>Should trend toward zero after each governance session. Sustained growth indicates a broken approval process.</td>
+              <td><code>/risks/treatments</code> — Pending Decisions tab</td>
+            </tr>
+            <tr>
+              <td><strong>MTTR (Mean Time to Remediate)</strong></td>
+              <td>Average time from finding creation to verified closure, measured per severity tier and team.</td>
+              <td>Critical &lt; 7 days; High &lt; 30 days. Watch for teams with outlier MTTR — it's a capacity or process signal.</td>
+              <td><code>/risks</code> — Analytics / MTTR view</td>
+            </tr>
+            <tr>
+              <td><strong>Portfolio Exposure</strong></td>
+              <td>Aggregate financial exposure of unmitigated open risks, scored and rolled up across all business processes. Used for executive and board reporting.</td>
+              <td>Should decrease as treatment plans are approved and remediation progresses.</td>
+              <td><code>/risks/portfolio</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Interpreting your baseline</h3>
+        <p>
+          When you run RiskOps for the first time, your metrics will look alarming. That's expected — you're seeing the accumulated technical debt that existed before you had visibility. The goal in the first 30 days isn't to have perfect metrics; it's to establish a <strong>baseline</strong> and demonstrate that the numbers are <strong>trending in the right direction</strong>.
+        </p>
+        <p>
+          A weekly decline in pending decisions, a falling risk pressure score, and a reducing MTTR trend are the three signals that prove RiskOps is working — even if the absolute numbers are still high.
+        </p>
+
+        <div class="callout primary">
+          <strong>Reporting cadence:</strong> Share portfolio exposure and risk pressure trend data with leadership monthly. Share MTTR and pending decisions data with engineering teams weekly. Different audiences need different views — the platform's export and scheduled report features let you configure both.
+        </div>
+
+        <!-- Screenshot: Portfolio exposure -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /risks/portfolio</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/portfolio-exposure.png" alt="Portfolio exposure view showing aggregated financial risk exposure across business processes and managed entities with trend data" loading="lazy">
+          <figcaption class="acad-caption"><strong>Portfolio exposure</strong> — the aggregate financial view of unmitigated open risk. As treatment plans are approved and remediations close, this number should trend down over successive reporting periods.</figcaption>
+        </figure>
+
+        <!-- Screenshots: Quantification Studio + SLA Command Center -->
+        <div class="acad-figure-row">
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /risks/quantification</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/riskops-quantification.png" alt="Quantification Studio showing Scenario Intelligence workspace with risk records, financial exposure values, probability distribution, and Risk Intelligence panel showing portfolio exposure of $950,060" loading="lazy">
+            <figcaption class="acad-caption"><strong>Quantification Studio</strong> — converts technical risk records into financial exposure estimates. The portfolio exposure roll-up ($950,060 in this example) gives executives and boards a business-language view of unmitigated risk.</figcaption>
+          </figure>
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /projects/sla</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/projects-sla.png" alt="SLA Command Center showing operational playbook with Critical Firewall Response, Cloud Misconfiguration Default, SOC 2 Audit Finding, AI Governance Exception items and automation readiness panel" loading="lazy">
+            <figcaption class="acad-caption"><strong>SLA Command Center</strong> — launch policy-driven response playbooks for recurring risk types. Each playbook defines SLAs, escalation paths, and automation steps — turning the governance cadence into a repeatable operational process.</figcaption>
+          </figure>
+        </div>
+
+        <h3>What to do next</h3>
+        <div class="acad-grid">
+          <div class="acad-card">
+            <h3>Run your first posture report</h3>
+            <p>Generate a posture summary from the Reports panel showing findings by severity, coverage gaps, and trend from your baseline. Share with stakeholders as evidence the program is active.</p>
+            <a href="../AiVRIC-UserGuide/cloudsignals-riskops.html#reporting">Evidence exports &rarr;</a>
+          </div>
+          <div class="acad-card">
+            <h3>Connect your SIEM or ticketing system</h3>
+            <p>Integrate CloudSignals with Splunk, Sentinel, Jira, or ServiceNow to remove manual data-entry from the triage and treatment workflow.</p>
+            <a href="../AiVRIC-UserGuide/integrations.html">Integrations guide &rarr;</a>
+          </div>
+          <div class="acad-card">
+            <h3>Map to a compliance framework</h3>
+            <p>Enable SOC 2, ISO 27001, or PCI DSS policy packs. Findings are automatically tagged to controls, and evidence bundles are generated for assessors.</p>
+            <a href="../AiVRIC-UserGuide/compliance.html">Compliance overview &rarr;</a>
+          </div>
+          <div class="acad-card">
+            <h3>Expand asset coverage</h3>
+            <p>Add remaining cloud accounts, Kubernetes clusters, and SaaS platforms to your connector configuration. Coverage gaps are the #1 source of unknown risk.</p>
+            <a href="../AiVRIC-UserGuide/connectors.html">Connector guides &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Completion banner -->
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Getting Started with RiskOps. Your organization now has the foundation for a continuous, operationalized risk management process.</div>
+          <a href="index.html" class="acad-cert-btn"><i class="fas fa-th"></i> Explore more courses</a>
+        </div>
+
+        <div class="callout warn" style="margin-top:24px;">
+          <strong>Need hands-on help?</strong> Book a guided RiskOps implementation session with the AiVRIC team at <a href="https://calendly.com/aivric-sales/aivric-walkthrough-demo">calendly.com/aivric-sales</a> or email <a href="mailto:support@aivric.com">support@aivric.com</a>. We'll walk through your specific tenant data and help prioritize the first sprint of RiskOps work.
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v1 &middot; Getting Started with RiskOps</span>
+  </footer>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'riskops_guide_v1';
+    var MODULES = ['phase1','phase2','phase3','phase4','phase5'];
+
+    /* ── State ──────────────────────────────────────────────── */
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+      catch(e) { return {}; }
+    }
+    function saveState(s) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {}
+    }
+
+    var state = loadState();
+
+    /* ── Progress bar ───────────────────────────────────────── */
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct  = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill');
+      var pctEl = document.getElementById('progress-pct');
+      if (fill)  fill.style.width = pct + '%';
+      if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) {
+        var cert = document.getElementById('cert-block');
+        if (cert) cert.classList.add('show');
+      }
+    }
+
+    /* ── Sidebar active state ───────────────────────────────── */
+    window.setActive = function(el) {
+      document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); });
+      el.classList.add('active');
+    };
+
+    /* ── Mark complete ──────────────────────────────────────── */
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {};
+      state[moduleId].complete = true;
+      saveState(state);
+
+      var btn = document.getElementById('mc-' + moduleId);
+      if (btn) {
+        btn.textContent = 'Phase complete ✓';
+        btn.classList.add('done');
+        btn.disabled = true;
+      }
+
+      /* update sidebar icon */
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) {
+        sideItem.classList.add('completed');
+        var icon = sideItem.querySelector('.acad-mod-icon');
+        if (icon) icon.textContent = '✓';
+      }
+
+      updateProgress();
+    };
+
+    /* ── Quiz: option selection ─────────────────────────────── */
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId);
+      if (!block) return;
+      if (block.dataset.answered === 'true') return;
+
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); });
+      el.classList.add('selected');
+
+      var btn = block.querySelector('.quiz-btn');
+      if (btn) btn.disabled = false;
+    };
+
+    /* ── Quiz: check answer ─────────────────────────────────── */
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId);
+      if (!block || block.dataset.answered === 'true') return;
+
+      var selected = block.querySelector('.quiz-option.selected');
+      if (!selected) return;
+
+      block.dataset.answered = 'true';
+      var btn = block.querySelector('.quiz-btn');
+      if (btn) btn.disabled = true;
+
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var correctEl = block.querySelector('[data-correct="true"]');
+      var feedback  = document.getElementById('feedback-' + moduleId);
+
+      block.querySelectorAll('.quiz-option').forEach(function(o) {
+        if (o.querySelector('[data-correct="true"]')) o.classList.add('correct');
+        else if (o === selected && !isCorrect)       o.classList.add('wrong');
+      });
+
+      if (feedback) {
+        feedback.textContent = '';
+        var label = document.createElement('strong');
+        var msg   = document.createElement('span');
+        if (isCorrect) {
+          feedback.className = 'quiz-feedback correct';
+          label.textContent  = 'Correct! ';
+          msg.textContent    = getExplanation(moduleId, true);
+        } else {
+          feedback.className = 'quiz-feedback wrong';
+          label.textContent  = 'Not quite. ';
+          msg.textContent    = getExplanation(moduleId, false);
+        }
+        feedback.appendChild(label);
+        feedback.appendChild(msg);
+      }
+
+      if (!state[moduleId]) state[moduleId] = {};
+      state[moduleId].quizCorrect = isCorrect;
+      saveState(state);
+    };
+
+    function getExplanation(id, correct) {
+      var explanations = {
+        phase1: {
+          correct: 'Assets are the anchor of the RiskOps chain. Every finding attaches to an asset, and the asset\'s ownership and managed entity linkage determine who receives the finding for triage.',
+          wrong: 'Assets are the anchor that findings attach to. Framework scoring and treatment SLAs are configured separately; assets provide the ownership and context layer that makes findings actionable.'
+        },
+        phase2: {
+          correct: 'Every finding must be dispositioned as Remediate (fix the root cause), Mitigate (apply a compensating control with a plan to remediate), or Accept (formal exception with owner, justification, and expiry). "Pending" is not a disposition — it is an undecided state.',
+          wrong: 'The three dispositions are Remediate, Mitigate, and Accept. Suppression, archiving, and monitoring are not RiskOps decisions — they leave the risk unaddressed and pending.'
+        },
+        phase3: {
+          correct: 'A mapping gap occurs when a finding or risk has no linked business process or accountable owner. The platform treats this as unattributed exposure, which directly inflates the risk pressure score.',
+          wrong: 'Mapping gaps specifically refer to missing linkages between findings/risks and business processes or owners — not framework gaps, connector gaps, or treatment overdue states.'
+        },
+        phase4: {
+          correct: 'Mitigate is the right choice when remediation is deferred but you\'re actively reducing residual risk with a compensating control. The plan should document the compensating control and set a future remediation target date.',
+          wrong: 'Accept would be wrong here because you\'re not just accepting the risk — you\'re actively reducing it with a compensating control. Accept is for situations where the residual risk is within risk appetite with no interim control improvement. Mitigate is the correct type.'
+        },
+        phase5: {
+          correct: 'A large pending queue is almost always a process failure: no named approver, approvers not notified, or no recurring governance cadence. The volume of pending decisions is rarely a technical problem — it\'s an accountability and scheduling problem.',
+          wrong: 'Duplicate findings, framework misconfiguration, and incomplete inventory can all contribute to workflow friction, but the dominant cause of a large pending queue is a broken approval process: undefined authority, missed notifications, or no governance cadence.'
+        }
+      };
+      var map = explanations[id] || { correct: '', wrong: '' };
+      return correct ? map.correct : map.wrong;
+    }
+
+    /* ── Action item toggle ─────────────────────────────────── */
+    window.toggleAction = function(el) {
+      el.classList.toggle('checked');
+    };
+
+    /* ── Restore state on load ──────────────────────────────── */
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m);
+        if (btn) {
+          btn.textContent = 'Phase complete ✓';
+          btn.classList.add('done');
+          btn.disabled = true;
+        }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) {
+          sideItem.classList.add('completed');
+          var icon = sideItem.querySelector('.acad-mod-icon');
+          if (icon) icon.textContent = '✓';
+        }
+      }
+    });
+
+    updateProgress();
+
+    /* ── Intersection observer for sidebar active state ─────── */
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            var link = document.querySelector('[data-module="' + id + '"]');
+            if (link) {
+              document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); });
+              link.classList.add('active');
+            }
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+
+  })();
+  </script>
+
+  <!-- Lightbox overlay -->
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
+    <button class="acad-lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+    <img src="" alt="">
+    <div class="acad-lightbox-caption"></div>
+  </div>
+
+  <script>
+  function openLightbox(figure) {
+    var img = figure.querySelector('img');
+    var cap = figure.querySelector('figcaption');
+    var lb  = document.getElementById('acad-lightbox');
+    if (!lb || !img) return;
+    lb.querySelector('img').src = img.src;
+    lb.querySelector('img').alt = img.alt;
+    var lbCap = lb.querySelector('.acad-lightbox-caption');
+    if (lbCap) lbCap.textContent = cap ? cap.textContent.replace('↑','').trim() : '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    var lb = document.getElementById('acad-lightbox');
+    if (lb) { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+
+  // Scroll-reveal
+  (function(){
+    var obs = ('IntersectionObserver' in window) && new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.04 });
+    document.querySelectorAll('.acad-figure, .acad-figure-row, .acad-video-wrap').forEach(function(el) {
+      if (obs) obs.observe(el); else el.classList.add('visible');
+    });
+  })();
+  </script>
+</body>
+</html>

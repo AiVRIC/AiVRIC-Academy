@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Provider Onboarding Foundations | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/provider-onboarding.html">
+  <meta name="description" content="Learn the CloudSignals white-label provider operating model, launch phases, client onboarding workflow, findings quality standards, and reporting cadence.">
+  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EG2Q8GD30V');
+</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html">
+        <img src="../assets/images/logo/aivric.svg" alt="AiVRIC">
+        <span class="acad-brand-sep"></span>
+        <span class="acad-brand-sub">Academy</span>
+      </a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="crpm-program-guide.html">Program Guide</a>
+        <a href="../support.html">Support</a>
+        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Provider Onboarding Foundations</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#m1" data-module="m1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">The Provider Model</span><span class="acad-mod-sub">Roles, concepts, boundaries</span></div>
+        </a>
+        <a class="acad-module-item" href="#m2" data-module="m2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Launch Phases</span><span class="acad-mod-sub">5-phase go-live framework</span></div>
+        </a>
+        <a class="acad-module-item" href="#m3" data-module="m3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Branding &amp; Portal Setup</span><span class="acad-mod-sub">Client-ready portal verification</span></div>
+        </a>
+        <a class="acad-module-item" href="#m4" data-module="m4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Client Onboarding Workflow</span><span class="acad-mod-sub">9-step connect-to-validate process</span></div>
+        </a>
+        <a class="acad-module-item" href="#m5" data-module="m5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Operating Findings &amp; Risk Register</span><span class="acad-mod-sub">Quality standards for results</span></div>
+        </a>
+        <a class="acad-module-item" href="#m6" data-module="m6" onclick="setActive(this)">
+          <div class="acad-mod-icon">6</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Reporting &amp; Client Reviews</span><span class="acad-mod-sub">Cadence, content, templates</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="crpm-program-guide.html"><i class="fas fa-map"></i> Program Guide</a>
+      <a class="acad-sidebar-link" href="provider-admin.html"><i class="fas fa-cogs"></i> Provider Admin Course</a>
+      <a class="acad-sidebar-link" href="riskops-getting-started.html"><i class="fas fa-shield-alt"></i> RiskOps Course</a>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <span class="badge"><i class="fas fa-building"></i> Provider Course &bull; P1</span>
+      <h1 style="margin-top:10px;">Provider Onboarding Foundations</h1>
+      <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">
+        This course teaches provider teams how to launch and operate a CloudSignals white-label service. You'll learn the provider model, the five-phase go-live framework, client onboarding, findings quality standards, and the reporting cadence that keeps clients informed and engaged.
+      </p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 30px;">
+        <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> ~45 minutes</span>
+        <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 6 modules</span>
+        <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-users"></i> Provider team, delivery leads, client success</span>
+      </div>
+      <div class="callout primary">
+        <strong>Take this course first</strong> if you are new to operating a CloudSignals provider tenant. Follow it with <a href="provider-admin.html">Provider Admin &amp; CRPM Operations</a> for the administration layer, and <a href="riskops-getting-started.html">Getting Started with RiskOps</a> for the practitioner risk workflow.
+      </div>
+
+      <!-- ═══ MODULE 1 ═══ -->
+      <section id="m1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>The Provider Model</h2>
+            <p class="phase-subtitle">Understand what a white-label provider tenant is, who owns what, and where the boundaries lie.</p>
+          </div>
+        </div>
+
+        <h3>What a white-label provider tenant is</h3>
+        <p>A <strong>white-label provider tenant</strong> is a branded CloudSignals workspace operated by a partner, managed service provider, advisory firm, or internal service team. It lets the provider present CloudSignals under their own brand while retaining the full platform capability underneath.</p>
+        <p>The provider tenant is the operational hub. From it, the provider team:</p>
+        <ul>
+          <li>Onboards and manages <strong>downstream clients</strong> — the businesses whose cloud environments are assessed.</li>
+          <li>Runs posture scans and reviews findings on behalf of or alongside clients.</li>
+          <li>Manages risk treatment and compliance workflows.</li>
+          <li>Prepares and delivers client-facing reports and operating reviews.</li>
+        </ul>
+
+        <h3>Core terms at a glance</h3>
+        <table class="acad-table">
+          <thead><tr><th>Term</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Provider</strong></td><td>The organization operating the white-label CloudSignals service — your organization.</td></tr>
+            <tr><td><strong>Client</strong></td><td>A customer or business entity whose cloud environment the provider manages or assesses.</td></tr>
+            <tr><td><strong>Client environment</strong></td><td>A cloud account, subscription, project, or deployment environment connected to CloudSignals.</td></tr>
+            <tr><td><strong>Finding</strong></td><td>A detected security, compliance, exposure, or configuration issue identified by a scan.</td></tr>
+            <tr><td><strong>Risk treatment</strong></td><td>The decision and work activity used to remediate, mitigate, accept, or transfer a risk.</td></tr>
+            <tr><td><strong>Risk Register</strong></td><td>The operating record of risk items, treatment plans, ownership, status, and evidence.</td></tr>
+            <tr><td><strong>Managed entity</strong></td><td>A GRC profile representing a client organization, business unit, or reporting scope used for risk intelligence and ownership context.</td></tr>
+            <tr><td><strong>Entitlement</strong></td><td>The features and module access granted to the provider or client — e.g., whether RiskOps is enabled.</td></tr>
+            <tr><td><strong>Provider Console</strong></td><td>The provider administration workspace for managing clients, entitlements, billing drafts, branding, and provider team activity.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Role model</h3>
+        <p>Provider access should follow least privilege. Every provider team member should have the minimum role required to do their job. Shared accounts are not permitted.</p>
+        <table class="acad-table">
+          <thead><tr><th>Role</th><th>What they do</th><th>What they need access to</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Provider Admin</strong></td><td>Full provider workspace administration — branding, users, clients, entitlements, GRC config, RiskOps</td><td>Provider Console, all settings</td></tr>
+            <tr><td><strong>Provider Operator</strong></td><td>Day-to-day client operations — scans, assets, findings, risk work queues, reports</td><td>Clients, scans, findings, RiskOps</td></tr>
+            <tr><td><strong>Provider Support</strong></td><td>Client support and triage — status checks, limited operational views</td><td>Support records, client status views</td></tr>
+            <tr><td><strong>GRC Admin</strong></td><td>Governance setup — managed entities, GRC users, GRC AI settings, role assignment</td><td>GRC Administration</td></tr>
+            <tr><td><strong>Provider Auditor</strong></td><td>Read-only review — reports, audit activity, selected GRC/RiskOps views</td><td>Dashboards, reports, read-only views</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Screenshot: Provider Console navigation showing roles in context -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Live app &mdash; Provider Console</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/riskops-entitlement-toggle.png" alt="Provider Console Dashboard showing KPI tiles for managed clients, onboarding count, needs action count, the RiskOps Module entitlement section, Command Queue, and Workspace Snapshot" loading="lazy">
+          <figcaption class="acad-caption"><strong>Provider Console Dashboard</strong> — the primary workspace for provider admins. KPI tiles, RiskOps module state, command queue, and workspace snapshot are all visible from this single view.</figcaption>
+        </figure>
+
+        <div class="callout warn">
+          <strong>Provider Admin is not a default operational role.</strong> Admins manage the platform, not day-to-day findings. Avoid using Admin accounts for routine scan and findings work — use an Operator account. This keeps the blast radius of a misconfiguration small and the audit trail clean.
+        </div>
+
+        <h3>What the provider is and is not responsible for</h3>
+        <div class="acad-grid">
+          <div class="acad-card">
+            <h3><i class="fas fa-check-circle" style="color:var(--ug-green);margin-right:6px;"></i>Provider is responsible for</h3>
+            <p style="margin:0;font-size:13.5px;color:var(--ug-text-2);">Branding, user management, client onboarding, scan scheduling, findings triage quality, risk register maintenance, client-facing reporting, support escalation, and data handling practices.</p>
+          </div>
+          <div class="acad-card">
+            <h3><i class="fas fa-times-circle" style="color:var(--ug-red);margin-right:6px;"></i>AiVRIC is responsible for</h3>
+            <p style="margin:0;font-size:13.5px;color:var(--ug-text-2);">Underlying platform operation, tenant availability, security controls, product capabilities, connector integrations, and escalation support for platform issues.</p>
+          </div>
+        </div>
+
+        <div class="quiz-block" id="quiz-m1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Which role is responsible for full provider workspace administration, including branding, client management, and RiskOps entitlements?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'m1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Provider Operator — they handle day-to-day client operations and have full access by default.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m1')"><div class="quiz-radio"></div><div class="quiz-opt-text">GRC Admin — they manage all governance and administrative functions across the tenant.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Provider Admin — they own the full provider workspace including branding, users, entitlements, and Provider Console.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Provider Support — they have elevated access for client triage and escalation.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('m1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-m1"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-m1" onclick="markComplete('m1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you can identify each role and its primary responsibilities.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 2 ═══ -->
+      <section id="m2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Launch Phases</h2>
+            <p class="phase-subtitle">The five-phase framework from tenant readiness to operational rollout.</p>
+          </div>
+        </div>
+
+        <p>Every CloudSignals provider launch follows five phases. Each phase has a clear entry state and exit criteria. Moving to the next phase before the current phase is complete is the most common cause of go-live delays.</p>
+
+        <div class="acad-grid" style="grid-template-columns:1fr;">
+          <div class="acad-card" style="border-left:3px solid var(--ug-cyan);">
+            <h3>Phase 1 — Tenant Readiness</h3>
+            <p><strong>What happens:</strong> AiVRIC provisions the provider tenant. Provider confirms name, logo, favicon, and color palette. Provider confirms the administrator list, support contacts, portal URL, sign-in flow, package, and launch scope.</p>
+            <p style="margin:0;font-size:13px;color:var(--ug-muted-2);"><strong>Exit criteria:</strong> Portal loads, branding is confirmed, administrator list is finalized, and launch scope is agreed.</p>
+          </div>
+          <div class="acad-card" style="border-left:3px solid var(--ug-green);">
+            <h3>Phase 2 — Provider Team Setup</h3>
+            <p><strong>What happens:</strong> Provider administrators, operators, and support users are invited. Roles are assigned. The delivery team reviews this training. A pilot client environment is selected.</p>
+            <p style="margin:0;font-size:13px;color:var(--ug-muted-2);"><strong>Exit criteria:</strong> All provider users can sign in. Roles are confirmed. Training is complete. Pilot client is identified.</p>
+          </div>
+          <div class="acad-card" style="border-left:3px solid var(--ug-amber);">
+            <h3>Phase 3 — First Client Onboarding</h3>
+            <p><strong>What happens:</strong> Create the client record. Collect cloud account identifiers. Configure cloud access. Run the first scan. Validate findings and coverage. Prepare the first client-facing review.</p>
+            <p style="margin:0;font-size:13px;color:var(--ug-muted-2);"><strong>Exit criteria:</strong> First scan complete, findings validated, first review delivered or scheduled.</p>
+          </div>
+          <div class="acad-card" style="border-left:3px solid var(--ug-purple);">
+            <h3>Phase 4 — Operational Rollout</h3>
+            <p><strong>What happens:</strong> Additional client environments are connected. Scan cadence and review cadence are established. Remediation and risk treatment tracking begins. Reporting templates are finalized. Support and escalation rhythm is established.</p>
+            <p style="margin:0;font-size:13px;color:var(--ug-muted-2);"><strong>Exit criteria:</strong> Multiple clients active, recurring cadences running, support workflow tested.</p>
+          </div>
+        </div>
+
+        <h3>First 30 days success plan</h3>
+        <table class="acad-table">
+          <thead><tr><th>Week</th><th>Target outcome</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Week 1</strong></td><td>Provider tenant branded and accessible. Administrators active. Pilot client selected. First environment connected. Initial scan completed.</td></tr>
+            <tr><td><strong>Week 2</strong></td><td>Findings reviewed and validated. Top risks entered into Risk Register. Reporting format confirmed. First client-facing review scheduled.</td></tr>
+            <tr><td><strong>Week 3</strong></td><td>Remediation tracking active. Additional provider users trained. Support workflow tested. Second client or environment planned.</td></tr>
+            <tr><td><strong>Week 4</strong></td><td>Operating review cadence established. Package and service assumptions reviewed. Provider success metrics defined. Expansion plan agreed.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="quiz-block" id="quiz-m2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">In which launch phase does the provider first run a scan, validate findings, and prepare the initial client review?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'m2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Phase 2 — Provider Team Setup. Once users are invited, the first scan runs automatically.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Phase 3 — First Client Onboarding. This phase covers creating the client record, connecting the environment, running the first scan, validating findings, and preparing the first review.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Phase 1 — Tenant Readiness. Scanning begins as soon as the portal is provisioned.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Phase 4 — Operational Rollout. The first scan happens during rollout once all users are trained.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('m2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-m2"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-m2" onclick="markComplete('m2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you can name all five phases and their exit criteria without looking.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 3 ═══ -->
+      <section id="m3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Branding &amp; Portal Setup</h2>
+            <p class="phase-subtitle">Verify the portal is client-ready before onboarding begins.</p>
+          </div>
+        </div>
+
+        <h3>What to verify before using the portal with clients</h3>
+        <p>Branding is not cosmetic — a provider portal that shows incorrect names, missing logos, or default AiVRIC branding creates client confusion and signals an unprepared service. Complete the branding checklist before scheduling any client interaction through the portal.</p>
+
+        <div class="action-checklist" id="branding-checklist">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Provider display name</strong> — the name shown in the portal matches your organization's brand.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Logo — light mode</strong> — your logo appears correctly on the light-mode portal header and sidebar.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Logo — dark mode</strong> — your logo appears correctly in dark mode. A dark-specific logo URL is strongly recommended to avoid legibility issues.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Favicon</strong> — your favicon appears in the browser tab where supported.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Primary and secondary colors</strong> — palette is correct, contrast is sufficient, and buttons are readable.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Portal URL</strong> — the portal loads at the correct provider URL without redirects to a default domain.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Support email or link</strong> — your support contact is configured and correct.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>No placeholder branding remains</strong> — no "AiVRIC" default logo, no placeholder text in provider name.</div></div>
+        </div>
+
+        <h3>Logo technical requirements</h3>
+        <ul>
+          <li>Use <strong>HTTPS or root-relative URLs</strong> — the browser must be able to load the image without sign-in.</li>
+          <li>Supported formats: <strong>SVG, PNG, WebP</strong> (preferred). JPG when transparency is not needed.</li>
+          <li>Recommended dimensions: <strong>320×96 or 640×192 pixels</strong>.</li>
+          <li>Recommended maximum file size: <strong>~512 KB</strong>.</li>
+          <li>Transparent backgrounds are strongly recommended — they work in both light and dark modes.</li>
+          <li>If no dark logo URL is supplied, the light logo is used in dark mode — test this before launch.</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Verify branding after publish</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Provider Console &gt; Branding</strong>. Review the draft configuration before publishing.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Confirm all fields: company name, support email, light logo URL, dark logo URL, favicon URL, and color palette.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">If a logo URL is from Google Drive or another file-sharing service, open the URL directly in a <strong>private browser window</strong> to confirm it loads without sign-in. If it requires authentication, the logo will not appear in the portal — use a CDN or object storage URL instead.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body"><strong>Publish the draft.</strong> Note: saving a draft does not apply changes. You must publish for the branding to become visible.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">After publishing, <strong>hard-refresh the portal</strong> (Ctrl+Shift+R / Cmd+Shift+R) to force the browser to load updated assets.</div></div>
+            <div class="ip-step"><div class="ip-step-num">6</div><div class="ip-step-body">Verify: logo in light mode, logo in dark mode, favicon in browser tab, sidebar text readability, and button contrast. Check the Provider Console preview pane as well.</div></div>
+          </div>
+        </div>
+
+        <!-- Screenshot: Branding Studio configuration -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Provider Console &mdash; Branding</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/provider-console-dashboard.png" alt="Provider Console Branding Studio showing logo URL fields, light and dark palette configuration, brand preview panel, and published state indicator" loading="lazy">
+          <figcaption class="acad-caption"><strong>Branding Studio</strong> — configure logo URLs, palette colors, and support email. The Brand Preview panel on the right shows how the portal will render before you publish.</figcaption>
+        </figure>
+
+        <div class="quiz-block" id="quiz-m3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">After updating branding settings, what must you do for the changes to become visible to users in the portal?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'m3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Save the draft — saving automatically applies branding to all active sessions within a few minutes.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Publish the draft — saving only stores the configuration; changes are not applied until you explicitly publish.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Contact AiVRIC support — branding changes require a platform-side deployment after saving.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Invite a test user — branding only activates when a new user signs in for the first time.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('m3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-m3"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-m3" onclick="markComplete('m3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when the branding checklist is fully checked and the portal has been verified in both light and dark mode.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 4 ═══ -->
+      <section id="m4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>Client Onboarding Workflow</h2>
+            <p class="phase-subtitle">Connect a client environment end to end and validate the first scan.</p>
+          </div>
+        </div>
+
+        <h3>The nine-step onboarding workflow</h3>
+        <p>Follow these steps for every new client. Skipping steps — especially commercial confirmation and scope agreement — is the most common cause of scope disputes and access issues.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-route"></i> Client Onboarding — Step by step</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body"><strong>Confirm commercial approval.</strong> Before onboarding, confirm the client is authorized for the agreed service package, support level, and scan scope. Do not begin technical work until this is confirmed.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body"><strong>Create the client record.</strong> In Provider Console, create the client entry with: legal name, display name, primary contact, primary technical contact, cloud provider, environment type, and package tier.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body"><strong>Confirm cloud access.</strong> Work with the client to establish read-only or security-assessment access. The method varies by cloud provider (see cloud-specific notes below). Do not use credentials with write access — read-only is the correct access model for posture scanning.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body"><strong>Connect the environment.</strong> Add the cloud account, subscription, project, or integration in CloudSignals. Confirm the scope matches what was agreed — region, account, subscription, or namespace boundaries.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body"><strong>Run the first scan.</strong> Start with a controlled scan of the agreed environment. Confirm the scan completes without errors and that expected resources appear in inventory.</div></div>
+            <div class="ip-step"><div class="ip-step-num">6</div><div class="ip-step-body"><strong>Validate initial results.</strong> Check for scope gaps, missing permissions, or unexpectedly empty results. A scan that returns zero resources on a production environment almost always indicates an access or scope issue, not a clean environment.</div></div>
+            <div class="ip-step"><div class="ip-step-num">7</div><div class="ip-step-body"><strong>Review findings.</strong> Prioritize critical and high severity items first. Identify which findings require remediation, risk treatment entry, or a client discussion before the first review.</div></div>
+            <div class="ip-step"><div class="ip-step-num">8</div><div class="ip-step-body"><strong>Create a managed entity.</strong> In GRC Administration, create a managed entity for this client. Assign the process owner, business context, and regulatory context. This enables business process mapping and RiskOps records for the client.</div></div>
+            <div class="ip-step"><div class="ip-step-num">9</div><div class="ip-step-body"><strong>Prepare the client review.</strong> Produce a concise summary showing: posture overview, top critical/high findings, recommended next steps, and any required client action items. Deliver or schedule within 7 days of the initial scan.</div></div>
+          </div>
+        </div>
+
+        <h3>Cloud provider access notes</h3>
+        <table class="acad-table">
+          <thead><tr><th>Provider</th><th>Access method</th><th>Key validation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>AWS</strong></td><td>Read-only IAM role via role assumption; organization-wide access via SCP if multi-account</td><td>Confirm account ID and region scope; confirm organization-wide access is intentional before enabling broad scans</td></tr>
+            <tr><td><strong>Azure</strong></td><td>Service Principal with Reader + Security Reader permissions; Management Group scope if multiple subscriptions</td><td>Confirm tenant ID, subscription IDs; validate management group scope if used</td></tr>
+            <tr><td><strong>Google Cloud</strong></td><td>Service Account with viewer IAM roles; project-level or folder/org level</td><td>Confirm project IDs and organization scope; validate folder-level discovery expectations</td></tr>
+            <tr><td><strong>Kubernetes</strong></td><td>Read-only RBAC ClusterRole; kubeconfig or service account token</td><td>Confirm cluster name, namespace scope; avoid collecting secrets or workload data outside approved scope</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Information to collect for each client</h3>
+        <div class="acad-grid">
+          <div class="acad-card">
+            <h3>Identity &amp; contact</h3>
+            <p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Legal client name, display name, primary business contact, primary technical contact, support expectations.</p>
+          </div>
+          <div class="acad-card">
+            <h3>Environment details</h3>
+            <p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Cloud provider, account / subscription / project IDs, environment type (prod / staging / dev), scan scope, regions or namespaces.</p>
+          </div>
+          <div class="acad-card">
+            <h3>Service context</h3>
+            <p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Package or service tier, reporting cadence, compliance frameworks in scope, special handling requirements.</p>
+          </div>
+        </div>
+
+        <!-- Screenshot: Clients & Environments with Create form -->
+        <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+          <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Provider Console &mdash; Clients</span>
+          <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+          <img src="screenshots/provider-clients-list.png" alt="Provider Console Downstream Clients tab showing client table with package, lifecycle state, health status, and a Create Downstream Client form panel on the right with all required fields" loading="lazy">
+          <figcaption class="acad-caption"><strong>Downstream Clients</strong> — the client table shows package, lifecycle state, health, and action. The Create Client form on the right collects legal name, package, support tier, lifecycle, and billing status — all required before connecting a cloud environment.</figcaption>
+        </figure>
+
+        <div class="quiz-block" id="quiz-m4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What should you do immediately if a first scan returns zero resources on a production environment?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'m4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Proceed to the client review — a clean environment is a positive signal worth communicating.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Wait 24 hours — CloudSignals requires one full cycle before resources appear.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Investigate the access and scope configuration — zero results on a production environment almost always indicate a permissions gap, scope misconfiguration, or incorrect account/region selection.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Escalate to AiVRIC immediately — empty scans require a platform-level investigation.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('m4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-m4"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-m4" onclick="markComplete('m4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you can walk through all nine onboarding steps without the guide and have collected the required client information.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 5 ═══ -->
+      <section id="m5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>Operating Findings &amp; Risk Register</h2>
+            <p class="phase-subtitle">Turn raw scan results into actionable, client-ready risk intelligence.</p>
+          </div>
+        </div>
+
+        <h3>Findings as operational records</h3>
+        <p>Findings should be handled as <strong>operational records</strong>, not just alerts. The difference matters: an alert mindset produces raw dumps that overwhelm clients; an operational records mindset produces context-rich, business-relevant risk intelligence that clients can act on.</p>
+
+        <h3>Provider findings triage workflow</h3>
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-filter"></i> Findings — Recommended triage workflow</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body"><strong>Open Findings. Filter by severity: Critical and High first.</strong> Do not start with Medium or Low — you'll lose the priority signal.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body"><strong>Validate each finding.</strong> Confirm it is genuine — not a false positive due to scope, missing context, or a known approved exception. Do not close Critical findings without documented rationale.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body"><strong>Confirm the affected environment and asset.</strong> Check the cloud account, region, resource type, and owner. Context matters — the same finding on a dev environment vs. a production payment processor has very different business urgency.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body"><strong>Add business context.</strong> Annotate the finding with the client impact — which service, which data, which process is at risk. This makes the finding usable in a client review without additional explanation.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body"><strong>Select a treatment disposition:</strong> Remediate (fix the issue), Mitigate (compensating control), Accept (formal exception with justification and expiry), Transfer, or Defer with documented rationale.</div></div>
+            <div class="ip-step"><div class="ip-step-num">6</div><div class="ip-step-body"><strong>Assign an owner and set a due date.</strong> Every treated finding needs a named person accountable for the next action.</div></div>
+            <div class="ip-step"><div class="ip-step-num">7</div><div class="ip-step-body"><strong>Track and validate.</strong> Validate remediation after the next scan. For accepted risks, track the expiry date and review before it lapses.</div></div>
+          </div>
+        </div>
+
+        <h3>Triage dispositions</h3>
+        <table class="acad-table">
+          <thead><tr><th>Disposition</th><th>When to use</th><th>Required documentation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Remediate</strong></td><td>The root cause should and can be fixed.</td><td>Fix description, assigned engineer, target completion date, verification method.</td></tr>
+            <tr><td><strong>Mitigate</strong></td><td>Full remediation is blocked; compensating controls reduce residual risk.</td><td>Compensating control description, reason remediation is deferred, future remediation date.</td></tr>
+            <tr><td><strong>Accept</strong></td><td>Residual risk is within risk appetite; business justification exists.</td><td>Named approver, justification statement, expiry date (time-bounded).</td></tr>
+            <tr><td><strong>Transfer</strong></td><td>Risk ownership or treatment is transferred to a third party (insurance, vendor).</td><td>Transfer recipient, coverage confirmation, residual risk assessment.</td></tr>
+            <tr><td><strong>False positive</strong></td><td>Finding does not apply or is not valid in this environment.</td><td>Documented reason; note so it can be reviewed if the control changes.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Risk Register — What to capture</h3>
+        <p>For each significant risk, the Risk Register should include:</p>
+        <div class="acad-grid">
+          <div class="acad-card"><h3>Identity</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Risk ID, title, description, managed entity / client scope, source findings.</p></div>
+          <div class="acad-card"><h3>Assessment</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Severity, likelihood, business impact, risk level (composite).</p></div>
+          <div class="acad-card"><h3>Treatment</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Treatment decision, action plan, assigned owner, due date, current status.</p></div>
+          <div class="acad-card"><h3>Evidence</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Screenshots, scan evidence, remediation confirmations, exception approvals.</p></div>
+        </div>
+
+        <h3>Findings quality standards</h3>
+        <div class="callout warn">
+          <strong>What not to send clients:</strong> Do not send raw finding dumps. Do not overwhelm clients with undifferentiated lists of 300+ findings. Do not use finding titles as-is without business context translation. Do not share findings outside approved channels — findings contain sensitive configuration data.
+        </div>
+        <ul>
+          <li><strong>Group related findings</strong> when presenting to clients — five findings on the same IAM misconfiguration is one conversation, not five.</li>
+          <li><strong>Explain business impact in plain language</strong> — "S3 bucket publicly accessible" means nothing to a CFO; "Customer contract data accessible to anyone on the internet" drives action.</li>
+          <li><strong>Separate urgent fixes from maturity improvements</strong> — Critical/High findings needing immediate action should be clearly differentiated from Medium/Low hygiene items.</li>
+          <li><strong>Validate before presenting</strong> — confirm findings are genuine and applicable before putting them in a client review.</li>
+        </ul>
+
+        <!-- Screenshot + clip: Findings in provider context -->
+        <div class="acad-figure-row">
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /findings</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/findings-critical-high.png" alt="Findings list with Critical and High severity filter active, showing AI analysis groupings and individual finding rows" loading="lazy">
+            <figcaption class="acad-caption"><strong>Findings — triage starting point.</strong> Filter Critical+High first. Each grouping shows the AI-identified root cause pattern across related findings.</figcaption>
+          </figure>
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> /risks/treatments</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/treatments-list.png" alt="Treatment Execution Workspace showing active treatment plans with RMR IDs, treatment types, owners, and status" loading="lazy">
+            <figcaption class="acad-caption"><strong>Treatment plans</strong> — where triaged findings become formal risk commitments with owners, types, and due dates visible to governance approvers.</figcaption>
+          </figure>
+        </div>
+
+        <div class="quiz-block" id="quiz-m5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Which of the following best describes the correct quality standard for sharing findings with clients?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'m5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Export all findings as a raw CSV and share at the start of the client review — clients should see the full, unfiltered dataset.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Share only findings with a remediation plan already created — unplanned findings should not be disclosed until a fix is ready.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Validate, group related findings, translate technical titles into business impact language, prioritize Critical/High, and differentiate urgent items from longer-term hygiene work.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'m5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Share only Critical findings — Medium and Low findings can be managed by the provider without client involvement.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('m5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-m5"></div>
+        </div>
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-m5" onclick="markComplete('m5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you can describe each triage disposition and articulate the quality standard for client-facing findings communication.</span>
+        </div>
+      </section>
+
+      <!-- ═══ MODULE 6 ═══ -->
+      <section id="m6" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(148,163,184,.1);border-color:rgba(148,163,184,.3);color:var(--ug-muted-2);">6</div>
+          <div class="phase-head-body">
+            <h2>Reporting &amp; Client Reviews</h2>
+            <p class="phase-subtitle">Deliver structured, consistent reviews that build client confidence.</p>
+          </div>
+        </div>
+
+        <h3>Reporting cadence</h3>
+        <table class="acad-table">
+          <thead><tr><th>Client type</th><th>Cadence</th><th>Audience</th></tr></thead>
+          <tbody>
+            <tr><td>New client — first review</td><td>Within 7 days of initial scan</td><td>Client technical contact and business contact</td></tr>
+            <tr><td>Active managed client</td><td>Monthly operating review</td><td>Client technical contact</td></tr>
+            <tr><td>High-risk or regulated client</td><td>Weekly or biweekly risk review</td><td>Client technical contact, compliance lead</td></tr>
+            <tr><td>Executive sponsor</td><td>Quarterly business review (QBR)</td><td>Client executive, provider executive sponsor</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Recommended report contents</h3>
+        <div class="acad-grid">
+          <div class="acad-card"><h3>1. Executive summary</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Current posture state, material changes since last review, top 1–3 business risks requiring attention.</p></div>
+          <div class="acad-card"><h3>2. Environment scope</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Cloud providers covered, accounts/subscriptions scanned, date and age of last scan.</p></div>
+          <div class="acad-card"><h3>3. Critical &amp; high findings</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">New, open, and remediated findings since last review. Grouped by theme or service, not as a raw list.</p></div>
+          <div class="acad-card"><h3>4. Risk Register changes</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">New risks added, risks closed, changes in treatment status, any expired exceptions.</p></div>
+          <div class="acad-card"><h3>5. Remediation progress</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Treatment plans with overdue status, completed remediations, and MTTR trend if available.</p></div>
+          <div class="acad-card"><h3>6. Recommended next actions</h3><p style="font-size:13px;color:var(--ug-muted-2);margin:0;">Prioritized action items with owners and timelines. Client action items distinguished from provider action items.</p></div>
+        </div>
+
+        <!-- Screenshots: Intelligence Brief + RiskOps Insights (what to deliver in reviews) -->
+        <div class="acad-figure-row">
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#a78bfa;"></i> Vision — Intelligence Brief</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/vision-intelligence-brief.png" alt="AI Security Intelligence Brief with ThreatScore 86.2, 374 failed findings, 14 critical assets, and navigation to Executive Insight, Driver Map, Risk Landscape, Compliance Posture" loading="lazy">
+            <figcaption class="acad-caption"><strong>AI Security Intelligence Brief</strong> — the AI-generated executive brief synthesizes ThreatScore, finding volume, and critical asset exposure into a board-ready narrative. Use this for executive operating reviews and quarterly business reviews.</figcaption>
+          </figure>
+          <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand">
+            <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> Vision — RiskOps Insights</span>
+            <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+            <img src="screenshots/vision-reporting.png" alt="RiskOps Insights report showing managed entities count, open exceptions, accepted risks, SLA threats and operational workflow navigation steps" loading="lazy">
+            <figcaption class="acad-caption"><strong>RiskOps Insights</strong> — the operational view of risk metrics across managed entities. Shows open exceptions, accepted risks, SLA threats, and the step-by-step workflow to advance each item — ideal for monthly managed client reviews.</figcaption>
+          </figure>
+        </div>
+
+        <h3>What not to include in client communications</h3>
+        <div class="callout danger">
+          <strong>Never share:</strong> Internal AiVRIC deployment details &bull; GitOps repository paths &bull; Cluster, namespace, or Kubernetes internals &bull; Secrets, tokens, or private keys &bull; Unreviewed raw exports that may expose unrelated client information &bull; Unsupported roadmap commitments.
+        </div>
+
+        <h3>Support escalation workflow</h3>
+        <p>When an issue cannot be resolved at the provider level, escalate to AiVRIC support. When escalating, always include:</p>
+        <ul>
+          <li>Provider name and portal URL</li>
+          <li>Client name and environment name</li>
+          <li>User email if access-related</li>
+          <li>Time of issue and approximate duration</li>
+          <li>Screenshot or error message (with secrets removed)</li>
+          <li>Steps already attempted</li>
+        </ul>
+        <div class="callout warn">
+          <strong>Never include</strong> secrets, private keys, access tokens, passwords, or full credential files in support tickets.
+        </div>
+
+        <h3>Key actions for this module</h3>
+        <div class="action-checklist" id="checklist-m6">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define reporting cadence for each active client</strong> — document whether they are monthly, biweekly, or weekly, and assign a provider owner for each.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Create a report template</strong> — use the six-section structure above as your starting format. Customize for client audience (technical vs. executive).</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Confirm the support escalation path</strong> — every provider team member should know the provider-level escalation contact and the AiVRIC support channel.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Schedule the first QBR</strong> — even for new clients, put a quarterly business review on the calendar at onboarding. It sets expectations and prevents the relationship from becoming purely reactive.</div></div>
+        </div>
+
+        <!-- Completion -->
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Provider Onboarding Foundations. Your team is ready to launch the CloudSignals provider service and onboard your first client.</div>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <a href="provider-admin.html" class="acad-cert-btn"><i class="fas fa-cogs"></i> Next: Provider Admin &amp; CRPM Ops</a>
+            <a href="index.html" class="acad-cert-btn" style="background:var(--ug-surface);color:var(--ug-cyan);border:1px solid rgba(0,209,255,.3);">All courses</a>
+          </div>
+        </div>
+
+        <div class="mark-complete-wrap" style="margin-top:20px;">
+          <button class="mark-complete-btn" id="mc-m6" onclick="markComplete('m6')">Mark Module 6 complete</button>
+          <span class="mark-complete-hint">Complete this module to unlock your course completion.</span>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v1 &middot; P1 Provider Onboarding Foundations</span>
+  </footer>
+
+  <script>
+  (function(){
+    var STORAGE_KEY = 'provider_onboarding_v1';
+    var MODULES = ['m1','m2','m3','m4','m5','m6'];
+    function loadState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'); }catch(e){ return {}; } }
+    function saveState(s){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }catch(e){} }
+    var state = loadState();
+
+    function updateProgress(){
+      var done = MODULES.filter(function(m){ return state[m]&&state[m].complete; }).length;
+      var pct = Math.round((done/MODULES.length)*100);
+      var fill = document.getElementById('progress-fill');
+      var pctEl = document.getElementById('progress-pct');
+      if(fill) fill.style.width = pct+'%';
+      if(pctEl) pctEl.textContent = pct+'%';
+      if(pct===100){ var cert=document.getElementById('cert-block'); if(cert) cert.classList.add('show'); }
+    }
+
+    window.setActive = function(el){
+      document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); });
+      el.classList.add('active');
+    };
+
+    window.markComplete = function(moduleId){
+      if(!state[moduleId]) state[moduleId]={};
+      state[moduleId].complete = true;
+      saveState(state);
+      var btn = document.getElementById('mc-'+moduleId);
+      if(btn){ btn.textContent='Module complete ✓'; btn.classList.add('done'); btn.disabled=true; }
+      var sideItem = document.querySelector('[data-module="'+moduleId+'"]');
+      if(sideItem){ sideItem.classList.add('completed'); var icon=sideItem.querySelector('.acad-mod-icon'); if(icon) icon.textContent='✓'; }
+      updateProgress();
+    };
+
+    window.selectOption = function(el, moduleId){
+      var block = document.getElementById('quiz-'+moduleId);
+      if(!block || block.dataset.answered==='true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); });
+      el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn');
+      if(btn) btn.disabled=false;
+    };
+
+    window.checkAnswer = function(moduleId){
+      var block = document.getElementById('quiz-'+moduleId);
+      if(!block || block.dataset.answered==='true') return;
+      var selected = block.querySelector('.quiz-option.selected');
+      if(!selected) return;
+      block.dataset.answered='true';
+      var btn = block.querySelector('.quiz-btn'); if(btn) btn.disabled=true;
+      var isCorrect = selected.querySelector('[data-correct="true"]')!==null;
+      var feedback = document.getElementById('feedback-'+moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o){
+        if(o.querySelector('[data-correct="true"]')) o.classList.add('correct');
+        else if(o===selected&&!isCorrect) o.classList.add('wrong');
+      });
+      var explanations = {
+        m1:{ correct:'Provider Admin owns the full provider workspace — branding, users, clients, entitlements, GRC configuration, and Provider Console. Operators handle day-to-day client operations but don\'t own platform administration.', wrong:'Provider Admin is the correct answer. Operators handle client operations; GRC Admins handle governance configuration; Support Users have limited triage access. None of these roles has full workspace administration.' },
+        m2:{ correct:'Phase 3 — First Client Onboarding — is where the first scan, findings validation, and initial client review happen. Phase 2 is about setting up the provider team. Phase 4 is about operational rollout of additional clients.', wrong:'Phase 3 — First Client Onboarding — is the correct answer. It specifically covers creating the client record, connecting the environment, running the first scan, validating findings, and preparing the first review.' },
+        m3:{ correct:'Saving a branding draft stores the configuration but does not apply it. You must Publish the draft for branding changes to become visible. Always hard-refresh after publishing to clear browser cache.', wrong:'Publishing is required — saving alone does not apply changes. AiVRIC support is not involved in routine branding publishes. New user sign-ins do not trigger branding activation.' },
+        m4:{ correct:'Zero resources on a production environment almost always indicates a permissions gap, wrong account/region selection, or scope misconfiguration — not a clean environment. Investigate before proceeding to any client-facing communication.', wrong:'Zero results should always trigger investigation. It is not normal for a production environment to return no resources, and proceeding to a client review with empty data would be a material error.' },
+        m5:{ correct:'Quality findings communication requires validation, grouping, business-impact translation, prioritization, and differentiation of urgent vs. maturity items. Raw exports and undifferentiated lists are specifically what to avoid.', wrong:'Raw exports, hidden findings, and Critical-only reporting are all incorrect practices. The correct standard is validated, grouped, translated into business impact language, prioritized, and differentiated by urgency.' },
+      };
+      if(feedback){
+        var exp = explanations[moduleId] || {correct:'',wrong:''};
+        feedback.textContent = '';
+        var lbl = document.createElement('strong');
+        var txt = document.createElement('span');
+        if(isCorrect){ feedback.className='quiz-feedback correct'; lbl.textContent='Correct! '; txt.textContent=exp.correct; }
+        else { feedback.className='quiz-feedback wrong'; lbl.textContent='Not quite. '; txt.textContent=exp.wrong; }
+        feedback.appendChild(lbl); feedback.appendChild(txt);
+      }
+    };
+
+    window.toggleAction = function(el){ el.classList.toggle('checked'); };
+
+    MODULES.forEach(function(m){
+      if(state[m]&&state[m].complete){
+        var btn=document.getElementById('mc-'+m);
+        if(btn){ btn.textContent='Module complete ✓'; btn.classList.add('done'); btn.disabled=true; }
+        var si=document.querySelector('[data-module="'+m+'"]');
+        if(si){ si.classList.add('completed'); var ic=si.querySelector('.acad-mod-icon'); if(ic) ic.textContent='✓'; }
+      }
+    });
+    updateProgress();
+
+    if('IntersectionObserver' in window){
+      var sections=document.querySelectorAll('section[id]');
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            var id=entry.target.id;
+            var link=document.querySelector('[data-module="'+id+'"]');
+            if(link){ document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); }
+          }
+        });
+      },{rootMargin:'-20% 0px -70% 0px'});
+      sections.forEach(function(s){ obs.observe(s); });
+    }
+  })();
+  </script>
+
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
+    <button class="acad-lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+    <img src="" alt="">
+    <div class="acad-lightbox-caption"></div>
+  </div>
+
+  <script>
+  function openLightbox(figure) {
+    var img = figure.querySelector('img');
+    var cap = figure.querySelector('figcaption');
+    var lb  = document.getElementById('acad-lightbox');
+    if (!lb || !img) return;
+    lb.querySelector('img').src = img.src;
+    lb.querySelector('img').alt = img.alt;
+    var lbCap = lb.querySelector('.acad-lightbox-caption');
+    if (lbCap) lbCap.textContent = cap ? cap.textContent.replace('↑','').trim() : '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    var lb = document.getElementById('acad-lightbox');
+    if (lb) { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+  (function(){
+    var obs = ('IntersectionObserver' in window) && new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.04 });
+    document.querySelectorAll('.acad-figure, .acad-figure-row, .acad-video-wrap').forEach(function(el) {
+      if (obs) obs.observe(el); else el.classList.add('visible');
+    });
+  })();
+  </script>
+</body>
+</html>

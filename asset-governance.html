@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Asset Governance | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/asset-governance.html">
+  <meta name="description" content="Govern assets in CloudSignals+RiskOps using asset dashboards, criticality views, finding relationships, managed entities, and RiskOps workflows. AiVRIC Academy.">
+  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html"><img src="../assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="../AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="../support.html">Support</a>
+        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Asset Governance</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Overview</span><span class="acad-mod-sub">Audience, outcomes, platform areas</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod1" data-module="mod1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Asset Governance Concepts</span><span class="acad-mod-sub">Ownership, criticality, business context</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod2" data-module="mod2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Asset Inventory &amp; Dashboards</span><span class="acad-mod-sub">Asset Dashboard, All Assets</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod3" data-module="mod3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Criticality &amp; Crown Jewels</span><span class="acad-mod-sub">Critical Assets, Managed Entities</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod4" data-module="mod4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Findings &amp; Asset Risk</span><span class="acad-mod-sub">Findings, RiskOps prioritization</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod5" data-module="mod5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Asset Evidence &amp; Reporting</span><span class="acad-mod-sub">Reports, Vision, governance outputs</span></div>
+        </a>
+        <a class="acad-module-item" href="#certification" data-module="certification" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9670;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Certification &amp; Capstone</span><span class="acad-mod-sub">Exam blueprint and scenario</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="governance.html"><i class="fas fa-arrow-left"></i> Prev: Governance</a>
+      <a class="acad-sidebar-link" href="../support.html"><i class="fas fa-life-ring"></i> Support</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <!-- OVERVIEW -->
+      <section id="overview" style="scroll-margin-top:80px;">
+        <span class="badge" style="background:rgba(6,182,212,.15);color:var(--ug-cyan);"><i class="fas fa-boxes"></i> AiVRIC Asset Governance Foundations &bull; Practitioner</span>
+        <h1 style="margin-top:10px;">Asset Governance</h1>
+        <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">Asset governance is the practice of knowing what exists, who owns it, how important it is, what data or business process it supports, what risks affect it, and what evidence proves it is governed. In CloudSignals+RiskOps, assets are not just inventory records — they are the connective tissue between cloud posture, findings, business impact, vulnerability exposure, third-party relationships, compliance evidence, and RiskOps execution.</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 24px;">
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> Topic course: ~75 min &bull; Certification path: 4–6 hrs</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 5 modules + capstone</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-signal"></i> Foundational to Intermediate</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-certificate" style="color:var(--ug-cyan)"></i> Certification eligible</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;">
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-cyan);margin-bottom:10px;"><i class="fas fa-users" style="margin-right:5px;"></i>Who this course is for</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Cloud security analysts</li>
+              <li>Asset owners</li>
+              <li>Security operations teams</li>
+              <li>RiskOps coordinators</li>
+              <li>Compliance analysts</li>
+              <li>MSP operators</li>
+              <li>IT governance managers</li>
+            </ul>
+          </div>
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-cyan);margin-bottom:10px;"><i class="fas fa-check-circle" style="margin-right:5px;"></i>Prerequisites</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Basic understanding of cloud resources and asset inventory</li>
+              <li>Familiarity with security findings and business impact concepts</li>
+              <li>Access to CloudSignals asset and findings workspaces</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-top:0;padding-top:0;border-top:none;">What you will be able to do</h2>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:20px;">
+          <li>Explain asset governance as more than asset inventory.</li>
+          <li>Navigate the Surface menu to inspect assets, resources, findings, scans, and alerts.</li>
+          <li>Identify critical, inactive, unmanaged, and high-risk assets.</li>
+          <li>Use asset context to prioritize security findings beyond severity alone.</li>
+          <li>Connect assets to managed entities, business processes, third parties, and RiskOps projects.</li>
+          <li>Create asset governance review outputs for executives and auditors.</li>
+        </ol>
+
+        <div class="callout primary" style="margin-top:16px;">
+          <strong>Platform areas used in this course:</strong> Surface, Asset Dashboard, All Assets, Cloud Resources, Critical Assets, Inactive Assets, Findings, Managed Entities, RiskOps, Reports, Vision. Navigate to <strong>Surface &gt; Assets</strong> in the main navigation to begin.
+        </div>
+        <div class="callout warn" style="margin-top:12px;">
+          <strong>AI advisory statement:</strong> Vision and other AI-assisted CloudSignals+RiskOps workflows are advisory. AI can summarize asset posture and generate reports, but AI does not independently certify governance. Human validation, evidence references, and source attribution remain required.
+        </div>
+      </section>
+
+
+      <!-- MODULE 1 -->
+      <section id="mod1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>Asset Governance Concepts</h2>
+            <p class="phase-subtitle">15 min &bull; Surface Overview &bull; Explain ownership, criticality, and business context</p>
+          </div>
+        </div>
+
+        <h3>Asset governance answers five questions</h3>
+        <p>In many security programs, asset inventory is treated as a technical list — a record of cloud resources discovered by a scanner. CloudSignals+RiskOps treats assets as <strong>risk objects</strong>. Each asset can be connected to findings, providers, accounts, regions, business processes, managed entities, third parties, control evidence, and remediation projects. Asset governance answers five questions that an inventory record alone cannot:</p>
+
+        <div class="acad-grid" style="margin:16px 0;">
+          <div class="acad-card"><h3 style="font-size:13px;"><i class="fas fa-question-circle" style="color:var(--ug-cyan);margin-right:6px;"></i>What do we have?</h3><p style="font-size:13px;">A complete, current inventory of every cloud resource across all connected providers, accounts, and regions.</p></div>
+          <div class="acad-card"><h3 style="font-size:13px;"><i class="fas fa-question-circle" style="color:var(--ug-green);margin-right:6px;"></i>Who owns it?</h3><p style="font-size:13px;">A named individual or team responsible for each asset — linked through managed entities and owner assignment.</p></div>
+          <div class="acad-card"><h3 style="font-size:13px;"><i class="fas fa-question-circle" style="color:var(--ug-amber);margin-right:6px;"></i>Why does it matter?</h3><p style="font-size:13px;">Criticality, data sensitivity, and business process linkage — the context that determines priority.</p></div>
+          <div class="acad-card"><h3 style="font-size:13px;"><i class="fas fa-question-circle" style="color:var(--ug-orange);margin-right:6px;"></i>What risk does it carry?</h3><p style="font-size:13px;">Open findings, unresolved treatments, third-party exposure, and compliance gaps linked to this asset.</p></div>
+          <div class="acad-card"><h3 style="font-size:13px;"><i class="fas fa-question-circle" style="color:var(--ug-purple);margin-right:6px;"></i>What proof shows it is governed?</h3><p style="font-size:13px;">Evidence: ownership records, classification decisions, scan results, treatment plans, access reviews.</p></div>
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 1: Asset Coverage Review</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Surface &gt; Assets</strong>. Open the <strong>Asset Dashboard</strong> and review the top-level metrics: total monitored assets, ownership coverage, risk heatmap, and connected providers.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Compare monitored asset counts against your expected provider and account inventory. Providers in your billing console but absent from the Asset Dashboard represent blind spots in your governance coverage.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Identify assets with missing ownership. Filter <strong>All Assets</strong> for assets with no assigned owner or managed entity. These cannot receive risk notifications or drive accountable remediation.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Review the <strong>Inactive Assets</strong> view. Note which assets appear inactive but may still be generating findings or carrying configuration risk.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Record your asset governance gaps: missing ownership count, unconnected accounts, and inactive assets still flagged in findings. This is your Lab 1 deliverable: an asset coverage review note.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod1">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Answer the five governance questions:</strong> For your environment, draft one-sentence answers to all five questions. Gaps in your answers are governance gaps.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Document your coverage blind spots:</strong> List any cloud accounts, subscriptions, or regions present in your billing console but not connected to CloudSignals.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Count unowned assets:</strong> Note the number of assets with no owner or managed entity. Set a target to reach zero unowned critical assets within 14 days.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What makes asset governance different from asset inventory?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Asset governance uses automated scanners; asset inventory is maintained manually by operations teams.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Asset inventory records what exists; asset governance answers why it matters, who owns it, what risks it carries, and what evidence proves it is governed — connecting assets to business context, risk, and accountability.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Asset governance is a compliance requirement; asset inventory is an optional operational practice.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Asset governance covers cloud resources only; asset inventory includes on-premises systems as well.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod1" onclick="markComplete('mod1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you've completed the Asset Coverage Review and documented your governance gaps.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 2 -->
+      <section id="mod2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Asset Inventory &amp; Dashboards</h2>
+            <p class="phase-subtitle">20 min &bull; Asset Dashboard, All Assets &bull; Inspect monitored asset posture</p>
+          </div>
+        </div>
+
+        <h3>The Asset Dashboard as a posture view</h3>
+        <p>The Asset Dashboard provides a posture view for asset intelligence. It surfaces: ownership coverage percentages, risk heatmaps showing which assets carry the most finding pressure, cloud resource groupings by provider and account, critical asset indicators, inactive asset counts, and import workflows for external asset context. Learners should use the dashboard to understand both coverage and blind spots — not just totals.</p>
+        <p>Key questions the Asset Dashboard should answer every review cycle:</p>
+        <ul>
+          <li>Are all expected providers and accounts represented? Any missing account is an unknown risk exposure.</li>
+          <li>Which assets have missing ownership? Unowned assets cannot be assigned risk or receive remediation notifications.</li>
+          <li>Which assets have failed checks? High-finding assets need triage priority regardless of their criticality designation.</li>
+          <li>Which assets appear inactive but still expose risk? Inactive assets can still carry open findings, accepted risks, or stale evidence.</li>
+          <li>Which assets are tied to open POA&amp;Ms or RiskOps work? Active remediation work linked to assets should be visible in the dashboard context.</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Inspect asset posture across providers</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Surface &gt; Asset Dashboard</strong>. Review the ownership coverage percentage and the risk heatmap. Note which provider or account contributes the most unowned assets.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Open <strong>All Assets</strong>. Sort by <em>Findings (descending)</em> to see which assets carry the most open control failures. These are your immediate triage priority regardless of criticality designation.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Navigate to <strong>Cloud Resources</strong>. Group by provider to review how assets are distributed across AWS, Azure, GCP, and OCI. Identify accounts with unexpectedly low resource counts — these may indicate incomplete connector scope.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Open <strong>Inactive Assets</strong>. For each inactive asset with open findings, confirm whether it should be decommissioned or remains active. An inactive asset with unresolved findings represents ongoing exposure without active management.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod2">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Record dashboard baseline metrics:</strong> Capture today's ownership coverage %, highest-finding asset, and inactive asset count with open findings. Use this as your governance review baseline.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Cross-reference Cloud Resources against your billing console:</strong> Verify every active cloud account appears in Cloud Resources. Document any gap as a connector scope issue.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Act on at least one inactive asset:</strong> For an inactive asset with open findings, decide: decommission, reactivate, or create a governance exception. Any of these is better than leaving it unaddressed.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">How can inactive assets still create risk in CloudSignals+RiskOps?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Inactive assets are automatically removed from the asset inventory, so they cannot contribute to findings or risk scores.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Inactive assets may still carry open findings, accepted risks, stale evidence linked to controls, or unresolved treatment plans — all of which contribute to risk pressure and compliance gaps even though the asset appears dormant.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Inactive assets create risk only if they are connected to production managed entities — isolated inactive assets have no governance impact.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Inactive assets increase scan costs but do not affect risk scores or finding counts.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod2" onclick="markComplete('mod2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you've reviewed the Asset Dashboard, Cloud Resources, and Inactive Assets views.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 3 -->
+      <section id="mod3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Criticality &amp; Crown Jewels</h2>
+            <p class="phase-subtitle">20 min &bull; Critical Assets, Managed Entities &bull; Identify and govern high-value assets</p>
+          </div>
+        </div>
+
+        <h3>What makes an asset a crown jewel</h3>
+        <p>Critical assets require stronger governance because their failure or compromise creates disproportionate business impact. <strong>Crown-jewel assets</strong> are those whose compromise would cause the most severe business, regulatory, or reputational harm. They typically include: identity platforms (directory services, SSO, MFA infrastructure), production databases storing regulated data, payment and financial transaction systems, healthcare systems handling PHI, AI model infrastructure and training data, customer data stores, and key cloud control plane services (KMS, secrets management, logging aggregation).</p>
+        <p>Classifying an asset as a crown jewel is a governance decision, not just a technical tag. It requires evaluating five dimensions:</p>
+        <table class="acad-table">
+          <thead><tr><th>Dimension</th><th>Question to answer</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Business impact</strong></td><td>What business function fails if this asset is unavailable or compromised?</td></tr>
+            <tr><td><strong>Data sensitivity</strong></td><td>What type of data does this asset store, process, or transmit? (PII, PHI, financial, confidential?)</td></tr>
+            <tr><td><strong>Exposure</strong></td><td>Is this asset internet-facing, accessible to third parties, or in a shared environment?</td></tr>
+            <tr><td><strong>Dependency</strong></td><td>How many other systems depend on this asset? A failure here = failures downstream?</td></tr>
+            <tr><td><strong>Recoverability</strong></td><td>How long does it take to restore? Is a compromise forensically detectable?</td></tr>
+          </tbody>
+        </table>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 2: Crown-Jewel Classification</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Surface &gt; Critical Assets</strong>. Review the assets currently designated Critical. Do these match your organization's crown-jewel expectations based on the five classification dimensions?</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select one asset with high business impact. Open the asset detail and review: owner, cloud provider, region, data type classification, open findings, and managed entity linkage.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Confirm or set the asset's <strong>Criticality</strong> designation (Critical/High/Medium/Low) and <strong>Data Sensitivity</strong> classification (PII/PHI/Confidential/Internal/Public). If the managed entity is blank, assign one now.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Navigate to <strong>Settings &gt; Managed Entities</strong>. Verify the managed entity for this asset has a named owner. Owners receive risk notifications for their managed entity's assets.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Recommend a review cadence for this crown-jewel asset. Most organizations review crown jewels weekly (findings), monthly (ownership and classification), and quarterly (full governance review with evidence). Document this as a governance rationale note.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod3">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Build your crown-jewel asset list:</strong> Using the five classification dimensions, identify your organization's top 5–10 crown-jewel assets. Document each with classification rationale.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Confirm managed entity and owner for every crown jewel:</strong> Every crown-jewel asset must have a named owner and linked managed entity. No exceptions.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Set review cadence:</strong> Document how frequently each crown jewel will be reviewed for findings, ownership, classification, and governance evidence.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What attributes make an asset a crown-jewel system requiring the strongest governance controls?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">High finding count, Critical severity findings, and being managed by a named owner in the platform.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Disproportionate business impact if compromised — typically combining high criticality, sensitive data handling (PII/PHI/financial), high dependency count, internet or third-party exposure, and difficult recoverability.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Assets that appear in the Critical Assets view and have been running for more than 12 months without decommission.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Assets explicitly designated crown jewels by the cloud provider through resource tagging APIs.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod3" onclick="markComplete('mod3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you've built your crown-jewel list and confirmed managed entity ownership for each.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 4 -->
+      <section id="mod4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>Findings &amp; Asset Risk</h2>
+            <p class="phase-subtitle">25 min &bull; Findings, RiskOps &bull; Prioritize findings using asset context</p>
+          </div>
+        </div>
+
+        <h3>From finding severity to risk priority using asset context</h3>
+        <p>Findings become more useful when they are anchored to asset context. A <strong>medium-severity finding on a crown-jewel identity system</strong> may be more urgent than a <strong>high-severity finding on a disposable test asset</strong>. CloudSignals+RiskOps helps learners move beyond finding severity to risk priority by considering: asset role, business impact, exposure, finding age, treatment status, and remediation ownership.</p>
+        <p>When investigating a finding, apply this evaluation framework:</p>
+        <ul>
+          <li><strong>What service or resource is affected?</strong> — Is it a production database, a development VM, or a shared service?</li>
+          <li><strong>Is it internet-facing?</strong> — Public-facing assets with findings have shorter exploitation windows.</li>
+          <li><strong>What data or business function is involved?</strong> — PII, PHI, payment data, or critical operational services require faster response.</li>
+          <li><strong>Is there an owner?</strong> — An unowned asset with a critical finding has no one to receive the triage assignment.</li>
+          <li><strong>Is the finding recurring?</strong> — A finding that reappears after remediation indicates a systemic configuration issue, not a one-time fix.</li>
+          <li><strong>What remediation evidence is required?</strong> — Document this before creating the treatment plan, not after.</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 3: Asset-to-Risk Prioritization</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Findings</strong>. Filter to Critical and High severity. For the top 5 findings, open each and pivot to the linked asset. Compare the asset's criticality, data sensitivity, and business process linkage.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select the crown-jewel asset you identified in Module 3. Open its asset detail and review the <strong>Findings</strong> tab. Compare finding severity against asset context to determine true risk priority order.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">For the highest-priority finding on your crown jewel, apply the six evaluation questions above. Document your answers — this becomes the risk prioritization rationale.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Navigate to <strong>RiskOps</strong>. Create a treatment plan or RiskOps project for the finding. Set treatment type, owner, target date, and evidence requirement before submitting.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Draft a two-sentence executive explanation of why this finding on this asset warrants priority treatment. Frame it in business impact language, not severity score language.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod4">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Prioritize findings using asset context:</strong> Re-rank your top 10 open findings using all six evaluation factors. The resulting order may differ significantly from severity-only ranking.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Create at least one asset-contextualized treatment plan:</strong> For a finding on a crown-jewel asset, create a treatment plan with a named owner, target date, and specific evidence requirement.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Document a recurring finding:</strong> Identify any finding that has re-emerged after a previous closure. This indicates a systemic root cause requiring a project, not just a point-fix.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Why should asset context influence finding priority rather than relying on severity alone?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Severity scores are calculated by the scanner and may contain errors; asset context provides a manual correction mechanism.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">The same severity finding can represent very different organizational risk depending on the asset's role, data type, business process linkage, and exposure. A medium finding on a PII database may require faster response than a critical finding on a dev VM with no sensitive data.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Severity alone is sufficient for technical teams; asset context is only needed for executive reporting purposes.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Asset context replaces severity as the primary prioritization signal — severity scores should be ignored when asset classification is available.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod4" onclick="markComplete('mod4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you've completed the asset-to-risk prioritization lab and created at least one contextualized treatment plan.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 5 -->
+      <section id="mod5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>Asset Evidence &amp; Reporting</h2>
+            <p class="phase-subtitle">20 min &bull; Reports, Vision &bull; Produce governance-ready asset summaries</p>
+          </div>
+        </div>
+
+        <h3>What counts as asset governance evidence</h3>
+        <p>Asset governance evidence is the documentation that proves assets are known, owned, classified, and governed. It is broader than scan results. Evidence may include:</p>
+        <ul>
+          <li><strong>Ownership records:</strong> named owner and managed entity assignments with timestamps</li>
+          <li><strong>Data classification decisions:</strong> documented rationale for sensitivity designations</li>
+          <li><strong>Architecture diagrams:</strong> showing where assets sit in data flows and trust zones</li>
+          <li><strong>Tagging policies:</strong> evidence that assets are tagged consistently with required governance metadata</li>
+          <li><strong>Scan results:</strong> timestamped scan outputs confirming the asset was evaluated and control states</li>
+          <li><strong>Remediation tickets:</strong> linked treatment plans or RiskOps projects showing active governance</li>
+          <li><strong>Backup proof:</strong> records confirming backup policies are configured and tested</li>
+          <li><strong>Access reviews:</strong> periodic confirmation that asset access is limited to authorized users</li>
+          <li><strong>Incident records:</strong> any security event linked to this asset and the response taken</li>
+          <li><strong>Third-party attestations:</strong> vendor confirmations for assets where remediation authority lies with a vendor</li>
+        </ul>
+
+        <h3>Using Vision for asset reporting — with required human validation</h3>
+        <p>Vision can help summarize asset posture, identify patterns in ownership gaps, and draft executive narratives from asset dashboard data. However, Vision outputs must include evidence references and pass human validation before they are shared as governance artifacts. A Vision asset summary that references specific asset counts and findings must be verified against current platform data before distribution.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Produce a governance-ready asset summary</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Reports</strong>. Open the <strong>Asset Governance</strong> report. Review the available report scopes: all assets, by managed entity, by provider, or by criticality tier.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Generate an asset governance report filtered to your Critical/High criticality assets. Review: ownership coverage, finding count, classification completeness, and open treatment plans.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Navigate to <strong>Vision &gt; Ask Vision</strong>. Request an asset posture summary: "Summarize our crown-jewel asset governance posture including top ownership gaps and highest-risk findings."</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Review the Vision output. Verify each cited metric against the Reports view. Correct any inaccuracies. Add evidence references (report export timestamp, scan run ID). Add your reviewer attestation.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Export the validated asset summary. This is your Lab deliverable: an asset governance review output suitable for leadership distribution.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod5">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Generate an asset governance report:</strong> Export a report for your Critical/High assets and distribute to managed entity owners as the starting point for their accountability review.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify evidence gaps by asset:</strong> For each crown-jewel asset, note which evidence types are missing from the list above. Create collection tasks for each gap.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Validate a Vision asset narrative:</strong> Generate, verify, and attest a Vision asset summary before treating it as a governance output.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Which of the following best represents a complete set of asset governance evidence for a crown-jewel database?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">A scanner report showing all checks passed on the most recent scan date.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Named ownership record, PII data classification with rationale, current scan result, linked treatment plan for open findings, most recent access review, and backup confirmation — together proving the asset is known, owned, classified, and actively governed.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">A Vision-generated asset summary approved by the security manager and stored in the document management system.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">A remediation ticket in Jira confirming that the most recent Critical finding was fixed within the SLA window.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod5" onclick="markComplete('mod5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you've generated an asset governance report and validated a Vision asset narrative.</span>
+        </div>
+      </section>
+
+
+      <!-- CERTIFICATION -->
+      <section id="certification" style="scroll-margin-top:80px;">
+        <h2>Certification: AiVRIC CloudSignals Asset Governance Practitioner</h2>
+        <p>Completing all five modules makes you eligible for the Asset Governance Practitioner certification exam.</p>
+
+        <table class="acad-table" style="margin-bottom:20px;">
+          <thead><tr><th>Exam domain</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td>Asset governance concepts</td><td>20%</td></tr>
+            <tr><td>Asset inventory and coverage</td><td>20%</td></tr>
+            <tr><td>Criticality and crown-jewel governance</td><td>20%</td></tr>
+            <tr><td>Findings and asset risk prioritization</td><td>25%</td></tr>
+            <tr><td>Evidence and reporting</td><td>15%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Capstone practical scenario</h3>
+        <p style="color:var(--ug-text-2);">A tenant has 350 monitored assets, several inactive resources, incomplete ownership metadata, and open findings on an identity platform and a payment database. Your task:</p>
+        <ol style="color:var(--ug-text-2);font-size:14px;line-height:2;">
+          <li>Identify the most critical assets using the five classification dimensions.</li>
+          <li>Explain why criticality changes remediation priority beyond severity alone.</li>
+          <li>Recommend ownership and evidence improvements for unowned or ungoverned assets.</li>
+          <li>Create a RiskOps action plan for the identity platform and payment database findings.</li>
+          <li>Draft a governance summary for leadership including coverage gaps and remediation status.</li>
+        </ol>
+
+        <div class="callout primary">
+          <strong>Passing criteria:</strong> Correctly identifies business-critical assets using classification dimensions. Uses asset context rather than severity alone. Produces clear evidence and ownership recommendations. Routes unresolved work into RiskOps with named owners and target dates. Executive summary uses business-impact language, not technical jargon.
+        </div>
+
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Asset Governance. Assets are now risk objects with ownership, context, and evidence — not just inventory records.</div>
+          <a href="index.html" class="acad-cert-btn"><i class="fas fa-th"></i> Explore more courses</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2 &middot; Asset Governance</span>
+  </footer>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'aivric_assetgov_v1';
+    var MODULES = ['mod1','mod2','mod3','mod4','mod5'];
+    function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+    function saveState(s) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {} }
+    var state = loadState();
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill'); var pctEl = document.getElementById('progress-pct');
+      if (fill) fill.style.width = pct + '%'; if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) { var cert = document.getElementById('cert-block'); if (cert) cert.classList.add('show'); }
+    }
+    window.setActive = function(el) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); el.classList.add('active'); };
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].complete = true; saveState(state);
+      var btn = document.getElementById('mc-' + moduleId); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      updateProgress();
+    };
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); }); el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = false;
+    };
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if (!selected) return;
+      block.dataset.answered = 'true'; var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = true;
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var feedback = document.getElementById('feedback-' + moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o) { if (o.querySelector('[data-correct="true"]')) o.classList.add('correct'); else if (o === selected && !isCorrect) o.classList.add('wrong'); });
+      if (feedback) {
+        var expl = {
+          mod1:{correct:'Correct. Asset governance answers five questions that inventory alone cannot — connecting assets to ownership, business context, risk, and proof of governance.',wrong:'Asset governance is not defined by tooling, legal requirement, or cloud scope. Its distinction is answering the five questions: what, who, why, what risk, and what proof.'},
+          mod2:{correct:'Correct. Inactive assets may still carry open findings, stale evidence, accepted risks, or unresolved treatment plans — all contributing to risk pressure regardless of activity state.',wrong:'Inactive assets are not automatically removed and can still contribute to governance gaps through open findings, stale evidence, and unresolved risks.'},
+          mod3:{correct:'Correct. Crown jewels are defined by disproportionate business impact — the combination of criticality, data sensitivity, exposure, dependency, and recoverability determines designation.',wrong:'Crown-jewel designation is a governance decision based on five business-impact dimensions, not finding count, age, or provider tagging.'},
+          mod4:{correct:'Correct. Asset context — role, data type, business linkage, exposure — determines organizational risk. The same severity finding can represent very different priority depending on the asset it\'s on.',wrong:'Asset context supplements severity — it doesn\'t correct scanner errors or apply only to executive reporting. Both severity and context together drive accurate prioritization.'},
+          mod5:{correct:'Correct. Comprehensive asset evidence spans multiple types: ownership, classification, scan results, treatments, access reviews, backup proof — together proving governance, not just technical state.',wrong:'A single scanner report, Vision summary, or Jira ticket each captures only one aspect of governance. Crown-jewel evidence requires multiple types covering ownership, classification, technical state, and active governance.'}
+        };
+        feedback.textContent = ''; var label = document.createElement('strong'); var msg = document.createElement('span');
+        if (isCorrect) { feedback.className = 'quiz-feedback correct'; label.textContent = 'Correct! '; msg.textContent = (expl[moduleId]||{correct:''}).correct; }
+        else { feedback.className = 'quiz-feedback wrong'; label.textContent = 'Not quite. '; msg.textContent = (expl[moduleId]||{wrong:''}).wrong; }
+        feedback.appendChild(label); feedback.appendChild(msg);
+      }
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].quizCorrect = isCorrect; saveState(state);
+    };
+    window.toggleAction = function(el) { el.classList.toggle('checked'); };
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      }
+    });
+    updateProgress();
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { var id = entry.target.id; var link = document.querySelector('[data-module="' + id + '"]'); if (link) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); } } }); }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+  })();
+  </script>
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true">
+    <button class="acad-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img src="" alt=""><div class="acad-lightbox-caption"></div>
+  </div>
+  <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
+</body>
+</html>

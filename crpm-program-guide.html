@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>CRPM Training Program Guide | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/crpm-program-guide.html">
+  <meta name="description" content="The complete CloudSignals+RiskOps Continuous Risk Posture Management (CRPM) training program — curriculum map, learning paths, audience guide, and delivery playbook for provider teams.">
+  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+  <style>
+    /* ── Doc-specific overrides ────────────────────────────── */
+    .doc-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 0 80px;
+      display: grid;
+      grid-template-columns: 240px 1fr 200px;
+      align-items: start;
+    }
+    .doc-sidebar {
+      border-right: 1px solid var(--ug-border);
+      padding: 28px 12px 60px;
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ug-border) transparent;
+    }
+    .doc-sidebar::-webkit-scrollbar { width: 3px; }
+    .doc-sidebar::-webkit-scrollbar-thumb { background: var(--ug-border); border-radius: 4px; }
+    .doc-nav-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--ug-muted);
+      margin: 0 0 5px 8px; display: block;
+    }
+    .doc-nav-link {
+      display: flex; align-items: center;
+      padding: 6px 8px; margin-bottom: 1px;
+      border-radius: var(--ug-radius-sm);
+      color: var(--ug-muted-2); border: 1px solid transparent;
+      transition: color .12s, background .12s;
+      font-size: 13px; font-weight: 500; line-height: 1.35;
+      text-decoration: none;
+    }
+    .doc-nav-link:hover { color: var(--ug-text); background: rgba(255,255,255,.04); }
+    .doc-nav-link.active { color: var(--ug-cyan); background: rgba(0,209,255,.08); border-color: rgba(0,209,255,.18); font-weight: 600; }
+    .doc-nav-section { margin-bottom: 20px; }
+    .doc-content {
+      padding: 40px 48px 60px;
+      min-width: 0;
+    }
+    .doc-content h1 { font-family: "Jost","Inter",sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -.5px; color: var(--ug-text); margin: 0 0 10px; line-height: 1.2; }
+    .doc-content h2 { font-family: "Jost","Inter",sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -.3px; color: var(--ug-text); margin: 44px 0 10px; padding-top: 44px; border-top: 1px solid var(--ug-border); scroll-margin-top: 80px; }
+    .doc-content h2:first-of-type { margin-top: 28px; }
+    .doc-content h3 { font-size: 15.5px; font-weight: 700; color: var(--ug-text); margin: 28px 0 7px; }
+    .doc-content h4 { font-size: 11.5px; font-weight: 700; color: var(--ug-text-2); margin: 22px 0 5px; text-transform: uppercase; letter-spacing: .7px; }
+    .doc-content p { color: var(--ug-text-2); line-height: 1.75; margin: 0 0 14px; }
+    .doc-content ul, .doc-content ol { color: var(--ug-text-2); padding-left: 22px; margin: 0 0 14px; }
+    .doc-content li { margin-bottom: 5px; line-height: 1.65; }
+    .doc-content strong { color: var(--ug-text); font-weight: 600; }
+    .doc-content a { color: var(--ug-cyan); }
+    .doc-content a:hover { color: #40dcff; }
+    .doc-toc {
+      padding: 28px 14px 60px;
+      position: sticky; top: 60px; height: calc(100vh - 60px);
+      overflow-y: auto; border-left: 1px solid var(--ug-border);
+      scrollbar-width: thin; scrollbar-color: var(--ug-border) transparent;
+    }
+    .doc-toc-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--ug-muted); margin: 0 0 10px 6px; display: block; }
+    .doc-toc-links { display: grid; gap: 1px; }
+    .doc-toc-links a { font-size: 12px; color: var(--ug-muted-2); padding: 4px 8px; border-radius: 6px; display: block; line-height: 1.4; transition: color .12s, background .12s; }
+    .doc-toc-links a:hover { color: var(--ug-text); background: rgba(255,255,255,.04); }
+    /* curriculum matrix */
+    .curriculum-matrix { display: grid; gap: 12px; margin: 14px 0 22px; }
+    .cm-row {
+      display: grid; grid-template-columns: 36px 1fr auto auto auto;
+      gap: 12px; align-items: center;
+      padding: 14px 16px;
+      background: var(--ug-surface); border: 1px solid var(--ug-border);
+      border-radius: var(--ug-radius); transition: border-color .18s;
+    }
+    .cm-row:hover { border-color: var(--ug-border-2); }
+    .cm-row.featured { border-color: rgba(0,209,255,.2); }
+    .cm-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; font-family: "Jost",sans-serif;
+    }
+    .cm-num.cyan   { background: rgba(0,209,255,.12);  color: var(--ug-cyan);   border: 1px solid rgba(0,209,255,.25);  }
+    .cm-num.green  { background: rgba(46,229,157,.12); color: var(--ug-green);  border: 1px solid rgba(46,229,157,.25); }
+    .cm-num.amber  { background: rgba(255,214,58,.12); color: var(--ug-amber);  border: 1px solid rgba(255,214,58,.25); }
+    .cm-num.purple { background: rgba(167,139,250,.12);color: var(--ug-purple); border: 1px solid rgba(167,139,250,.25);}
+    .cm-body {}
+    .cm-title { font-size: 14px; font-weight: 700; color: var(--ug-text); margin: 0 0 2px; }
+    .cm-desc  { font-size: 12.5px; color: var(--ug-muted-2); line-height: 1.45; }
+    .cm-meta  { font-size: 12px; color: var(--ug-muted-2); white-space: nowrap; }
+    .cm-audience { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+    .cm-audience.provider { background: rgba(0,209,255,.1);  color: #7ee8ff; border: 1px solid rgba(0,209,255,.2);  }
+    .cm-audience.admin    { background: rgba(167,139,250,.1);color: #c4b0fe; border: 1px solid rgba(167,139,250,.2);}
+    .cm-audience.all      { background: rgba(46,229,157,.1);  color: #6effc5; border: 1px solid rgba(46,229,157,.2); }
+    /* learning paths */
+    .learning-path {
+      background: var(--ug-surface); border: 1px solid var(--ug-border);
+      border-radius: var(--ug-radius-lg); padding: 20px 22px; margin-bottom: 12px;
+    }
+    .lp-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+    .lp-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .lp-icon.cyan   { background: rgba(0,209,255,.12);  color: var(--ug-cyan);   }
+    .lp-icon.green  { background: rgba(46,229,157,.12); color: var(--ug-green);  }
+    .lp-icon.purple { background: rgba(167,139,250,.12);color: var(--ug-purple); }
+    .lp-title { font-size: 15px; font-weight: 700; color: var(--ug-text); margin: 0 0 3px; }
+    .lp-audience { font-size: 12.5px; color: var(--ug-muted-2); }
+    .lp-steps { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .lp-step { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ug-text-2); }
+    .lp-step-badge {
+      font-size: 11px; font-weight: 700; padding: 3px 9px;
+      border-radius: 999px; white-space: nowrap;
+      background: rgba(255,255,255,.05); border: 1px solid var(--ug-border-2);
+      color: var(--ug-muted-2);
+    }
+    .lp-arrow { color: var(--ug-muted); font-size: 13px; }
+    /* delivery table */
+    .delivery-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13px; }
+    .delivery-table th { background: var(--ug-surface); color: var(--ug-text); font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid var(--ug-border); font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+    .delivery-table td { color: var(--ug-text-2); padding: 9px 14px; border: 1px solid var(--ug-border); vertical-align: top; line-height: 1.55; }
+    .delivery-table tr:nth-child(even) td { background: rgba(255,255,255,.015); }
+    @media(max-width:1100px){ .doc-shell { grid-template-columns: 220px 1fr; } .doc-toc { display: none; } }
+    @media(max-width:860px){
+      .doc-shell { grid-template-columns: 1fr; }
+      .doc-sidebar { display: none; border: none; border-bottom: 1px solid var(--ug-border); padding: 16px; position: relative; top: unset; height: auto; }
+      .doc-content { padding: 28px 20px 48px; }
+      .cm-row { grid-template-columns: 36px 1fr; }
+      .cm-meta, .cm-audience { display: none; }
+    }
+  </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EG2Q8GD30V');
+</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html">
+        <img src="../assets/images/logo/aivric.svg" alt="AiVRIC">
+        <span class="acad-brand-sep"></span>
+        <span class="acad-brand-sub">Academy</span>
+      </a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="../AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="../support.html">Support</a>
+        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.querySelector('.doc-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div class="doc-shell">
+    <aside class="doc-sidebar">
+      <div class="doc-nav-section">
+        <p class="doc-nav-label">Program Guide</p>
+        <a class="doc-nav-link active" href="#overview">Overview</a>
+        <a class="doc-nav-link" href="#audience">Audience Guide</a>
+        <a class="doc-nav-link" href="#curriculum">Curriculum Map</a>
+        <a class="doc-nav-link" href="#paths">Learning Paths</a>
+        <a class="doc-nav-link" href="#prerequisites">Prerequisites</a>
+        <a class="doc-nav-link" href="#delivery">Delivery Guide</a>
+        <a class="doc-nav-link" href="#success">Success Metrics</a>
+        <a class="doc-nav-link" href="#resources">Resources</a>
+      </div>
+      <div class="doc-nav-section">
+        <p class="doc-nav-label">Courses</p>
+        <a class="doc-nav-link" href="provider-onboarding.html">Provider Onboarding</a>
+        <a class="doc-nav-link" href="provider-admin.html">Provider Admin &amp; CRPM Ops</a>
+        <a class="doc-nav-link" href="riskops-getting-started.html">Getting Started: RiskOps</a>
+      </div>
+      <div class="doc-nav-section">
+        <p class="doc-nav-label">Reference</p>
+        <a class="doc-nav-link" href="../AiVRIC-UserGuide/cloudsignals-riskops.html">CloudSignals Docs</a>
+        <a class="doc-nav-link" href="../AiVRIC-UserGuide/connectors.html">Connector Guides</a>
+        <a class="doc-nav-link" href="index.html">All Courses</a>
+      </div>
+    </aside>
+
+    <main class="doc-content">
+      <span class="badge purple"><i class="fas fa-map"></i> Program Guide</span>
+      <h1 style="margin-top:10px;">CRPM Training Program</h1>
+      <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">
+        The CloudSignals+RiskOps Continuous Risk Posture Management (CRPM) training program equips provider teams, provider administrators, and security practitioners with the knowledge and workflows to launch, operate, and scale a CloudSignals-powered risk management service.
+      </p>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 28px;">
+        <span class="tag">3 courses</span>
+        <span class="tag">~2.5 hrs total</span>
+        <span class="tag">Provider + Practitioner tracks</span>
+        <span class="tag">Self-paced &amp; instructor-led</span>
+      </div>
+
+      <!-- ─── OVERVIEW ─── -->
+      <h2 id="overview">Program overview</h2>
+      <p>
+        CRPM is not a single compliance posture check — it is an operational discipline that requires continuous execution across five linked stages: asset inventory, findings triage, business process mapping, risk treatment, and governance closure. For white-label providers, CRPM also requires a second operational layer: managing the platform itself, onboarding clients, configuring entitlements, and running a repeatable support and reporting process.
+      </p>
+      <p>This training program addresses both layers:</p>
+
+      <div class="acad-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+        <div class="acad-card">
+          <h3><i class="fas fa-building" style="color:var(--ug-cyan);margin-right:7px;"></i>Provider layer</h3>
+          <p>How to stand up, operate, and grow a CloudSignals-powered service. Covers launch phases, client onboarding, GRC administration, RiskOps entitlements, branding, and operating cadence.</p>
+        </div>
+        <div class="acad-card">
+          <h3><i class="fas fa-shield-alt" style="color:var(--ug-green);margin-right:7px;"></i>Practitioner layer</h3>
+          <p>How to execute the end-to-end RiskOps flow inside a CloudSignals tenant — assets, findings, business processes, treatments, and governance — as a repeatable operational process.</p>
+        </div>
+      </div>
+
+      <!-- Screenshot: Live CloudSignals platform overview -->
+      <figure class="acad-figure" onclick="openLightbox(this)" title="Click to expand" style="opacity:1;transform:none;">
+        <span class="fig-chip"><i class="fas fa-circle" style="color:#2ee59d;"></i> CloudSignals+RiskOps &mdash; Live app</span>
+        <span class="fig-expand-hint"><i class="fas fa-expand-alt"></i> Expand</span>
+        <img src="screenshots/overview-dashboard.png" alt="CloudSignals Command Center dashboard showing posture threat score, active findings by severity, threat map with global signal coverage, and control plane activity panels" loading="lazy">
+        <figcaption class="acad-caption"><strong>CloudSignals+RiskOps</strong> — the platform this training program teaches. Every course in the CRPM program maps to a specific workflow visible from this command center: assets, findings, risk governance, treatments, and governance closure.</figcaption>
+      </figure>
+
+      <div class="callout primary">
+        <strong>How to use this guide:</strong> Program managers and training leads should read this document first. Individual learners should go directly to the <a href="#paths">Learning Paths</a> section to find their recommended course sequence, then start with the first course in their path.
+      </div>
+
+      <!-- ─── AUDIENCE ─── -->
+      <h2 id="audience">Audience guide</h2>
+      <p>The CRPM program serves four primary audience groups. Use the table below to route individuals to the correct courses before training begins.</p>
+
+      <table class="delivery-table">
+        <thead>
+          <tr><th>Audience</th><th>Role examples</th><th>Recommended courses</th><th>Est. time</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Provider launch team</strong></td>
+            <td>Provider admin, operations lead, delivery manager, client success manager</td>
+            <td>Provider Onboarding Foundations → Provider Admin &amp; CRPM Ops → Getting Started with RiskOps</td>
+            <td>~2.5 hrs</td>
+          </tr>
+          <tr>
+            <td><strong>Provider administrator</strong></td>
+            <td>IT/platform admin, tenant owner, GRC admin, support lead</td>
+            <td>Provider Admin &amp; CRPM Ops → Getting Started with RiskOps</td>
+            <td>~1.75 hrs</td>
+          </tr>
+          <tr>
+            <td><strong>Provider operator</strong></td>
+            <td>Security analyst, cloud risk analyst, GRC analyst, compliance specialist</td>
+            <td>Provider Onboarding Foundations (Modules 4–6 only) → Getting Started with RiskOps</td>
+            <td>~1.25 hrs</td>
+          </tr>
+          <tr>
+            <td><strong>Client practitioner</strong></td>
+            <td>Security engineer, risk owner, compliance analyst, CISO/vCISO</td>
+            <td>Getting Started with RiskOps</td>
+            <td>~45 min</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ─── CURRICULUM ─── -->
+      <h2 id="curriculum">Curriculum map</h2>
+      <p>The program consists of three courses, designed to be taken in sequence within each learning path. Each course is self-contained and may also be taken independently based on role.</p>
+
+      <div class="curriculum-matrix">
+        <div class="cm-row">
+          <div class="cm-num cyan">P1</div>
+          <div class="cm-body">
+            <div class="cm-title"><a href="provider-onboarding.html">Provider Onboarding Foundations</a></div>
+            <div class="cm-desc">The provider operating model, launch phases, branding, client onboarding workflow, findings quality, and reporting cadence. Builds the foundation for operating CloudSignals as a provider service.</div>
+          </div>
+          <div class="cm-meta"><i class="fas fa-clock"></i> ~45 min<br>6 modules</div>
+          <div><span class="cm-audience provider">Provider team</span></div>
+        </div>
+        <div class="cm-row">
+          <div class="cm-num purple">P2</div>
+          <div class="cm-body">
+            <div class="cm-title"><a href="provider-admin.html">Provider Admin &amp; CRPM Operations</a></div>
+            <div class="cm-desc">Provider Console administration, client lifecycle management, branding configuration, GRC Administration (managed entities, GRC users), RiskOps entitlement control, AI configuration, and operating cadence.</div>
+          </div>
+          <div class="cm-meta"><i class="fas fa-clock"></i> ~60 min<br>7 modules</div>
+          <div><span class="cm-audience admin">Admin</span></div>
+        </div>
+        <div class="cm-row featured">
+          <div class="cm-num green">R1</div>
+          <div class="cm-body">
+            <div class="cm-title"><a href="riskops-getting-started.html">Getting Started with RiskOps</a></div>
+            <div class="cm-desc">The end-to-end RiskOps practitioner flow: asset inventory, findings triage, business process mapping, treatment planning, and governance closure. Applicable to both provider operators and client practitioners.</div>
+          </div>
+          <div class="cm-meta"><i class="fas fa-clock"></i> ~45 min<br>5 modules</div>
+          <div><span class="cm-audience all">All roles</span></div>
+        </div>
+      </div>
+
+      <h3>Module index</h3>
+      <p>The following table maps every module across all three courses, its learning objective, and the role it is most relevant to.</p>
+
+      <table class="delivery-table">
+        <thead>
+          <tr><th>Course</th><th>Module</th><th>Primary learning objective</th><th>Audience</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>P1</td><td>1 — The Provider Model</td><td>Understand what a white-label provider tenant is, the core role hierarchy, and where responsibility lies</td><td>All provider staff</td></tr>
+          <tr><td>P1</td><td>2 — Launch Phases</td><td>Execute the five launch phases from tenant readiness through operational rollout</td><td>Provider admin, delivery lead</td></tr>
+          <tr><td>P1</td><td>3 — Branding &amp; Portal Setup</td><td>Complete the branding checklist and verify a client-ready portal</td><td>Provider admin</td></tr>
+          <tr><td>P1</td><td>4 — Client Onboarding Workflow</td><td>Follow the nine-step workflow to connect a client environment and validate the first scan</td><td>Provider operator</td></tr>
+          <tr><td>P1</td><td>5 — Operating Findings &amp; Risk Register</td><td>Triage findings to the correct disposition and populate the Risk Register with business context</td><td>Provider operator</td></tr>
+          <tr><td>P1</td><td>6 — Reporting &amp; Client Reviews</td><td>Plan and deliver client-facing operating reviews at the correct cadence</td><td>Provider operator, client success</td></tr>
+          <tr><td>P2</td><td>1 — Provider Console</td><td>Navigate and use the Provider Console dashboard as a daily operations tool</td><td>Provider admin</td></tr>
+          <tr><td>P2</td><td>2 — Client Lifecycle Management</td><td>Manage clients across all lifecycle states from onboarding through offboarding</td><td>Provider admin</td></tr>
+          <tr><td>P2</td><td>3 — Branding Administration</td><td>Configure, publish, and validate provider branding including logo, colors, and light/dark mode</td><td>Provider admin</td></tr>
+          <tr><td>P2</td><td>4 — GRC Administration</td><td>Create managed entities and GRC users in the correct order and maintain entity associations</td><td>GRC admin</td></tr>
+          <tr><td>P2</td><td>5 — RiskOps Entitlement</td><td>Enable or disable RiskOps for a tenant and verify the expected navigation and GRC behavior after each state change</td><td>Provider admin</td></tr>
+          <tr><td>P2</td><td>6 — AI Configuration</td><td>Distinguish Vision AI from GRC AI, configure both areas, and validate each independently</td><td>Provider admin, GRC admin</td></tr>
+          <tr><td>P2</td><td>7 — Operating Cadence &amp; Quality</td><td>Run the daily, weekly, monthly, and quarterly admin review rhythms and apply provider quality standards</td><td>Provider admin</td></tr>
+          <tr><td>R1</td><td>1 — Asset Inventory</td><td>Understand the role of assets as the anchor for the risk chain and identify ownership gaps</td><td>All</td></tr>
+          <tr><td>R1</td><td>2 — Findings Triage</td><td>Disposition every Critical and High finding using the Remediate / Mitigate / Accept framework</td><td>All</td></tr>
+          <tr><td>R1</td><td>3 — Business Process Mapping</td><td>Create business process records, link supporting assets, and close mapping gaps</td><td>Risk owner, GRC analyst</td></tr>
+          <tr><td>R1</td><td>4 — Treatment Planning</td><td>Create treatment plans for every dispositioned finding with an owner, type, and target date</td><td>Risk owner, security analyst</td></tr>
+          <tr><td>R1</td><td>5 — Governance &amp; Closure</td><td>Work the pending decisions queue and establish a recurring governance approval cadence</td><td>Risk owner, provider admin</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ─── PATHS ─── -->
+      <h2 id="paths">Learning paths</h2>
+      <p>Three defined learning paths route learners through the curriculum based on their role and time horizon.</p>
+
+      <div class="learning-path">
+        <div class="lp-header">
+          <div class="lp-icon cyan"><i class="fas fa-rocket"></i></div>
+          <div>
+            <div class="lp-title">Provider Launch Path</div>
+            <div class="lp-audience">For: Provider admin, delivery manager, client success lead &bull; ~2.5 hrs &bull; Complete before go-live</div>
+          </div>
+        </div>
+        <div class="lp-steps">
+          <div class="lp-step"><span class="lp-step-badge">P1 Provider Onboarding Foundations</span></div>
+          <div class="lp-arrow">&#8594;</div>
+          <div class="lp-step"><span class="lp-step-badge">P2 Provider Admin &amp; CRPM Ops</span></div>
+          <div class="lp-arrow">&#8594;</div>
+          <div class="lp-step"><span class="lp-step-badge">R1 Getting Started with RiskOps</span></div>
+        </div>
+        <p style="margin:12px 0 0;font-size:13px;color:var(--ug-muted-2);">Take all three courses in sequence before the first client onboarding. P1 and P2 establish the provider operating model; R1 builds the practitioner capability needed to operate findings and risk workflows with and for clients.</p>
+      </div>
+
+      <div class="learning-path">
+        <div class="lp-header">
+          <div class="lp-icon purple"><i class="fas fa-cogs"></i></div>
+          <div>
+            <div class="lp-title">Provider Admin Path</div>
+            <div class="lp-audience">For: Platform admin, GRC admin, support lead &bull; ~1.75 hrs &bull; Complete within first week</div>
+          </div>
+        </div>
+        <div class="lp-steps">
+          <div class="lp-step"><span class="lp-step-badge">P2 Provider Admin &amp; CRPM Ops</span></div>
+          <div class="lp-arrow">&#8594;</div>
+          <div class="lp-step"><span class="lp-step-badge">R1 Getting Started with RiskOps</span></div>
+        </div>
+        <p style="margin:12px 0 0;font-size:13px;color:var(--ug-muted-2);">Start with P2 to master the Provider Console, GRC Administration, and RiskOps entitlement controls. Follow with R1 to understand the operational risk workflows your users will run — required context for effective support and escalation.</p>
+      </div>
+
+      <div class="learning-path">
+        <div class="lp-header">
+          <div class="lp-icon green"><i class="fas fa-shield-alt"></i></div>
+          <div>
+            <div class="lp-title">Practitioner Path</div>
+            <div class="lp-audience">For: Security analyst, risk owner, GRC analyst, client practitioner, vCISO &bull; ~45–75 min &bull; Complete before first triage session</div>
+          </div>
+        </div>
+        <div class="lp-steps">
+          <div class="lp-step"><span class="lp-step-badge">R1 Getting Started with RiskOps</span></div>
+          <div class="lp-arrow">&#8594;</div>
+          <div class="lp-step" style="font-size:13px;color:var(--ug-muted-2);">(Optional) P1 Modules 4–6</div>
+        </div>
+        <p style="margin:12px 0 0;font-size:13px;color:var(--ug-muted-2);">Start with R1 for the end-to-end practitioner RiskOps flow. Provider-side operators may also want P1 Modules 4, 5, and 6 for findings quality and reporting context — especially if they present results directly to clients.</p>
+      </div>
+
+      <!-- ─── PREREQUISITES ─── -->
+      <h2 id="prerequisites">Prerequisites</h2>
+      <h3>For all courses</h3>
+      <ul>
+        <li>Access to a CloudSignals provider portal or tenant (for hands-on exercises).</li>
+        <li>At least one cloud provider connector configured and at least one scan completed.</li>
+        <li>Basic familiarity with cloud environments (AWS, Azure, or GCP) — no advanced knowledge required.</li>
+      </ul>
+      <h3>For P2 — Provider Admin &amp; CRPM Operations</h3>
+      <ul>
+        <li>Provider Administrator role in the CloudSignals provider tenant.</li>
+        <li>Access to the Provider Console.</li>
+        <li>Branding assets available (logo, favicon, colors).</li>
+        <li>At least one managed entity or client to practice GRC workflows.</li>
+      </ul>
+      <h3>For R1 — Getting Started with RiskOps</h3>
+      <ul>
+        <li>At least one completed scan with visible findings in the tenant.</li>
+        <li>RiskOps entitlement enabled (contact your Provider Admin if the RiskOps module is not visible).</li>
+      </ul>
+
+      <!-- ─── DELIVERY ─── -->
+      <h2 id="delivery">Delivery guide</h2>
+      <h3>Self-paced delivery</h3>
+      <p>All courses are available as self-paced HTML training on this Academy. Each course includes interactive checklists, knowledge check quizzes, and a progress bar that persists across sessions via browser storage. Learners can complete modules across multiple sessions.</p>
+      <p><strong>Recommended self-paced schedule:</strong></p>
+      <ul>
+        <li><strong>Day 1:</strong> Complete P1 — Provider Onboarding Foundations.</li>
+        <li><strong>Day 2:</strong> Complete P2 — Provider Admin &amp; CRPM Operations.</li>
+        <li><strong>Day 3:</strong> Complete R1 — Getting Started with RiskOps.</li>
+        <li><strong>Day 3–5:</strong> Apply exercises to live tenant with pilot client.</li>
+      </ul>
+
+      <h3>Instructor-led delivery (90-minute format)</h3>
+      <p>For provider launch training events, the following 90-minute agenda covers the most critical operational content from all three courses:</p>
+
+      <table class="delivery-table">
+        <thead><tr><th>Segment</th><th>Content</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td>Welcome</td><td>Program overview, learning path for audience, what to expect from today.</td><td>5 min</td></tr>
+          <tr><td>Provider model</td><td>P1 Module 1 — White-label tenant, roles, responsibilities, where the boundaries are.</td><td>10 min</td></tr>
+          <tr><td>Launch phases</td><td>P1 Module 2 — Five phases, first 30-day plan, what "ready" looks like per phase.</td><td>10 min</td></tr>
+          <tr><td>Admin demo</td><td>P2 Modules 1–3 — Provider Console live walk, branding publish, client record creation.</td><td>15 min</td></tr>
+          <tr><td>GRC &amp; RiskOps admin</td><td>P2 Modules 4–5 — Managed entity setup, GRC user creation, RiskOps entitlement toggle.</td><td>10 min</td></tr>
+          <tr><td>RiskOps practitioner flow</td><td>R1 Modules 1–5 — Full RiskOps chain demonstration in live or demo tenant.</td><td>20 min</td></tr>
+          <tr><td>Client onboarding &amp; findings</td><td>P1 Modules 4–5 — Connect an environment, triage findings, Risk Register entry.</td><td>10 min</td></tr>
+          <tr><td>Q&amp;A and next steps</td><td>Open questions. Each attendee confirms their learning path and next action.</td><td>10 min</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Hands-on exercises (post-training)</h3>
+      <p>After completing training, each attendee should execute the following exercises in their assigned tenant:</p>
+      <ol>
+        <li>Confirm sign-in and verify their role grants correct navigation access.</li>
+        <li>Review the Provider Console dashboard and identify the RiskOps module state.</li>
+        <li>Verify or update branding in light and dark mode.</li>
+        <li>Create one managed entity for a pilot client.</li>
+        <li>Create one GRC user and associate them to the managed entity.</li>
+        <li>Run a scan on the pilot client environment and review findings.</li>
+        <li>Triage three findings using the Remediate / Mitigate / Accept framework.</li>
+        <li>Create one treatment plan for a Critical or High finding.</li>
+        <li>Process one pending governance decision.</li>
+        <li>Prepare a one-page client findings summary and confirm the report format.</li>
+      </ol>
+
+      <!-- ─── SUCCESS ─── -->
+      <h2 id="success">Training success metrics</h2>
+      <p>Use the following metrics to assess training effectiveness and identify gaps that need reinforcement.</p>
+
+      <table class="delivery-table">
+        <thead><tr><th>Metric</th><th>Target</th><th>How to measure</th></tr></thead>
+        <tbody>
+          <tr><td>Course completion rate</td><td>100% of launch team completes P1 and P2 before go-live; 100% of operators completes R1 before first client scan</td><td>Academy progress bar; completion certificate download</td></tr>
+          <tr><td>Time to first client scan</td><td>Within 5 business days of provider tenant provisioning</td><td>Provider Console scan history</td></tr>
+          <tr><td>Findings triage rate — Week 1</td><td>All Critical findings triaged within 24 hours of first scan</td><td>Findings queue; pending decisions count</td></tr>
+          <tr><td>Managed entity completeness</td><td>At least one managed entity per client, with assigned owner, before first client review</td><td>GRC Administration — Managed Entities list</td></tr>
+          <tr><td>Treatment plan coverage</td><td>All Critical findings have a treatment plan before first governance review</td><td>RiskOps — Treatments</td></tr>
+          <tr><td>First client review delivery</td><td>Within 7 days of initial scan</td><td>Report distribution log; client confirmation</td></tr>
+          <tr><td>Quiz pass rate (knowledge checks)</td><td>Correct answer on first attempt &gt;80% across all modules</td><td>Module quiz results</td></tr>
+          <tr><td>Support escalation rate — Month 1</td><td>No more than one platform escalation per provider per week after go-live</td><td>Support case log</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ─── RESOURCES ─── -->
+      <h2 id="resources">Resources and reference</h2>
+      <div class="acad-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+        <div class="acad-card">
+          <h3>Provider Onboarding<br>Foundations</h3>
+          <p>Provider model, launch phases, client onboarding, findings quality, reporting cadence.</p>
+          <a href="provider-onboarding.html">Start course &rarr;</a>
+        </div>
+        <div class="acad-card">
+          <h3>Provider Admin &amp;<br>CRPM Operations</h3>
+          <p>Provider Console, GRC Admin, RiskOps entitlement, AI config, operating cadence.</p>
+          <a href="provider-admin.html">Start course &rarr;</a>
+        </div>
+        <div class="acad-card">
+          <h3>Getting Started<br>with RiskOps</h3>
+          <p>Asset inventory, findings triage, business process mapping, treatments, governance.</p>
+          <a href="riskops-getting-started.html">Start course &rarr;</a>
+        </div>
+        <div class="acad-card">
+          <h3>CloudSignals Platform<br>Guide</h3>
+          <p>Full reference documentation including connector setup, compliance mapping, and API reference.</p>
+          <a href="../AiVRIC-UserGuide/index.html">Open guide &rarr;</a>
+        </div>
+        <div class="acad-card">
+          <h3>Connector Setup</h3>
+          <p>Step-by-step instructions for connecting AWS, Azure, GCP, Kubernetes, GitHub, and more.</p>
+          <a href="../AiVRIC-UserGuide/connectors.html">View connectors &rarr;</a>
+        </div>
+        <div class="acad-card">
+          <h3>Support</h3>
+          <p>Live working sessions, guided setup, and escalation to AiVRIC for platform issues.</p>
+          <a href="../support.html">Get support &rarr;</a>
+        </div>
+      </div>
+
+      <div class="callout warn" style="margin-top:8px;">
+        <strong>Training content updates:</strong> Course content is reviewed when major product changes are released. If you find content that doesn't match the current platform experience, contact <a href="mailto:support@aivric.com">support@aivric.com</a> with the page and section.
+      </div>
+    </main>
+
+    <aside class="doc-toc">
+      <p class="doc-toc-title">On this page</p>
+      <div class="doc-toc-links">
+        <a href="#overview">Overview</a>
+        <a href="#audience">Audience guide</a>
+        <a href="#curriculum">Curriculum map</a>
+        <a href="#paths">Learning paths</a>
+        <a href="#prerequisites">Prerequisites</a>
+        <a href="#delivery">Delivery guide</a>
+        <a href="#success">Success metrics</a>
+        <a href="#resources">Resources</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v1 &middot; CRPM Program Guide</span>
+  </footer>
+
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
+    <button class="acad-lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+    <img src="" alt="">
+    <div class="acad-lightbox-caption"></div>
+  </div>
+
+  <script>
+  function openLightbox(figure) {
+    var img = figure.querySelector('img');
+    var cap = figure.querySelector('figcaption');
+    var lb  = document.getElementById('acad-lightbox');
+    if (!lb || !img) return;
+    lb.querySelector('img').src = img.src;
+    lb.querySelector('img').alt = img.alt;
+    var lbCap = lb.querySelector('.acad-lightbox-caption');
+    if (lbCap) lbCap.textContent = cap ? cap.textContent.replace('↑','').trim() : '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    var lb = document.getElementById('acad-lightbox');
+    if (lb) { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+  // Make the one figure immediately visible (doc page, no scroll-reveal needed)
+  document.querySelectorAll('.acad-figure').forEach(function(el){ el.classList.add('visible'); });
+  </script>
+</body>
+</html>

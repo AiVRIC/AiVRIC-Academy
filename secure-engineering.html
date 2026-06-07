@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Engineering &amp; Architecture | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/secure-engineering.html">
+  <meta name="description" content="Translate UCB controls into engineering requirements, create architecture evidence, route design gaps into RiskOps, and use Vision for design review. AiVRIC Academy.">
+  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html"><img src="../assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="../AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="../support.html">Support</a>
+        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Secure Engineering &amp; Architecture</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Overview</span><span class="acad-mod-sub">Audience, outcomes, platform areas</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod1" data-module="mod1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Secure Architecture Governance</span><span class="acad-mod-sub">Domain Explorer — why controls exist</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod2" data-module="mod2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Control-Driven Requirements</span><span class="acad-mod-sub">Control Library — translate to design</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod3" data-module="mod3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Engineering Evidence</span><span class="acad-mod-sub">Evidence Fabric — architecture artifacts</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod4" data-module="mod4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">RiskOps Execution</span><span class="acad-mod-sub">Projects, Request Hub — design gaps</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod5" data-module="mod5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Secure Change &amp; Exceptions</span><span class="acad-mod-sub">Exceptions, SLA Policies</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod6" data-module="mod6" onclick="setActive(this)">
+          <div class="acad-mod-icon">6</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">AI-Assisted Design Review</span><span class="acad-mod-sub">Vision — narratives and validation</span></div>
+        </a>
+        <a class="acad-module-item" href="#certification" data-module="certification" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9670;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Certification &amp; Capstone</span><span class="acad-mod-sub">Exam blueprint and scenario</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="cloud-security.html"><i class="fas fa-arrow-right"></i> Next: Cloud Security</a>
+      <a class="acad-sidebar-link" href="../support.html"><i class="fas fa-life-ring"></i> Support</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <section id="overview" style="scroll-margin-top:80px;">
+        <span class="badge" style="background:rgba(245,158,11,.15);color:var(--ug-amber);"><i class="fas fa-drafting-compass"></i> AiVRIC Secure Engineering &amp; Architecture Foundations &bull; Practitioner</span>
+        <h1 style="margin-top:10px;">Secure Engineering &amp; Architecture</h1>
+        <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">Secure engineering and architecture is the practice of translating governance expectations into design decisions, build requirements, review gates, evidence, and accountable remediation work. In CloudSignals+RiskOps, engineering teams can use the UCB control library, domains, principles, Assessment Objectives, evidence requirements, and RiskOps workflows to embed security and privacy into architecture and delivery.</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 24px;">
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> Topic course: ~90 min &bull; Certification path: 5–8 hrs</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 6 modules + capstone</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-signal"></i> Intermediate to Advanced</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-certificate" style="color:var(--ug-amber)"></i> Certification eligible</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;">
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-amber);margin-bottom:10px;"><i class="fas fa-users" style="margin-right:5px;"></i>Who this course is for</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Security architects and cloud architects</li>
+              <li>DevSecOps and platform engineers</li>
+              <li>Application security teams</li>
+              <li>Engineering managers</li>
+              <li>Control owners responsible for technical implementation</li>
+            </ul>
+          </div>
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-amber);margin-bottom:10px;"><i class="fas fa-check-circle" style="margin-right:5px;"></i>Prerequisites</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Basic knowledge of cloud architecture and software delivery</li>
+              <li>Familiarity with security controls and risk management</li>
+              <li>Access to Governance &amp; Assurance and RiskOps project workflows</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-top:0;padding-top:0;border-top:none;">What you will be able to do</h2>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:20px;">
+          <li>Translate UCB controls into secure engineering requirements.</li>
+          <li>Use domains and principles to explain why architecture controls exist.</li>
+          <li>Create evidence expectations for architecture and engineering controls.</li>
+          <li>Route design gaps into RiskOps projects and work items with owner, due date, and verification plan.</li>
+          <li>Manage secure change, exceptions, and compensating controls.</li>
+          <li>Use Vision to draft secure architecture narratives with human review and validation.</li>
+        </ol>
+
+        <div class="callout primary" style="margin-top:16px;">
+          <strong>Platform areas used in this course:</strong> Governance &amp; Assurance, Domain Explorer, Control Library, Program Builder, Evidence Fabric, RiskOps Projects, Request Hub, SLA Policies, Exceptions, Vision. Navigate to <strong>Governance &amp; Assurance &gt; Domain Explorer</strong> to begin.
+        </div>
+        <div class="callout warn" style="margin-top:12px;">
+          <strong>AI advisory statement:</strong> Vision can explain architecture risks, summarize control requirements, and draft review narratives — but Vision should not approve architecture or certify compliance. All Vision outputs require human review, correction, and attestation before use as governance or audit evidence.
+        </div>
+      </section>
+
+
+      <section id="mod1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>Secure Architecture Governance</h2>
+            <p class="phase-subtitle">15 min &bull; Domain Explorer &bull; Explain architecture control rationale</p>
+          </div>
+        </div>
+
+        <h3>Controls are more effective when engineers understand why they exist</h3>
+        <p>Secure architecture begins with principles. UCB domains and principles help explain control intent in business and technical terms — moving engineering teams from "the policy requires this" to "this control exists because..." Engineers who understand the rationale make better design tradeoffs, implement controls more accurately, and produce better-quality evidence.</p>
+
+        <p>Three examples of how UCB domain principles explain architecture requirements:</p>
+        <div class="acad-grid">
+          <div class="acad-card">
+            <h3 style="font-size:13px;"><i class="fas fa-id-badge" style="color:var(--ug-cyan);margin-right:6px;"></i>Identity controls</h3>
+            <p style="font-size:13px;">Exist to ensure only authorized identities can access the right resources at the right time. MFA, least-privilege, and service account scoping are implementations of this principle — not arbitrary security theater.</p>
+          </div>
+          <div class="acad-card">
+            <h3 style="font-size:13px;"><i class="fas fa-database" style="color:var(--ug-green);margin-right:6px;"></i>Data protection controls</h3>
+            <p style="font-size:13px;">Exist to maintain confidentiality, integrity, availability, retention, and privacy of information. Encryption at rest and in transit, key management, and data classification are implementations of this principle.</p>
+          </div>
+          <div class="acad-card">
+            <h3 style="font-size:13px;"><i class="fas fa-cloud" style="color:var(--ug-amber);margin-right:6px;"></i>Cloud controls</h3>
+            <p style="font-size:13px;">Exist to reduce misconfiguration, exposure, privilege misuse, and unmanaged change in cloud environments. Network segmentation, public access blocks, and IaC security gates implement this principle.</p>
+          </div>
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 1 setup: Identify relevant domains for a system under review</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Domain Explorer</strong>. Review the full domain list. For a current or planned engineering project, identify which domains are most relevant (e.g., Identity, Data Protection, Infrastructure Security, Cloud Security).</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Click into the most relevant domain. Review the principles. For each principle, read the explanatory rationale — this is the "why" that engineers should internalize before designing controls.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Note which principles directly apply to your current engineering project. These become the anchor for your Module 2 control-to-requirement mapping exercise.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod1">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Select a current or planned system for this course's labs:</strong> All four labs build on one system. Choose something real — a new service, a planned migration, or a current architecture under review.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Map domains to your system:</strong> For your chosen system, list the 3–5 most relevant UCB domains. For each, note one principle that directly shapes a design decision you've made or should make.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Explain one control's rationale to your team:</strong> Using Domain Explorer, write a one-sentence explanation of why one UCB control exists — in terms your engineering team would find meaningful, not just policy language.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Why should secure architecture requirements be control-driven using the UCB rather than derived ad hoc from security team intuition?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Control-driven requirements are faster to document since they can be copied directly from the UCB without engineering interpretation.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">UCB controls are source-attributed, testable, and connected to assessment objectives and evidence requirements — making control-driven architecture verifiable, consistent across teams, and traceable to governance obligations rather than individual security opinion.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">UCB controls are required by law — organizations that don't use them face regulatory penalties for non-compliant architecture.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Control-driven architecture is only needed for externally-facing systems — internal services can use ad hoc security requirements.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod1" onclick="markComplete('mod1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you've mapped UCB domains to your chosen system and can explain one control's rationale.</span>
+        </div>
+      </section>
+
+
+      <section id="mod2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Control-Driven Requirements</h2>
+            <p class="phase-subtitle">25 min &bull; Control Library &bull; Translate UCB controls into testable engineering requirements</p>
+          </div>
+        </div>
+
+        <h3>The control-to-requirement translation workflow</h3>
+        <p>Engineering teams should convert UCB controls into requirements that can be designed, implemented, tested, and evidenced. The translation has four steps: read the control expectation → write the engineering requirement → define the evidence → define the assurance test.</p>
+
+        <p>A worked example for the Data Protection domain:</p>
+        <table class="acad-table">
+          <thead><tr><th>Step</th><th>Content</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Control expectation</strong></td><td>Encrypt sensitive data at rest.</td></tr>
+            <tr><td><strong>Engineering requirement</strong></td><td>All production storage services containing regulated data must use AES-256 encryption with customer-managed keys stored in the approved KMS.</td></tr>
+            <tr><td><strong>Evidence</strong></td><td>Architecture diagram showing KMS integration, cloud configuration export confirming encryption settings, key management policy, deployment record, automated scan result passing the encryption check.</td></tr>
+            <tr><td><strong>Assurance test</strong></td><td>Verify encryption configuration on all in-scope storage services and confirm key ownership is in the designated KMS with rotation configured.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 1: Control-to-Requirement Mapping</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Control Library</strong>. Select a technical control relevant to your system — ideally one in the domains you identified in Module 1.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Review the control's objective, purpose, guidance, and applicability dimensions. Note the Assessment Objectives — these are the testable assertions you'll need to satisfy.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Write three engineering requirements derived from this control. Each requirement should be specific enough that an engineer can implement it and a tester can verify it.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">For each requirement, identify: what evidence will be collected to prove implementation? What automated check will verify it post-deployment?</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Record your control-to-requirement mapping as your Lab 1 deliverable. Share it with your engineering team as the security requirements for this capability.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod2">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Complete a control-to-requirement mapping for your system:</strong> Translate at least 5 UCB controls into engineering requirements with evidence and assurance test definitions.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify pre-agreed evidence plans:</strong> For each requirement, document what evidence will be collected after deployment before implementation begins — not after.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Find one current gap:</strong> Using the Control Library, identify one UCB control that your current architecture does not yet satisfy. Add it to Module 4 work as a design gap to route into RiskOps.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Which of the following best represents a properly translated engineering requirement from a UCB control?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">"Comply with the encryption at rest control per UCB Data Protection domain requirements."</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">"All production database instances in the payment processing environment must use AES-256 encryption with customer-managed keys in Azure Key Vault, with annual key rotation configured and verified by automated scan."</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">"Encryption is required. The engineering team should determine the appropriate implementation based on cloud provider guidance."</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">"The security team has reviewed this system and confirms encryption controls are in place."</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod2" onclick="markComplete('mod2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you've produced a control-to-requirement mapping for your system with pre-agreed evidence plans.</span>
+        </div>
+      </section>
+
+
+      <section id="mod3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Engineering Evidence</h2>
+            <p class="phase-subtitle">20 min &bull; Evidence Fabric &bull; Define and link architecture evidence to controls and AOs</p>
+          </div>
+        </div>
+
+        <h3>Architecture evidence types</h3>
+        <p>Architecture evidence is the documentation that proves design decisions were intentional, reviewed, and implemented as intended. Evidence must be <strong>mapped to controls and Assessment Objectives</strong> — not just stored as attachments. An architecture diagram sitting in a Confluence page that is not linked to a UCB control is reference material. The same diagram linked to a control in the Evidence Fabric, with a reviewer attestation, is governance evidence.</p>
+
+        <p>Valid types of engineering and architecture evidence include:</p>
+        <ul>
+          <li><strong>Design review records:</strong> documented security design reviews with findings, decisions, and named reviewer sign-offs</li>
+          <li><strong>Architecture diagrams:</strong> approved data flow diagrams, component diagrams, and trust zone maps linked to specific controls</li>
+          <li><strong>Threat models:</strong> structured threat analysis tied to specific architecture decisions and mitigations</li>
+          <li><strong>Change approvals:</strong> records confirming that architecture changes were reviewed and approved before deployment</li>
+          <li><strong>Deployment manifests:</strong> infrastructure-as-code or deployment records confirming the deployed state matches the approved design</li>
+          <li><strong>CI/CD security gates:</strong> records showing security checks passed before deployment was permitted</li>
+          <li><strong>Infrastructure-as-code reviews:</strong> scan results and peer review records for IaC security quality</li>
+          <li><strong>Configuration exports:</strong> cloud provider configuration snapshots confirming control states post-deployment</li>
+          <li><strong>Test results:</strong> security test reports confirming that implemented controls work as designed</li>
+          <li><strong>Exception approvals:</strong> records of formally approved exceptions to control requirements, with compensating control documentation</li>
+        </ul>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 2: Architecture Evidence Package</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Governance &amp; Assurance &gt; Evidence Fabric</strong>. Identify the UCB controls for your system from Module 2. For each, review whether any evidence artifacts already exist and are linked.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">For controls lacking linked evidence, define the required artifact types from the list above. Document this as an architecture evidence checklist — the expected artifacts for each control before this system is considered governance-ready.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Upload one available evidence artifact (architecture diagram, design review record, or configuration export). Link it to the relevant UCB control and Assessment Objective. Set evidence type, timestamp, and assign a reviewer.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Identify any missing evidence — artifacts in your list with no current artifact available. These are engineering evidence gaps to route into RiskOps in Module 4.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod3">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Build an architecture evidence checklist:</strong> For your system, list every expected evidence artifact type per UCB control. Mark what exists, what is partially complete, and what is missing.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Link at least one artifact to a control and AO:</strong> Upload or link an existing artifact, set its metadata, and assign a reviewer. Observe the AO confidence change after reviewer attestation.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>List evidence gaps:</strong> Document which artifacts are missing for your system. This list becomes the input for your Module 4 RiskOps design gap routing.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Name four types of valid architecture and engineering evidence that can be linked to UCB controls.</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Sprint velocity data, team capacity reports, code coverage metrics, and deployment frequency statistics.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Architecture diagrams (approved and control-linked), threat models, CI/CD security gate results, and configuration exports post-deployment — all mapped to specific UCB controls and Assessment Objectives with reviewer attestation.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Annual security training completion certificates, phishing simulation results, password policy screenshots, and endpoint compliance reports.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">CVSS scores for open findings, MTTR measurements, pending decisions count, and risk pressure score trend data.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod3" onclick="markComplete('mod3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you've built your architecture evidence checklist and identified evidence gaps to route into RiskOps.</span>
+        </div>
+      </section>
+
+
+      <section id="mod4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>RiskOps Execution</h2>
+            <p class="phase-subtitle">25 min &bull; Projects, Request Hub &bull; Convert design gaps into accountable tracked work</p>
+          </div>
+        </div>
+
+        <h3>From "we found a design gap" to accountable remediation</h3>
+        <p>Secure engineering gaps become manageable when routed into accountable work. The goal of RiskOps execution for engineering teams is to move from the ambiguous state of "we found a design gap" to the governed state of "we have an owner, a due date, a risk rationale, an evidence expectation, and a verification plan." CloudSignals+RiskOps supports this through project creation, intake via the Request Hub, assignment, SLA policy enforcement, work item tracking, POA&amp;M workflows, and recurring review schedules.</p>
+        <p>The <strong>Request Hub</strong> is how security teams submit design gap findings to the engineering intake queue — separating discovery (security) from triaging and planning (engineering lead). Each request in the hub becomes a tracked project or work item with governance metadata attached, not a Slack message that gets lost.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 3: RiskOps Design Gap</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Take the evidence gaps and design weaknesses identified in Module 3. Navigate to <strong>RiskOps &gt; Request Hub</strong>. Submit one design gap as a security request — include the UCB control it violates, the business risk rationale, and the suggested remediation approach.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Navigate to <strong>RiskOps &gt; Projects</strong>. Create a project for the design gap. Set: project type (Security Remediation), linked UCB control, assigned owner (engineering lead), target date aligned to the relevant SLA policy.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Add work items to the project: specific implementation tasks, each with owner and due date. Include a verification work item — the step where the engineering team confirms the fix and collects evidence before the project is marked complete.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Navigate to <strong>RiskOps &gt; SLA Policies</strong>. Confirm the project's target date is within the SLA window for this control's severity tier. If not, either escalate urgency or formally accept the SLA deviation with a risk rationale.</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body">Draft a stakeholder communication explaining the design gap, the risk, what the team is doing about it, and by when. This is your Lab 3 deliverable: a secure engineering remediation plan.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod4">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Submit at least one design gap to the Request Hub:</strong> Every design gap identified in Module 3 should enter the governance system — not stay as an informal note or Jira backlog item without risk context.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Create a milestoned RiskOps project:</strong> For your primary design gap, create a project with work items, an owner per item, a verification task, and SLA-aligned target dates.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Confirm SLA alignment:</strong> Verify your project's target date is within the applicable SLA policy. Document any intentional SLA deviation with a formal risk acceptance.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">How does routing design gaps into RiskOps improve secure engineering execution compared to tracking them in a team backlog?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">RiskOps automatically generates Jira tickets for design gaps, eliminating manual tracking work for engineering teams.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">RiskOps attaches owner accountability, SLA policy enforcement, UCB control linkage, evidence requirements, and verification criteria to each gap — converting informal intent into a formally governed commitment that auditors can inspect and executives can track.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">RiskOps reduces the workload on engineering teams by automatically resolving low-severity design gaps without requiring manual remediation.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">RiskOps is only required for design gaps on systems that handle regulated data — standard engineering systems can use team backlogs.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod4" onclick="markComplete('mod4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you've submitted a Request Hub entry and created a milestoned RiskOps project for your primary design gap.</span>
+        </div>
+      </section>
+
+
+      <section id="mod5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>Secure Change &amp; Exceptions</h2>
+            <p class="phase-subtitle">20 min &bull; Exceptions, SLA Policies &bull; Govern deviations and approval workflows</p>
+          </div>
+        </div>
+
+        <h3>When architecture decisions require exceptions</h3>
+        <p>Some architecture decisions require exceptions — a legacy system that cannot meet a control, a vendor dependency that prevents full compliance, or a migration in flight that creates a temporary gap. An exception is not a governance failure; it is a governance decision. The failure mode is an <em>undocumented</em> exception — a gap that the team is aware of but that has not been formally acknowledged, risk-assessed, and approved.</p>
+
+        <p>A valid security exception for an architecture gap must include eight elements:</p>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:1.9;">
+          <li><strong>Scope:</strong> which control, system, asset, or environment the exception applies to</li>
+          <li><strong>Reason:</strong> why the control cannot be implemented as required (with specificity)</li>
+          <li><strong>Compensating controls:</strong> what alternative measures reduce the risk during the exception period</li>
+          <li><strong>Residual risk:</strong> the risk that remains after compensating controls are applied</li>
+          <li><strong>Approval:</strong> named approver with authority at the exception's risk tier</li>
+          <li><strong>Expiration:</strong> a defined end date — exceptions must not be open-ended</li>
+          <li><strong>Review cadence:</strong> when the exception will be formally re-evaluated</li>
+          <li><strong>Linked evidence:</strong> proof that compensating controls are configured and operating</li>
+        </ol>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Route an architecture exception through governance</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>RiskOps &gt; Exceptions</strong> (or <strong>Projects &gt; Exceptions</strong>). Review existing exceptions — check age, expiry dates, whether all eight required elements are documented, and whether linked evidence exists.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Create a new exception for an architecture gap from Module 3 that cannot be immediately remediated. Fill in all eight required fields — do not skip compensating controls or residual risk.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Set the exception risk tier based on the linked control's severity. Higher-risk exceptions require higher-authority approvers. Confirm the routing is correct before submitting.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Navigate to <strong>RiskOps &gt; SLA Policies</strong>. Review what SLA playbooks exist for recurring architecture risk types. Confirm any exception that introduces ongoing exposure is linked to an SLA policy that enforces resolution tracking.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod5">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Audit existing architecture exceptions:</strong> Confirm every exception has all eight required elements. Incomplete exceptions are governance liabilities, not governed risk.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Route one exception through governance:</strong> Submit a new exception with all eight elements, route it to the correct approver, and confirm the decision is recorded as a governance artifact.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define your architecture change governance rule:</strong> Document which types of architecture changes require a UCB coverage review and findings check before deployment — share with your engineering leads.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What makes a security exception formally governed versus an informally acknowledged gap?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">A formally governed exception has been discussed in a team meeting and logged in the team's issue tracker with a security label.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">A formally governed exception has all eight required elements: scope, reason, compensating controls, residual risk, named approver, expiration date, review cadence, and linked evidence — all recorded in the governance system as an auditable artifact.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">A formally governed exception has been approved by the CISO regardless of whether compensating controls or expiry dates are documented.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">Exceptions become formally governed automatically after 90 days of inactivity — the platform marks them as accepted at that point.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod5" onclick="markComplete('mod5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you've routed at least one architecture exception through the full governance workflow.</span>
+        </div>
+      </section>
+
+
+      <section id="mod6" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(245,158,11,.2);color:var(--ug-amber);">6</div>
+          <div class="phase-head-body">
+            <h2>AI-Assisted Design Review</h2>
+            <p class="phase-subtitle">15 min &bull; Vision &bull; Draft and validate secure design narratives with human review</p>
+          </div>
+        </div>
+
+        <h3>What Vision can and cannot do in architecture review</h3>
+        <p>Vision can help engineering teams with: explaining architecture risks in plain language, summarizing UCB control requirements for a specific domain, drafting security design review narratives, and identifying missing evidence based on the Evidence Fabric state. Vision should not approve architecture decisions or certify that a design is secure — those are human governance responsibilities requiring accountability.</p>
+        <p>The right workflow: <em>Vision as first draft, engineer as reviewer and accountable author</em>. When Vision drafts a secure architecture narrative, the responsible engineer reviews it for accuracy, corrects any mischaracterizations, adds context specific to the system, notes any assumptions Vision made that need verification, and attests to the narrative before it becomes a governance artifact.</p>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-mouse-pointer"></i> In the platform — Lab 4 preparation: AI-assisted secure design narrative</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Navigate to <strong>Vision &gt; Ask Vision</strong>. Request a secure architecture review narrative for your system: "Draft a security design review summary covering identity, data protection, and cloud security controls for [describe your system type and environment]."</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Review the output against your control-to-requirement mapping from Module 2. Does Vision correctly identify the relevant UCB controls? Are any requirements missing or mischaracterized?</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Edit the narrative: correct inaccuracies, add system-specific context, note assumptions that need verification, flag any controls marked "satisfied" that still have open evidence gaps from Module 3.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Add your reviewer attestation and the required AI advisory disclaimer. Save the validated narrative to the Evidence Fabric linked to the relevant UCB controls. This completes your architecture evidence package.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod6">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Generate a Vision architecture narrative:</strong> Request a secure design review draft for your system. Verify all claimed control states against the Evidence Fabric before accepting any of the output.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Edit and attest the output:</strong> Correct mischaracterizations, add system context, and attach your reviewer attestation and AI disclaimer before saving to the Evidence Fabric.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Complete your architecture evidence package:</strong> Your system now has: control-to-requirement mapping (M2), evidence checklist with artifacts (M3), RiskOps project for gaps (M4), exception records (M5), and validated Vision narrative (M6).</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod6">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What is the proper role of Vision in a secure architecture review?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">Vision reviews and approves architecture designs against UCB controls, issuing a compliance certificate for designs that meet all control requirements.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Vision drafts first-pass architecture risk explanations, summarizes control requirements, and identifies possible evidence gaps — all requiring human review, correction, and attestation before the output becomes a governance artifact. Vision does not approve architecture or certify security.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">Vision replaces the need for human security design review for low-risk systems, reserving human review for Critical and High risk architectures only.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">Vision's role is limited to scanning IaC templates for known misconfigurations — it does not assist with narrative generation or architectural reasoning.</div></div>
+          </div>
+          <button class="quiz-btn" type="button" onclick="checkAnswer('mod6')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod6"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" type="button" id="mc-mod6" onclick="markComplete('mod6')">Mark Module 6 complete</button>
+          <span class="mark-complete-hint">Move on when your architecture evidence package is complete: mapping, artifacts, RiskOps project, exception record, and attested Vision narrative.</span>
+        </div>
+      </section>
+
+
+      <section id="certification" style="scroll-margin-top:80px;">
+        <h2>Certification: AiVRIC Secure Engineering &amp; Architecture Practitioner</h2>
+        <p>Completing all six modules makes you eligible for the practitioner certification exam.</p>
+
+        <table class="acad-table" style="margin-bottom:20px;">
+          <thead><tr><th>Exam domain</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td>Secure architecture governance</td><td>20%</td></tr>
+            <tr><td>Control-to-requirement mapping</td><td>25%</td></tr>
+            <tr><td>Engineering evidence</td><td>20%</td></tr>
+            <tr><td>RiskOps execution</td><td>20%</td></tr>
+            <tr><td>Exceptions and AI-assisted review</td><td>15%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Capstone practical scenario</h3>
+        <p style="color:var(--ug-text-2);">A new customer data platform is being deployed to cloud infrastructure. The design includes identity federation, production databases, CI/CD pipelines, third-party integrations, and AI-assisted analytics. Your task:</p>
+        <ol style="color:var(--ug-text-2);font-size:14px;line-height:2;">
+          <li>Identify relevant UCB domains and control principles for this system.</li>
+          <li>Convert the three most critical controls into testable engineering requirements with evidence definitions.</li>
+          <li>Define the evidence artifacts required for the architecture evidence package.</li>
+          <li>Identify design gaps and route them into RiskOps via the Request Hub with owner and SLA assignment.</li>
+          <li>Draft a secure architecture review narrative using Vision, then validate and attest it — including AI disclaimer.</li>
+        </ol>
+
+        <div class="callout primary">
+          <strong>Passing criteria:</strong> Uses UCB controls and principles as the design anchor. Produces specific, testable engineering requirements. Links evidence artifacts to Assessment Objectives. Routes unresolved gaps into accountable RiskOps work. Validates Vision output with human review — includes AI disclaimer and reviewer attestation on all AI-assisted content.
+        </div>
+
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Secure Engineering &amp; Architecture. Security requirements now flow from control intent through design to deployed evidence.</div>
+          <a href="cloud-security.html" class="acad-cert-btn"><i class="fas fa-arrow-right"></i> Next: Cloud Security</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2 &middot; Secure Engineering &amp; Architecture</span>
+  </footer>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'aivric_seceng_v1';
+    var MODULES = ['mod1','mod2','mod3','mod4','mod5','mod6'];
+    function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+    function saveState(s) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {} }
+    var state = loadState();
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill'); var pctEl = document.getElementById('progress-pct');
+      if (fill) fill.style.width = pct + '%'; if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) { var cert = document.getElementById('cert-block'); if (cert) cert.classList.add('show'); }
+    }
+    window.setActive = function(el) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); el.classList.add('active'); };
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].complete = true; saveState(state);
+      var btn = document.getElementById('mc-' + moduleId); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      updateProgress();
+    };
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); }); el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = false;
+    };
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if (!selected) return;
+      block.dataset.answered = 'true'; var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = true;
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var feedback = document.getElementById('feedback-' + moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o) { if (o.querySelector('[data-correct="true"]')) o.classList.add('correct'); else if (o === selected && !isCorrect) o.classList.add('wrong'); });
+      if (feedback) {
+        var expl = {
+          mod1:{correct:'Correct. UCB controls are source-attributed, testable, and connected to AOs and evidence requirements — making control-driven architecture verifiable and traceable rather than opinion-based.',wrong:'Speed, legal requirement, and applicability boundaries don\'t explain the governance value. UCB controls enable verifiable, traceable architecture through source attribution, testability, and evidence linkage.'},
+          mod2:{correct:'Correct. A properly translated engineering requirement is specific (scope, algorithm, key management, rotation), testable (can be verified by scan and configuration review), and evidence-defined.',wrong:'Vague compliance references, team-delegated decisions, and security team certifications are not engineering requirements. Requirements must be specific, testable, and evidence-anchored.'},
+          mod3:{correct:'Correct. Architecture diagrams (control-linked), threat models, CI/CD security gate results, and configuration exports are four valid engineering evidence types mapped to UCB controls and AOs.',wrong:'Sprint metrics, training records, and risk KPIs are not architecture evidence. Architecture evidence proves design decisions were intentional, reviewed, implemented correctly, and verifiably governed.'},
+          mod4:{correct:'Correct. RiskOps adds owner accountability, SLA enforcement, UCB linkage, evidence requirements, and verification criteria — converting informal gap tracking into a formally governed commitment.',wrong:'RiskOps does not auto-generate Jira tickets, auto-resolve gaps, or limit scope to regulated systems. Its value is governance accountability — making informal gaps formally governed regardless of system type.'},
+          mod5:{correct:'Correct. A formally governed exception has all eight elements — scope, reason, compensating controls, residual risk, named approver, expiration, review cadence, and linked evidence — recorded as an auditable artifact.',wrong:'Meeting discussions, CISO approval alone, and platform auto-acceptance do not constitute formal governance. All eight elements must be documented in the governance system.'},
+          mod6:{correct:'Correct. Vision drafts, summarizes, and identifies — but does not approve or certify. Human review, correction, and attestation are always required before Vision output becomes a governance artifact.',wrong:'Vision has no certification authority and cannot replace human design review for any risk tier. Its role is advisory acceleration, not governance authority.'}
+        };
+        feedback.textContent = ''; var label = document.createElement('strong'); var msg = document.createElement('span');
+        if (isCorrect) { feedback.className = 'quiz-feedback correct'; label.textContent = 'Correct! '; msg.textContent = (expl[moduleId]||{correct:''}).correct; }
+        else { feedback.className = 'quiz-feedback wrong'; label.textContent = 'Not quite. '; msg.textContent = (expl[moduleId]||{wrong:''}).wrong; }
+        feedback.appendChild(label); feedback.appendChild(msg);
+      }
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].quizCorrect = isCorrect; saveState(state);
+    };
+    window.toggleAction = function(el) { el.classList.toggle('checked'); };
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      }
+    });
+    updateProgress();
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { var id = entry.target.id; var link = document.querySelector('[data-module="' + id + '"]'); if (link) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); } } }); }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+  })();
+  </script>
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true">
+    <button class="acad-lightbox-close" type="button" onclick="closeLightbox()">&times;</button>
+    <img src="" alt=""><div class="acad-lightbox-caption"></div>
+  </div>
+  <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
+</body>
+</html>

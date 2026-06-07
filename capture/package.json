@@ -1,0 +1,16 @@
+{
+  "name": "academy-screenshot-capture",
+  "version": "1.0.0",
+  "description": "Playwright screenshot capture for AiVRIC Academy training pages",
+  "main": "capture.js",
+  "scripts": {
+    "capture": "node capture.js",
+    "capture:main": "CS_ENV=main node capture.js",
+    "capture:provider": "CS_ENV=provider node capture.js",
+    "capture:all": "node capture.js --all"
+  },
+  "dependencies": {
+    "playwright": "^1.60.0",
+    "sharp": "^0.33.4"
+  }
+}
