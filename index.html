@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -7,9 +7,9 @@
   <title>AiVRIC Academy — CloudSignals+RiskOps Training</title>
   <link rel="canonical" href="https://academy.aivric.com/">
   <meta name="description" content="AiVRIC Academy: learn to operate CloudSignals+RiskOps as a continuous governance, assurance, cloud security, and risk operations platform. Certification-ready courses with practical labs.">
-  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
   <link href="academy.css" rel="stylesheet">
 </head>
 <!-- Google tag (gtag.js) -->
@@ -24,16 +24,17 @@
   <header class="acad-header">
     <div class="bar">
       <a class="acad-brand" href="index.html">
-        <img src="../assets/images/logo/aivric.svg" alt="AiVRIC">
+        <img src="assets/images/logo/aivric.svg" alt="AiVRIC">
         <span class="acad-brand-sep"></span>
         <span class="acad-brand-sub">Academy</span>
       </a>
       <div class="acad-header-spacer"></div>
       <div class="acad-top-links">
-        <a href="../AiVRIC-UserGuide/index.html">Platform Guide</a>
-        <a href="../index.html">AiVRIC.com</a>
-        <a href="../support.html">Support</a>
-        <a href="governance.html" class="acad-cta">Start Learning</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="https://aivric.com/">AiVRIC.com</a>
+        <a href="https://aivric.com/support.html">Support</a>
+        <a href="dashboard.html" id="nav-dashboard" style="display:none;"><i class="fas fa-user-circle"></i> My Dashboard</a>
+        <a href="auth.html" class="acad-cta" id="nav-signin">Sign in</a>
       </div>
       <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation">Menu</button>
     </div>
@@ -50,8 +51,12 @@
         <a href="governance.html" class="acad-fc-cta" style="font-size:15px;padding:11px 26px;">
           <i class="fas fa-play"></i> Start learning
         </a>
+        <a href="dashboard.html" class="acad-fc-cta" id="hero-dashboard" style="font-size:15px;padding:11px 26px;display:none;background:rgba(6,182,212,.15);color:var(--ug-cyan);border:1px solid rgba(6,182,212,.3);">
+          <i class="fas fa-chart-bar"></i> My progress
+        </a>
         <a class="tag" href="#certifications">View certifications &darr;</a>
         <a class="tag" href="#paths">Learning paths &darr;</a>
+        <a class="tag" href="auth.html" id="hero-signin"><i class="fas fa-user-circle"></i> Sign in to track progress</a>
       </div>
     </div>
 
@@ -318,7 +323,7 @@
       </div>
       <div>
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ug-muted);margin-bottom:4px;">Platform Guide</div>
-        <div style="font-size:14px;color:var(--ug-text-2);">Full reference docs at <a href="../AiVRIC-UserGuide/index.html">aivric.com/AiVRIC-UserGuide</a></div>
+        <div style="font-size:14px;color:var(--ug-text-2);">Full reference docs at <a href="https://aivric.com/AiVRIC-UserGuide/index.html">aivric.com/AiVRIC-UserGuide</a></div>
       </div>
       <div>
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ug-muted);margin-bottom:4px;">Live walkthrough</div>
@@ -329,8 +334,40 @@
   </main>
 
   <footer class="acad-footer">
-    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
     <span class="tag">Academy v2</span>
   </footer>
+<!-- Supabase SDK + Academy auth/progress -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script>
+<script>
+/* ── Index page: auth-aware nav + hero ─────────────────────────────── */
+(function() {
+  function applyAuthState(signedIn) {
+    var navDash   = document.getElementById('nav-dashboard');
+    var navSignin = document.getElementById('nav-signin');
+    var heroDash  = document.getElementById('hero-dashboard');
+    var heroSignin = document.getElementById('hero-signin');
+    if (signedIn) {
+      if (navDash)    navDash.style.display   = '';
+      if (navSignin)  navSignin.style.display  = 'none';
+      if (heroDash)   heroDash.style.display   = '';
+      if (heroSignin) heroSignin.style.display = 'none';
+    } else {
+      if (navDash)    navDash.style.display   = 'none';
+      if (navSignin)  navSignin.style.display  = '';
+      if (heroDash)   heroDash.style.display   = 'none';
+      if (heroSignin) heroSignin.style.display = '';
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!window.AcademyAuth) return;
+    AcademyAuth.getUser().then(function(user) { applyAuthState(!!user); });
+    AcademyAuth.onAuthStateChange(function(event, user) { applyAuthState(!!user); });
+  });
+})();
+</script>
 </body>
 </html>

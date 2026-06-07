@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/auth.html">
+  <meta name="description" content="Sign in to AiVRIC Academy to track your learning progress, earn certifications, and unlock your personal dashboard.">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<!-- Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<body class="auth-page">
+
+  <div class="auth-shell">
+
+    <!-- Logo + back link -->
+    <div class="auth-brand">
+      <a href="index.html" class="auth-back"><i class="fas fa-arrow-left"></i></a>
+      <a href="index.html" class="acad-brand" style="text-decoration:none;">
+        <img src="assets/images/logo/aivric.svg" alt="AiVRIC" style="height:28px;">
+        <span class="acad-brand-sep"></span>
+        <span class="acad-brand-sub">Academy</span>
+      </a>
+    </div>
+
+    <!-- Auth card -->
+    <div class="auth-card" id="auth-card">
+
+      <!-- State: choose method -->
+      <div id="auth-choose" class="auth-state">
+        <h1 class="auth-heading">Sign in to Academy</h1>
+        <p class="auth-sub">Track progress, earn certifications, and access your personal learning dashboard.</p>
+
+        <!-- Passkey (most secure, shown first when available) -->
+        <button type="button" class="auth-btn auth-btn-passkey" id="btn-passkey" onclick="doPasskey()">
+          <i class="fas fa-fingerprint"></i>
+          <span>Use a passkey</span>
+          <span class="auth-btn-badge">Most secure</span>
+        </button>
+
+        <div class="auth-divider"><span>or continue with</span></div>
+
+        <!-- OAuth -->
+        <div class="auth-oauth-row">
+          <button type="button" class="auth-btn auth-btn-oauth" id="btn-google" onclick="doOAuth('google')">
+            <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#4285F4" d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"/>
+              <path fill="#34A853" d="M6.3 14.7l7 5.1C15.1 16.1 19.2 13 24 13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 16.3 2 9.7 7.4 6.3 14.7z"/>
+              <path fill="#FBBC05" d="M24 46c5.9 0 11-2 14.7-5.4l-6.8-5.6C29.8 36.6 27 37.5 24 37.5c-6 0-10.7-3.1-11.8-7.5l-7 5.4C8.4 42.3 15.6 46 24 46z"/>
+              <path fill="#EA4335" d="M44.5 20H24v8.5h11.8c-.9 2.6-2.7 4.7-5.2 6l6.8 5.6C41.8 36.3 44.5 31 44.5 24c0-1.3-.2-2.7-.5-4z"/>
+            </svg>
+            Google
+          </button>
+          <button type="button" class="auth-btn auth-btn-oauth" id="btn-microsoft" onclick="doOAuth('azure')">
+            <svg width="18" height="18" viewBox="0 0 23 23" aria-hidden="true">
+              <path fill="#f35325" d="M1 1h10v10H1z"/>
+              <path fill="#81bc06" d="M12 1h10v10H12z"/>
+              <path fill="#05a6f0" d="M1 12h10v10H1z"/>
+              <path fill="#ffba08" d="M12 12h10v10H12z"/>
+            </svg>
+            Microsoft
+          </button>
+        </div>
+
+        <div class="auth-divider"><span>or sign in with email</span></div>
+
+        <!-- Magic link -->
+        <form id="magic-link-form" onsubmit="doMagicLink(event)">
+          <div class="auth-field">
+            <label for="auth-email">Work email</label>
+            <input type="email" id="auth-email" name="email" required
+              placeholder="you@yourcompany.com" autocomplete="email">
+          </div>
+          <button type="submit" class="auth-btn auth-btn-primary" id="btn-magic">
+            <i class="fas fa-paper-plane"></i> Send magic link
+          </button>
+        </form>
+
+        <p class="auth-terms">
+          By signing in you agree to the
+          <a href="https://aivric.com/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+          No password required.
+        </p>
+      </div>
+
+      <!-- State: magic link sent -->
+      <div id="auth-sent" class="auth-state" style="display:none;">
+        <div class="auth-success-icon"><i class="fas fa-envelope-open-text"></i></div>
+        <h2 class="auth-heading">Check your email</h2>
+        <p class="auth-sub">We sent a sign-in link to <strong id="auth-sent-email"></strong>. Click the link to continue — it expires in 10 minutes.</p>
+        <button type="button" class="auth-btn auth-btn-ghost" onclick="showChoose()">
+          <i class="fas fa-arrow-left"></i> Use a different method
+        </button>
+      </div>
+
+      <!-- State: passkey prompt -->
+      <div id="auth-passkey" class="auth-state" style="display:none;">
+        <div class="auth-success-icon" style="color:var(--ug-cyan);"><i class="fas fa-fingerprint"></i></div>
+        <h2 class="auth-heading">Use your passkey</h2>
+        <p class="auth-sub">Your browser will prompt you to authenticate with Face ID, Touch ID, or your device PIN.</p>
+        <button type="button" class="auth-btn auth-btn-primary" id="btn-passkey-go" onclick="triggerPasskey()">
+          <i class="fas fa-fingerprint"></i> Authenticate now
+        </button>
+        <button type="button" class="auth-btn auth-btn-ghost" onclick="showChoose()">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
+
+      <!-- State: loading / redirect -->
+      <div id="auth-loading" class="auth-state" style="display:none;">
+        <div class="auth-spinner"><i class="fas fa-circle-notch fa-spin fa-2x"></i></div>
+        <p class="auth-sub" id="auth-loading-msg">Signing you in…</p>
+      </div>
+
+      <!-- State: error -->
+      <div id="auth-error-banner" class="auth-error-banner" style="display:none;"></div>
+    </div>
+
+    <!-- Footer -->
+    <p class="auth-footer">
+      <a href="index.html">← Back to Academy</a>
+      &middot;
+      <a href="https://aivric.com/support.html" target="_blank" rel="noopener">Support</a>
+    </p>
+  </div>
+
+  <script>
+  /* ── State helpers ─────────────────────────────────────────────────── */
+  function showState(id) {
+    ['auth-choose','auth-sent','auth-passkey','auth-loading'].forEach(function(s){
+      document.getElementById(s).style.display = s === id ? '' : 'none';
+    });
+  }
+  function showChoose() { showState('auth-choose'); hideError(); }
+  function showError(msg) {
+    var el = document.getElementById('auth-error-banner');
+    el.textContent = msg;
+    el.style.display = '';
+  }
+  function hideError() {
+    document.getElementById('auth-error-banner').style.display = 'none';
+  }
+
+  function setLoading(id, loading) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.disabled = loading;
+    if (loading) btn.dataset.orig = btn.innerHTML;
+    btn.innerHTML = loading ? '<i class="fas fa-circle-notch fa-spin"></i> Please wait…' : btn.dataset.orig || btn.innerHTML;
+  }
+
+  /* ── Passkey availability ──────────────────────────────────────────── */
+  (function detectPasskey() {
+    var btn = document.getElementById('btn-passkey');
+    if (!window.PublicKeyCredential || !navigator.credentials) {
+      if (btn) btn.style.display = 'none';
+    } else {
+      PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable().then(function(ok){
+        if (btn) btn.style.display = ok ? '' : 'none';
+      }).catch(function(){ if (btn) btn.style.display = 'none'; });
+    }
+  })();
+
+  /* ── Check if already signed in ───────────────────────────────────── */
+  (function checkSession() {
+    if (!window.AcademyAuth) return;
+    AcademyAuth.getUser().then(function(user) {
+      if (user) {
+        showState('auth-loading');
+        document.getElementById('auth-loading-msg').textContent = 'Already signed in — redirecting…';
+        setTimeout(function(){ window.location.href = 'dashboard.html'; }, 800);
+      }
+    });
+  })();
+
+  /* ── Magic link ────────────────────────────────────────────────────── */
+  async function doMagicLink(e) {
+    e.preventDefault();
+    hideError();
+    var email = document.getElementById('auth-email').value.trim();
+    if (!email) return;
+    setLoading('btn-magic', true);
+    try {
+      await AcademyAuth.signInWithEmail(email);
+      document.getElementById('auth-sent-email').textContent = email;
+      showState('auth-sent');
+    } catch(err) {
+      showError(err.message || 'Failed to send magic link. Please try again.');
+      setLoading('btn-magic', false);
+    }
+  }
+
+  /* ── OAuth ─────────────────────────────────────────────────────────── */
+  async function doOAuth(provider) {
+    hideError();
+    var btnId = provider === 'google' ? 'btn-google' : 'btn-microsoft';
+    setLoading(btnId, true);
+    try {
+      await AcademyAuth.signInWithOAuth(provider);
+      /* OAuth redirects away — loading indicator remains */
+    } catch(err) {
+      showError(err.message || 'OAuth sign-in failed. Please try again.');
+      setLoading(btnId, false);
+    }
+  }
+
+  /* ── Passkey ───────────────────────────────────────────────────────── */
+  function doPasskey() { showState('auth-passkey'); }
+
+  async function triggerPasskey() {
+    hideError();
+    setLoading('btn-passkey-go', true);
+    try {
+      await AcademyAuth.signInWithPasskey();
+      showState('auth-loading');
+      document.getElementById('auth-loading-msg').textContent = 'Verified — loading your dashboard…';
+      setTimeout(function(){ window.location.href = 'dashboard.html'; }, 600);
+    } catch(err) {
+      showError(err.message || 'Passkey authentication failed. Please try another method.');
+      setLoading('btn-passkey-go', false);
+    }
+  }
+
+  /* ── Handle magic-link / OAuth callback (fragment or query params) ── */
+  (function handleCallback() {
+    if (!window.AcademyAuth) return;
+    /* Supabase sets the session from the URL hash automatically.
+       We just need to wait a tick and redirect. */
+    if (window.location.hash.includes('access_token') || window.location.search.includes('code=')) {
+      showState('auth-loading');
+      document.getElementById('auth-loading-msg').textContent = 'Completing sign-in…';
+      AcademyAuth.onAuthStateChange(function(event, user) {
+        if (event === 'SIGNED_IN' && user) {
+          setTimeout(function(){ window.location.href = 'dashboard.html'; }, 400);
+        }
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

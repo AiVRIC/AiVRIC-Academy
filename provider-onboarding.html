@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -7,9 +7,9 @@
   <title>Provider Onboarding Foundations | AiVRIC Academy</title>
   <link rel="canonical" href="https://academy.aivric.com/provider-onboarding.html">
   <meta name="description" content="Learn the CloudSignals white-label provider operating model, launch phases, client onboarding workflow, findings quality standards, and reporting cadence.">
-  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
   <link href="academy.css" rel="stylesheet">
 </head>
 <!-- Google tag (gtag.js) -->
@@ -24,7 +24,7 @@
   <header class="acad-header">
     <div class="bar">
       <a class="acad-brand" href="index.html">
-        <img src="../assets/images/logo/aivric.svg" alt="AiVRIC">
+        <img src="assets/images/logo/aivric.svg" alt="AiVRIC">
         <span class="acad-brand-sep"></span>
         <span class="acad-brand-sub">Academy</span>
       </a>
@@ -32,8 +32,8 @@
       <div class="acad-top-links">
         <a href="index.html">All Courses</a>
         <a href="crpm-program-guide.html">Program Guide</a>
-        <a href="../support.html">Support</a>
-        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+        <a href="https://aivric.com/support.html">Support</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
       </div>
       <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
     </div>
@@ -595,7 +595,7 @@
   </div>
 
   <footer class="acad-footer">
-    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
     <span class="tag">Academy v1 &middot; P1 Provider Onboarding Foundations</span>
   </footer>
 
@@ -734,5 +734,9 @@
     });
   })();
   </script>
-</body>
+<!-- Supabase SDK + Academy auth/progress -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script></body>
 </html>

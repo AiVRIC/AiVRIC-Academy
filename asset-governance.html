@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -7,9 +7,9 @@
   <title>Asset Governance | AiVRIC Academy</title>
   <link rel="canonical" href="https://academy.aivric.com/asset-governance.html">
   <meta name="description" content="Govern assets in CloudSignals+RiskOps using asset dashboards, criticality views, finding relationships, managed entities, and RiskOps workflows. AiVRIC Academy.">
-  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
   <link href="academy.css" rel="stylesheet">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
@@ -17,13 +17,13 @@
 <body>
   <header class="acad-header">
     <div class="bar">
-      <a class="acad-brand" href="index.html"><img src="../assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <a class="acad-brand" href="index.html"><img src="assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
       <div class="acad-header-spacer"></div>
       <div class="acad-top-links">
         <a href="index.html">All Courses</a>
-        <a href="../AiVRIC-UserGuide/index.html">Platform Guide</a>
-        <a href="../support.html">Support</a>
-        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="https://aivric.com/support.html">Support</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
       </div>
       <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
     </div>
@@ -73,7 +73,7 @@
       <div class="acad-sidebar-sep"></div>
       <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
       <a class="acad-sidebar-link" href="governance.html"><i class="fas fa-arrow-left"></i> Prev: Governance</a>
-      <a class="acad-sidebar-link" href="../support.html"><i class="fas fa-life-ring"></i> Support</a>
+      <a class="acad-sidebar-link" href="https://aivric.com/support.html"><i class="fas fa-life-ring"></i> Support</a>
     </aside>
 
     <main class="acad-content" id="main-content">
@@ -475,7 +475,7 @@
   </div>
 
   <footer class="acad-footer">
-    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
     <span class="tag">Academy v2 &middot; Asset Governance</span>
   </footer>
 
@@ -549,5 +549,9 @@
     <img src="" alt=""><div class="acad-lightbox-caption"></div>
   </div>
   <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
-</body>
+<!-- Supabase SDK + Academy auth/progress -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script></body>
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -7,9 +7,9 @@
   <title>CRPM Training Program Guide | AiVRIC Academy</title>
   <link rel="canonical" href="https://academy.aivric.com/crpm-program-guide.html">
   <meta name="description" content="The complete CloudSignals+RiskOps Continuous Risk Posture Management (CRPM) training program — curriculum map, learning paths, audience guide, and delivery playbook for provider teams.">
-  <link rel="icon" href="../assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="../assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
   <link href="academy.css" rel="stylesheet">
   <style>
     /* ── Doc-specific overrides ────────────────────────────── */
@@ -151,16 +151,16 @@
   <header class="acad-header">
     <div class="bar">
       <a class="acad-brand" href="index.html">
-        <img src="../assets/images/logo/aivric.svg" alt="AiVRIC">
+        <img src="assets/images/logo/aivric.svg" alt="AiVRIC">
         <span class="acad-brand-sep"></span>
         <span class="acad-brand-sub">Academy</span>
       </a>
       <div class="acad-header-spacer"></div>
       <div class="acad-top-links">
         <a href="index.html">All Courses</a>
-        <a href="../AiVRIC-UserGuide/index.html">Platform Guide</a>
-        <a href="../support.html">Support</a>
-        <a href="../AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="https://aivric.com/support.html">Support</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
       </div>
       <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.querySelector('.doc-sidebar').classList.toggle('open')">Menu</button>
     </div>
@@ -187,8 +187,8 @@
       </div>
       <div class="doc-nav-section">
         <p class="doc-nav-label">Reference</p>
-        <a class="doc-nav-link" href="../AiVRIC-UserGuide/cloudsignals-riskops.html">CloudSignals Docs</a>
-        <a class="doc-nav-link" href="../AiVRIC-UserGuide/connectors.html">Connector Guides</a>
+        <a class="doc-nav-link" href="https://aivric.com/AiVRIC-UserGuide/cloudsignals-riskops.html">CloudSignals Docs</a>
+        <a class="doc-nav-link" href="https://aivric.com/AiVRIC-UserGuide/connectors.html">Connector Guides</a>
         <a class="doc-nav-link" href="index.html">All Courses</a>
       </div>
     </aside>
@@ -494,17 +494,17 @@
         <div class="acad-card">
           <h3>CloudSignals Platform<br>Guide</h3>
           <p>Full reference documentation including connector setup, compliance mapping, and API reference.</p>
-          <a href="../AiVRIC-UserGuide/index.html">Open guide &rarr;</a>
+          <a href="https://aivric.com/AiVRIC-UserGuide/index.html">Open guide &rarr;</a>
         </div>
         <div class="acad-card">
           <h3>Connector Setup</h3>
           <p>Step-by-step instructions for connecting AWS, Azure, GCP, Kubernetes, GitHub, and more.</p>
-          <a href="../AiVRIC-UserGuide/connectors.html">View connectors &rarr;</a>
+          <a href="https://aivric.com/AiVRIC-UserGuide/connectors.html">View connectors &rarr;</a>
         </div>
         <div class="acad-card">
           <h3>Support</h3>
           <p>Live working sessions, guided setup, and escalation to AiVRIC for platform issues.</p>
-          <a href="../support.html">Get support &rarr;</a>
+          <a href="https://aivric.com/support.html">Get support &rarr;</a>
         </div>
       </div>
 
@@ -529,7 +529,7 @@
   </div>
 
   <footer class="acad-footer">
-    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="../privacy-policy.html">Privacy</a> &middot; <a href="../AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
     <span class="tag">Academy v1 &middot; CRPM Program Guide</span>
   </footer>
 
@@ -560,5 +560,9 @@
   // Make the one figure immediately visible (doc page, no scroll-reveal needed)
   document.querySelectorAll('.acad-figure').forEach(function(el){ el.classList.add('visible'); });
   </script>
-</body>
+<!-- Supabase SDK + Academy auth/progress -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script></body>
 </html>

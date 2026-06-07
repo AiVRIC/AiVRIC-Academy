@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Academy | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/dashboard.html">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<!-- Supabase + Academy modules -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script>
+<body>
+
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html">
+        <img src="assets/images/logo/aivric.svg" alt="AiVRIC">
+        <span class="acad-brand-sep"></span>
+        <span class="acad-brand-sub">Academy</span>
+      </a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="https://aivric.com/support.html">Support</a>
+        <button type="button" class="acad-cta" id="btn-signout" onclick="doSignOut()" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);">
+          <i class="fas fa-sign-out-alt"></i> Sign out
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Auth gate: shown while checking auth, hidden once confirmed -->
+  <div id="dash-loading" style="min-height:70vh;display:flex;align-items:center;justify-content:center;">
+    <div style="text-align:center;color:var(--ug-muted);">
+      <i class="fas fa-circle-notch fa-spin fa-2x" style="margin-bottom:16px;display:block;"></i>
+      Loading your profile…
+    </div>
+  </div>
+
+  <!-- Dashboard content (hidden until auth confirmed) -->
+  <main class="dash-main" id="dash-main" style="display:none;">
+
+    <!-- ── Profile banner ─────────────────────────────────────────── -->
+    <div class="dash-profile-banner">
+      <div class="dash-avatar" id="dash-avatar">?</div>
+      <div class="dash-profile-info">
+        <h1 class="dash-greeting" id="dash-greeting">Welcome back</h1>
+        <div class="dash-email" id="dash-email"></div>
+        <div class="dash-meta-row">
+          <span class="dash-meta-item" id="dash-company" style="display:none;"><i class="fas fa-building"></i> <span></span></span>
+          <span class="dash-meta-item" id="dash-role" style="display:none;"><i class="fas fa-user-tag"></i> <span></span></span>
+        </div>
+      </div>
+      <button type="button" class="dash-edit-btn" id="dash-edit-btn" onclick="openEditProfile()">
+        <i class="fas fa-pen"></i> Edit profile
+      </button>
+    </div>
+
+    <!-- ── Stats row ──────────────────────────────────────────────── -->
+    <div class="dash-stats-row">
+      <div class="dash-stat-card">
+        <div class="dash-stat-num" id="stat-started">0</div>
+        <div class="dash-stat-label">Courses started</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-num" id="stat-completed">0</div>
+        <div class="dash-stat-label">Courses completed</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-num" id="stat-certs">0</div>
+        <div class="dash-stat-label">Certifications</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-num" id="stat-modules">0</div>
+        <div class="dash-stat-label">Modules completed</div>
+      </div>
+    </div>
+
+    <!-- ── Learning Path selector ─────────────────────────────────── -->
+    <p class="acad-section-label">Your learning path</p>
+    <div class="dash-paths" id="dash-paths"></div>
+
+    <!-- ── Recommended next ───────────────────────────────────────── -->
+    <div id="dash-recommended-wrap" style="display:none;">
+      <p class="acad-section-label">Continue learning</p>
+      <div class="dash-recommended" id="dash-recommended"></div>
+    </div>
+
+    <!-- ── Course progress grid ───────────────────────────────────── -->
+    <p class="acad-section-label">All courses</p>
+    <div class="dash-course-grid" id="dash-course-grid"></div>
+
+    <!-- ── Certifications ─────────────────────────────────────────── -->
+    <div id="dash-certs-wrap">
+      <p class="acad-section-label">Certifications &amp; badges</p>
+      <div id="dash-certs-empty" class="dash-empty-state">
+        <i class="fas fa-certificate" style="font-size:32px;color:var(--ug-muted);margin-bottom:12px;display:block;"></i>
+        Complete a course to earn your first certification. Each course includes a certification-eligible practitioner exam.
+      </div>
+      <div class="dash-badges-grid" id="dash-badges-grid" style="display:none;"></div>
+    </div>
+
+  </main>
+
+  <!-- ── Edit profile modal ─────────────────────────────────────────── -->
+  <div class="dash-modal-overlay" id="profile-modal" style="display:none;" onclick="if(event.target===this)closeEditProfile()">
+    <div class="dash-modal">
+      <div class="dash-modal-header">
+        <h2>Edit profile</h2>
+        <button type="button" class="dash-modal-close" onclick="closeEditProfile()">&times;</button>
+      </div>
+      <form id="profile-form" onsubmit="saveProfile(event)">
+        <div class="auth-field">
+          <label for="pf-name">Display name</label>
+          <input type="text" id="pf-name" placeholder="Your name">
+        </div>
+        <div class="auth-field">
+          <label for="pf-company">Company / organisation</label>
+          <input type="text" id="pf-company" placeholder="AiVRIC Inc.">
+        </div>
+        <div class="auth-field">
+          <label for="pf-role">Job role</label>
+          <input type="text" id="pf-role" placeholder="Security Analyst">
+        </div>
+        <div class="dash-modal-footer">
+          <button type="button" class="auth-btn auth-btn-ghost" onclick="closeEditProfile()">Cancel</button>
+          <button type="submit" class="auth-btn auth-btn-primary" id="pf-save">
+            <i class="fas fa-check"></i> Save changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2</span>
+  </footer>
+
+  <script>
+  /* ── Badge definitions ────────────────────────────────────────────── */
+  var CERT_META = {
+    'governance':             { icon: '🏛️', color: '#a78bfa', label: 'Security & Privacy Governance Practitioner' },
+    'asset-governance':       { icon: '📦', color: 'var(--ug-cyan)', label: 'Asset Governance Practitioner' },
+    'information-assurance':  { icon: '🛡️', color: 'var(--ug-green)', label: 'Information Assurance Practitioner' },
+    'secure-engineering':     { icon: '📐', color: 'var(--ug-amber)', label: 'Secure Engineering & Architecture Practitioner' },
+    'vulnerability-management': { icon: '🐛', color: 'var(--ug-orange)', label: 'Vulnerability Management Practitioner' },
+    'cloud-security':         { icon: '☁️', color: 'var(--ug-cyan)', label: 'Cloud Security Practitioner' },
+    'web-security':           { icon: '🌐', color: '#ef4444', label: 'Web Security Practitioner' },
+    'riskops-getting-started':{ icon: '🚀', color: 'var(--ug-cyan)', label: 'RiskOps Foundations' },
+  };
+
+  /* ── Boot ─────────────────────────────────────────────────────────── */
+  var currentUser = null;
+  var currentProfile = null;
+  var selectedPath = null;
+
+  (async function boot() {
+    if (!window.AcademyAuth) { guestRedirect(); return; }
+
+    var user = await AcademyAuth.getUser();
+    if (!user) { guestRedirect(); return; }
+
+    currentUser = user;
+    await AcademyProgress.syncFromSupabase().catch(function(){});
+    currentProfile = await AcademyProgress.getProfile().catch(function(){ return null; });
+
+    renderProfile(user, currentProfile);
+    renderPaths();
+    renderCourses();
+    renderCerts();
+    renderStats();
+
+    document.getElementById('dash-loading').style.display = 'none';
+    document.getElementById('dash-main').style.display = '';
+  })();
+
+  function guestRedirect() {
+    document.getElementById('dash-loading').innerHTML =
+      '<div style="text-align:center;">' +
+      '<i class="fas fa-lock fa-2x" style="color:var(--ug-muted);margin-bottom:16px;display:block;"></i>' +
+      '<p style="color:var(--ug-text-2);margin-bottom:16px;">Sign in to access your learning dashboard.</p>' +
+      '<a href="auth.html" class="acad-fc-cta" style="font-size:14px;padding:10px 22px;">' +
+      '<i class="fas fa-sign-in-alt"></i> Sign in to Academy</a></div>';
+  }
+
+  /* ── Profile ──────────────────────────────────────────────────────── */
+  function renderProfile(user, profile) {
+    var name = (profile && profile.display_name) ||
+               (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name)) ||
+               user.email.split('@')[0];
+    var initials = name.split(' ').map(function(w){ return w[0]; }).join('').slice(0,2).toUpperCase();
+
+    document.getElementById('dash-avatar').textContent = initials;
+    document.getElementById('dash-greeting').textContent = 'Welcome back, ' + name.split(' ')[0];
+    document.getElementById('dash-email').textContent = user.email;
+
+    if (profile && profile.company) {
+      var el = document.getElementById('dash-company');
+      el.querySelector('span').textContent = profile.company;
+      el.style.display = '';
+    }
+    if (profile && profile.job_role) {
+      var el2 = document.getElementById('dash-role');
+      el2.querySelector('span').textContent = profile.job_role;
+      el2.style.display = '';
+    }
+
+    /* Prefill edit form */
+    document.getElementById('pf-name').value    = (profile && profile.display_name) || name;
+    document.getElementById('pf-company').value = (profile && profile.company)      || '';
+    document.getElementById('pf-role').value    = (profile && profile.job_role)     || '';
+
+    selectedPath = (profile && profile.preferred_path) || null;
+  }
+
+  /* ── Stats ────────────────────────────────────────────────────────── */
+  function renderStats() {
+    var all = AcademyProgress.getAllProgress();
+    var certs = AcademyProgress.getCertifications();
+    var started = 0, completed = 0, modules = 0;
+    Object.keys(all).forEach(function(cid) {
+      var p = all[cid];
+      if (p.done > 0) started++;
+      if (p.pct === 100) completed++;
+      modules += p.done;
+    });
+    document.getElementById('stat-started').textContent   = started;
+    document.getElementById('stat-completed').textContent = completed;
+    document.getElementById('stat-certs').textContent     = Object.keys(certs).length;
+    document.getElementById('stat-modules').textContent   = modules;
+  }
+
+  /* ── Learning paths ───────────────────────────────────────────────── */
+  function renderPaths() {
+    var cfg = window.ACADEMY_CONFIG;
+    var wrap = document.getElementById('dash-paths');
+    wrap.innerHTML = '';
+    cfg.paths.forEach(function(path) {
+      var active = selectedPath === path.id;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'dash-path-btn' + (active ? ' active' : '');
+      btn.setAttribute('data-path', path.id);
+      btn.style.setProperty('--path-color', path.color);
+      btn.innerHTML =
+        '<i class="' + path.icon + '"></i>' +
+        '<span>' + path.label + '</span>';
+      btn.onclick = function() { selectPath(path.id); };
+      wrap.appendChild(btn);
+    });
+    if (selectedPath) renderRecommended();
+  }
+
+  function selectPath(pathId) {
+    selectedPath = pathId;
+    document.querySelectorAll('.dash-path-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-path') === pathId);
+    });
+    renderRecommended();
+    AcademyProgress.saveProfile({ preferred_path: pathId });
+  }
+
+  /* ── Recommended ──────────────────────────────────────────────────── */
+  function renderRecommended() {
+    if (!selectedPath) return;
+    var cfg = window.ACADEMY_CONFIG;
+    var path = cfg.paths.find(function(p){ return p.id === selectedPath; });
+    if (!path) return;
+
+    var all = AcademyProgress.getAllProgress();
+    /* Next incomplete course in path */
+    var next = path.courses.find(function(cid) {
+      return all[cid] && all[cid].pct < 100 || !all[cid];
+    });
+    if (!next) {
+      document.getElementById('dash-recommended-wrap').style.display = 'none';
+      return;
+    }
+    var course = cfg.courses.find(function(c){ return c.id === next; });
+    var progress = all[next] || { pct: 0, done: 0, total: course ? course.modules : 0 };
+    var meta = CERT_META[next] || {};
+
+    var wrap = document.getElementById('dash-recommended');
+    wrap.innerHTML = '';
+    var card = document.createElement('a');
+    card.href = next + '.html';
+    card.className = 'dash-rec-card';
+    card.innerHTML =
+      '<div class="dash-rec-badge" style="color:' + (meta.color || 'var(--ug-cyan)') + ';">' + (meta.icon || '📚') + '</div>' +
+      '<div class="dash-rec-body">' +
+        '<div class="dash-rec-label">' + (progress.pct > 0 ? 'Continue' : 'Start next') + ' &bull; ' + path.label + ' path</div>' +
+        '<div class="dash-rec-title">' + (course ? course.title : next) + '</div>' +
+        (progress.pct > 0 ? '<div class="dash-rec-progress"><div class="dash-rec-bar" style="width:' + progress.pct + '%"></div></div>' : '') +
+        (progress.pct > 0 ? '<div class="dash-rec-pct">' + progress.pct + '% complete</div>' : '<div class="dash-rec-pct">Not started</div>') +
+      '</div>' +
+      '<div class="dash-rec-cta"><i class="fas fa-play-circle"></i>' + (progress.pct > 0 ? 'Continue' : 'Start') + '</div>';
+    wrap.appendChild(card);
+    document.getElementById('dash-recommended-wrap').style.display = '';
+  }
+
+  /* ── Course progress grid ─────────────────────────────────────────── */
+  function renderCourses() {
+    var cfg = window.ACADEMY_CONFIG;
+    var all = AcademyProgress.getAllProgress();
+    var grid = document.getElementById('dash-course-grid');
+    grid.innerHTML = '';
+
+    cfg.courses.forEach(function(course) {
+      var p = all[course.id] || { pct: 0, done: 0, total: course.modules };
+      var meta = CERT_META[course.id] || {};
+      var card = document.createElement('a');
+      card.href = course.id + '.html';
+      card.className = 'dash-prog-card';
+      if (p.pct === 100) card.classList.add('completed');
+
+      var statusIcon = p.pct === 100
+        ? '<span class="dash-prog-status done"><i class="fas fa-check-circle"></i> Complete</span>'
+        : p.pct > 0
+          ? '<span class="dash-prog-status in-progress"><i class="fas fa-spinner"></i> In progress</span>'
+          : '<span class="dash-prog-status not-started"><i class="fas fa-circle"></i> Not started</span>';
+
+      card.innerHTML =
+        '<div class="dash-prog-header">' +
+          '<span class="dash-prog-icon" style="color:' + (meta.color || 'var(--ug-cyan)') + ';">' + (meta.icon || '📚') + '</span>' +
+          statusIcon +
+        '</div>' +
+        '<div class="dash-prog-title">' + course.title + '</div>' +
+        '<div class="dash-prog-bar-wrap">' +
+          '<div class="dash-prog-bar-track"><div class="dash-prog-bar-fill" style="width:' + p.pct + '%;background:' + (meta.color || 'var(--ug-cyan)') + ';"></div></div>' +
+          '<span class="dash-prog-pct">' + p.pct + '%</span>' +
+        '</div>' +
+        '<div class="dash-prog-modules">' + p.done + ' / ' + p.total + ' modules</div>';
+      grid.appendChild(card);
+    });
+  }
+
+  /* ── Certifications & badges ──────────────────────────────────────── */
+  function renderCerts() {
+    var certs = AcademyProgress.getCertifications();
+    var keys = Object.keys(certs);
+    var empty = document.getElementById('dash-certs-empty');
+    var grid  = document.getElementById('dash-badges-grid');
+
+    if (!keys.length) {
+      empty.style.display = '';
+      grid.style.display  = 'none';
+      return;
+    }
+    empty.style.display = 'none';
+    grid.style.display  = '';
+    grid.innerHTML = '';
+
+    keys.forEach(function(courseId) {
+      var cert = certs[courseId];
+      var meta = CERT_META[courseId] || {};
+      var issued = cert.issuedAt ? new Date(cert.issuedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+
+      var card = document.createElement('div');
+      card.className = 'dash-badge-card';
+      card.innerHTML =
+        '<div class="dash-badge-icon" style="color:' + (meta.color || 'var(--ug-cyan)') + ';">' + (meta.icon || '🏅') + '</div>' +
+        '<div class="dash-badge-title">' + (meta.label || cert.title || courseId) + '</div>' +
+        '<div class="dash-badge-issued">' + (issued ? 'Issued ' + issued : '') + '</div>' +
+        '<div class="dash-badge-cred">' + cert.credentialId + '</div>';
+      grid.appendChild(card);
+    });
+  }
+
+  /* ── Edit profile modal ───────────────────────────────────────────── */
+  function openEditProfile() {
+    document.getElementById('profile-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeEditProfile() {
+    document.getElementById('profile-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  async function saveProfile(e) {
+    e.preventDefault();
+    var btn = document.getElementById('pf-save');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Saving…';
+
+    var updates = {
+      display_name: document.getElementById('pf-name').value.trim() || null,
+      company:      document.getElementById('pf-company').value.trim() || null,
+      job_role:     document.getElementById('pf-role').value.trim() || null,
+    };
+
+    await AcademyProgress.saveProfile(updates).catch(function(){});
+    currentProfile = Object.assign(currentProfile || {}, updates);
+    renderProfile(currentUser, currentProfile);
+    renderStats();
+
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+    setTimeout(function(){
+      btn.innerHTML = '<i class="fas fa-check"></i> Save changes';
+      closeEditProfile();
+    }, 1000);
+  }
+
+  /* ── Sign out ─────────────────────────────────────────────────────── */
+  async function doSignOut() {
+    await AcademyAuth.signOut();
+    window.location.href = 'index.html';
+  }
+
+  /* ── Keyboard: close modal on Escape ─────────────────────────────── */
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeEditProfile(); });
+  </script>
+</body>
+</html>
