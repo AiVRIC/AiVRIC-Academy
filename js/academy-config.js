@@ -15,7 +15,7 @@ window.ACADEMY_CONFIG = {
     window.ACADEMY_SUPABASE_ANON_KEY ||
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12YWJkeHlwdXJtd3VuemhybHhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA4NTIwMzAsImV4cCI6MjA5NjQyODAzMH0.M3UaPZ4_3DxGhFMOI9KxLeoQlJ5RUglva7oeGCD3sI4",
   siteUrl: "https://academy.aivric.com",
-  authRedirectUrl: "https://academy.aivric.com/auth.html",
+  authRedirectUrl: "https://academy.aivric.com",
 
   /* OAuth providers enabled in your Supabase project */
   providers: ["google", "azure"],
