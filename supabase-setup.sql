@@ -138,7 +138,114 @@ LANGUAGE sql SECURITY DEFINER AS $$
   SELECT * FROM public.user_course_summary WHERE user_id = auth.uid();
 $$;
 
--- ── 6. Auth settings reminder ──────────────────────────────────────────
+-- ══════════════════════════════════════════════════════════════════════
+-- Migration: Badge & Certification System v2
+-- Run AFTER the initial setup above (safe to re-run — uses IF NOT EXISTS)
+-- ══════════════════════════════════════════════════════════════════════
+
+-- ── 6. Extend certifications for path-level certs ──────────────────────
+ALTER TABLE public.certifications
+  ADD COLUMN IF NOT EXISTS cert_type    TEXT        NOT NULL DEFAULT 'course'
+    CHECK (cert_type IN ('course', 'path')),
+  ADD COLUMN IF NOT EXISTS path_id      TEXT,
+  ADD COLUMN IF NOT EXISTS learner_name TEXT,
+  ADD COLUMN IF NOT EXISTS quiz_score   INTEGER,
+  ADD COLUMN IF NOT EXISTS expires_at   TIMESTAMPTZ DEFAULT (NOW() + INTERVAL '2 years');
+
+-- ── 7. Course Completion Badges ────────────────────────────────────────
+-- One badge per course per user; separate from path-level certifications.
+CREATE TABLE IF NOT EXISTS public.user_badges (
+  id             UUID        DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id        UUID        REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+  course_id      TEXT        NOT NULL,
+  badge_type     TEXT        NOT NULL DEFAULT 'course_complete',
+  badge_level    TEXT        NOT NULL DEFAULT 'practitioner',
+  credential_id  TEXT        UNIQUE NOT NULL,
+  course_title   TEXT,
+  quiz_score     INTEGER,
+  learner_name   TEXT,
+  earned_at      TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE (user_id, course_id, badge_type)
+);
+
+CREATE INDEX IF NOT EXISTS user_badges_user_id_idx ON public.user_badges (user_id);
+
+ALTER TABLE public.user_badges ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can manage their own badges"
+  ON public.user_badges FOR ALL
+  USING  (auth.uid() = user_id)
+  WITH CHECK (auth.uid() = user_id);
+
+-- ── 8. Public Credential Verification ─────────────────────────────────
+-- Called by verify.html as an anonymous Supabase RPC call.
+-- SECURITY DEFINER so it can read both tables without exposing user_id.
+CREATE OR REPLACE FUNCTION public.verify_credential(p_id TEXT)
+RETURNS TABLE (
+  credential_id  TEXT,
+  title          TEXT,
+  cred_level     TEXT,
+  cred_type      TEXT,
+  learner_name   TEXT,
+  issued_at      TIMESTAMPTZ,
+  expires_at     TIMESTAMPTZ,
+  is_valid       BOOLEAN
+) LANGUAGE plpgsql SECURITY DEFINER AS $$
+BEGIN
+  -- Check user_badges (course badges)
+  RETURN QUERY
+    SELECT
+      ub.credential_id::TEXT,
+      ub.course_title::TEXT,
+      ub.badge_level::TEXT,
+      'badge'::TEXT,
+      ub.learner_name::TEXT,
+      ub.earned_at,
+      NULL::TIMESTAMPTZ,
+      TRUE
+    FROM public.user_badges ub
+    WHERE ub.credential_id = p_id
+    LIMIT 1;
+
+  -- If not found, check certifications (path certs)
+  IF NOT FOUND THEN
+    RETURN QUERY
+      SELECT
+        c.credential_id::TEXT,
+        c.course_title::TEXT,
+        'professional'::TEXT,
+        c.cert_type::TEXT,
+        c.learner_name::TEXT,
+        c.issued_at,
+        c.expires_at,
+        (c.expires_at IS NULL OR c.expires_at > NOW())
+      FROM public.certifications c
+      WHERE c.credential_id = p_id
+      LIMIT 1;
+  END IF;
+END;
+$$;
+
+GRANT EXECUTE ON FUNCTION public.verify_credential(TEXT) TO anon, authenticated;
+
+-- ── 9. Badge leaderboard view (optional — for future use) ─────────────
+CREATE OR REPLACE VIEW public.user_badge_summary AS
+SELECT
+  user_id,
+  COUNT(*)                                             AS badges_earned,
+  COUNT(*) FILTER (WHERE badge_level = 'foundations')  AS foundations_count,
+  COUNT(*) FILTER (WHERE badge_level = 'practitioner') AS practitioner_count,
+  MAX(earned_at)                                       AS last_earned_at
+FROM public.user_badges
+GROUP BY user_id;
+
+CREATE OR REPLACE FUNCTION public.get_my_badge_summary()
+RETURNS SETOF public.user_badge_summary
+LANGUAGE sql SECURITY DEFINER AS $$
+  SELECT * FROM public.user_badge_summary WHERE user_id = auth.uid();
+$$;
+
+-- ── 10. Auth settings reminder ─────────────────────────────────────────
 -- In Supabase Dashboard → Authentication → Settings, configure:
 --
 --   Site URL:                https://academy.aivric.com

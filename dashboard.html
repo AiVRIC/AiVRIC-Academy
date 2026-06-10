@@ -19,6 +19,8 @@
 <script src="js/academy-config.js"></script>
 <script src="js/academy-auth.js"></script>
 <script src="js/academy-progress.js"></script>
+<script src="js/academy-badges.js"></script>
+<script src="js/academy-cert-generator.js"></script>
 <body>
 
   <header class="acad-header">
@@ -101,14 +103,24 @@
     <p class="acad-section-label">All courses</p>
     <div class="dash-course-grid" id="dash-course-grid"></div>
 
-    <!-- ── Certifications ─────────────────────────────────────────── -->
-    <div id="dash-certs-wrap">
-      <p class="acad-section-label">Certifications &amp; badges</p>
-      <div id="dash-certs-empty" class="dash-empty-state">
-        <i class="fas fa-certificate" style="font-size:32px;color:var(--ug-muted);margin-bottom:12px;display:block;"></i>
-        Complete a course to earn your first certification. Each course includes a certification-eligible practitioner exam.
+    <!-- ── Course badges ─────────────────────────────────────────── -->
+    <div id="dash-badges-wrap">
+      <p class="acad-section-label">Course badges</p>
+      <div id="dash-badges-empty" class="dash-empty-state">
+        <i class="fas fa-medal" style="font-size:32px;color:var(--ug-muted);margin-bottom:12px;display:block;"></i>
+        Pass a course quiz to earn your first practitioner badge.
       </div>
       <div class="dash-badges-grid" id="dash-badges-grid" style="display:none;"></div>
+    </div>
+
+    <!-- ── Path certifications ───────────────────────────────────── -->
+    <div id="dash-path-certs-wrap">
+      <p class="acad-section-label">Path certifications</p>
+      <div id="dash-path-certs-empty" class="dash-empty-state">
+        <i class="fas fa-certificate" style="font-size:32px;color:var(--ug-muted);margin-bottom:12px;display:block;"></i>
+        Complete all courses in a certification path to earn a Professional Certification.
+      </div>
+      <div class="dash-path-cert-grid" id="dash-path-cert-grid" style="display:none;"></div>
     </div>
 
   </main>
@@ -149,16 +161,17 @@
   </footer>
 
   <script>
-  /* ── Badge definitions ────────────────────────────────────────────── */
+  /* CERT_META kept for colour/icon lookups in course grid — badges use AcademyBadges */
   var CERT_META = {
     'governance':             { icon: '🏛️', color: '#a78bfa', label: 'Security & Privacy Governance Practitioner' },
-    'asset-governance':       { icon: '📦', color: 'var(--ug-cyan)', label: 'Asset Governance Practitioner' },
-    'information-assurance':  { icon: '🛡️', color: 'var(--ug-green)', label: 'Information Assurance Practitioner' },
-    'secure-engineering':     { icon: '📐', color: 'var(--ug-amber)', label: 'Secure Engineering & Architecture Practitioner' },
-    'vulnerability-management': { icon: '🐛', color: 'var(--ug-orange)', label: 'Vulnerability Management Practitioner' },
-    'cloud-security':         { icon: '☁️', color: 'var(--ug-cyan)', label: 'Cloud Security Practitioner' },
-    'web-security':           { icon: '🌐', color: '#ef4444', label: 'Web Security Practitioner' },
-    'riskops-getting-started':{ icon: '🚀', color: 'var(--ug-cyan)', label: 'RiskOps Foundations' },
+    'asset-governance':       { icon: '📦', color: '#0369a1', label: 'Asset Governance Practitioner' },
+    'information-assurance':  { icon: '🛡️', color: '#047857', label: 'Information Assurance Practitioner' },
+    'secure-engineering':     { icon: '📐', color: '#b45309', label: 'Secure Engineering & Architecture Practitioner' },
+    'vulnerability-management': { icon: '🐛', color: '#c2410c', label: 'Vulnerability Management Practitioner' },
+    'cloud-security':         { icon: '☁️', color: '#0369a1', label: 'Cloud Security Practitioner' },
+    'web-security':           { icon: '🌐', color: '#b91c1c', label: 'Web Security Practitioner' },
+    'riskops-getting-started':{ icon: '🚀', color: '#0369a1', label: 'RiskOps Foundations' },
+    'ast-assessor':           { icon: '📋', color: '#0369a1', label: 'AST Assessor Procedures Practitioner' },
   };
 
   /* ── Boot ─────────────────────────────────────────────────────────── */
@@ -173,13 +186,17 @@
     if (!user) { guestRedirect(); return; }
 
     currentUser = user;
-    await AcademyProgress.syncFromSupabase().catch(function(){});
+    await Promise.all([
+      AcademyProgress.syncFromSupabase().catch(function(){}),
+      window.AcademyBadges ? AcademyBadges.syncFromSupabase().catch(function(){}) : Promise.resolve()
+    ]);
     currentProfile = await AcademyProgress.getProfile().catch(function(){ return null; });
 
     renderProfile(user, currentProfile);
     renderPaths();
     renderCourses();
-    renderCerts();
+    renderBadges();
+    renderPathCerts();
     renderStats();
 
     document.getElementById('dash-loading').style.display = 'none';
@@ -228,7 +245,6 @@
   /* ── Stats ────────────────────────────────────────────────────────── */
   function renderStats() {
     var all = AcademyProgress.getAllProgress();
-    var certs = AcademyProgress.getCertifications();
     var started = 0, completed = 0, modules = 0;
     Object.keys(all).forEach(function(cid) {
       var p = all[cid];
@@ -236,9 +252,11 @@
       if (p.pct === 100) completed++;
       modules += p.done;
     });
+    var badgeCount = window.AcademyBadges ? Object.keys(AcademyBadges.getBadges()).length : 0;
+    var certCount  = window.AcademyBadges ? Object.keys(AcademyBadges.getPathCerts()).length : 0;
     document.getElementById('stat-started').textContent   = started;
     document.getElementById('stat-completed').textContent = completed;
-    document.getElementById('stat-certs').textContent     = Object.keys(certs).length;
+    document.getElementById('stat-certs').textContent     = badgeCount + certCount;
     document.getElementById('stat-modules').textContent   = modules;
   }
 
@@ -346,12 +364,13 @@
     });
   }
 
-  /* ── Certifications & badges ──────────────────────────────────────── */
-  function renderCerts() {
-    var certs = AcademyProgress.getCertifications();
-    var keys = Object.keys(certs);
-    var empty = document.getElementById('dash-certs-empty');
-    var grid  = document.getElementById('dash-badges-grid');
+  /* ── Course badges ────────────────────────────────────────────────── */
+  function renderBadges() {
+    if (!window.AcademyBadges || !window.AcademyCertGen) return;
+    var badges = AcademyBadges.getBadges();
+    var keys   = Object.keys(badges);
+    var empty  = document.getElementById('dash-badges-empty');
+    var grid   = document.getElementById('dash-badges-grid');
 
     if (!keys.length) {
       empty.style.display = '';
@@ -363,18 +382,132 @@
     grid.innerHTML = '';
 
     keys.forEach(function(courseId) {
-      var cert = certs[courseId];
-      var meta = CERT_META[courseId] || {};
-      var issued = cert.issuedAt ? new Date(cert.issuedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+      var b    = badges[courseId];
+      var meta = AcademyBadges.getBadgeMeta(courseId) || {};
+      var color = b.color || meta.color || '#0369a1';
+      var topic = b.topic || meta.topic || courseId;
+      var year  = b.earnedAt ? new Date(b.earnedAt).getFullYear() : new Date().getFullYear();
 
       var card = document.createElement('div');
       card.className = 'dash-badge-card';
+      card.style.setProperty('--badge-color', color);
+
+      var svgDiv = document.createElement('div');
+      svgDiv.className = 'dash-badge-svg-wrap';
+      AcademyCertGen.renderBadge(svgDiv, {
+        color: color, level: b.level || meta.level || 'Practitioner',
+        topic: topic, year: year, credentialId: b.credentialId
+      });
+
+      var liUrl = AcademyCertGen.linkedInCertURL({
+        title:        b.title || meta.label,
+        earnedAt:     b.earnedAt,
+        verifyUrl:    b.verifyUrl || (window.location.origin + '/verify.html?id=' + b.credentialId),
+        credentialId: b.credentialId
+      });
+
       card.innerHTML =
-        '<div class="dash-badge-icon" style="color:' + (meta.color || 'var(--ug-cyan)') + ';">' + (meta.icon || '🏅') + '</div>' +
-        '<div class="dash-badge-title">' + (meta.label || cert.title || courseId) + '</div>' +
-        '<div class="dash-badge-issued">' + (issued ? 'Issued ' + issued : '') + '</div>' +
-        '<div class="dash-badge-cred">' + cert.credentialId + '</div>';
+        '<div class="dash-badge-title">' + (b.title || meta.label || courseId) + '</div>' +
+        '<div class="dash-badge-level">' + (b.level || 'Practitioner') + '</div>' +
+        '<div class="dash-badge-issued">Issued ' + AcademyCertGen.fmtDate(b.earnedAt) + '</div>' +
+        '<div class="dash-badge-cred">' + (b.credentialId || '') + '</div>' +
+        '<div class="dash-badge-actions">' +
+          '<a href="certificate.html?id=' + encodeURIComponent(b.credentialId) + '" class="dash-badge-btn"><i class="fas fa-eye"></i> View</a>' +
+          '<a href="' + liUrl + '" target="_blank" rel="noopener" class="dash-badge-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>' +
+        '</div>';
+      card.insertBefore(svgDiv, card.firstChild);
       grid.appendChild(card);
+    });
+  }
+
+  /* ── Path certifications ──────────────────────────────────────────── */
+  function renderPathCerts() {
+    if (!window.AcademyBadges || !window.AcademyCertGen) return;
+    var certs = AcademyBadges.getPathCerts();
+    var keys  = Object.keys(certs);
+    var empty = document.getElementById('dash-path-certs-empty');
+    var grid  = document.getElementById('dash-path-cert-grid');
+
+    if (!keys.length) {
+      empty.style.display = '';
+      grid.style.display  = 'none';
+      return;
+    }
+    empty.style.display = 'none';
+    grid.style.display  = '';
+    grid.innerHTML = '';
+
+    keys.forEach(function(pathId) {
+      var cert  = certs[pathId];
+      var pmeta = AcademyBadges.getPathMeta(pathId) || {};
+      var color = cert.color || pmeta.color || '#7c3aed';
+      var year  = cert.earnedAt ? new Date(cert.earnedAt).getFullYear() : new Date().getFullYear();
+
+      var card = document.createElement('div');
+      card.className = 'dash-path-cert-card';
+      card.style.setProperty('--cert-color', color);
+
+      var svgWrap = '<div class="dash-cert-badge-wrap" id="pcert-svg-' + pathId + '"></div>';
+
+      var courseListHTML = '';
+      var completed = cert.completedCourses || [];
+      if (completed.length) {
+        courseListHTML = completed.map(function(c) {
+          return '<li style="font-size:11.5px;color:var(--ug-muted-2);padding:2px 0;">' +
+            '<i class="fas fa-check-circle" style="color:' + color + ';margin-right:5px;font-size:10px;"></i>' +
+            (c.title || c.courseId) + '</li>';
+        }).join('');
+        courseListHTML = '<ul style="list-style:none;padding:0;margin:0 0 10px;">' + courseListHTML + '</ul>';
+      }
+
+      var expires = cert.expiresAt
+        ? '<span><i class="fas fa-clock"></i> Valid until ' + AcademyCertGen.fmtDate(cert.expiresAt) + '</span>'
+        : '';
+
+      var liUrl = AcademyCertGen.linkedInCertURL({
+        title:        cert.title,
+        earnedAt:     cert.earnedAt,
+        expiresAt:    cert.expiresAt,
+        verifyUrl:    cert.verifyUrl || (window.location.origin + '/verify.html?id=' + cert.credentialId),
+        credentialId: cert.credentialId
+      });
+
+      card.innerHTML =
+        '<div class="dash-cert-header">' +
+          svgWrap +
+          '<div class="dash-cert-info">' +
+            '<div class="dash-cert-label">Professional Certification</div>' +
+            '<div class="dash-cert-title">' + (cert.title || pmeta.label || pathId) + '</div>' +
+            '<div class="dash-cert-meta">' +
+              '<span><i class="fas fa-calendar"></i>' + AcademyCertGen.fmtDate(cert.earnedAt) + '</span>' +
+              expires +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="dash-cert-body">' +
+          courseListHTML +
+          '<div class="dash-cert-cred">' +
+            '<span>' + (cert.credentialId || '') + '</span>' +
+            '<button class="dash-cert-cred-copy" onclick="AcademyCertGen.copyCredentialId(\'' + (cert.credentialId || '') + '\', this)">Copy</button>' +
+          '</div>' +
+          '<div class="dash-cert-actions">' +
+            '<a href="certificate.html?id=' + encodeURIComponent(cert.credentialId) + '" class="dash-cert-action primary"><i class="fas fa-certificate"></i> View Certificate</a>' +
+            '<a href="' + liUrl + '" target="_blank" rel="noopener" class="dash-cert-action linkedin"><i class="fab fa-linkedin"></i> Add to LinkedIn</a>' +
+            '<a href="verify.html?id=' + encodeURIComponent(cert.credentialId) + '" class="dash-cert-action"><i class="fas fa-shield-check"></i> Verify</a>' +
+          '</div>' +
+        '</div>';
+
+      grid.appendChild(card);
+
+      // Render SVG badge after card is in DOM
+      var svgEl = card.querySelector('#pcert-svg-' + pathId);
+      if (svgEl) {
+        AcademyCertGen.renderBadge(svgEl, {
+          color: color, level: 'PROFESSIONAL',
+          topic: (pmeta.label || '').replace(' Professional','').split(' ').slice(0,2).join('\n'),
+          year: year, credentialId: cert.credentialId
+        });
+      }
     });
   }
 
@@ -421,6 +554,39 @@
 
   /* ── Keyboard: close modal on Escape ─────────────────────────────── */
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeEditProfile(); });
-  </script>
+
+  /* ── Achievement toast ────────────────────────────────────────────── */
+  function showToast(heading, sub, color) {
+    var existing = document.querySelector('.acad-toast');
+    if (existing) existing.remove();
+    var t = document.createElement('div');
+    t.className = 'acad-toast';
+    t.innerHTML =
+      '<div class="acad-toast-bar" style="background:' + color + ';"></div>' +
+      '<div class="acad-toast-body">' +
+        '<div class="acad-toast-icon" style="color:' + color + ';background:' + color + '22;">' +
+          '<i class="fas fa-medal"></i>' +
+        '</div>' +
+        '<div class="acad-toast-text">' +
+          '<div class="acad-toast-heading">' + heading + '</div>' +
+          '<div class="acad-toast-sub">' + sub + '</div>' +
+        '</div>' +
+        '<button class="acad-toast-close" onclick="this.closest(\'.acad-toast\').remove()">&times;</button>' +
+      '</div>';
+    document.body.appendChild(t);
+    setTimeout(function(){ if (t.parentNode) t.remove(); }, 6000);
+  }
+
+  document.addEventListener('academy:badge-earned', function(e) {
+    var b = e.detail.badge;
+    showToast('Badge Earned!', b.title || 'Course badge awarded', b.color || '#0369a1');
+    renderBadges(); renderStats();
+  });
+  document.addEventListener('academy:certification-earned', function(e) {
+    var c = e.detail.cert;
+    showToast('Certification Earned!', c.title || 'Path certification awarded', c.color || '#7c3aed');
+    renderPathCerts(); renderStats();
+  });
+</script>
 </body>
 </html>
