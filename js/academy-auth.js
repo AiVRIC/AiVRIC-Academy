@@ -191,14 +191,10 @@
           '<span class="acad-user-chip-name">' + _esc(name.split(' ')[0]) + '</span>' +
           '</a>';
       } else {
-        chip.innerHTML =
-          '<a class="acad-user-chip-btn acad-user-chip-signin" href="auth.html">' +
-          '<i class="fas fa-user-circle"></i> Sign in</a>';
+        chip.style.display = 'none';
       }
     }).catch(function() {
-      chip.innerHTML =
-        '<a class="acad-user-chip-btn acad-user-chip-signin" href="auth.html">' +
-        '<i class="fas fa-user-circle"></i> Sign in</a>';
+      chip.style.display = 'none';
     });
   }
 

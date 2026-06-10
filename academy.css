@@ -121,16 +121,29 @@ a:hover { color: #40dcff; }
   background: rgba(0,0,0,.05);
   border-color: rgba(0,0,0,.08);
 }
-.acad-top-links a.acad-cta {
+.acad-top-links a.acad-cta,
+.acad-top-links button.acad-cta {
   color: #fff;
   background: #0f172a;
   border-color: #0f172a;
   font-weight: 700;
+  font-size: 13px;
+  font-family: inherit;
   padding: 6px 14px;
   border-radius: 999px;
+  border-style: solid;
+  border-width: 1px;
   margin-left: 6px;
+  cursor: pointer;
+  line-height: 1.4;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
 }
-.acad-top-links a.acad-cta:hover { background: #1e293b; border-color: #1e293b; }
+.acad-top-links a.acad-cta:hover,
+.acad-top-links button.acad-cta:hover { background: #1e293b; border-color: #1e293b; color: #fff; }
 
 .acad-nav-toggle {
   display: none;
@@ -638,6 +651,7 @@ a.tag:hover {
   border-radius: var(--ug-radius-sm);
   cursor: pointer;
   transition: border-color .15s, background .15s;
+  -webkit-user-select: none;
   user-select: none;
 }
 .action-item:hover { background: var(--ug-surface-3); border-color: var(--ug-border-2); }
@@ -724,6 +738,7 @@ a.tag:hover {
   border-radius: var(--ug-radius-sm);
   cursor: pointer;
   transition: border-color .15s, background .15s;
+  -webkit-user-select: none;
   user-select: none;
 }
 .quiz-option:hover { border-color: var(--ug-border-2); }
@@ -2138,6 +2153,11 @@ body.auth-page {
 [data-theme="light"] .acad-featured-course {
   box-shadow: 0 4px 12px rgba(15,23,42,.07), 0 16px 40px rgba(15,23,42,.08);
 }
+
+
+/* ── Light mode: user avatar initials — gradient is now dark, needs white text ── */
+
+[data-theme="light"] .acad-user-avatar { color: #ffffff; }
 
 
 /* ── Light mode: sidebar surface ─────────────────────────────────────── */
