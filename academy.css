@@ -1986,32 +1986,32 @@ body.auth-page {
    ══════════════════════════════════════════════════════════════════════ */
 
 [data-theme="light"] {
-  --ug-bg:        #f0f4f8;
+  --ug-bg:        #edf2f9;
   --ug-surface:   #ffffff;
-  --ug-surface-2: #f1f5f9;
-  --ug-surface-3: #e8edf4;
-  --ug-border:    rgba(0,0,0,.08);
-  --ug-border-2:  rgba(0,0,0,.14);
+  --ug-surface-2: #ecf2f9;
+  --ug-surface-3: #dce6f0;
+  --ug-border:    rgba(15,23,42,.10);
+  --ug-border-2:  rgba(15,23,42,.17);
   --ug-text:      #0f172a;
   --ug-text-2:    #1e293b;
   --ug-muted:     #64748b;
   --ug-muted-2:   #475569;
-  --ug-cyan:      #0284c7;
-  --ug-green:     #059669;
-  --ug-amber:     #b45309;
-  --ug-purple:    #7c3aed;
-  --ug-red:       #dc2626;
+  --ug-cyan:      #0369a1;
+  --ug-green:     #047857;
+  --ug-amber:     #92400e;
+  --ug-purple:    #6d28d9;
+  --ug-red:       #b91c1c;
   --ug-orange:    #c2410c;
-  --ug-shadow:    0 4px 24px rgba(0,0,0,.1);
-  --ug-shadow-lg: 0 16px 48px rgba(0,0,0,.15);
+  --ug-shadow:    0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
+  --ug-shadow-lg: 0 4px 12px rgba(0,0,0,.07), 0 16px 48px rgba(0,0,0,.12);
 }
 
 [data-theme="light"] body {
   color: var(--ug-text-2);
   background:
-    radial-gradient(1200px 800px at 72% -6%, rgba(2,132,199,.05), transparent 55%),
+    radial-gradient(1200px 800px at 72% -6%, rgba(3,105,161,.05), transparent 55%),
     radial-gradient(800px 600px at 4% 18%, rgba(100,116,139,.04), transparent 55%),
-    linear-gradient(180deg, #f0f4f8 0%, #e8eef5 50%, #f0f4f8 100%);
+    linear-gradient(180deg, #edf2f9 0%, #e4edf7 50%, #edf2f9 100%);
 }
 
 [data-theme="light"] a { color: var(--ug-cyan); }
@@ -2111,4 +2111,78 @@ body.auth-page {
   border-color: rgba(0,0,0,.15);
   color: #111827;
 }
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   Light mode — enterprise elevation (card shadows)
+   ══════════════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] .acad-header {
+  box-shadow: 0 1px 0 rgba(15,23,42,.09), 0 4px 20px rgba(15,23,42,.06);
+}
+
+[data-theme="light"] .acad-card,
+[data-theme="light"] .acad-course-card,
+[data-theme="light"] .stat-pill,
+[data-theme="light"] .flow-node,
+[data-theme="light"] .dash-stat-card,
+[data-theme="light"] .dash-rec-card,
+[data-theme="light"] .dash-prog-card,
+[data-theme="light"] .dash-badge-card,
+[data-theme="light"] .in-platform,
+[data-theme="light"] .quiz-block,
+[data-theme="light"] .mark-complete-wrap {
+  box-shadow: 0 1px 3px rgba(15,23,42,.06), 0 4px 12px rgba(15,23,42,.05);
+}
+
+[data-theme="light"] .acad-featured-course {
+  box-shadow: 0 4px 12px rgba(15,23,42,.07), 0 16px 40px rgba(15,23,42,.08);
+}
+
+
+/* ── Light mode: sidebar surface ─────────────────────────────────────── */
+
+[data-theme="light"] .acad-sidebar {
+  background: #f7faff;
+  border-right-color: rgba(15,23,42,.09);
+}
+
+
+/* ── Light mode: table rows ──────────────────────────────────────────── */
+
+[data-theme="light"] .acad-table th { background: #f0f5fb; }
+[data-theme="light"] .acad-table tr:nth-child(even) td { background: rgba(0,0,0,.02); }
+[data-theme="light"] .acad-table tr:hover td { background: rgba(3,105,161,.04); }
+
+
+/* ── Light mode: mark-complete button (remove neon tints) ────────────── */
+
+[data-theme="light"] .mark-complete-btn {
+  border-color: rgba(3,105,161,.4);
+  background: rgba(3,105,161,.07);
+  color: var(--ug-cyan);
+}
+[data-theme="light"] .mark-complete-btn:hover {
+  background: rgba(3,105,161,.14);
+  border-color: rgba(3,105,161,.55);
+}
+[data-theme="light"] .mark-complete-btn.done {
+  border-color: rgba(4,120,87,.4);
+  background: rgba(4,120,87,.08);
+  color: var(--ug-green);
+}
+
+
+/* ── Light mode: buttons with dark-value colored backgrounds ─────────── */
+/* In dark mode these buttons use bright neon fills → dark text works.   */
+/* In light mode the same tokens map to deep blues/greens → needs white. */
+
+[data-theme="light"] .acad-fc-cta             { color: #ffffff; }
+[data-theme="light"] .acad-fc-cta:hover       { background: #025a8a; color: #ffffff; }
+
+[data-theme="light"] .acad-cert-btn           { color: #ffffff; }
+[data-theme="light"] .acad-cert-btn:hover     { background: #036644; color: #ffffff; }
+
+[data-theme="light"] .auth-btn-primary                      { color: #ffffff; }
+[data-theme="light"] .auth-btn-primary:hover:not(:disabled) { background: #025a8a; color: #ffffff; }
 
