@@ -21,14 +21,15 @@
 
   /* ── Old localStorage key map (from v1 course pages) ─────────────── */
   var LEGACY_KEYS = {
-    'governance':             'aivric_gov_v1',
-    'asset-governance':       'aivric_assetgov_v1',
-    'information-assurance':  'aivric_ia_v1',
-    'secure-engineering':     'aivric_seceng_v1',
+    'governance':               'aivric_gov_v1',
+    'asset-governance':         'aivric_assetgov_v1',
+    'ast-assessor':             'aivric_ast_v1',
+    'information-assurance':    'aivric_ia_v1',
+    'secure-engineering':       'aivric_seceng_v1',
     'vulnerability-management': 'aivric_vulnmgmt_v1',
-    'cloud-security':         'aivric_cloudsec_v1',
-    'web-security':           'aivric_websec_v1',
-    'riskops-getting-started': 'riskops_guide_v1',
+    'cloud-security':           'aivric_cloudsec_v1',
+    'web-security':             'aivric_websec_v1',
+    'riskops-getting-started':  'riskops_guide_v1',
   };
 
   /* Unified local key */
@@ -254,7 +255,28 @@
       } catch(e) {}
     }
 
-    window.dispatchEvent(new CustomEvent('academy:certification', { detail: { courseId, title, credentialId: credId } }));
+    /* Also award a badge via the new badge system if available */
+    if (window.AcademyBadges) {
+      try {
+        /* Compute quiz score from legacy course storage */
+        var legacyKey = LEGACY_KEYS[courseId];
+        var quizScore = 100;
+        if (legacyKey) {
+          var raw = localStorage.getItem(legacyKey);
+          if (raw) {
+            var ls = JSON.parse(raw);
+            var mods = Object.keys(ls).filter(function(k) { return ls[k] && ls[k].complete; });
+            if (mods.length) {
+              var correct = mods.filter(function(m) { return ls[m].quizCorrect === true; }).length;
+              quizScore = Math.round((correct / mods.length) * 100);
+            }
+          }
+        }
+        AcademyBadges.awardCourseBadge(courseId, quizScore);
+      } catch(e) {}
+    }
+
+    window.dispatchEvent(new CustomEvent('academy:certification', { detail: { courseId: courseId, title: title, credentialId: credId } }));
   }
 
   function getCertifications() {

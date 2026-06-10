@@ -541,6 +541,7 @@
   <script>
   (function () {
     var STORAGE_KEY = 'aivric_gov_v1';
+    var ACADEMY_COURSE_ID = 'governance';
     var MODULES = ['mod1','mod2','mod3','mod4','mod5','mod6'];
     function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
     function saveState(s) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {} }
@@ -559,6 +560,7 @@
       var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
       if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
       updateProgress();
+      if (window.AcademyProgress) AcademyProgress.markComplete(ACADEMY_COURSE_ID, moduleId);
     };
     window.selectOption = function(el, moduleId) {
       var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
@@ -613,5 +615,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="js/academy-config.js"></script>
 <script src="js/academy-auth.js"></script>
-<script src="js/academy-progress.js"></script></body>
+<script src="js/academy-progress.js"></script>
+<script src="js/academy-badges.js"></script></body>
 </html>

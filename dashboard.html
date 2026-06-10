@@ -192,6 +192,35 @@
     ]);
     currentProfile = await AcademyProgress.getProfile().catch(function(){ return null; });
 
+    /* Retroactively award badges for courses already completed before the badge system existed */
+    if (window.AcademyBadges && window.ACADEMY_CONFIG) {
+      var legacyKeys = {
+        'governance':'aivric_gov_v1','asset-governance':'aivric_assetgov_v1',
+        'ast-assessor':'aivric_ast_v1','information-assurance':'aivric_ia_v1',
+        'secure-engineering':'aivric_seceng_v1','vulnerability-management':'aivric_vulnmgmt_v1',
+        'cloud-security':'aivric_cloudsec_v1','web-security':'aivric_websec_v1',
+        'riskops-getting-started':'riskops_guide_v1'
+      };
+      var allProgress = AcademyProgress.getAllProgress();
+      for (var cid in allProgress) {
+        if (allProgress[cid].pct === 100 && !AcademyBadges.getBadge(cid)) {
+          var lk = legacyKeys[cid];
+          var quizScore = 100;
+          if (lk) {
+            try {
+              var ls = JSON.parse(localStorage.getItem(lk) || '{}');
+              var mods = Object.keys(ls).filter(function(k){ return ls[k] && ls[k].complete; });
+              if (mods.length) {
+                var correct = mods.filter(function(m){ return ls[m].quizCorrect === true; }).length;
+                quizScore = Math.round((correct / mods.length) * 100);
+              }
+            } catch(e) {}
+          }
+          AcademyBadges.awardCourseBadge(cid, quizScore).catch(function(){});
+        }
+      }
+    }
+
     renderProfile(user, currentProfile);
     renderPaths();
     renderCourses();
