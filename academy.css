@@ -2155,9 +2155,14 @@ body.auth-page {
 }
 
 
-/* ── Light mode: user avatar initials — gradient is now dark, needs white text ── */
+/* ── Light mode: user avatar — gradient is dark blue→purple, needs lighter
+       background and white text for legibility ──────────────────────────── */
 
-[data-theme="light"] .acad-user-avatar { color: #ffffff; }
+[data-theme="light"] .acad-user-avatar,
+[data-theme="light"] .dash-avatar {
+  background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%);
+  color: #ffffff;
+}
 
 
 /* ── Light mode: sidebar surface ─────────────────────────────────────── */
