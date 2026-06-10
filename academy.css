@@ -1952,3 +1952,163 @@ body.auth-page {
   .auth-card { padding: 24px 20px; }
 }
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   Theme toggle button (light nav context — same bar as nav links)
+   ══════════════════════════════════════════════════════════════════════ */
+
+.acad-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: var(--ug-radius-sm);
+  color: #374151;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  line-height: 1;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.acad-theme-toggle:hover {
+  background: rgba(0,0,0,.05);
+  border-color: rgba(0,0,0,.15);
+  color: #111827;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   Light mode — CSS variable overrides
+   ══════════════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] {
+  --ug-bg:        #f0f4f8;
+  --ug-surface:   #ffffff;
+  --ug-surface-2: #f1f5f9;
+  --ug-surface-3: #e8edf4;
+  --ug-border:    rgba(0,0,0,.08);
+  --ug-border-2:  rgba(0,0,0,.14);
+  --ug-text:      #0f172a;
+  --ug-text-2:    #1e293b;
+  --ug-muted:     #64748b;
+  --ug-muted-2:   #475569;
+  --ug-cyan:      #0284c7;
+  --ug-green:     #059669;
+  --ug-amber:     #b45309;
+  --ug-purple:    #7c3aed;
+  --ug-red:       #dc2626;
+  --ug-orange:    #c2410c;
+  --ug-shadow:    0 4px 24px rgba(0,0,0,.1);
+  --ug-shadow-lg: 0 16px 48px rgba(0,0,0,.15);
+}
+
+[data-theme="light"] body {
+  color: var(--ug-text-2);
+  background:
+    radial-gradient(1200px 800px at 72% -6%, rgba(2,132,199,.05), transparent 55%),
+    radial-gradient(800px 600px at 4% 18%, rgba(100,116,139,.04), transparent 55%),
+    linear-gradient(180deg, #f0f4f8 0%, #e8eef5 50%, #f0f4f8 100%);
+}
+
+[data-theme="light"] a { color: var(--ug-cyan); }
+[data-theme="light"] a:hover { color: #0369a1; }
+
+/* Nav stays consistently light in both themes — no overrides needed for .acad-header */
+
+/* Progress track */
+[data-theme="light"] .acad-progress-track { background: rgba(0,0,0,.08); }
+
+/* Sidebar */
+[data-theme="light"] .acad-module-item:hover { background: rgba(0,0,0,.04); }
+[data-theme="light"] .acad-module-item.active { background: rgba(2,132,199,.08); border-color: rgba(2,132,199,.2); }
+[data-theme="light"] .acad-mod-icon { background: rgba(0,0,0,.05); }
+[data-theme="light"] .acad-sidebar { scrollbar-color: rgba(0,0,0,.15) transparent; }
+[data-theme="light"] .acad-sidebar::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+
+/* Content code blocks */
+[data-theme="light"] .acad-content code,
+[data-theme="light"] .ip-step-body code {
+  background: rgba(0,0,0,.05);
+  color: #0369a1;
+}
+[data-theme="light"] .acad-content a:hover { color: #0369a1; }
+
+/* Badge / tag */
+[data-theme="light"] .badge {
+  background: rgba(2,132,199,.1);
+  color: #0284c7;
+  border-color: rgba(2,132,199,.22);
+}
+[data-theme="light"] .badge.green  { background: rgba(5,150,105,.1);  color: #059669;  border-color: rgba(5,150,105,.22);  }
+[data-theme="light"] .badge.amber  { background: rgba(180,83,9,.1);   color: #b45309;  border-color: rgba(180,83,9,.22);   }
+[data-theme="light"] .badge.purple { background: rgba(124,58,237,.1); color: #7c3aed;  border-color: rgba(124,58,237,.22); }
+
+[data-theme="light"] .tag { background: rgba(0,0,0,.03); }
+[data-theme="light"] a.tag:hover {
+  background: rgba(2,132,199,.06);
+  border-color: rgba(2,132,199,.3);
+  color: var(--ug-cyan);
+}
+
+/* Callouts */
+[data-theme="light"] .callout { background: rgba(0,0,0,.02); }
+[data-theme="light"] .callout.primary { background: rgba(2,132,199,.05);  border-color: rgba(2,132,199,.15); }
+[data-theme="light"] .callout.warn    { background: rgba(180,83,9,.05);   border-color: rgba(180,83,9,.15);  }
+[data-theme="light"] .callout.success { background: rgba(5,150,105,.05);  border-color: rgba(5,150,105,.15); }
+[data-theme="light"] .callout.danger  { background: rgba(220,38,38,.05);  border-color: rgba(220,38,38,.15); }
+
+/* Phase number circles */
+[data-theme="light"] .phase-num        { background: rgba(2,132,199,.1);  border-color: rgba(2,132,199,.3);  }
+[data-theme="light"] .phase-num.green  { background: rgba(5,150,105,.1);  border-color: rgba(5,150,105,.3);  }
+[data-theme="light"] .phase-num.amber  { background: rgba(180,83,9,.1);   border-color: rgba(180,83,9,.3);   }
+[data-theme="light"] .phase-num.purple { background: rgba(124,58,237,.1); border-color: rgba(124,58,237,.3); }
+[data-theme="light"] .phase-num.orange { background: rgba(194,65,12,.1);  border-color: rgba(194,65,12,.3);  }
+
+/* Flow node active */
+[data-theme="light"] .flow-node.active { background: rgba(2,132,199,.06); border-color: rgba(2,132,199,.35); }
+
+/* Action checklist checkmark */
+[data-theme="light"] .action-cb::after { color: #ffffff; }
+
+/* Quiz */
+[data-theme="light"] .quiz-option { background: var(--ug-surface-2); }
+[data-theme="light"] .quiz-option:hover { background: var(--ug-surface-3); }
+
+/* Dashboard progress cards */
+[data-theme="light"] .dash-prog-card:hover { border-color: rgba(0,0,0,.15); }
+[data-theme="light"] .dash-prog-card.completed { border-color: rgba(5,150,105,.3); }
+
+/* Dashboard badge card shimmer — lighten for light mode */
+[data-theme="light"] .dash-badge-card::after {
+  background: linear-gradient(135deg, rgba(0,0,0,.02), transparent 60%);
+}
+
+/* Auth card */
+[data-theme="light"] .auth-card { box-shadow: 0 20px 60px rgba(0,0,0,.1), 0 4px 16px rgba(0,0,0,.06); }
+
+/* Auth page toggle — sits on dark page background in dark mode, not on white nav */
+.auth-brand .acad-theme-toggle {
+  background: var(--ug-surface);
+  border-color: var(--ug-border);
+  color: var(--ug-text-2);
+}
+.auth-brand .acad-theme-toggle:hover {
+  background: var(--ug-surface-2);
+  border-color: var(--ug-border-2);
+  color: var(--ug-text);
+}
+[data-theme="light"] .auth-brand .acad-theme-toggle {
+  background: none;
+  border-color: rgba(0,0,0,.1);
+  color: #374151;
+}
+[data-theme="light"] .auth-brand .acad-theme-toggle:hover {
+  background: rgba(0,0,0,.05);
+  border-color: rgba(0,0,0,.15);
+  color: #111827;
+}
+

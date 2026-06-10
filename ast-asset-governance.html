@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>AST Asset Governance Assessor Procedures | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/ast-asset-governance.html">
+  <meta name="description" content="SCF AST-01 Asset Governance assessor procedures for enterprise and startup environments. Covers ITAM, CMDB, endpoint, DNS, cloud, SaaS, GitHub, and monitoring governance. AiVRIC Academy.">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+  <script src="js/academy-theme.js"></script>
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html"><img src="assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="https://aivric.com/support.html">Support</a>
+        <button class="acad-theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><i class="fas fa-sun"></i></button>
+        <a href="https://aivric.com/AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">AST Assessor Procedures</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Overview</span><span class="acad-mod-sub">Objective, audience, applicability</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod1" data-module="mod1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Asset Governance Foundations</span><span class="acad-mod-sub">What is an asset, applicability legend</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod2" data-module="mod2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Enterprise Procedures 1–5</span><span class="acad-mod-sub">Program, repository, reconciliation, ownership, classification</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod3" data-module="mod3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Enterprise Procedures 6–11</span><span class="acad-mod-sub">Services, endpoints, cloud, repos, monitoring, lifecycle</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod4" data-module="mod4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Startup Procedures 1–5</span><span class="acad-mod-sub">Inventory, M365/GWS, endpoints, EDR, DNS</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod5" data-module="mod5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Startup Procedures 6–10 &amp; Evidence</span><span class="acad-mod-sub">Website, GitHub, monitoring, Umbrella, CloudSignals, monthly review</span></div>
+        </a>
+        <a class="acad-module-item" href="#certification" data-module="certification" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9670;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Capstone &amp; Assessment</span><span class="acad-mod-sub">Exercise, procedure statements, final exam</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="asset-governance.html"><i class="fas fa-arrow-left"></i> Prev: Asset Governance</a>
+      <a class="acad-sidebar-link" href="https://aivric.com/support.html"><i class="fas fa-life-ring"></i> Support</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <!-- OVERVIEW -->
+      <section id="overview" style="scroll-margin-top:80px;">
+        <span class="badge purple"><i class="fas fa-search"></i> SCF AST-01 &bull; GRC / Audit</span>
+        <h1 style="margin-top:10px;">AST Asset Governance<br>Assessor Procedures</h1>
+        <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">This course covers formal assessor procedures for the SCF <strong>AST — Asset Governance</strong> control family, in two versions: an <strong>Enterprise / Heavily Regulated</strong> edition with 11 comprehensive procedures, and a <strong>Startup / Small Business</strong> edition with 10 right-sized practical procedures. Both versions are mapped to AiVRIC CloudSignals+RiskOps as the evidence and control management platform.</p>
+
+        <div class="callout primary" style="margin:16px 0 20px;">
+          <strong style="font-size:15px;">"You cannot protect what you do not know exists."</strong><br>
+          Asset Governance (AST) gives every organization — from a 10-person startup to a regulated enterprise — a practical, auditable way to know what technology it has, who owns it, how important it is, how it is protected, and when it should be retired.
+        </div>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:0 0 24px;">
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> ~90 min &bull; 5 modules + capstone</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> Foundational to Advanced</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-certificate" style="color:var(--ug-purple)"></i> Certification eligible &mdash; GRC/Audit path</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;">
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-purple);margin-bottom:10px;"><i class="fas fa-users" style="margin-right:5px;"></i>Who this course is for</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>GRC analysts and auditors</li>
+              <li>Compliance officers</li>
+              <li>Security assessors and consultants</li>
+              <li>Risk managers</li>
+              <li>IT governance managers</li>
+              <li>MSP compliance practitioners</li>
+              <li>Small business owners managing compliance</li>
+            </ul>
+          </div>
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ug-purple);margin-bottom:10px;"><i class="fas fa-check-circle" style="margin-right:5px;"></i>What you will be able to do</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Explain AST in plain language for any audience</li>
+              <li>Apply the applicability legend (Required / Recommended / Conditional)</li>
+              <li>Execute all 11 enterprise assessor procedures</li>
+              <li>Execute all 10 startup practical procedures</li>
+              <li>Conduct the monthly 30-minute AST review</li>
+              <li>Compile an auditable evidence package</li>
+              <li>Rate AST control effectiveness</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <strong>Framework alignment:</strong> AST-01 Asset Governance is aligned to the Secure Controls Framework (SCF). SCF CORE is designed to right-size control sets to organization size and risk profile. This course presents both enterprise and startup implementations. Learners should apply the version that matches their organization's profile.
+        </div>
+      </section>
+
+
+      <!-- MODULE 1 — Foundations -->
+      <section id="mod1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">1</div>
+          <div class="phase-head-body">
+            <h2>Asset Governance Foundations</h2>
+            <p class="phase-subtitle">15 min &bull; SCF AST-01 &bull; Plain language, applicability legend, knowledge supplements</p>
+          </div>
+        </div>
+
+        <h3>The plain-language objective</h3>
+        <p>Asset Governance means the organization knows:</p>
+        <div class="callout primary">
+          <strong>What technology it has &nbsp;&bull;&nbsp; Who owns it &nbsp;&bull;&nbsp; What it is used for &nbsp;&bull;&nbsp; How important it is &nbsp;&bull;&nbsp; How it is protected &nbsp;&bull;&nbsp; When it should be retired.</strong>
+        </div>
+
+        <p>For a casual audience, AST is explained simply:</p>
+        <div class="callout" style="font-size:15px;font-style:italic;border-left-color:var(--ug-purple);background:rgba(124,58,237,.05);">
+          <strong>"You cannot protect what you do not know exists."</strong>
+        </div>
+
+        <p>A company may have laptops, phones, email accounts, SharePoint sites, Teams channels, Google Drives, GitHub repositories, cloud servers, DNS records, websites, security tools, logs, SaaS systems, and AI tools. AST gives the company a practical way to keep track of those assets so security, compliance, privacy, and operations teams are not guessing.</p>
+
+        <h3>What counts as an asset?</h3>
+        <p>Do not limit asset governance to hardware. An asset is anything the company depends on or must protect:</p>
+        <div class="acad-grid" style="margin:14px 0 20px;">
+          <div class="acad-card" style="padding:14px 16px;"><h4 style="margin:0 0 8px;font-size:12px;color:var(--ug-cyan);">Physical &amp; Logical</h4><p style="font-size:13px;margin:0;color:var(--ug-text-2);">Laptops, phones, servers, tablets, network devices, data-bearing media, printers</p></div>
+          <div class="acad-card" style="padding:14px 16px;"><h4 style="margin:0 0 8px;font-size:12px;color:var(--ug-green);">Cloud &amp; SaaS</h4><p style="font-size:13px;margin:0;color:var(--ug-text-2);">Cloud accounts, subscriptions, resource groups, SaaS applications, admin accounts</p></div>
+          <div class="acad-card" style="padding:14px 16px;"><h4 style="margin:0 0 8px;font-size:12px;color:var(--ug-amber);">Code &amp; Data</h4><p style="font-size:13px;margin:0;color:var(--ug-text-2);">GitHub repositories, databases, SharePoint sites, shared drives, backup systems</p></div>
+          <div class="acad-card" style="padding:14px 16px;"><h4 style="margin:0 0 8px;font-size:12px;color:var(--ug-orange);">Network &amp; DNS</h4><p style="font-size:13px;margin:0;color:var(--ug-text-2);">DNS zones, domain registrar accounts, certificates, websites, APIs, load balancers</p></div>
+          <div class="acad-card" style="padding:14px 16px;"><h4 style="margin:0 0 8px;font-size:12px;color:var(--ug-purple);">AI &amp; Automation</h4><p style="font-size:13px;margin:0;color:var(--ug-text-2);">AI tools, models, agents, datasets, automation components, monitoring dashboards</p></div>
+          <div class="acad-card" style="padding:14px 16px;"><h4 style="margin:0 0 8px;font-size:12px;color:var(--ug-red);">Third-Party</h4><p style="font-size:13px;margin:0;color:var(--ug-text-2);">Vendor-managed systems, MSP tooling, service dependencies, customer-managed assets</p></div>
+        </div>
+
+        <h3>Applicability legend</h3>
+        <p>Use these markers throughout your assessment work. They indicate what is expected at each level of organizational maturity.</p>
+        <table class="acad-table">
+          <thead><tr><th>Marker</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="badge green" style="font-size:11px;">Required / Baseline</span></td>
+              <td>Expected for almost every organization. Without it, the company has weak control over its assets. Gaps here are significant findings in any audit.</td>
+            </tr>
+            <tr>
+              <td><span class="badge amber" style="font-size:11px;">Recommended</span></td>
+              <td>Strongly useful and often expected as the company grows. May be staged based on size, cost, risk, and staffing. Absence should be justified.</td>
+            </tr>
+            <tr>
+              <td><span class="badge" style="font-size:11px;">Conditional / Optional</span></td>
+              <td>Applies when the company has a specific risk, regulation, customer requirement, asset type, geography, or business model. Document why it applies or does not apply.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout warn" style="margin-top:16px;">
+          <strong>Learner tip:</strong> A small company does <strong>not</strong> need to copy every enterprise control. It does need to prove that it has a reasonable, repeatable way to know and manage its important technology assets.
+        </div>
+
+        <h3>Owner vs. Custodian</h3>
+        <p>These two roles are often confused in assessments:</p>
+        <div class="acad-grid" style="margin:12px 0;">
+          <div class="acad-card" style="padding:14px 16px;">
+            <h4 style="margin:0 0 6px;font-size:13px;color:var(--ug-cyan);">Owner</h4>
+            <p style="font-size:13px;margin:0;color:var(--ug-text-2);">Accountable for <em>why</em> the asset exists and what risk is acceptable. Example: The Finance department owns the payment system.</p>
+          </div>
+          <div class="acad-card" style="padding:14px 16px;">
+            <h4 style="margin:0 0 6px;font-size:13px;color:var(--ug-green);">Custodian</h4>
+            <p style="font-size:13px;margin:0;color:var(--ug-text-2);">Maintains or operates the asset day to day. Example: IT operates the servers that run the payment system.</p>
+          </div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Why is asset inventory important for security and compliance?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Asset inventory enables automatic patching of all systems without requiring manual intervention from IT teams.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">The company cannot protect, patch, monitor, recover, or retire assets it does not know exist — a gap in inventory is a gap in security, compliance, and resilience.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Asset inventory is a regulatory formality required only by frameworks like SOC 2 and ISO 27001 — it has limited operational value.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Asset inventory is primarily used for hardware lifecycle planning and has little relevance to cloud or SaaS environments.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod1" onclick="markComplete('mod1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you can explain AST in plain language and apply the applicability legend.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 2 — Enterprise Procedures 1-5 -->
+      <section id="mod2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">2</div>
+          <div class="phase-head-body">
+            <h2>Enterprise AST Procedures 1–5</h2>
+            <p class="phase-subtitle">20 min &bull; Enterprise / Heavily Regulated &bull; Program, repository, reconciliation, ownership, classification</p>
+          </div>
+        </div>
+
+        <div class="callout" style="border-left-color:var(--ug-cyan);">
+          <strong>Enterprise audience:</strong> Organizations with HIPAA, PCI DSS, SOX, GLBA, GDPR, CMMC, FedRAMP, NIST 800-53, ISO 27001, SOC 2, or other formal audit obligations. Large employee populations, multiple cloud platforms, complex vendor ecosystems, and mature security/compliance/legal functions.
+        </div>
+
+        <div class="callout primary" style="margin-top:12px;">
+          <strong>Enterprise control objective:</strong> The organization maintains a formal, documented, and continuously updated asset governance program that identifies, classifies, owns, protects, monitors, and retires technology assets across their full lifecycle — covering physical devices, virtual systems, cloud resources, SaaS, applications, databases, code repositories, AI tools, and third-party-managed assets.
+        </div>
+
+        <!-- Procedure 1 -->
+        <div class="phase-block" style="margin-top:28px;margin-bottom:0;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <div class="phase-num" style="width:36px;height:36px;font-size:14px;">P1</div>
+            <h3 style="margin:0;font-size:17px;">Validate the Asset Governance Program</h3>
+          </div>
+          <p><strong>Assessor action:</strong> Review whether the organization has a formally approved IT Asset Management program. This is not a one-time spreadsheet — it is a managed program with owners, procedures, review cycles, metrics, and escalation paths.</p>
+          <p><strong>Expected evidence:</strong></p>
+          <ul style="font-size:13.5px;color:var(--ug-text-2);line-height:1.8;">
+            <li>Asset Governance policy &amp; ITAM standard</li>
+            <li>CMDB standard &amp; asset lifecycle procedure</li>
+            <li>Asset ownership model &amp; data classification standard</li>
+            <li>Cloud asset inventory procedure &amp; SaaS governance procedure</li>
+            <li>Third-party asset governance &amp; secure disposal procedure</li>
+            <li>Exception management procedure</li>
+            <li>Executive or governance committee reporting</li>
+          </ul>
+          <div class="callout success"><strong>Pass condition:</strong> The organization demonstrates that asset governance is a managed program, not a point-in-time activity.</div>
+        </div>
+
+        <!-- Procedure 2 -->
+        <div class="phase-block" style="margin-bottom:0;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <div class="phase-num green" style="width:36px;height:36px;font-size:14px;">P2</div>
+            <h3 style="margin:0;font-size:17px;">Confirm the Authoritative Asset Repository</h3>
+          </div>
+          <p><strong>Assessor action:</strong> Determine whether the organization has an authoritative system of record for assets — typically a CMDB, ITAM platform, GRC platform, or integrated asset repository.</p>
+          <ul style="font-size:13.5px;color:var(--ug-text-2);line-height:1.8;">
+            <li>CMDB or ITAM export with required asset field data model</li>
+            <li>API integrations or automated data feeds</li>
+            <li>Asset reconciliation reports &amp; orphaned/duplicate asset reports</li>
+            <li>Inventory aging reports &amp; evidence of periodic review</li>
+          </ul>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+            <div class="callout success" style="margin:0;"><span class="badge green" style="font-size:10px;">Required / Baseline</span><br><strong>Central, controlled asset repository.</strong></div>
+            <div class="callout warn" style="margin:0;"><span class="badge amber" style="font-size:10px;">Recommended</span><br>Automated integrations from endpoint, cloud, identity, vulnerability, and procurement.</div>
+          </div>
+          <div class="callout primary" style="margin-top:10px;"><strong>Enterprise tip:</strong> The CMDB is not the control by itself. The control is the process that keeps the CMDB accurate.</div>
+        </div>
+
+        <!-- Procedure 3 -->
+        <div class="phase-block" style="margin-bottom:0;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <div class="phase-num amber" style="width:36px;height:36px;font-size:14px;">P3</div>
+            <h3 style="margin:0;font-size:17px;">Reconcile Asset Sources</h3>
+          </div>
+          <p><strong>Assessor action:</strong> Compare asset counts and asset records across independent sources: CMDB/ITAM, EDR, vulnerability scanner, cloud inventory, identity provider, procurement, SaaS discovery, monitoring, and network discovery tools.</p>
+          <p><strong>Assessor test:</strong> Select a sample of assets from each system and confirm whether they appear correctly in the authoritative inventory.</p>
+          <div class="callout success"><strong>Pass condition:</strong> The organization can explain differences between sources and has a documented process to resolve mismatches.</div>
+          <div class="callout danger"><strong>Common finding:</strong> The vulnerability scanner sees 12,000 assets, the CMDB lists 9,500, EDR shows 10,800, and no one can explain which number is correct.</div>
+        </div>
+
+        <!-- Procedure 4 -->
+        <div class="phase-block" style="margin-bottom:0;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <div class="phase-num purple" style="width:36px;height:36px;font-size:14px;">P4</div>
+            <h3 style="margin:0;font-size:17px;">Validate Ownership and Accountability</h3>
+          </div>
+          <p><strong>Assessor action:</strong> Confirm that each important asset has an assigned owner. Expected ownership fields: business owner, technical owner, security owner/contact, data owner, system custodian, vendor owner, support group, risk acceptor.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;">
+            <div class="callout success" style="margin:0;"><span class="badge green" style="font-size:10px;">Required / Baseline</span><br>Every production asset has at least one accountable owner.</div>
+            <div class="callout warn" style="margin:0;"><span class="badge amber" style="font-size:10px;">Recommended</span><br>Separate business and technical ownership for critical systems.</div>
+          </div>
+        </div>
+
+        <!-- Procedure 5 -->
+        <div class="phase-block" style="margin-bottom:0;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <div class="phase-num orange" style="width:36px;height:36px;font-size:14px;">P5</div>
+            <h3 style="margin:0;font-size:17px;">Validate Classification and Criticality</h3>
+          </div>
+          <p><strong>Assessor action:</strong> Review whether assets are categorized by risk and business importance.</p>
+          <p><strong>Expected classification attributes:</strong> Asset type, business criticality, data sensitivity, regulatory scope, internet exposure, recovery priority, geographic location, environment (prod/dev/test), vendor involvement, AI involvement, privileged access requirement, end-of-life status.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0;">
+            <div class="callout success" style="margin:0;font-size:13px;"><span class="badge green" style="font-size:10px;">Required</span><br>Critical and sensitive assets identified.</div>
+            <div class="callout warn" style="margin:0;font-size:13px;"><span class="badge amber" style="font-size:10px;">Recommended</span><br>All production assets have classification values.</div>
+            <div class="callout" style="margin:0;font-size:13px;"><span class="badge" style="font-size:10px;">Conditional</span><br>Lab/test assets may be staged but still inventoried.</div>
+          </div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What is the pass condition for Procedure 3 — Reconcile Asset Sources?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">All asset systems show the same count with zero discrepancy — any mismatch is an automatic finding.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">The organization can explain differences between sources and has a documented process to resolve mismatches — the goal is explainability, not perfect agreement.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">The CMDB count must match the vulnerability scanner count within 5% to pass reconciliation testing.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Reconciliation is only required when the organization has more than 5,000 assets under management.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod2" onclick="markComplete('mod2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you can execute Enterprise Procedures 1–5 and identify evidence gaps.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 3 — Enterprise Procedures 6-11 -->
+      <section id="mod3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">3</div>
+          <div class="phase-head-body">
+            <h2>Enterprise AST Procedures 6–11</h2>
+            <p class="phase-subtitle">20 min &bull; Enterprise / Heavily Regulated &bull; Services, endpoints, cloud, repos, monitoring, lifecycle + rating criteria</p>
+          </div>
+        </div>
+
+        <!-- Procedure 6 -->
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div class="phase-num" style="width:36px;height:36px;font-size:14px;">P6</div>
+          <h3 style="margin:0;font-size:17px;">Map Assets to Business Services</h3>
+        </div>
+        <p><strong>Assessor action:</strong> Confirm that critical assets are mapped to the business services they support.</p>
+        <p><strong>Expected evidence:</strong> Service catalog, application dependency maps, network &amp; data flow diagrams, cloud architecture diagrams, business impact analysis, recovery plans, critical service dependency maps.</p>
+        <div class="callout primary"><strong>Practical enterprise example:</strong> A regulated bank should trace the "online loan application" through public DNS → WAF → load balancer → application servers → APIs → identity provider → database → logging → backup → third-party credit bureau integration → monitoring alerts → recovery plan → business owner. If this path cannot be traced, the organization may not understand the risk or recovery needs.</div>
+
+        <!-- Procedure 7 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num green" style="width:36px;height:36px;font-size:14px;">P7</div>
+          <h3 style="margin:0;font-size:17px;">Validate Endpoint and Device Governance</h3>
+        </div>
+        <p><strong>Assessor action:</strong> Confirm that corporate and user endpoints are inventoried, protected, monitored, and governed.</p>
+        <p><strong>Expected evidence:</strong> MDM inventory, EDR inventory, device compliance reports, encryption reports, patch reports, lost/stolen device records, BYOD approval records, remote wipe capability evidence, device return records, exception approvals.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+          <div class="callout success" style="margin:0;"><span class="badge green" style="font-size:10px;">Required</span><br>Devices accessing company data are known and protected.</div>
+          <div class="callout" style="margin:0;"><span class="badge" style="font-size:10px;">Conditional</span><br>BYOD requires compensating controls: app protection, conditional access, or limited access.</div>
+        </div>
+
+        <!-- Procedure 8 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num amber" style="width:36px;height:36px;font-size:14px;">P8</div>
+          <h3 style="margin:0;font-size:17px;">Validate Cloud and SaaS Asset Governance</h3>
+        </div>
+        <p><strong>Assessor action:</strong> Determine whether cloud resources and SaaS systems are included in asset governance.</p>
+        <p><strong>Expected evidence:</strong> Cloud account inventory, subscription inventory, resource group inventory, SaaS application inventory, admin role review, CSPM findings, cloud tagging standards, cloud policy exceptions, cloud monitoring alerts, cloud cost and utilization reports.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+          <div class="callout success" style="margin:0;"><span class="badge green" style="font-size:10px;">Required</span><br>Production cloud and SaaS assets inventoried.</div>
+          <div class="callout warn" style="margin:0;"><span class="badge amber" style="font-size:10px;">Recommended</span><br>Cloud resources use mandatory tags: owner, environment, application, data classification, cost center.</div>
+        </div>
+
+        <!-- Procedure 9 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num purple" style="width:36px;height:36px;font-size:14px;">P9</div>
+          <h3 style="margin:0;font-size:17px;">Validate Code Repository Governance</h3>
+        </div>
+        <p><strong>Assessor action:</strong> Review whether code repositories are inventoried, owned, protected, and monitored.</p>
+        <p><strong>Expected evidence:</strong> Repository inventory, public/private classification, repository owner list, branch protection rules, pull request approval settings, secret scanning results, dependency vulnerability reports, archived repository list, developer access review.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+          <div class="callout success" style="margin:0;"><span class="badge green" style="font-size:10px;">Required</span><br>Production repositories have owners and access controls.</div>
+          <div class="callout warn" style="margin:0;"><span class="badge amber" style="font-size:10px;">Recommended</span><br>Secret scanning, dependency scanning, and branch protection enabled for all active production repositories.</div>
+        </div>
+
+        <!-- Procedure 10 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num orange" style="width:36px;height:36px;font-size:14px;">P10</div>
+          <h3 style="margin:0;font-size:17px;">Validate Monitoring, Capacity, and Performance Coverage</h3>
+        </div>
+        <p><strong>Assessor action:</strong> Confirm that important assets are monitored for availability, performance, capacity, and abnormal behavior.</p>
+        <p><strong>Expected evidence:</strong> Monitoring inventory, alert rules, capacity/performance dashboards, incident tickets, alert tuning records, service-level reports, cloud metrics, application performance telemetry.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+          <div class="callout success" style="margin:0;"><span class="badge green" style="font-size:10px;">Required</span><br>Critical systems have monitoring and alerting.</div>
+          <div class="callout warn" style="margin:0;"><span class="badge amber" style="font-size:10px;">Recommended</span><br>Monitoring is tied to service criticality and incident response procedures.</div>
+        </div>
+
+        <!-- Procedure 11 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num" style="width:36px;height:36px;font-size:13px;background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.3);color:var(--ug-red);">P11</div>
+          <h3 style="margin:0;font-size:17px;">Validate Asset Lifecycle and Disposal</h3>
+        </div>
+        <p><strong>Assessor action:</strong> Confirm that assets are governed from request through retirement. Lifecycle phases: Request → Approval → Purchase/Provisioning → Assignment → Configuration → Operation → Monitoring → Change → Transfer → Return → Sanitization → Disposal/Decommissioning.</p>
+        <p><strong>Expected evidence:</strong> Procurement record, deployment ticket, change ticket, assignment record, return record, secure wipe record, disposal certificate, cloud decommissioning ticket, access removal evidence, inventory update.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+          <div class="callout success" style="margin:0;"><span class="badge green" style="font-size:10px;">Required</span><br>Data-bearing assets are sanitized before reuse or disposal.</div>
+          <div class="callout warn" style="margin:0;"><span class="badge amber" style="font-size:10px;">Recommended</span><br>Decommissioning includes access removal, DNS cleanup, monitoring cleanup, backup review, and evidence retention.</div>
+        </div>
+
+        <h3 style="margin-top:28px;">Enterprise Assessment Decision Criteria</h3>
+        <table class="acad-table">
+          <thead><tr><th>Rating</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge green" style="font-size:11px;">Effective</span></td><td>Asset governance is documented, automated where practical, reconciled, risk-based, and evidenced.</td></tr>
+            <tr><td><span class="badge amber" style="font-size:11px;">Partially Effective</span></td><td>The organization has core processes, but ownership, inventory accuracy, lifecycle updates, or evidence are inconsistent.</td></tr>
+            <tr><td><span class="badge" style="font-size:11px;background:rgba(248,113,113,.1);color:var(--ug-red);border-color:rgba(248,113,113,.25);">Ineffective</span></td><td>The organization cannot reliably identify assets, owners, locations, classifications, dependencies, or lifecycle status.</td></tr>
+            <tr><td><span class="badge" style="font-size:11px;">Not Applicable</span></td><td>The asset type or control scenario does not exist in the assessed environment, and the rationale is documented.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="quiz-block" id="quiz-mod3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Why must decommissioning (Procedure 11) include more than just physical disposal of hardware?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Physical disposal is the primary concern — digital artifacts like DNS entries and monitoring rules are cleaned up automatically by cloud platforms.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Retired assets may retain active access grants, monitoring rules, DNS records, backup data, cloud resources, and licensing — these become orphaned risks if not removed during controlled decommissioning.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Decommissioning only requires a disposal certificate — access and DNS cleanup are handled during the prior change management process.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Decommissioning evidence is only required for regulated data-bearing assets — other assets can be retired informally.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod3" onclick="markComplete('mod3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you can execute Procedures 6–11 and apply the enterprise assessment rating criteria.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 4 — Startup Procedures 1-5 -->
+      <section id="mod4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">4</div>
+          <div class="phase-head-body">
+            <h2>Startup / SMB Procedures 1–5</h2>
+            <p class="phase-subtitle">20 min &bull; Practical implementation &bull; Inventory, M365/GWS, endpoints, EDR, DNS/Cloudflare</p>
+          </div>
+        </div>
+
+        <div class="callout" style="border-left-color:var(--ug-green);">
+          <strong>Startup/SMB profile:</strong> Organizations with limited IT staff, remote/hybrid employees, Microsoft 365 E3 or Google Workspace, Microsoft Intune, Cloudflare DNS, GitHub, GoDaddy/Bluehost hosting, MSP-managed SentinelOne or CrowdStrike EDR, Cisco Umbrella, Datadog/CloudWatch/Azure Monitor, and AiVRIC CloudSignals.
+        </div>
+
+        <div class="callout primary" style="margin-top:10px;">
+          <strong>Startup control objective:</strong> Maintain a simple, accurate, and reviewable list of important technology assets; assign owners; apply basic protections; monitor critical systems; and keep enough evidence to show reasonable security and compliance practices. The goal is not bureaucracy — the goal is <strong>control</strong>.
+        </div>
+
+        <h3 style="margin-top:20px;">Minimum viable asset governance model</h3>
+        <div class="action-checklist" style="margin-bottom:20px;">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">A simple asset inventory with owner, purpose, criticality, and security tool coverage</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Device management via Intune or Google endpoint management</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">EDR coverage report from MSP</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">DNS and website ownership records (Cloudflare, registrar)</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">GitHub repository ownership list with security settings</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Cloud account inventory + AiVRIC CloudSignals GRC/CSPM evidence</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Monitoring for critical services</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">A lightweight exception process</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Monthly or quarterly evidence review</div></div>
+        </div>
+
+        <!-- SP 1 -->
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div class="phase-num" style="width:36px;height:36px;font-size:14px;">S1</div>
+          <h3 style="margin:0;font-size:17px;">Create One Simple Asset Inventory</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline</span>
+        <p>Create one list showing the company's important technology assets. Acceptable platforms for a startup: <strong>Microsoft List or SharePoint List</strong>, <strong>Google Sheet</strong>, <strong>AiVRIC CloudSignals</strong>, or a lightweight PSA platform.</p>
+        <table class="acad-table" style="font-size:12.5px;">
+          <thead><tr><th>Field</th><th>Plain-Language Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>Asset name</td><td>What is it called?</td></tr>
+            <tr><td>Asset type</td><td>Laptop, phone, SaaS app, website, GitHub repo, DNS zone, cloud account, database, etc.</td></tr>
+            <tr><td>Owner</td><td>Who is responsible for it?</td></tr>
+            <tr><td>Business purpose</td><td>Why does it exist?</td></tr>
+            <tr><td>Data sensitivity</td><td>Public, internal, confidential, regulated, customer data, employee data, etc.</td></tr>
+            <tr><td>Criticality</td><td>How bad would it be if it failed or leaked data?</td></tr>
+            <tr><td>Security tool coverage</td><td>Is it in Intune, EDR, Cisco Umbrella, CloudSignals, etc.?</td></tr>
+            <tr><td>Status</td><td>Active, retired, lost, pending disposal, test, archived</td></tr>
+            <tr><td>Last reviewed</td><td>When did someone last check it?</td></tr>
+          </tbody>
+        </table>
+        <div class="callout warn" style="margin-top:10px;"><strong>Small-business tip:</strong> A CMDB is usually <strong>Recommended</strong>, not required, for a small company — unless customer contracts, regulatory obligations, cyber insurance, or operational complexity require it.</div>
+
+        <!-- SP 2 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num green" style="width:36px;height:36px;font-size:14px;">S2</div>
+          <h3 style="margin:0;font-size:17px;">Inventory Microsoft 365 or Google Workspace</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline</span>
+        <p>Treat the productivity tenant as a major business asset. At minimum inventory: the tenant, admin accounts, major collaboration sites, sensitive data repositories, guest/external sharing locations, and retention/eDiscovery tools.</p>
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-lightbulb"></i> Practical example — Finance SharePoint Site</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num" style="background:rgba(46,229,157,.1);color:var(--ug-green);border-color:rgba(46,229,157,.3);">A</div><div class="ip-step-body"><strong>Asset:</strong> Finance SharePoint Site &nbsp;&bull;&nbsp; <strong>Owner:</strong> Finance Lead &nbsp;&bull;&nbsp; <strong>Purpose:</strong> Stores invoices, payroll reports, contracts</div></div>
+            <div class="ip-step"><div class="ip-step-num" style="background:rgba(46,229,157,.1);color:var(--ug-green);border-color:rgba(46,229,157,.3);">B</div><div class="ip-step-body"><strong>Data sensitivity:</strong> Confidential &nbsp;&bull;&nbsp; <strong>External sharing:</strong> Restricted &nbsp;&bull;&nbsp; <strong>Review frequency:</strong> Quarterly</div></div>
+            <div class="ip-step"><div class="ip-step-num" style="background:rgba(46,229,157,.1);color:var(--ug-green);border-color:rgba(46,229,157,.3);">C</div><div class="ip-step-body"><strong>Evidence:</strong> Screenshot/export of site owner, sharing settings, sensitivity label, and access review</div></div>
+          </div>
+        </div>
+
+        <!-- SP 3 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num amber" style="width:36px;height:36px;font-size:14px;">S3</div>
+          <h3 style="margin:0;font-size:17px;">Govern Endpoints with Intune or Google Endpoint Management</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline</span>
+        <p>Every device that accesses company data should be known. Acceptable evidence: Microsoft Intune compliance report, Google endpoint management, EDR platform managed by MSP, device compliance report, or conditional access records.</p>
+        <div class="callout danger"><strong>BYOD risk escalation:</strong> BYOD becomes riskier when the company handles health data, payment card data, defense/controlled technical information, sensitive financial records, regulated customer data, or high-value IP. Company-owned managed devices are strongly recommended and may be required by contract or regulation.</div>
+
+        <!-- SP 4 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num orange" style="width:36px;height:36px;font-size:14px;">S4</div>
+          <h3 style="margin:0;font-size:17px;">Use the MSP's EDR as a Reality Check</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline</span>
+        <p>Once per month, compare: Intune device list &bull; EDR device list &bull; Employee roster. Look for employees with no device, devices with no assigned user, devices in Intune but missing EDR, inactive devices (30+ days), and terminated users with active devices.</p>
+        <div class="callout primary"><strong>Why compare Intune and EDR?</strong> Intune tells you whether a device is <em>managed</em>. EDR tells you whether the device is <em>being monitored for malicious activity</em>. A company laptop should usually appear in both systems.</div>
+
+        <!-- SP 5 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num purple" style="width:36px;height:36px;font-size:14px;">S5</div>
+          <h3 style="margin:0;font-size:17px;">Inventory Cloudflare DNS</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline</span>
+        <p>Treat the Cloudflare DNS zone as a critical business asset. Track: domain name, Cloudflare account, DNS administrators, MX/website/API/SPF/DKIM/DMARC records, DNSSEC status, registrar, and renewal date.</p>
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-lightbulb"></i> Example asset record — DNS Zone</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num" style="background:rgba(124,58,237,.1);color:var(--ug-purple);border-color:rgba(124,58,237,.3);">A</div><div class="ip-step-body"><strong>Asset:</strong> company.com DNS Zone &nbsp;&bull;&nbsp; <strong>Owner:</strong> IT/Security Lead &nbsp;&bull;&nbsp; <strong>Provider:</strong> Cloudflare &nbsp;&bull;&nbsp; <strong>Registrar:</strong> GoDaddy &nbsp;&bull;&nbsp; <strong>Criticality:</strong> High</div></div>
+            <div class="ip-step"><div class="ip-step-num" style="background:rgba(124,58,237,.1);color:var(--ug-purple);border-color:rgba(124,58,237,.3);">B</div><div class="ip-step-body"><strong>Evidence required:</strong> DNS export, admin list, DNSSEC status screenshot, registrar renewal screenshot</div></div>
+          </div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Does a small business always need a CMDB to satisfy AST-01 asset governance?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Yes — any company seeking SOC 2, ISO 27001, or cyber insurance must operate a formal CMDB regardless of size.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">No — a small business may start with a well-maintained spreadsheet, SharePoint List, Google Sheet, or GRC tool. A CMDB becomes more important as the company grows, becomes regulated, or has complex systems.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">No — a CMDB is never required; any informal asset tracking method is sufficient if the company can demonstrate ownership.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Yes — the SCF explicitly requires a CMDB for all organizations seeking to demonstrate AST-01 compliance.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod4" onclick="markComplete('mod4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you can execute Startup Procedures 1–5 and build a minimum viable asset inventory.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 5 — Startup Procedures 6-10, Monthly Review, Evidence -->
+      <section id="mod5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">5</div>
+          <div class="phase-head-body">
+            <h2>Startup Procedures 6–10, Monthly Review &amp; Evidence</h2>
+            <p class="phase-subtitle">20 min &bull; Website, GitHub, monitoring, Cisco Umbrella, CloudSignals &bull; Monthly review &bull; Evidence checklist</p>
+          </div>
+        </div>
+
+        <!-- SP 6 -->
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div class="phase-num" style="width:36px;height:36px;font-size:14px;">S6</div>
+          <h3 style="margin:0;font-size:17px;">Inventory Website Hosting</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline</span>
+        <p>Track: hosting provider, plan, website URL, admin users, CMS platform, plugins/themes, SSL certificate, backup method, domain registrar, DNS provider, business owner, technical owner, renewal date, and payment owner.</p>
+        <div class="callout warn"><strong>Required to know:</strong> Who owns the website &bull; Who can log into hosting &bull; Where the domain is registered &bull; Where DNS is managed &bull; How the site is backed up &bull; Who patches the CMS or plugins. A formal WAF is optional for a simple brochure site but becomes strongly recommended for login portals, e-commerce, customer data collection, or payment flows.</div>
+
+        <!-- SP 7 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num green" style="width:36px;height:36px;font-size:14px;">S7</div>
+          <h3 style="margin:0;font-size:17px;">Inventory GitHub Repositories</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline</span>
+        <p>Every GitHub repository should have an owner and a purpose. Track: name, public/private status, business owner, technical owner, production/non-production use, sensitive data risk, branch protection status, secret scanning status, Dependabot status, archived status, and last reviewed date.</p>
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-lightbulb"></i> Example — customer-portal-api repository</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num" style="background:rgba(46,229,157,.1);color:var(--ug-green);border-color:rgba(46,229,157,.3);">A</div><div class="ip-step-body"><strong>Owner:</strong> Engineering Lead &nbsp;&bull;&nbsp; <strong>Criticality:</strong> High &nbsp;&bull;&nbsp; <strong>Visibility:</strong> Private &nbsp;&bull;&nbsp; <strong>Branch protection:</strong> On &nbsp;&bull;&nbsp; <strong>Dependabot:</strong> On &nbsp;&bull;&nbsp; <strong>Secret scanning:</strong> On</div></div>
+            <div class="ip-step"><div class="ip-step-num" style="background:rgba(46,229,157,.1);color:var(--ug-green);border-color:rgba(46,229,157,.3);">B</div><div class="ip-step-body"><strong>Evidence:</strong> Repository settings screenshot, branch protection screenshot, security alerts export</div></div>
+          </div>
+        </div>
+        <div class="callout primary"><strong>Why GitHub is an asset:</strong> Source code can contain business logic, intellectual property, credentials, infrastructure definitions, and security weaknesses. A repository is not just a developer workspace — it is a company asset.</div>
+
+        <!-- SP 8 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num amber" style="width:36px;height:36px;font-size:14px;">S8</div>
+          <h3 style="margin:0;font-size:17px;">Govern Monitoring Assets</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline</span>
+        <p>Critical systems should have basic monitoring. For a startup, acceptable sources: Datadog, AWS CloudWatch, Azure Monitor, Azure Application Insights, hosting provider monitoring, MSP monitoring, or AiVRIC CloudSignals. Track website availability, SSL expiration, error rate, response time, CPU/memory, storage, database availability, backup success, DNS availability, and alert recipients.</p>
+
+        <!-- SP 9 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num orange" style="width:36px;height:36px;font-size:14px;">S9</div>
+          <h3 style="margin:0;font-size:17px;">Cisco Umbrella as a Network Security Asset Source</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline (if deployed)</span>
+        <p>If Cisco Umbrella is deployed, include it in asset governance. Track: Umbrella tenant, admin users, protected networks, roaming clients, DNS policies, block categories, exceptions, and last policy review. Know whether all intended users and locations are protected. Review blocked activity and policy exceptions monthly.</p>
+
+        <!-- SP 10 -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0 10px;">
+          <div class="phase-num purple" style="width:36px;height:36px;font-size:14px;">S10</div>
+          <h3 style="margin:0;font-size:17px;">AiVRIC CloudSignals for CSPM and GRC Management</h3>
+        </div>
+        <span class="badge green" style="font-size:11px;margin-bottom:10px;display:inline-flex;">Required / Baseline (when deployed)</span>
+        <p>Use AiVRIC CloudSignals as the control evidence and risk management layer. Track: cloud accounts, cloud resources, control mappings, CSPM findings, control exceptions, evidence uploads, asset risk scores, owners, remediation tasks, and review dates. Have one place where asset governance evidence is stored and reviewable.</p>
+
+        <!-- Monthly Review -->
+        <h3 style="margin-top:32px;">Monthly 30-Minute AST Review</h3>
+        <p>A practical startup review should be simple enough that someone will actually do it.</p>
+
+        <div class="flow-diagram" style="flex-wrap:wrap;gap:8px;margin:16px 0;">
+          <div class="flow-node">
+            <div class="flow-node-icon" style="color:var(--ug-cyan);"><i class="fas fa-plus-circle"></i></div>
+            <div class="flow-node-label">Step 1</div>
+            <div class="flow-node-sub">New assets</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <div class="flow-node-icon" style="color:var(--ug-amber);"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="flow-node-label">Step 2</div>
+            <div class="flow-node-sub">Missing / unmanaged</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <div class="flow-node-icon" style="color:var(--ug-red);"><i class="fas fa-shield-alt"></i></div>
+            <div class="flow-node-label">Step 3</div>
+            <div class="flow-node-sub">High-risk items</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <div class="flow-node-icon" style="color:var(--ug-orange);"><i class="fas fa-file-alt"></i></div>
+            <div class="flow-node-label">Step 4</div>
+            <div class="flow-node-sub">Exceptions</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <div class="flow-node-icon" style="color:var(--ug-green);"><i class="fas fa-save"></i></div>
+            <div class="flow-node-label">Step 5</div>
+            <div class="flow-node-sub">Save evidence</div>
+          </div>
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-calendar-check"></i> Monthly AST Review — Step-by-step</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body"><strong>New assets:</strong> New laptops? New GitHub repos? New DNS records? New cloud resources? New SaaS tools? New Teams, SharePoint, or Google Drive locations?</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body"><strong>Missing or unmanaged:</strong> Devices in Intune without EDR? Active employees with no managed device? Former employees with active devices? GitHub repos without owners? Cloud resources without owner tags? DNS records no one recognizes?</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body"><strong>High-risk items:</strong> Internet-facing assets, customer data, payment data, health data, production systems, admin accounts, public GitHub repos, BYOD access, critical DNS records, expiring domains or certificates.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body"><strong>Review exceptions:</strong> What is the exception? Why is it needed? What risk does it create? Who approved it? When does it expire? What compensating control is in place?</div></div>
+            <div class="ip-step"><div class="ip-step-num">5</div><div class="ip-step-body"><strong>Save evidence:</strong> Inventory export, Intune/Google endpoint report, EDR coverage report, Cloudflare DNS export, GitHub repo list, cloud monitoring screenshot, Cisco Umbrella report, CloudSignals control report, exception log.</div></div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:28px;">Startup Evidence Checklist</h3>
+        <p>A small company can demonstrate good AST control operation with the following quarterly evidence package. Create a folder named: <code>AST Evidence — Q3 2026</code></p>
+        <div class="action-checklist">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Current asset inventory export</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Employee roster</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Intune or Google endpoint device export</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">EDR coverage report from MSP</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Cloudflare DNS export + registrar renewal screenshot</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">GitHub repository list + security alerts summary</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Cloud account inventory + AiVRIC CloudSignals control report</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Datadog / CloudWatch / Azure Monitor dashboard screenshot</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Cisco Umbrella policy or activity report</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Website hosting admin and backup screenshot</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Exception log</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Notes from asset review meeting</div></div>
+        </div>
+        <div class="callout warn" style="margin-top:14px;"><strong>Tip:</strong> For a small business, screenshots and exports are acceptable starting evidence. As the company grows, replace screenshots with automated exports, integrations, and continuous evidence collection in AiVRIC CloudSignals.</div>
+
+        <h3 style="margin-top:28px;">Control Applicability — Startup vs. Enterprise</h3>
+        <table class="acad-table" style="font-size:12.5px;">
+          <thead><tr><th>AST Activity</th><th>Startup / SMB Expectation</th><th>Enterprise Expectation</th></tr></thead>
+          <tbody>
+            <tr><td>Asset inventory</td><td><strong>Required.</strong> Spreadsheet, SharePoint List, Google Sheet, or CloudSignals.</td><td><strong>Required.</strong> Formal ITAM / CMDB with integrations.</td></tr>
+            <tr><td>CMDB</td><td><strong>Recommended.</strong> Use when complexity justifies it.</td><td><strong>Required / Expected.</strong> Needed for auditability and scale.</td></tr>
+            <tr><td>Asset owners</td><td><strong>Required.</strong> Every important asset has an owner.</td><td><strong>Required.</strong> Business, technical, security, and data owners.</td></tr>
+            <tr><td>Classification</td><td><strong>Required for important assets.</strong> Simple labels acceptable.</td><td><strong>Required.</strong> Formal classification taxonomy.</td></tr>
+            <tr><td>Cloud discovery</td><td><strong>Required for production cloud.</strong> Manual or CloudSignals.</td><td><strong>Required.</strong> Automated discovery and CSPM integration.</td></tr>
+            <tr><td>EDR coverage</td><td><strong>Required.</strong> MSP report is acceptable evidence.</td><td><strong>Required.</strong> Coverage measured, reconciled, and escalated.</td></tr>
+            <tr><td>GitHub governance</td><td><strong>Required.</strong> Owners, visibility, basic security settings.</td><td><strong>Required.</strong> Formal SDLC, access review, scanning, policy enforcement.</td></tr>
+            <tr><td>Monitoring</td><td><strong>Required for critical systems.</strong> Simple alerts acceptable.</td><td><strong>Required.</strong> Integrated observability and incident process.</td></tr>
+            <tr><td>Exception process</td><td><strong>Required.</strong> Lightweight log acceptable.</td><td><strong>Required.</strong> Formal risk acceptance workflow.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="quiz-block" id="quiz-mod5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">Why should GitHub repositories be included in asset governance?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">GitHub repositories are included in asset governance only when they are publicly accessible, because private repositories carry no meaningful organizational risk.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Repositories can contain source code, secrets, infrastructure definitions, intellectual property, and exploitable vulnerabilities — making them company assets that require ownership, protection, and monitoring regardless of visibility.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">GitHub repositories should only be inventoried if the company is subject to a software security standard such as PCI DSS PA-DSS or NIST SSDF.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">GitHub repositories are developer workspaces — security governance is handled by the development team and does not need to be part of a broader asset governance program.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod5" onclick="markComplete('mod5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you can execute Startup Procedures 6–10, run the monthly review, and compile an evidence package.</span>
+        </div>
+      </section>
+
+
+      <!-- CERTIFICATION / CAPSTONE -->
+      <section id="certification" style="scroll-margin-top:80px;">
+        <h2>Capstone &amp; Assessment</h2>
+        <p>Completing all five modules makes you eligible for the AST Assessor Procedures certification exam and capstone exercise.</p>
+
+        <div class="callout primary" style="margin-bottom:24px;">
+          <strong>Exam domains:</strong>
+          <ul style="margin:8px 0 0;padding-left:18px;font-size:13.5px;line-height:1.9;">
+            <li>Asset governance foundations &amp; applicability legend — 15%</li>
+            <li>Enterprise assessor procedures (P1–P5: program, repo, reconciliation, ownership, classification) — 25%</li>
+            <li>Enterprise assessor procedures (P6–P11: services, endpoints, cloud, repos, monitoring, lifecycle) — 25%</li>
+            <li>Startup / SMB practical procedures &amp; minimum viable model — 20%</li>
+            <li>Evidence compilation, monthly review, and assessment rating — 15%</li>
+          </ul>
+        </div>
+
+        <h3>Capstone exercise: Build a Startup AST Inventory</h3>
+        <p>You are the security lead for a 40-person company using Microsoft 365 E3, Teams, SharePoint, Intune, Cloudflare, GitHub, Bluehost, MSP-managed CrowdStrike, Cisco Umbrella, Datadog, and AiVRIC CloudSignals. Your task:</p>
+
+        <div class="action-checklist">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Identify and document <strong>five endpoint assets</strong> (laptops, phones) with owner, management tool, EDR status, and data sensitivity</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Document <strong>two SharePoint sites</strong> with owner, purpose, sensitivity, and external sharing status</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Document <strong>one Teams workspace</strong> and <strong>one Cloudflare DNS zone</strong> with owner and renewal date</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Document <strong>three GitHub repositories</strong> — one customer-facing, one internal tool, one archived</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Document <strong>one cloud account</strong> (AWS or Azure) and <strong>one Datadog monitoring dashboard</strong></div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text">Document <strong>one exception</strong> — contractor using personal laptop for 14 days — with approval, expiration, risk, and compensating control</div></div>
+        </div>
+
+        <p style="margin-top:20px;"><strong>Then answer these five questions for your mock inventory:</strong></p>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:22px;">
+          <li>Which assets are critical?</li>
+          <li>Which assets have customer or employee data?</li>
+          <li>Which assets are missing owners?</li>
+          <li>Which assets need stronger protection?</li>
+          <li>Which evidence would prove the control is working?</li>
+        </ol>
+
+        <h3>Assessor procedure statements</h3>
+        <div class="callout" style="border-left-color:var(--ug-cyan);margin-bottom:12px;">
+          <strong>Enterprise:</strong> The assessor reviews whether the organization operates a formal asset governance program supported by documented policies, assigned control ownership, an authoritative asset repository, defined asset data standards, lifecycle processes, automated discovery, risk classification, service dependency mapping, monitoring coverage, exception management, and auditable evidence. The assessor reconciles asset records across CMDB, ITAM, MDM, EDR, cloud, vulnerability management, IAM, monitoring, procurement, SaaS, and GRC systems. Deficiencies are documented where asset data is incomplete, unowned, stale, inconsistent, or insufficient to support security, privacy, compliance, resilience, or incident response obligations.
+        </div>
+        <div class="callout" style="border-left-color:var(--ug-green);">
+          <strong>Startup / SMB:</strong> The assessor reviews whether the organization maintains a practical and current inventory of important technology assets — including productivity systems, endpoints, DNS, website hosting, GitHub repositories, cloud resources, security tools, monitoring systems, and GRC/CSPM tooling. The assessor confirms that each important asset has an owner, business purpose, sensitivity level, lifecycle status, and evidence of basic security control coverage. The assessor compares available records from Intune or Google endpoint management, MSP-managed EDR, Cloudflare, GitHub, monitoring platforms, and AiVRIC CloudSignals to identify missing, duplicate, stale, unowned, or high-risk assets. Exceptions are documented, reviewed, and appropriate for the company's size, stage, industry, and regulatory obligations.
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px;">
+          <div class="callout" style="border-left-color:var(--ug-cyan);">
+            <strong>For enterprise learners:</strong> Asset Governance is a formal, auditable discipline that connects technology assets to business services, regulatory obligations, security controls, monitoring, lifecycle management, and evidence.
+          </div>
+          <div class="callout" style="border-left-color:var(--ug-green);">
+            <strong>For startup learners:</strong> Asset Governance is a practical habit: keep a current list of the technology your company depends on, know who owns each item, protect the important assets first, review the list regularly, and save evidence that proves you did it.
+          </div>
+        </div>
+
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed AST Asset Governance Assessor Procedures. You can now conduct SCF AST-01 assessments for both enterprise and startup environments.</div>
+          <a href="information-assurance.html" class="acad-cert-btn"><i class="fas fa-arrow-right"></i> Next: Information Assurance</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2 &middot; AST Assessor Procedures</span>
+  </footer>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'aivric_ast_v1';
+    var MODULES = ['mod1','mod2','mod3','mod4','mod5'];
+    function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+    function saveState(s) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {} }
+    var state = loadState();
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill'); var pctEl = document.getElementById('progress-pct');
+      if (fill) fill.style.width = pct + '%'; if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) { var cert = document.getElementById('cert-block'); if (cert) cert.classList.add('show'); }
+    }
+    window.setActive = function(el) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); el.classList.add('active'); };
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].complete = true; saveState(state);
+      var btn = document.getElementById('mc-' + moduleId); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      updateProgress();
+    };
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); }); el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = false;
+    };
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if (!selected) return;
+      block.dataset.answered = 'true'; var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = true;
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var feedback = document.getElementById('feedback-' + moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o) { if (o.querySelector('[data-correct="true"]')) o.classList.add('correct'); else if (o === selected && !isCorrect) o.classList.add('wrong'); });
+      if (feedback) {
+        var expl = {
+          mod1:{correct:'Correct. Asset inventory is the foundation of every security, compliance, and resilience program. Unknown assets cannot be protected, patched, monitored, or recovered.',wrong:'Asset inventory is not just a regulatory formality — it is a prerequisite for every security action. Unknown assets are unprotected assets.'},
+          mod2:{correct:'Correct. The goal of reconciliation is explainability, not perfect numerical agreement across all systems. Different tools see different things; the organization must be able to account for the differences.',wrong:'Reconciliation is not about matching counts to a percentage tolerance. It is about having a documented process to explain and resolve differences between asset sources.'},
+          mod3:{correct:'Correct. Decommissioning is a multi-step process. Retired assets often retain active access grants, monitoring rules, DNS entries, cloud resources, and backup data — all of which become orphaned risks if not removed.',wrong:'Cloud platforms do not automatically clean up DNS, access grants, monitoring rules, or backup data when hardware is decommissioned. Decommissioning requires explicit action across all systems tied to the asset.'},
+          mod4:{correct:'Correct. SCF does not require a CMDB for all organizations. A small business may start with simpler tooling and evolve to a CMDB as complexity, regulatory obligations, or customer requirements grow.',wrong:'The SCF and AST-01 do not mandate a CMDB for all organizations. The requirement is an accurate, reviewable, owned inventory — the tool is less important than the process.'},
+          mod5:{correct:'Correct. Repositories contain code, secrets, infrastructure definitions, and intellectual property — they are company assets regardless of visibility. Both public and private repositories require governance.',wrong:'Repository governance is not limited to public repositories or specific regulatory contexts. Any repository containing business-critical code, customer data access, or sensitive configuration is a company asset that requires governance.'}
+        };
+        feedback.textContent = ''; var label = document.createElement('strong'); var msg = document.createElement('span');
+        if (isCorrect) { feedback.className = 'quiz-feedback correct'; label.textContent = 'Correct! '; msg.textContent = (expl[moduleId]||{correct:''}).correct; }
+        else { feedback.className = 'quiz-feedback wrong'; label.textContent = 'Not quite. '; msg.textContent = (expl[moduleId]||{wrong:''}).wrong; }
+        feedback.appendChild(label); feedback.appendChild(msg);
+      }
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].quizCorrect = isCorrect; saveState(state);
+    };
+    window.toggleAction = function(el) { el.classList.toggle('checked'); };
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      }
+    });
+    updateProgress();
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { var id = entry.target.id; var link = document.querySelector('[data-module="' + id + '"]'); if (link) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); } } }); }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+  })();
+  </script>
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true">
+    <button class="acad-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img src="" alt=""><div class="acad-lightbox-caption"></div>
+  </div>
+  <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
+<!-- Supabase SDK + Academy auth/progress -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script>
+</body>
+</html>

@@ -37,6 +37,13 @@ window.ACADEMY_CONFIG = {
       path: "governance-leader",
     },
     {
+      id: "ast-assessor",
+      title: "AST Assessor Procedures",
+      modules: 5,
+      badge: "🔍",
+      path: "grc-audit",
+    },
+    {
       id: "information-assurance",
       title: "Information Assurance",
       modules: 6,
