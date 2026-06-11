@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Introduction to Modern Cybersecurity Operations | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/intro-secops.html">
+  <meta name="description" content="A comprehensive introduction to modern cybersecurity operations. Covers SOC models, threat intelligence, vulnerability management, incident response, cloud security, and SecOps metrics. AiVRIC Academy.">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+  <script src="js/academy-theme.js"></script>
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html"><img src="assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="https://aivric.com/support.html">Support</a>
+        <button class="acad-theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><i class="fas fa-sun"></i></button>
+        <a href="https://aivric.com/AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Modern Cybersecurity Operations</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Overview</span><span class="acad-mod-sub">Audience, outcomes, SecOps landscape</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod1" data-module="mod1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Security Operations Foundations</span><span class="acad-mod-sub">SOC models, SIEM, detection basics</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod2" data-module="mod2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Threat Intelligence &amp; Modeling</span><span class="acad-mod-sub">MITRE ATT&CK, TTPs, CTI lifecycle</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod3" data-module="mod3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Vulnerability Management</span><span class="acad-mod-sub">CVSS, KEV, risk-based prioritization</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod4" data-module="mod4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Incident Response &amp; Recovery</span><span class="acad-mod-sub">NIST SP 800-61, IR lifecycle, DFIR</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod5" data-module="mod5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Cloud Security Operations</span><span class="acad-mod-sub">CSPM, CWPP, CIEM, cloud threats</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod6" data-module="mod6" onclick="setActive(this)">
+          <div class="acad-mod-icon">6</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">SecOps Metrics &amp; Maturity</span><span class="acad-mod-sub">MTTD, MTTR, KPIs, SOC maturity</span></div>
+        </a>
+        <a class="acad-module-item" href="#certification" data-module="certification" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9670;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Assessment &amp; Capstone</span><span class="acad-mod-sub">Knowledge test and scenario</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="intro-devsecops.html"><i class="fas fa-arrow-right"></i> Next: Introduction to DevSecOps</a>
+      <a class="acad-sidebar-link" href="https://aivric.com/support.html"><i class="fas fa-life-ring"></i> Support</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <!-- OVERVIEW -->
+      <section id="overview" style="scroll-margin-top:80px;">
+        <span class="badge" style="background:rgba(245,158,11,.15);color:#f59e0b;"><i class="fas fa-shield-halved"></i> Foundational &bull; Platform-Agnostic &bull; ~3 hours</span>
+        <h1 style="margin-top:10px;">Introduction to Modern Cybersecurity Operations</h1>
+        <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">Cybersecurity operations is the continuous practice of detecting threats, managing vulnerabilities, responding to incidents, and maintaining visibility across the environments your organization operates. Modern SecOps has evolved dramatically: the SOC has moved from a log-watching function to a threat-informed, automation-assisted, cloud-aware detection and response capability. This course covers the foundational concepts, tools, and processes of a modern security operations program.</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 24px;">
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> ~3 hours</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 6 modules + assessment</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-signal"></i> Foundation</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-globe"></i> Platform-agnostic with CloudSignals callouts</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;">
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#f59e0b;margin-bottom:10px;"><i class="fas fa-users" style="margin-right:5px;"></i>Who this course is for</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Security analysts joining or building a SOC</li>
+              <li>IT administrators moving into security operations</li>
+              <li>GRC professionals needing SecOps context</li>
+              <li>Cloud engineers adding security operations responsibilities</li>
+              <li>Students pursuing CompTIA Security+, CySA+, or GCIA certifications</li>
+              <li>Managers overseeing security operations teams</li>
+            </ul>
+          </div>
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#f59e0b;margin-bottom:10px;"><i class="fas fa-check-circle" style="margin-right:5px;"></i>Prerequisites</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Basic understanding of networking concepts (TCP/IP, DNS, HTTP)</li>
+              <li>Familiarity with operating systems (Windows or Linux)</li>
+              <li>Basic awareness of what security threats are (malware, phishing, intrusion)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-top:0;padding-top:0;border-top:none;">What you will be able to do</h2>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:20px;">
+          <li>Describe the SOC model, SIEM, SOAR, EDR, and XDR and how they work together.</li>
+          <li>Explain threat intelligence using the MITRE ATT&amp;CK framework and the CTI lifecycle.</li>
+          <li>Apply risk-based vulnerability prioritization using CVSS, EPSS, and CISA KEV.</li>
+          <li>Execute an incident response workflow using NIST SP 800-61 stages.</li>
+          <li>Describe CSPM, CWPP, and CIEM and how they address cloud-native security operations.</li>
+          <li>Define the key SecOps metrics (MTTD, MTTR, false positive rate) and use them to assess program maturity.</li>
+        </ol>
+
+        <div class="callout primary" style="margin-top:16px;">
+          <strong>Framework references in this course:</strong> MITRE ATT&amp;CK v15, NIST SP 800-61 Rev 2 (Incident Handling), NIST SP 800-137 (Continuous Monitoring), NIST CSF 2.0 (Detect, Respond, Recover functions), CISA Known Exploited Vulnerabilities (KEV) Catalog, CVSS v3.1 and v4.0 (FIRST), EPSS (FIRST), CIS Controls v8 (IG2 and IG3), Gartner SOC Maturity Model.
+        </div>
+      </section>
+
+
+      <!-- MODULE 1 -->
+      <section id="mod1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>Security Operations Foundations</h2>
+            <p class="phase-subtitle">25 min &bull; SOC models, SIEM, SOAR, EDR, XDR, detection concepts</p>
+          </div>
+        </div>
+
+        <h3>The Security Operations Center: models and functions</h3>
+        <p>A Security Operations Center (SOC) is the team and capability responsible for monitoring, detecting, and responding to security events. SOC models vary significantly by organizational size and maturity: an <strong>in-house SOC</strong> maintains full ownership of tooling, analysis, and response; a <strong>co-managed SOC</strong> partners with an MSSP for 24/7 monitoring coverage while retaining response ownership; a <strong>Managed Detection and Response (MDR)</strong> arrangement fully outsources detection and initial response; and a <strong>virtual SOC</strong> uses cloud-native tooling with a geographically distributed team. No model is universally best — the choice depends on required detection coverage, budget, available analyst skill, and the organization's threat profile.</p>
+        <p>Regardless of model, SOC functions include: <strong>Tier 1</strong> (alert triage — is this real or a false positive?), <strong>Tier 2</strong> (incident investigation — what happened, what is the scope?), <strong>Tier 3</strong> (threat hunting and advanced analysis — proactively looking for attacker TTPs not yet detected by alerts), and <strong>Tier 4 / SOC Management</strong> (tooling, process improvement, reporting, and threat intelligence integration).</p>
+
+        <h3>The core SOC tooling stack</h3>
+        <p><strong>SIEM</strong> (Security Information and Event Management) aggregates and correlates log data from across the environment to detect anomalous patterns and trigger alerts. Modern SIEMs (Splunk, Microsoft Sentinel, Google Chronicle, IBM QRadar) ingest hundreds of billions of events daily and apply detection rules, ML models, and user behavior analytics (UEBA). <strong>SOAR</strong> (Security Orchestration, Automation, and Response) connects the SIEM to response workflows — automatically enriching alerts, opening tickets, isolating endpoints, and triggering playbooks, reducing MTTD and MTTR. <strong>EDR</strong> (Endpoint Detection and Response) provides deep telemetry and response capability at the endpoint level — recording process execution, file system activity, network connections, and registry changes, and enabling real-time isolation. <strong>XDR</strong> (Extended Detection and Response) extends EDR correlation across endpoint, network, cloud, identity, and email telemetry — providing attack path visibility across the entire kill chain.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Tool</th><th>Primary function</th><th>Detection coverage</th></tr></thead>
+          <tbody>
+            <tr><td><strong>SIEM</strong></td><td>Log aggregation, correlation, alerting</td><td>Network, identity, cloud, application, endpoint (via agents)</td></tr>
+            <tr><td><strong>SOAR</strong></td><td>Playbook automation, alert enrichment, case management</td><td>Integrates with SIEM + all connected tools</td></tr>
+            <tr><td><strong>EDR</strong></td><td>Deep endpoint telemetry + response</td><td>Endpoint: process, file, network, registry, memory</td></tr>
+            <tr><td><strong>NDR</strong></td><td>Network traffic analysis, east-west visibility</td><td>Network: flows, payloads, anomaly detection</td></tr>
+            <tr><td><strong>XDR</strong></td><td>Cross-domain correlation and response</td><td>Endpoint + network + cloud + identity + email unified</td></tr>
+            <tr><td><strong>UEBA</strong></td><td>User and entity behavior analytics</td><td>Identity: insider threat, credential abuse, lateral movement</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals integrates with your SIEM and security tooling stack as a posture and risk context layer. When a SIEM alert fires on a cloud resource, CloudSignals provides the asset context (what is this resource, what data does it handle, what compliance controls apply), the vulnerability context (are there known vulnerabilities on this host), and the risk context (is this asset linked to a risk register entry). This enrichment turns raw SIEM alerts into governance-contextualized incidents.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Assess your SOC coverage model</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Identify your current SOC model: in-house, co-managed, MDR, or virtual. Map your detection coverage: which log sources are ingested by your SIEM? Which are not? Gaps in log ingestion are blind spots.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">List your current detection tools: SIEM, EDR, NDR, SOAR. For each, identify what percentage of your environment is covered. An EDR deployed on 60% of endpoints means 40% have no endpoint telemetry.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Identify your top 5 alert types by volume. For each, estimate your false positive rate: how many are real incidents vs. noise? A false positive rate above 80% indicates tuning debt that is degrading your detection capability.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Assess your after-hours detection capability: is your SOC staffed 24/7, or do you have a coverage gap between 6pm and 8am? Most ransomware deployments occur during off-hours. Document the gap and evaluate MDR augmentation if needed.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod1">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Map your log source coverage:</strong> List all log sources that should be in your SIEM. Mark which are connected and which are missing. Prioritize missing sources by risk (cloud infrastructure and identity logs first).</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Assess EDR deployment coverage:</strong> Confirm what percentage of endpoints have EDR agents deployed. Schedule a deployment campaign for any gap above 5%.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Document your after-hours coverage plan:</strong> Define how after-hours detections are handled. If no 24/7 capability exists, document the risk and the plan to address it (MDR, on-call rotation, etc.).</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A SOC analyst receives 500 alerts per day from the SIEM, and investigation reveals that 480 of them are false positives. What is the primary operational risk this creates?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">The SIEM is malfunctioning — a 96% false positive rate means the correlation rules are not working and the vendor should be contacted for a replacement system.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Alert fatigue: analysts spending most of their time on false positives will miss or delay the 20 real incidents, increasing MTTD and MTTR for genuine threats. High false positive rates degrade the value of the entire detection capability and lead to analysts becoming desensitized to alerts — including real ones.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Log storage costs — 500 alerts per day with 96% false positives indicates excessive log ingestion that will exceed SIEM licensing limits and incur overage charges.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Compliance risk — regulators require that false positive rates remain below 50% or the SIEM deployment fails the relevant control requirement.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod1" onclick="markComplete('mod1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you've mapped your log coverage, assessed EDR deployment, and documented your after-hours detection plan.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 2 -->
+      <section id="mod2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Threat Intelligence and Threat Modeling</h2>
+            <p class="phase-subtitle">25 min &bull; Intelligence &bull; MITRE ATT&CK, threat actors, TTPs, CTI lifecycle</p>
+          </div>
+        </div>
+
+        <h3>The intelligence-driven SOC</h3>
+        <p>Reactive security — waiting for alerts to fire — is insufficient against sophisticated threat actors who spend months in an environment before being detected. Intelligence-driven security operations use knowledge of real-world attacker behavior to proactively hunt for signs of intrusion, tune detections to the actual TTPs (Tactics, Techniques, and Procedures) used against organizations like yours, and prioritize defensive investments based on threat relevance. The SANS Institute and MITRE define threat intelligence as "evidence-based knowledge about an existing or emerging threat that can inform decisions and actions." It must be actionable — if it can't change a decision or action, it is information, not intelligence.</p>
+
+        <h3>MITRE ATT&CK: the adversary behavior knowledge base</h3>
+        <p>MITRE ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) is a globally accessible knowledge base of adversary tactics and techniques based on real-world observations. ATT&CK v15 contains 14 tactics (the adversary's goal at each stage) and hundreds of techniques and sub-techniques describing how those goals are achieved. The 14 tactics map the full attack lifecycle: Reconnaissance, Resource Development, Initial Access, Execution, Persistence, Privilege Escalation, Defense Evasion, Credential Access, Discovery, Lateral Movement, Collection, Command and Control, Exfiltration, and Impact.</p>
+        <p>ATT&CK is used in three primary ways: <strong>Detection coverage mapping</strong> — which ATT&CK techniques can your current SIEM rules and EDR detections detect? This reveals coverage gaps. <strong>Threat actor profiling</strong> — ATT&CK Groups profiles document the specific techniques used by named threat actor groups. If APT29 uses technique T1078 (Valid Accounts) for initial access, your detection coverage for that technique is a priority. <strong>Red team and purple team exercises</strong> — emulating specific ATT&CK techniques to test whether detection rules fire as expected.</p>
+
+        <h3>The Cyber Threat Intelligence (CTI) lifecycle</h3>
+        <p>Effective CTI follows a six-phase lifecycle: <strong>Direction</strong> (what questions does the organization need intelligence to answer?), <strong>Collection</strong> (gathering raw intelligence from feeds, ISACs, OSINT, dark web monitoring, and vendor reporting), <strong>Processing</strong> (normalizing, filtering, and deduplicating raw data), <strong>Analysis</strong> (turning data into actionable intelligence — enriching indicators, assessing confidence, attributing to known groups), <strong>Dissemination</strong> (delivering intelligence in the right format to the right audience — IOCs to SIEM/EDR, strategic reports to executives), and <strong>Feedback</strong> (reviewing whether the intelligence actually informed decisions and improved detection).</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Intelligence type</th><th>Audience</th><th>Examples</th><th>Operational shelf life</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Tactical</strong></td><td>SOC analysts</td><td>IOCs (IPs, hashes, domains), YARA rules, Sigma rules</td><td>Hours to days (IOCs expire quickly)</td></tr>
+            <tr><td><strong>Operational</strong></td><td>IR teams, threat hunters</td><td>Campaign analysis, threat actor TTPs, malware family behavior</td><td>Weeks to months</td></tr>
+            <tr><td><strong>Strategic</strong></td><td>CISO, board, executives</td><td>Threat landscape reports, industry targeting trends, geopolitical context</td><td>Months to years</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals Vision intelligence capabilities surface threat-relevant context during investigation workflows. When a security team investigates a finding against an asset, Vision can provide contextual threat intelligence about the vulnerability or misconfiguration — including known exploitation in the wild (linked to CISA KEV) and relevant ATT&CK technique mappings — enriching the investigation without requiring the analyst to leave the platform.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Map MITRE ATT&CK coverage</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Go to attack.mitre.org. Select a threat actor group (ATT&CK Groups) relevant to your industry (e.g., APT29 for technology, FIN7 for financial services, Lazarus for any sector). Review their commonly used techniques.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">For the top 10 techniques used by that group, assess whether your SIEM has detection rules for each. This is your ATT&CK coverage gap against your most relevant threat actor.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Use the ATT&CK Navigator (mitre-attack.github.io/attack-navigator) to create a coverage heat map: mark which techniques your current detections cover. Techniques with no coverage in the Initial Access and Privilege Escalation tactics are your highest-priority gaps.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Identify your current threat intelligence feeds. For each, classify whether it provides tactical, operational, or strategic intelligence. If you only have tactical IOC feeds, add at least one operational-level source (industry ISAC, vendor threat research).</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod2">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Build an ATT&CK threat actor profile:</strong> Identify the two most relevant threat actor groups for your industry. Document their primary techniques across Initial Access, Persistence, and Exfiltration tactics.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Map ATT&CK detection coverage:</strong> Using ATT&CK Navigator, mark which techniques your SIEM/EDR currently detects. Identify the three highest-priority gaps to close in the next 90 days.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Join your industry ISAC:</strong> If not already a member, identify and join your sector's Information Sharing and Analysis Center (ISAC). ISACs provide operational threat intelligence specific to your industry's threat landscape.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A threat intelligence feed provides a list of 10,000 IP addresses linked to malicious activity. This is immediately blocked in the firewall. Why might this approach be insufficient as a complete threat intelligence program?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Blocking IPs in the firewall is not allowed under most compliance frameworks because it creates availability risks for legitimate traffic.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">This uses only tactical intelligence (IOCs with hours-to-days shelf life) with no operational intelligence (TTPs, campaign behavior) or strategic intelligence (threat landscape, targeting patterns). Sophisticated attackers change IPs constantly — IOC-only defenses are easy to evade. A complete program needs operational intelligence to detect attacker behavior even when IPs change.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">The approach is sufficient — blocking known malicious IPs is the most effective form of threat intelligence operationalization, and additional intelligence types add cost without proportionate protection value.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Firewall blocking should only be applied to IOCs verified through internal analysis — third-party IP lists cannot be trusted without independent validation.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod2" onclick="markComplete('mod2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you've built your threat actor profile, mapped ATT&CK coverage, and identified your intelligence feed gaps.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 3 -->
+      <section id="mod3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Vulnerability Management</h2>
+            <p class="phase-subtitle">25 min &bull; CVSS, EPSS, KEV, risk-based prioritization, patch operations</p>
+          </div>
+        </div>
+
+        <h3>Why CVSS alone is insufficient for prioritization</h3>
+        <p>The Common Vulnerability Scoring System (CVSS) rates vulnerability severity on a 0–10 scale based on exploitability metrics (attack vector, complexity, privileges required, user interaction) and impact metrics (confidentiality, integrity, availability). A CVSS score tells you how bad a vulnerability could be if exploited — but it does not tell you how likely it is to be exploited in your environment. The average enterprise has thousands of CVSS High/Critical vulnerabilities at any point in time. Treating them all with equal urgency is operationally impossible. This is the core problem with CVSS-only prioritization.</p>
+
+        <h3>Risk-based prioritization: CVSS + EPSS + KEV</h3>
+        <p><strong>EPSS</strong> (Exploit Prediction Scoring System, developed by FIRST) estimates the probability that a CVE will be exploited in the wild within the next 30 days. EPSS scores range from 0–100%. The vast majority of CVEs have EPSS scores below 1% — meaning active exploitation is very unlikely. CVEs with both a high CVSS score AND a high EPSS score are the true priority. <strong>CISA KEV</strong> (Known Exploited Vulnerabilities Catalog) is the most authoritative source of CVEs that are actively being exploited in the wild right now. CISA Binding Operational Directive 22-01 mandates that US federal agencies remediate KEV-listed vulnerabilities within tight timelines. All organizations should treat KEV listings as their highest remediation priority, regardless of CVSS score.</p>
+        <p>The SSVC (Stakeholder-Specific Vulnerability Categorization) framework, developed by CISA and Carnegie Mellon, offers a decision tree model for prioritization that incorporates exploitation status (KEV), technical impact, and mission/well-being impact — producing four outcomes: Track, Track*, Attend, Act. SSVC is increasingly adopted as a replacement for CVSS-only prioritization in mature vulnerability management programs.</p>
+
+        <h3>The vulnerability management lifecycle</h3>
+        <p>Effective vulnerability management is a closed-loop process: <strong>Discover</strong> (authenticated scanning across all assets — network, cloud, containers, applications, APIs; NIST SP 800-115 guidance on technical testing), <strong>Prioritize</strong> (apply CVSS + EPSS + KEV + asset criticality + compensating controls), <strong>Remediate</strong> (patch, compensating control, or documented exception), <strong>Verify</strong> (rescan to confirm remediation), <strong>Report</strong> (SLA compliance tracking, trend reporting to leadership). The loop must be continuous — not quarterly. Cloud environments change daily; weekly scanning is the minimum for production cloud infrastructure.</p>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals continuously runs posture scans and surfaces findings linked to CVSS scores, CISA KEV status, and asset criticality scores. The vulnerability-to-risk pipeline in CloudSignals automatically creates RiskOps risk entries for findings meeting defined thresholds — giving risk owners a pre-prioritized treatment queue based on combined risk signals rather than CVSS alone.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Improve your vulnerability prioritization</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">From your most recent vulnerability scan, export all Critical and High CVEs. For each, look up the EPSS score at epss.cyentia.com. How many have EPSS above 10%? These are your true-priority vulnerabilities.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Cross-reference your vulnerability list against the CISA KEV catalog (cisa.gov/known-exploited-vulnerabilities-catalog). Any KEV-listed vulnerability in your environment is Priority 1, regardless of CVSS score. How many KEV-listed CVEs are currently unpatched in your environment?</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Review your SLAs for vulnerability remediation. Do you have tiered SLAs (e.g., Critical = 15 days, High = 30 days, Medium = 90 days)? Are they tracked and reported? SLAs without tracking are targets without accountability.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Identify assets with vulnerability scan coverage gaps. Any asset not scanned in the last 7 days (for production cloud) or 30 days (for on-prem) is a blind spot in your vulnerability program.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod3">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Cross-reference with CISA KEV:</strong> Compare your open vulnerability list against the KEV catalog. Any KEV-listed CVE in your environment goes immediately to Priority 1 treatment.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Add EPSS to your prioritization process:</strong> For all Critical and High CVEs, add EPSS score lookup to your triage workflow. Deprioritize CVEs with EPSS below 1% that have compensating controls in place.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define and document your remediation SLAs:</strong> Set tiered SLA targets for Critical, High, Medium, and Low severity findings. Assign an owner to track SLA compliance monthly and report to leadership.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A system has a CVSS score of 6.5 (Medium) with an EPSS score of 45% and is listed on the CISA KEV catalog. Another system has a CVSS score of 9.8 (Critical) with an EPSS score of 0.2% and is not on KEV. Which should be prioritized first?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">The CVSS 9.8 Critical vulnerability — higher severity always takes priority regardless of exploitation probability or KEV status.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">The CVSS 6.5 / EPSS 45% / KEV-listed vulnerability — active exploitation in the wild (KEV) and a 45% probability of exploitation in 30 days (EPSS) indicate this vulnerability is being actively used by attackers right now. The CVSS 9.8 with 0.2% EPSS represents theoretical severity but very low likelihood of exploitation currently. Risk-based prioritization uses all three dimensions.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Both should be remediated simultaneously — any CVSS above 6.0 requires immediate attention regardless of EPSS or KEV status under most vulnerability management policies.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">KEV listings apply only to US federal agencies — private sector organizations should prioritize by CVSS score alone.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod3" onclick="markComplete('mod3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you've cross-referenced your vulnerabilities with KEV, added EPSS to your triage, and defined remediation SLAs.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 4 -->
+      <section id="mod4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>Incident Response and Recovery</h2>
+            <p class="phase-subtitle">30 min &bull; NIST SP 800-61, IR lifecycle, containment, eradication, DFIR basics</p>
+          </div>
+        </div>
+
+        <h3>The incident response lifecycle (NIST SP 800-61 Rev 2)</h3>
+        <p>NIST SP 800-61 defines incident response as a four-phase lifecycle. <strong>Phase 1: Preparation</strong> — establishing the IR capability before incidents occur: IR policy, playbooks, contact lists, tool access, table-top exercises, detection baselines. <strong>Phase 2: Detection and Analysis</strong> — identifying and confirming that an incident has occurred, scoping the impact, classifying severity, and declaring an incident. <strong>Phase 3: Containment, Eradication, and Recovery</strong> — stopping the spread (containment), removing attacker presence (eradication), and restoring affected systems (recovery). <strong>Phase 4: Post-Incident Activity</strong> — lessons learned, evidence retention, report documentation, and process improvement.</p>
+        <p>The two most common IR failures are: <strong>premature eradication</strong> (cleaning infected systems before fully scoping the attacker's access — the attacker simply re-enters through a still-compromised account or persistence mechanism) and <strong>inadequate preparation</strong> (having no playbooks, no contact lists, no tool access, and no practice before the incident occurs — then trying to learn and respond simultaneously during a crisis). IR preparation investment pays the highest dividend in reducing incident impact.</p>
+
+        <h3>Incident classification and severity</h3>
+        <p>Before executing IR workflows, the team must classify severity. Most organizations use a P1–P4 or Sev1–Sev4 scale: <strong>P1/Sev1</strong> (Critical — active breach, ransomware deployment, significant data exfiltration, or major service disruption), <strong>P2/Sev2</strong> (High — confirmed unauthorized access, actively spreading malware, or regulatory-notifiable event), <strong>P3/Sev3</strong> (Medium — isolated compromise, phishing success without lateral movement), <strong>P4/Sev4</strong> (Low — policy violation, failed attack attempt). Severity determines escalation path, communication requirements, and resource commitment — a P1 escalates to CISO and legal immediately; a P4 may be handled entirely at analyst level.</p>
+
+        <h3>Digital Forensics and Incident Response (DFIR)</h3>
+        <p>When an incident requires legal or regulatory follow-up, DFIR practices ensure evidence is collected in a forensically sound manner. Key principles: <strong>Order of volatility</strong> (collect memory before disk before network logs before file system metadata), <strong>Chain of custody</strong> (documented evidence handling from collection through legal proceedings), <strong>Legal holds</strong> (freezing log retention when litigation is anticipated), <strong>Write blockers</strong> (preventing modification of evidence during acquisition). ISO/IEC 27037:2012 provides guidelines for identification, collection, acquisition, and preservation of digital evidence.</p>
+
+        <div class="callout warn">
+          <strong>Before wiping a compromised system:</strong> Capture a memory image (using a tool like Magnet RAM Capture, WinPMEM, or LiME) and a full disk image before reimaging. Premature wiping destroys evidence needed to understand the full attack scope, identify other compromised systems, and potentially meet regulatory evidence requirements.</div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Test your IR preparation</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Review your IR policy and playbooks. When were they last updated? Do they cover your current environment (cloud workloads, SaaS, remote workers)? Playbooks that don't reflect your current architecture are training documents, not operational ones.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Confirm your IR contact list is current: security team, legal, executive leadership, external IR retainer, cyber insurance carrier, PR/communications. In a crisis, you will not have time to look up who to call.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Run a 30-minute tabletop exercise: "A finance employee reports their laptop is behaving strangely. IT discovers ransomware has been deployed across 20% of endpoints and is still spreading." Walk through every decision from Detection to Containment. Identify the first gap in your process.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Verify your ability to isolate a compromised host within 15 minutes of detection: can you isolate a cloud VM, an on-prem server, and a remote employee laptop? Any isolation capability gap above 30 minutes for critical assets is a P1 response failure risk.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod4">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Update your IR playbooks:</strong> Review all IR playbooks and confirm they cover your current environment. At minimum: ransomware, data breach, phishing, and insider threat playbooks should exist and be tested annually.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Verify your IR contact list:</strong> Confirm all contacts are current, including external IR retainer, cyber insurance, legal, and PR. Test communication channels at least quarterly.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Schedule your next tabletop exercise:</strong> If no tabletop has been run in the last 12 months, schedule one within 60 days. Tabletops are the only way to find IR process gaps before a real incident exposes them.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">During an incident response, the IT team identifies 5 infected workstations and immediately reimages them without capturing memory or disk images first. Why is this a problem?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Reimaging is not a valid IR action — infected systems should remain online to monitor attacker behavior until the full extent of the breach is understood.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Premature eradication without forensic capture destroys the evidence needed to: (1) understand the full attack scope (what other systems were accessed?), (2) identify persistence mechanisms (will the attacker re-enter?), (3) determine the breach timeline (when did compromise begin?), and (4) meet potential legal or regulatory evidence preservation requirements. The team may have contained 5 workstations while the attacker remains active elsewhere.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Reimaging is too slow — in a live incident, infected systems should be physically destroyed to prevent any reinfection risk, which reimaging cannot guarantee.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">The issue is only a problem if litigation is anticipated — for internal incidents with no regulatory notification requirement, immediate reimaging is the recommended approach.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod4" onclick="markComplete('mod4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you've reviewed your IR playbooks, updated your contact list, and scheduled a tabletop exercise.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 5 -->
+      <section id="mod5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>Cloud Security Operations</h2>
+            <p class="phase-subtitle">25 min &bull; CSPM, CWPP, CIEM, cloud-native threats and detection</p>
+          </div>
+        </div>
+
+        <h3>Why traditional security operations tools miss cloud threats</h3>
+        <p>Traditional SIEM/EDR approaches were designed for on-premises environments with a defined network perimeter. Cloud environments break these assumptions: infrastructure is ephemeral (resources spin up and down in seconds), the attack surface includes APIs, IAM misconfigurations, and serverless functions that generate no conventional network traffic, and the shared responsibility model means the cloud provider secures the infrastructure but you are responsible for everything you build on it. The 2024 DBIR identified misconfiguration and cloud identity exploitation as the two most rapidly growing cloud breach vectors — both of which are invisible to traditional endpoint and network detection tools.</p>
+
+        <h3>Cloud Security Posture Management (CSPM)</h3>
+        <p>CSPM tools continuously assess cloud infrastructure configurations against security best practices and compliance frameworks. They detect: publicly accessible storage (S3 buckets, Azure Blob, GCS), overly permissive IAM roles, unencrypted databases, open security groups with unrestricted ingress, disabled CloudTrail/audit logging, and missing MFA on root/admin accounts. AWS Security Hub, Microsoft Defender for Cloud, and Google Security Command Center are native CSPM capabilities; Wiz, Orca, Prisma Cloud, and Lacework are multi-cloud CSPM leaders. The output of CSPM is a prioritized finding list — but findings must be triaged for asset criticality and exploitability, not just CSPM score, to be operationally useful.</p>
+
+        <h3>Cloud Workload Protection Platform (CWPP)</h3>
+        <p>CWPP extends EDR-like capabilities to cloud workloads: VMs, containers, serverless functions, and Kubernetes pods. CWPP provides runtime threat detection (detecting process injection, cryptomining, reverse shells, container escapes), vulnerability scanning of running workloads, and compliance enforcement. Kubernetes-specific security (network policies, RBAC, pod security standards, admission controllers) falls within the CWPP domain. The CIS Kubernetes Benchmark and NIST SP 800-190 (Application Container Security Guide) provide control frameworks for container security.</p>
+
+        <h3>Cloud Infrastructure Entitlement Management (CIEM)</h3>
+        <p>Identity is the primary attack vector in cloud environments. CIEM tools discover, analyze, and right-size cloud IAM permissions by identifying: over-privileged roles and users, unused permissions (permissions granted but never exercised — violating least privilege), cross-account access relationships, service accounts with excessive permissions, and public-facing resources with no authentication requirement. CIEM data often reveals that 90%+ of granted cloud permissions are never used — representing an enormous lateral movement surface for attackers who compromise any one identity.</p>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals is purpose-built as a continuous CSPM across AWS, Azure, GCP, and OCI. Scan results feed directly into the UCB control evidence layer — meaning every posture finding is mapped to a governance control, creating the link between operational security posture and GRC compliance state. Cloud findings triggering RiskOps risk entries are automatically prioritized by asset criticality and CVSS/KEV data.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Assess your cloud security operations posture</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Review your CSPM tool's finding dashboard. What percentage of findings are categorized as Critical or High? What are the top three misconfiguration categories? These reveal your cloud security hygiene gaps.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Audit cloud IAM: in your primary cloud provider, list all IAM roles and users with Administrator or equivalent permissions. For each, confirm the permission is necessary and actively used. Remove or restrict any unused admin permissions.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Check cloud audit logging: confirm CloudTrail (AWS), Activity Logs (Azure), or Cloud Audit Logs (GCP) are enabled in all regions and all accounts/subscriptions/projects. Disabled audit logging is a Tier 1 CSPM finding and removes your forensic visibility entirely.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Test public resource exposure: use your cloud provider's built-in tools (AWS Trusted Advisor, Azure Secure Score, GCP Security Health Analytics) to identify any publicly accessible storage, databases, or compute resources that should not be public. Remediate within 24 hours of discovery.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod5">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Enable cloud audit logging in all regions:</strong> Confirm audit logging (CloudTrail, Activity Logs, Cloud Audit Logs) is enabled everywhere with a retention period meeting your compliance requirements (typically 90 days minimum, 1 year for most regulations).</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Right-size admin permissions:</strong> Identify and remove or restrict all cloud IAM admin roles that are not actively required. Require MFA for all admin access. Use just-in-time (JIT) access for privileged operations.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Integrate CSPM findings into your risk process:</strong> Establish a workflow connecting Critical/High CSPM findings to your risk register or treatment queue. CSPM findings that sit unresolved longer than 30 days without a documented treatment plan are operational risk exposure.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A security team deploys best-in-class EDR on all Windows and Linux servers and reports 100% endpoint coverage. A cloud breach subsequently occurs through an exposed S3 bucket and an overly permissive IAM role. Why did the EDR fail to prevent this?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">The EDR failed because it was not configured to monitor outbound traffic from the S3 bucket — a configuration change would have detected the exfiltration.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">EDR detects and responds to threats at the endpoint (process execution, file system, memory). Cloud resource attacks through misconfigured S3 permissions and IAM exploitation don't involve endpoint execution — they use the cloud control plane API. These threats are invisible to EDR and require CSPM (detecting misconfiguration) and CIEM (detecting excessive permissions) to address.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">The EDR coverage was insufficient — 100% of Windows and Linux servers doesn't include macOS endpoints where the attacker originated.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">EDR cannot detect IAM-based attacks because cloud providers do not allow EDR agents on their infrastructure — this is a shared responsibility model gap the cloud provider is responsible for.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod5" onclick="markComplete('mod5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you've enabled cloud audit logging everywhere, right-sized admin permissions, and integrated CSPM findings into your risk process.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 6 -->
+      <section id="mod6" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(245,158,11,.2);color:#f59e0b;">6</div>
+          <div class="phase-head-body">
+            <h2>SecOps Metrics and Maturity</h2>
+            <p class="phase-subtitle">20 min &bull; MTTD, MTTR, KPIs, SOC maturity model, and program improvement</p>
+          </div>
+        </div>
+
+        <h3>The essential SecOps metrics</h3>
+        <p><strong>MTTD</strong> (Mean Time to Detect) measures the average time between when an incident begins and when the security team becomes aware of it. IBM's Cost of a Data Breach Report 2024 found the global average MTTD is 194 days — meaning attackers operate in environments for over six months before detection. Mature SOCs target MTTD below 24 hours for critical incidents. <strong>MTTR</strong> (Mean Time to Respond/Remediate) measures the average time from detection to containment and remediation. The 2024 IBM report found average MTTR of 64 days — an attacker present for 64 days after detection has enormous lateral movement opportunity. <strong>MTTC</strong> (Mean Time to Contain) is increasingly used separately from MTTR to measure how quickly the spread of an incident is stopped, as distinct from full eradication and recovery.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Metric</th><th>Definition</th><th>Industry average (2024)</th><th>Mature target</th></tr></thead>
+          <tbody>
+            <tr><td><strong>MTTD</strong></td><td>Breach start → detection</td><td>194 days</td><td>&lt;24 hours for P1</td></tr>
+            <tr><td><strong>MTTC</strong></td><td>Detection → containment</td><td>~4 hours (P1)</td><td>&lt;1 hour for P1</td></tr>
+            <tr><td><strong>MTTR</strong></td><td>Detection → full remediation</td><td>64 days</td><td>&lt;30 days for P1</td></tr>
+            <tr><td><strong>False Positive Rate</strong></td><td>False alerts / total alerts</td><td>~65–80%</td><td>&lt;30% for mature SOC</td></tr>
+            <tr><td><strong>Alert-to-Case Rate</strong></td><td>Alerts escalated to full investigation</td><td>Varies widely</td><td>All P1/P2 alerts → case</td></tr>
+            <tr><td><strong>Vuln SLA compliance</strong></td><td>Vulns remediated within SLA / total</td><td>Varies widely</td><td>≥95% Critical within SLA</td></tr>
+          </tbody>
+        </table>
+
+        <h3>SOC maturity models</h3>
+        <p>Gartner's SOC maturity model and the MITRE SOAR maturity model both define progression from reactive to proactive operations. At <strong>Level 1</strong> (Reactive/Ad-hoc): no formal SOC, reactive response only, minimal logging, no defined IR process. At <strong>Level 2</strong> (Managed): SIEM deployed, defined alert triage, basic IR playbooks, reactive vulnerability management. At <strong>Level 3</strong> (Defined): threat intelligence integration, proactive threat hunting, SOAR automation, defined metrics. At <strong>Level 4</strong> (Quantitative): metrics-driven operations, continuous improvement, ATT&CK coverage measurement, purple team exercises. At <strong>Level 5</strong> (Optimizing): threat-anticipatory operations, machine-speed detection, fully automated Tier 1 response, continuous red team feedback loop.</p>
+        <p>Most commercial organizations operate at Level 2–3. The progression from Level 2 to Level 3 — adding threat intelligence, proactive hunting, and SOAR automation — produces the most significant improvements in MTTD and MTTR for the investment. Organizations should target Level 3 before investing in Level 4 capabilities.</p>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals+RiskOps tracks security posture trends over time, enabling you to measure CSPM finding resolution rates, vulnerability SLA compliance, and risk treatment velocity — all as governance metrics linked to specific control areas. The executive reports module generates posture trend reporting that answers the CISO's board question: "Are we more secure this quarter than last quarter, and why?"
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Baseline and improve your SecOps metrics</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Calculate your current MTTD and MTTR from your incident records over the last 6 months. Compare to the industry average. If your MTTD is worse than average, identify the detection gap (log coverage, alert tuning, hunting cadence) causing the delay.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Measure your false positive rate for your top 10 alert types. For any alert with false positive rate above 80%, create a tuning plan: add environment-specific context (asset criticality, business hours), reduce noise at the data source, or suppress known benign patterns.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Assess your SOC maturity level honestly against the five-level model. Identify which Level 3 capabilities you lack (threat intelligence program, threat hunting, SOAR automation, ATT&CK coverage mapping) and create a prioritized roadmap to close the gap.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Set 12-month targets for your top three SecOps metrics. Communicate them to leadership. Metrics without targets are observations; targets create accountability and drive program investment decisions.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod6">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Baseline your MTTD and MTTR:</strong> Calculate 6-month averages for both metrics from your incident log. Set improvement targets for the next 12 months. Share with leadership.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Reduce your false positive rate:</strong> For your three noisiest alert types, create tuning plans targeting reduction to &lt;50% false positive rate within 90 days. Track before/after.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Build your SOC maturity roadmap:</strong> Rate your current maturity level and identify the two highest-value Level 3 capabilities to pursue. Define the investment and timeline for each.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod6">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A SOC has an MTTD of 120 days and an MTTR of 80 days. The SOC manager reports this as "acceptable because it's below the industry average of 194 and 64." What is wrong with this reasoning?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The reasoning is correct — any metric below industry average represents above-average security performance and does not require further improvement.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">MTTD 120 days means attackers operate in the environment for four months before detection — that is 120 days of potential data exfiltration, lateral movement, and persistence establishment. MTTR of 80 days adds another 80 days of exposure. "Below industry average" is not an appropriate target for a security program — the target should be the level that reduces business risk to acceptable levels, which for most organizations means P1 MTTD in hours and MTTR in days, not months.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The MTTR of 80 days is above the 64-day average — so the reasoning is flawed because the metric is actually worse than average, not better.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">Industry averages include very small organizations that skew the data — a well-resourced SOC should be compared only to peers of similar size and complexity.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod6')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod6"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod6" onclick="markComplete('mod6')">Mark Module 6 complete</button>
+          <span class="mark-complete-hint">Move on when you've baselined your MTTD/MTTR, started tuning your noisiest alerts, and built your SOC maturity roadmap.</span>
+        </div>
+      </section>
+
+
+      <!-- ASSESSMENT -->
+      <section id="certification" style="scroll-margin-top:80px;">
+        <h2>Course Assessment — Introduction to Modern Cybersecurity Operations</h2>
+        <p>Completing all six modules qualifies you for the knowledge assessment. This course is a recommended prerequisite for the <a href="cloud-security.html">Cloud Security</a> and <a href="vulnerability-management.html">Vulnerability Management</a> practitioner courses.</p>
+
+        <table class="acad-table" style="margin-bottom:20px;">
+          <thead><tr><th>Assessment domain</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td>SOC models and detection tooling</td><td>20%</td></tr>
+            <tr><td>Threat intelligence and MITRE ATT&amp;CK</td><td>20%</td></tr>
+            <tr><td>Vulnerability management and prioritization</td><td>20%</td></tr>
+            <tr><td>Incident response lifecycle and DFIR</td><td>20%</td></tr>
+            <tr><td>Cloud security operations and metrics</td><td>20%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Capstone scenario</h3>
+        <p style="color:var(--ug-text-2);">At 11:30 PM on a Friday, your SIEM fires a high-severity alert: a service account in AWS has made 4,000 API calls to s3:GetObject across a sensitive data bucket in the last 20 minutes. The service account was created 6 months ago and has rarely been used. Your threat intelligence platform shows the source IP is associated with a known data theft tool. Your task:</p>
+        <ol style="color:var(--ug-text-2);font-size:14px;line-height:2;">
+          <li>Classify the incident severity and explain your rationale.</li>
+          <li>Describe the first three containment actions and the order in which you take them.</li>
+          <li>Identify what forensic evidence you need to collect and in what order.</li>
+          <li>Explain how CIEM analysis of this service account would have been a preventive control.</li>
+          <li>Describe the post-incident activities and what metrics this incident will affect.</li>
+        </ol>
+
+        <div class="callout primary">
+          <strong>Passing criteria:</strong> P1/Sev1 classification with correct rationale (active data exfiltration, known threat actor TTP). First action is IAM credential revocation, not system shutdown. Forensic collection follows order of volatility. CIEM analysis correctly identified as CIEM, not EDR or CSPM. Post-incident includes MTTD calculation, CIEM right-sizing, and lessons learned documentation.
+        </div>
+
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Introduction to Modern Cybersecurity Operations. Continue to Introduction to DevSecOps.</div>
+          <a href="intro-devsecops.html" class="acad-cert-btn"><i class="fas fa-arrow-right"></i> Next: Introduction to DevSecOps</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2 &middot; Modern Cybersecurity Operations</span>
+  </footer>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'aivric_intro_secops_v1';
+    var ACADEMY_COURSE_ID = 'intro-secops';
+    var MODULES = ['mod1','mod2','mod3','mod4','mod5','mod6'];
+    function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+    function saveState(s) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {} }
+    var state = loadState();
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill'); var pctEl = document.getElementById('progress-pct');
+      if (fill) fill.style.width = pct + '%'; if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) { var cert = document.getElementById('cert-block'); if (cert) cert.classList.add('show'); }
+    }
+    window.setActive = function(el) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); el.classList.add('active'); };
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].complete = true; saveState(state);
+      var btn = document.getElementById('mc-' + moduleId); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      updateProgress();
+      if (window.AcademyProgress) AcademyProgress.markComplete(ACADEMY_COURSE_ID, moduleId);
+    };
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); }); el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = false;
+    };
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if (!selected) return;
+      block.dataset.answered = 'true'; var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = true;
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var feedback = document.getElementById('feedback-' + moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o) { if (o.querySelector('[data-correct="true"]')) o.classList.add('correct'); else if (o === selected && !isCorrect) o.classList.add('wrong'); });
+      if (feedback) {
+        var expl = {
+          mod1:{correct:'Correct. Alert fatigue from a 96% false positive rate means analysts become desensitized and miss or delay real incidents — directly increasing MTTD and MTTR.',wrong:'The primary problem is analyst effectiveness: high false positive rates exhaust analyst capacity with noise, making real incidents more likely to be missed or delayed.'},
+          mod2:{correct:'Correct. IOC-only programs use only tactical intelligence (short shelf life, easily evaded by changing infrastructure). Operational intelligence covering attacker TTPs detects behavior even when IOCs change.',wrong:'IOC blocking is a valid tactical control, but sophisticated attackers rotate IPs constantly. Without operational intelligence on attacker behavior patterns (TTPs), defenses are easily evaded.'},
+          mod3:{correct:'Correct. KEV-listed vulnerabilities are actively exploited right now. A 45% EPSS score confirms high exploitation probability. CVSS severity alone doesn\'t reflect active exploitation — risk-based prioritization uses all three signals.',wrong:'CVSS measures theoretical severity, not actual exploitation probability. A CVSS 9.8 with 0.2% EPSS has low current exploitation risk; a CVSS 6.5 on KEV with 45% EPSS is actively being exploited.'},
+          mod4:{correct:'Correct. Premature eradication destroys forensic evidence, prevents full scope determination, and risks leaving attacker persistence mechanisms intact — allowing re-entry after reimaging.',wrong:'Reimaging without forensic capture is premature eradication. It destroys evidence, prevents scope determination, and risks missing persistence mechanisms the attacker may have established on other systems.'},
+          mod5:{correct:'Correct. EDR covers endpoint process/file/memory events. Cloud control plane attacks via IAM and S3 permissions use cloud APIs — no endpoint execution occurs, making EDR blind to this attack vector. CSPM and CIEM are the relevant controls.',wrong:'This is a control coverage gap, not a configuration failure. Cloud API-based attacks don\'t execute on endpoints — they use the cloud control plane, which EDR cannot see regardless of configuration.'},
+          mod6:{correct:'Correct. 120-day MTTD means 120 days of undetected attacker access — regardless of industry average, that is an unacceptable business risk. The target should be based on acceptable risk, not industry comparison.',wrong:'Being below industry average doesn\'t mean the metric is acceptable. 120 days of undetected access is 120 days of potential exfiltration and persistence. The standard should be what reduces business risk to tolerable levels.'}
+        };
+        feedback.textContent = ''; var label = document.createElement('strong'); var msg = document.createElement('span');
+        if (isCorrect) { feedback.className = 'quiz-feedback correct'; label.textContent = 'Correct! '; msg.textContent = (expl[moduleId]||{correct:''}).correct; }
+        else { feedback.className = 'quiz-feedback wrong'; label.textContent = 'Not quite. '; msg.textContent = (expl[moduleId]||{wrong:''}).wrong; }
+        feedback.appendChild(label); feedback.appendChild(msg);
+      }
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].quizCorrect = isCorrect; saveState(state);
+    };
+    window.toggleAction = function(el) { el.classList.toggle('checked'); };
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      }
+    });
+    updateProgress();
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { var id = entry.target.id; var link = document.querySelector('[data-module="' + id + '"]'); if (link) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); } } }); }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+  })();
+  </script>
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true">
+    <button class="acad-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img src="" alt=""><div class="acad-lightbox-caption"></div>
+  </div>
+  <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script>
+<script src="js/academy-badges.js"></script>
+</body>
+</html>

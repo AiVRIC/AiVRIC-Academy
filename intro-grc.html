@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Introduction to Information Security GRC | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/intro-grc.html">
+  <meta name="description" content="A comprehensive introduction to Information Security Governance, Risk, and Compliance (GRC) management. Covers ISO 27001, NIST CSF, risk frameworks, and control programs. AiVRIC Academy.">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+  <script src="js/academy-theme.js"></script>
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html"><img src="assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="https://aivric.com/support.html">Support</a>
+        <button class="acad-theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><i class="fas fa-sun"></i></button>
+        <a href="https://aivric.com/AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Intro to InfoSec GRC</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Overview</span><span class="acad-mod-sub">Audience, outcomes, framework map</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod1" data-module="mod1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">What Is Information Security GRC?</span><span class="acad-mod-sub">Three pillars, integrated vs. siloed</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod2" data-module="mod2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Governance Frameworks &amp; Standards</span><span class="acad-mod-sub">ISO 27001, NIST CSF, CIS Controls</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod3" data-module="mod3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Risk Management Fundamentals</span><span class="acad-mod-sub">ISO 31000, NIST RMF, treatment options</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod4" data-module="mod4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Compliance Programs &amp; Controls</span><span class="acad-mod-sub">Control types, evidence, audit prep</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod5" data-module="mod5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Operating a GRC Program</span><span class="acad-mod-sub">Cadence, metrics, executive reporting</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod6" data-module="mod6" onclick="setActive(this)">
+          <div class="acad-mod-icon">6</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">GRC Automation &amp; AI</span><span class="acad-mod-sub">Continuous compliance, AI advisory</span></div>
+        </a>
+        <a class="acad-module-item" href="#certification" data-module="certification" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9670;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Assessment &amp; Capstone</span><span class="acad-mod-sub">Knowledge test and scenario</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="intro-data-privacy.html"><i class="fas fa-arrow-right"></i> Next: Data Security &amp; Privacy</a>
+      <a class="acad-sidebar-link" href="https://aivric.com/support.html"><i class="fas fa-life-ring"></i> Support</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <!-- OVERVIEW -->
+      <section id="overview" style="scroll-margin-top:80px;">
+        <span class="badge" style="background:rgba(139,92,246,.15);color:#a78bfa;"><i class="fas fa-landmark"></i> Foundational &bull; Platform-Agnostic &bull; ~3 hours</span>
+        <h1 style="margin-top:10px;">Introduction to Information Security GRC Management</h1>
+        <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">Governance, Risk, and Compliance (GRC) is the integrated management framework that helps organizations align information security with business objectives, manage risk within tolerance, and demonstrate compliance to regulators, customers, and auditors. This course teaches the foundational concepts, major frameworks, and operational practices of a mature GRC program — drawing on ISO 27001:2022, NIST CSF 2.0, ISO 31000:2018, COBIT 2019, and CIS Controls v8.</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 24px;">
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> ~3 hours</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 6 modules + assessment</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-signal"></i> Foundation</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-globe"></i> Platform-agnostic with CloudSignals callouts</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;">
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#a78bfa;margin-bottom:10px;"><i class="fas fa-users" style="margin-right:5px;"></i>Who this course is for</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Security analysts and engineers entering GRC roles</li>
+              <li>IT managers responsible for compliance programs</li>
+              <li>Auditors and assessors new to information security</li>
+              <li>Business stakeholders supporting security governance</li>
+              <li>Students pursuing CISSP, CISA, or ISO 27001 LA certifications</li>
+              <li>Anyone building or inheriting a GRC program</li>
+            </ul>
+          </div>
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#a78bfa;margin-bottom:10px;"><i class="fas fa-check-circle" style="margin-right:5px;"></i>Prerequisites</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>No prior GRC experience required</li>
+              <li>Basic understanding of what information security is (CIA triad helpful)</li>
+              <li>Familiarity with organizational concepts (policies, audits, management)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-top:0;padding-top:0;border-top:none;">What you will be able to do</h2>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:20px;">
+          <li>Define GRC and explain how governance, risk, and compliance are interconnected.</li>
+          <li>Describe the purpose and structure of ISO 27001, NIST CSF 2.0, and CIS Controls v8.</li>
+          <li>Apply ISO 31000 risk management principles to identify, assess, and treat security risk.</li>
+          <li>Design a control program with appropriate control types, evidence requirements, and testing cadence.</li>
+          <li>Explain how to operate a GRC program with governance cadence, metrics, and executive reporting.</li>
+          <li>Describe how GRC automation and AI assistance accelerate compliance without replacing human judgment.</li>
+        </ol>
+
+        <div class="callout primary" style="margin-top:16px;">
+          <strong>Framework references in this course:</strong> ISO/IEC 27001:2022, ISO/IEC 27002:2022, NIST CSF 2.0 (February 2024), ISO 31000:2018, COBIT 2019, CIS Controls v8, NIST SP 800-37 Rev 2 (RMF), NIST SP 800-53 Rev 5, AICPA SOC 2 Trust Services Criteria.
+        </div>
+      </section>
+
+
+      <!-- MODULE 1 -->
+      <section id="mod1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-head-body">
+            <h2>What Is Information Security GRC?</h2>
+            <p class="phase-subtitle">25 min &bull; Concepts &bull; Define the three pillars and why integration matters</p>
+          </div>
+        </div>
+
+        <h3>The three pillars: Governance, Risk, and Compliance</h3>
+        <p>GRC stands for Governance, Risk, and Compliance — but these are not three separate programs. They are three lenses applied to the same organizational system. <strong>Governance</strong> defines accountability: who is responsible for what, what policies and standards the organization has committed to, and how security decisions connect to business objectives. <strong>Risk management</strong> defines exposure: what could go wrong, how likely and impactful it is, and whether the organization has reduced that exposure to an acceptable level. <strong>Compliance</strong> defines obligation: what laws, regulations, frameworks, and contracts require the organization to do, and whether the organization can demonstrate it.</p>
+        <p>The integration point is critical. A governance program without risk management produces policies that don't reflect real threats. A compliance program without governance produces checkbox behavior with no business alignment. Risk management without governance produces informal risk decisions with no accountability chain. When the three work together — with shared data, shared ownership, and integrated reporting — the organization operates a coherent security management system rather than three disconnected programs.</p>
+
+        <h3>Why siloed GRC fails</h3>
+        <p>Many organizations run separate teams for ISO 27001 compliance, SOC 2 audit prep, HIPAA compliance, FedRAMP authorization, and risk management. Each team maintains its own control list, its own evidence library, and its own reporting cadence. This creates the "compliance maze" — massive duplication of effort, contradictory control definitions, stale evidence collected once per audit cycle, and executive reports that reflect one framework at a time instead of the organization's true security posture. ISACA's COBIT 2019 framework refers to this as "governance fragmentation" — the absence of an integrated governance system aligned with enterprise goals.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>GRC Pillar</th><th>Core question it answers</th><th>Key outputs</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Governance</strong></td><td>Who owns what, and what have we committed to?</td><td>Policies, standards, accountability assignments, executive reporting</td></tr>
+            <tr><td><strong>Risk Management</strong></td><td>What could go wrong, and is our exposure acceptable?</td><td>Risk register, residual risk assessments, treatment decisions, risk appetite statement</td></tr>
+            <tr><td><strong>Compliance</strong></td><td>What are we required to do, and can we prove we do it?</td><td>Control mappings, evidence library, audit packages, readiness reports</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals+RiskOps implements integrated GRC as a platform-wide operating model. The Unified Control Baseline (UCB) is the governance layer; RiskOps is the risk management layer; Framework Explorer and Assessment Objectives constitute the compliance layer. All three share the same control objects, evidence artifacts, and reporting system — eliminating the siloed approach by design.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Map your current GRC structure</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">List every compliance obligation your organization currently tracks (e.g., ISO 27001, SOC 2, HIPAA, PCI DSS, GDPR). For each, identify who owns it and where the control evidence lives.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Identify overlapping controls across your obligations. How many controls are duplicated? How many are the same requirement with different names across frameworks?</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Assess your evidence collection method: is evidence collected continuously, periodically, or only at audit time? Evidence collected only at audit time is a compliance program, not a governance program.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Assess your risk register: is it integrated with your control program, or does it exist as a separate spreadsheet? Risk and compliance data should share a common control model.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod1">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>List your GRC obligations:</strong> Document every compliance framework, regulation, and customer obligation your organization operates under. This is the scope of your GRC program.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify your fragmentation points:</strong> List where your governance, risk, and compliance functions are disconnected — different tools, different teams, different evidence libraries, different reporting.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define your GRC integration goal:</strong> Write one sentence describing what integrated GRC would look like for your organization — what would change, and what problem it would solve.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">An organization runs separate teams for ISO 27001, SOC 2, and HIPAA compliance, each maintaining its own control list and evidence library. What is the primary operational problem this creates?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">The organization cannot achieve ISO 27001 certification while also maintaining SOC 2 compliance — the standards are mutually exclusive.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Governance fragmentation: duplicated control programs, contradictory definitions, stale point-in-time evidence, and siloed reporting that cannot reflect the organization's true security posture across all obligations simultaneously.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">Each team uses different audit tools, making it impossible to consolidate evidence into a single audit package when needed.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">HIPAA requires a dedicated team structure, so the other frameworks must also have dedicated teams to maintain equivalent rigor.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod1" onclick="markComplete('mod1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you've mapped your current GRC structure and identified where integration would add the most value.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 2 -->
+      <section id="mod2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num green">2</div>
+          <div class="phase-head-body">
+            <h2>Governance Frameworks and Standards</h2>
+            <p class="phase-subtitle">30 min &bull; Frameworks &bull; ISO 27001, NIST CSF 2.0, CIS Controls v8, and when to use each</p>
+          </div>
+        </div>
+
+        <h3>Why frameworks matter — and what they cannot do</h3>
+        <p>Security frameworks provide a shared language, a structured control set, and a recognized basis for third-party assurance. But frameworks are not law (unless codified into regulation) and they are not a security program — they are a starting point. An organization that "follows ISO 27001" but has not built real evidence, tested controls, or assigned accountability has a compliance costume, not a governance program. Frameworks should drive your internal control baseline, not replace it.</p>
+
+        <h3>ISO/IEC 27001:2022 — The international ISMS standard</h3>
+        <p>ISO 27001 specifies requirements for establishing, implementing, maintaining, and continually improving an Information Security Management System (ISMS). The 2022 revision restructured Annex A from 14 clauses and 114 controls to 4 themes and 93 controls: Organizational (37), People (8), Physical (14), and Technological (34). Eleven new controls were added in 2022, including threat intelligence, ICT readiness for business continuity, cloud security, data masking, web filtering, secure coding, and monitoring activities. ISO 27001 is the global standard for ISMS certification — it requires a Statement of Applicability (SoA), risk assessment, and continual improvement through management review.</p>
+
+        <h3>NIST Cybersecurity Framework 2.0 (February 2024)</h3>
+        <p>NIST CSF 2.0 expanded the original five functions (Identify, Protect, Detect, Respond, Recover) to six by adding <strong>Govern</strong> as a new cross-cutting function. The Govern function addresses organizational context, risk management strategy, roles and responsibilities, policies, oversight, and supply chain risk management — recognizing that governance decisions inform every other security function. CSF 2.0 introduced Organizational Profiles (current and target state), Tiers (1–4 for implementation maturity), and explicit supply chain risk management guidance. CSF 2.0 is explicitly scope-neutral: it applies equally to SMBs, enterprises, critical infrastructure operators, and government agencies.</p>
+
+        <h3>CIS Controls v8 — Prioritized defensive actions</h3>
+        <p>The Center for Internet Security (CIS) Controls v8 consists of 18 control groups and 153 safeguards organized across three implementation groups (IG1, IG2, IG3) mapped to organizational size and resource level. IG1 (56 safeguards) represents essential cyber hygiene — the minimum every organization should implement. CIS Controls v8 maps explicitly to NIST CSF, ISO 27001 Annex A, NIST SP 800-53, and CMMC — making it an excellent bridge framework for organizations managing multiple obligations.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Framework</th><th>Type</th><th>Best for</th><th>Certification?</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ISO 27001:2022</strong></td><td>Requirements standard</td><td>ISMS certification, international customers, due diligence</td><td>Yes (third-party audit)</td></tr>
+            <tr><td><strong>NIST CSF 2.0</strong></td><td>Voluntary framework</td><td>Posture assessment, US federal supply chain, risk communication</td><td>No (self-assessment)</td></tr>
+            <tr><td><strong>NIST SP 800-53 Rev 5</strong></td><td>Control catalog</td><td>US federal systems, FedRAMP, high-control environments</td><td>Via ATO (FedRAMP/FISMA)</td></tr>
+            <tr><td><strong>CIS Controls v8</strong></td><td>Prioritized safeguards</td><td>Practical hygiene, SMBs, multi-framework mapping</td><td>No</td></tr>
+            <tr><td><strong>COBIT 2019</strong></td><td>Governance framework</td><td>IT governance alignment to business objectives</td><td>COBIT certification via ISACA</td></tr>
+            <tr><td><strong>SOC 2 (AICPA TSC)</strong></td><td>Audit standard</td><td>SaaS providers, B2B trust, customer assurance</td><td>Yes (CPA firm audit)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> The Framework Explorer and Source Registry in CloudSignals+RiskOps maintain source-attributed mappings for all major frameworks including ISO 27001, NIST CSF, NIST SP 800-53, CIS Controls, SOC 2, PCI DSS, and HIPAA. One internal control baseline maps to all applicable frameworks simultaneously — eliminating the need to maintain separate control programs per framework.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Select your primary governance framework</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Identify your primary compliance driver: customer contractual obligation, regulatory requirement, or voluntary certification goal. This determines which framework is your primary anchor.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Download your primary framework's control catalog (ISO 27001 Annex A, NIST CSF 2.0 subcategories, or CIS Controls v8 safeguards). Review the full scope — many teams underestimate the control set until they see it in full.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Compare your primary framework to a secondary obligation (e.g., if ISO 27001 is primary, compare Annex A to NIST CSF 2.0 categories). Identify controls that satisfy both — these are your highest-leverage governance investments.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Rate your current maturity against NIST CSF Tier definitions: Tier 1 (Partial), Tier 2 (Risk-Informed), Tier 3 (Repeatable), Tier 4 (Adaptive). This baseline will guide your GRC program roadmap.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod2">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Select your primary and secondary frameworks:</strong> Document your primary governance anchor and any secondary frameworks you must satisfy. Define the crosswalk priority.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify framework version currency:</strong> Confirm you are working from the current published version of each framework. ISO 27001:2022 superseded ISO 27001:2013; NIST CSF 2.0 superseded CSF 1.1.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Rate your NIST CSF maturity tier:</strong> Honestly assess your organization against all four tier criteria. This becomes your GRC program baseline and improvement target.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">What did NIST CSF 2.0 add to the original five functions (Identify, Protect, Detect, Respond, Recover), and why is it significant?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">NIST CSF 2.0 added a "Certify" function to allow organizations to self-certify compliance with the framework and share that certification with customers.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">NIST CSF 2.0 added a "Measure" function with specific metrics and KPIs organizations must report annually to NIST to maintain CSF compliance status.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">NIST CSF 2.0 added a "Govern" function as a new cross-cutting function covering organizational context, risk management strategy, roles, policies, oversight, and supply chain risk — recognizing that governance decisions inform all other security functions.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">NIST CSF 2.0 added a "Supply Chain" function separate from the original five to address third-party and software supply chain risks specifically.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod2" onclick="markComplete('mod2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you've selected your primary framework, confirmed version currency, and established your NIST CSF maturity baseline.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 3 -->
+      <section id="mod3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num amber">3</div>
+          <div class="phase-head-body">
+            <h2>Risk Management Fundamentals</h2>
+            <p class="phase-subtitle">30 min &bull; Risk &bull; ISO 31000, NIST RMF, risk assessment and treatment options</p>
+          </div>
+        </div>
+
+        <h3>Risk as a business decision, not a security score</h3>
+        <p>ISO 31000:2018 defines risk as "the effect of uncertainty on objectives." This definition is important because it frames risk as a business concept, not a technical one. A critical vulnerability that exists on a system with no internet exposure and no sensitive data may represent far less risk than a misconfigured access control on a system managing customer financial data. Risk must always be assessed in the context of the organization's objectives, assets, and threat environment — not as an abstract severity score.</p>
+        <p>ISO 31000:2018 describes risk management as a continuous process with eight interconnected components: Scope/Context/Criteria, Risk Assessment (Identification → Analysis → Evaluation), Risk Treatment, Monitoring and Review, Recording and Reporting, Communication and Consultation. The standard is framework-neutral — it provides principles and guidelines applicable to any organization, in any sector, for any type of risk.</p>
+
+        <h3>NIST Risk Management Framework (NIST SP 800-37 Rev 2)</h3>
+        <p>The NIST RMF is a structured, seven-step process designed for federal information systems but widely adopted in enterprise security: <strong>Prepare</strong> (establish organizational context and risk strategy), <strong>Categorize</strong> (classify systems by information impact), <strong>Select</strong> (choose appropriate controls from NIST SP 800-53), <strong>Implement</strong> (deploy controls), <strong>Assess</strong> (evaluate control effectiveness), <strong>Authorize</strong> (accept residual risk at AO level), <strong>Monitor</strong> (continuously monitor for changes and new risks). The NIST RMF explicitly links to NIST CSF 2.0 and is the basis of FedRAMP and FISMA compliance.</p>
+
+        <h3>Risk assessment: likelihood, impact, and inherent vs. residual risk</h3>
+        <p><strong>Inherent risk</strong> is the risk that exists before controls are applied. <strong>Residual risk</strong> is the risk that remains after controls are applied. The difference between them is your control effectiveness. Risk assessment methodology should produce consistent, repeatable assessments — whether you use a qualitative scale (High/Medium/Low), a semi-quantitative approach (5×5 risk matrix), or quantitative methods (FAIR — Factor Analysis of Information Risk). The most important property of a risk assessment method is that it is consistently applied and produces results stakeholders can use to make treatment decisions.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Risk Treatment Option</th><th>Definition</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Avoid</strong></td><td>Eliminate the activity that creates the risk</td><td>Discontinuing a product that processes high-risk data</td></tr>
+            <tr><td><strong>Reduce / Mitigate</strong></td><td>Implement controls to reduce likelihood or impact</td><td>Deploying MFA to reduce credential theft risk</td></tr>
+            <tr><td><strong>Transfer / Share</strong></td><td>Move the risk to a third party (insurance, contracts)</td><td>Purchasing cyber insurance; contractual liability clauses</td></tr>
+            <tr><td><strong>Accept</strong></td><td>Acknowledge the risk and operate within it (within appetite)</td><td>Accepting a low-severity risk below the treatment threshold</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout warn">
+          <strong>Risk acceptance requires authority:</strong> ISO 31000 and NIST RMF both require that risk acceptance decisions be made at the appropriate organizational level. A security analyst cannot accept a High-severity residual risk — that decision belongs to a risk owner or Authorizing Official with documented accountability. Undocumented risk acceptance is a governance control failure.
+        </div>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> RiskOps in CloudSignals implements the risk treatment workflow — each finding can be linked to a risk register entry with treatment decisions, owners, due dates, and residual risk assessments. Evidence of treatment (tickets, patches, configuration changes) links back to the risk entry, creating the complete ISO 31000 risk monitoring chain.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Build a risk register entry</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Choose one real security finding or concern in your environment. Write a risk statement in this format: "Risk that [threat] will [action] against [asset], resulting in [impact]."</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Rate the inherent risk: assess likelihood (1–5) and impact (1–5). Compute inherent risk score. Then identify the controls currently in place that reduce the risk.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Rate the residual risk after applying controls. Is the residual risk within your organization's stated risk appetite? If not, document a treatment plan with a risk owner and target date.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Determine the treatment option: avoid, reduce, transfer, or accept. Document the decision with the approving authority's name and date. This creates defensible risk governance.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod3">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define your risk appetite statement:</strong> Work with leadership to define the maximum residual risk level the organization will accept in aggregate and by risk category. Document it formally.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Build or review your risk register:</strong> Confirm each entry has: risk statement, inherent risk score, controls in place, residual risk score, treatment decision, risk owner, and treatment due date.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify undocumented accepted risks:</strong> Find risks your organization is operating with but that have no documented acceptance decision. These are governance gaps requiring immediate owner assignment.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A security engineer discovers a critical vulnerability and decides to document it as "accepted risk" in the risk register without escalating it. Why is this a governance failure?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Critical vulnerabilities cannot be accepted — they must always be remediated within 30 days per most regulatory frameworks.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Risk acceptance decisions must be made at the appropriate organizational authority level — ISO 31000 and NIST RMF both require that the accepting party has accountability for the residual risk. A security engineer does not have that organizational authority for a High/Critical risk, so the acceptance is undocumented and indefensible.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">The risk register is an audit artifact and should not include security vulnerabilities — vulnerabilities belong in the vulnerability management system only.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">Accepted risks expire after 90 days and must be re-evaluated, making this a process failure rather than a governance failure.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod3" onclick="markComplete('mod3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you've built at least one risk register entry and defined your risk appetite statement.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 4 -->
+      <section id="mod4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num purple">4</div>
+          <div class="phase-head-body">
+            <h2>Compliance Programs and Control Testing</h2>
+            <p class="phase-subtitle">30 min &bull; Controls &bull; Control types, evidence, testing cadence, SOC 2 model</p>
+          </div>
+        </div>
+
+        <h3>What a control is — and the five control types</h3>
+        <p>A control is any measure that modifies risk — it prevents, detects, or responds to a threat acting against an asset. NIST SP 800-53 Rev 5 organizes its 1,000+ controls into 20 control families. But more practically, controls are categorized by their function (preventive, detective, corrective, deterrent, compensating) and their nature (administrative/managerial, technical/logical, physical/operational). A mature compliance program requires all three natures — technical controls without policies are ungoverned; policies without technical controls are unenforceable.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Control Type</th><th>Function</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Preventive</strong></td><td>Stop the threat from succeeding</td><td>MFA, firewall rules, access control lists, encryption</td></tr>
+            <tr><td><strong>Detective</strong></td><td>Identify when a threat has occurred</td><td>SIEM alerts, log monitoring, anomaly detection, audit logs</td></tr>
+            <tr><td><strong>Corrective</strong></td><td>Restore state after an incident</td><td>Incident response procedures, backup restoration, patch deployment</td></tr>
+            <tr><td><strong>Deterrent</strong></td><td>Discourage threat actors</td><td>Security awareness training, legal notices, CCTV signage</td></tr>
+            <tr><td><strong>Compensating</strong></td><td>Provide equivalent protection when primary control cannot be implemented</td><td>Enhanced monitoring as a compensating control for a system that cannot be patched</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Control testing: design vs. operating effectiveness</h3>
+        <p>Auditors and assessors test controls on two dimensions. <strong>Design effectiveness</strong> asks: is the control designed to achieve the stated security objective? A policy that describes the right behavior but lacks enforcement mechanisms fails design effectiveness. <strong>Operating effectiveness</strong> asks: has the control actually worked as designed over the assessment period? A control that was implemented six months ago but whose configuration has drifted fails operating effectiveness. AICPA SOC 2 assessors test both dimensions — design first, then a sample of operating evidence over the period of coverage (typically 6–12 months for a Type II report).</p>
+
+        <h3>Evidence management: what makes evidence audit-ready</h3>
+        <p>Evidence is the proof that controls operate as designed. Audit-ready evidence has six properties: <strong>Relevance</strong> (does it address the specific control being tested?), <strong>Completeness</strong> (does it cover the full assessment period, not just a snapshot?), <strong>Accuracy</strong> (is it from an authoritative, unmodified source?), <strong>Currency</strong> (is it within the freshness window for the control's testing frequency?), <strong>Authenticity</strong> (can the source and chain of custody be verified?), and <strong>Sufficiency</strong> (is there enough evidence to support the conclusion the auditor needs to reach?). Evidence that fails any of these properties will generate an audit finding.</p>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> The Evidence Fabric in CloudSignals+RiskOps stores evidence artifacts with all six audit-ready properties. Each artifact records source, provenance, timestamp, freshness status, trust level, and reviewer validation. Evidence is linked to specific controls and Assessment Objectives, enabling reuse across multiple frameworks simultaneously.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Audit your current evidence library</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">List your 10 most important controls (the ones an auditor would test first). For each, list the evidence currently available. Is the evidence complete (covers the audit period) and current (not older than the control's testing frequency)?</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Identify which evidence artifacts are collected manually (screenshots, exports, attestations) vs. automatically (SIEM exports, scanner reports, configuration snapshots). Manual evidence typically has higher staleness risk.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">For each control, confirm the testing frequency is documented: some controls require continuous monitoring, others quarterly testing, others annual review. Controls with no documented testing frequency are governance gaps.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Identify gaps: list controls with no evidence, stale evidence, or evidence that doesn't address the specific control objective. These are your compliance risks before the next audit cycle.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod4">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Document control types for your critical controls:</strong> For each critical control, record its type (preventive/detective/corrective), nature (technical/administrative/physical), and testing method (automated scan, log review, interview, inspection).</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Test evidence completeness:</strong> For your next audit scope, confirm evidence covers the full period with no gaps. A six-month SOC 2 Type II audit requires evidence from every month, not just the final month.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Assign evidence owners:</strong> Every evidence artifact should have a named owner responsible for keeping it current. Evidence without an owner will go stale between audit cycles.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">During a SOC 2 Type II audit, an auditor tests a user access review control and finds that reviews were conducted in January and December but not in the months between. What type of audit finding is this likely to generate?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">A design effectiveness finding — the control is not designed to achieve the stated objective because quarterly reviews are insufficient for access management.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">An operating effectiveness finding — the control is designed correctly (access reviews should occur), but it did not operate consistently over the audit period. Evidence gaps in intermediate months indicate the control was not performed as designed throughout the period.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">No finding — SOC 2 only requires annual access reviews, so reviews in January and December satisfy the requirement for the year.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">A completeness finding — the evidence does not cover the entire audit period because it was not collected across all user accounts.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod4" onclick="markComplete('mod4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you've audited your evidence library and documented control types for your critical controls.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 5 -->
+      <section id="mod5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num orange">5</div>
+          <div class="phase-head-body">
+            <h2>Operating a GRC Program</h2>
+            <p class="phase-subtitle">25 min &bull; Operations &bull; Governance cadence, program metrics, executive reporting</p>
+          </div>
+        </div>
+
+        <h3>The governance cadence: what happens and when</h3>
+        <p>A GRC program without a cadence is a GRC project. The difference between a project (done once) and a program (continuously operating) is the existence of a recurring governance rhythm. COBIT 2019 defines governance as requiring regular management reviews, defined reporting structures, and escalation pathways — all of which require scheduled activity. A mature GRC program operates at four cadence levels: <strong>Continuous</strong> (automated control monitoring, evidence collection, vulnerability feeds), <strong>Monthly</strong> (control dashboard review, exception status, risk register updates), <strong>Quarterly</strong> (risk assessment refresh, control testing results, audit committee reporting), <strong>Annual</strong> (full risk assessment cycle, framework update review, ISMS management review, scope review).</p>
+
+        <h3>GRC program metrics that matter</h3>
+        <p>GRC metrics fall into three categories: lagging indicators (what happened), leading indicators (what is coming), and operational indicators (how the program is performing). Focusing only on lagging indicators (audit findings, incidents) produces reactive governance. Leading indicators — control coverage trends, evidence freshness degradation rates, open exception aging — allow the GRC team to address governance drift before it becomes an audit finding or an incident.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Metric category</th><th>Example metric</th><th>Target signal</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Control coverage</strong></td><td>% of in-scope controls with current evidence</td><td>≥95% in-scope controls with fresh evidence</td></tr>
+            <tr><td><strong>Evidence freshness</strong></td><td>% of evidence artifacts within testing frequency window</td><td>≥90% fresh; trending up over time</td></tr>
+            <tr><td><strong>Exception aging</strong></td><td>Average days open for control exceptions</td><td>All exceptions < 90 days or documented with leadership acceptance</td></tr>
+            <tr><td><strong>Risk treatment SLA</strong></td><td>% of High risks with treatment plans within 30 days of identification</td><td>100% of High risks with documented treatment plans</td></tr>
+            <tr><td><strong>Audit finding rate</strong></td><td>Number of audit findings per cycle, trending over time</td><td>Year-over-year decline; zero repeat findings</td></tr>
+            <tr><td><strong>Framework posture</strong></td><td>% of framework controls in passing state per framework</td><td>Trending up toward program-defined target (e.g., 90% SOC 2)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Executive reporting: translating GRC to business language</h3>
+        <p>Security leaders frequently struggle to communicate GRC status to non-technical executives and boards. The CISA guidance on cybersecurity board communication, SEC cybersecurity disclosure rules (effective December 2023), and NACD Director's Handbook on Cyber-Risk Oversight all emphasize that executive reports should answer four business questions: What is our current risk posture? What changed since last report? What decisions does leadership need to make? What resources are required? Technical metrics (scan coverage %, CVSS scores) should be translated to business impact language — "We have 3 open exceptions in access management that increase our unauthorized access risk above appetite" is more actionable than "12 controls at Yellow status."</p>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals+RiskOps Reports module generates executive governance briefs drawing directly from UCB control state, Evidence Fabric freshness, and risk register treatment status. Reports are designed for AO-level and board-level consumption — answering posture, change, decision, and resource questions without requiring the reader to interpret raw control data.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Build your GRC governance calendar</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Define your four governance cadence layers: which activities run continuously, monthly, quarterly, and annually. Assign an owner and a calendar date for each recurring activity.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Select five metrics from the table above that are most relevant to your program maturity. Define the current baseline value and the 12-month target for each.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Draft a one-page executive GRC report for your most recent assessment period. Use the four business questions: posture, change, decisions needed, resources required. Avoid technical jargon; translate all metrics into business impact language.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Review your report with a non-technical peer. Could they tell you what the three most important security governance decisions are from your report? If not, revise until the answer is yes.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod5">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Create your GRC governance calendar:</strong> Schedule all four cadence levels with owners and recurring calendar invites. A governance program that doesn't run on schedule is not a program.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define your top 5 GRC metrics:</strong> Select, baseline, and target five metrics covering control coverage, risk treatment SLA, and audit finding trend. Set up a dashboard or tracking document.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Draft your next executive GRC brief:</strong> Write a one-page posture brief using the four business questions format. Review with a non-technical stakeholder before distributing.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A CISO presents a board-level security report showing scan coverage at 94%, CVSS critical count at 8, and evidence freshness at 87%. The board asks for a "bottom line" and the CISO cannot answer in business terms. What is the core problem?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">The report needs more technical detail — adding MTTR, MTTD, and patch velocity would give the board the data they need to understand the risk picture.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">The report presents operational metrics without translating them to business impact, risk posture, decisions required, or resource needs. Boards need to understand what the metrics mean for business risk — not the raw technical numbers. The four business questions (posture, change, decisions, resources) are unanswered.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">The metrics are contradictory — scan coverage of 94% with 8 critical CVSSs means the reporting system has a data quality error that must be resolved first.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">The CISO should present risk heat maps and control dashboards directly to the board — visual formats replace the need to translate technical metrics.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod5" onclick="markComplete('mod5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you've established your GRC governance calendar, selected your top metrics, and drafted your first executive brief.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 6 -->
+      <section id="mod6" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(139,92,246,.2);color:#a78bfa;">6</div>
+          <div class="phase-head-body">
+            <h2>GRC Automation and AI</h2>
+            <p class="phase-subtitle">20 min &bull; Technology &bull; Continuous compliance, GRC platforms, and responsible AI use</p>
+          </div>
+        </div>
+
+        <h3>Why manual GRC doesn't scale</h3>
+        <p>A mid-size organization operating ISO 27001, SOC 2, PCI DSS, and HIPAA simultaneously may have 400–600 distinct controls to manage, 1,000–3,000 evidence artifacts to collect and refresh annually, and 10–30 ongoing exceptions at any time. Managing this with spreadsheets and shared drives creates inherent evidence staleness, no cross-framework mapping, no risk traceability, and audit preparation that consumes weeks of engineer time. GRC automation platforms address this by providing continuous evidence collection, control-evidence mapping, real-time posture dashboards, and exception workflow management.</p>
+
+        <h3>What GRC automation does well</h3>
+        <p>GRC platforms (including CloudSignals+RiskOps) automate the most time-consuming and error-prone aspects of GRC operations: automated evidence collection from infrastructure (cloud scanners, identity providers, code repositories, ticketing systems), continuous control monitoring with drift alerts, cross-framework control mapping so evidence satisfies multiple frameworks simultaneously, workflow-driven exception management with approval chains, and audit-ready evidence packages with provenance tracking. The result is that security teams spend time on judgment and governance decisions rather than evidence logistics.</p>
+
+        <h3>AI in GRC: advisory acceleration, not compliance automation</h3>
+        <p>AI is increasingly integrated into GRC platforms for narrative generation, gap analysis, risk scoring, and control recommendation. The important governance principle is that AI output is advisory — it accelerates the work but does not replace human accountability. Common valid AI use cases in GRC include: generating first drafts of policy language or audit narratives (for human review and editing), identifying potential control gaps from scanned configurations (for security team validation), summarizing evidence for auditors (with source references the auditor can verify), and recommending risk treatment options (for risk owner decision). Invalid uses include: accepting AI-generated compliance assessments without evidence review, using AI confidence scores as a substitute for assessor judgment, or treating AI-generated narratives as legal compliance statements.</p>
+
+        <div class="callout warn">
+          <strong>AI governance principle:</strong> Any AI-generated output used in a GRC record, evidence package, or regulatory submission must carry: the assumptions the model used, human reviewer identity and attestation date, and source references the reviewer verified. An unattested AI output is not a governance artifact — it is a draft.
+        </div>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> Vision in CloudSignals+RiskOps is specifically designed for advisory GRC use cases: drafting governance narratives, summarizing control posture, identifying evidence gaps, and generating executive briefs. Every Vision output includes an assumptions panel showing what data the model referenced. Human attestation is required before any Vision output becomes a governance record — this is enforced in the workflow, not just recommended in policy.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Evaluate your GRC automation maturity</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Assess your current evidence collection: what percentage is automated (APIs, connectors, scanners) vs. manual (screenshots, exports, attestations)? Manual collection above 40% is a scalability risk.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Review how long your last audit preparation took. If it exceeded two weeks of significant staff effort, identify the three largest time sinks — these are your automation targets.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Identify which of your current GRC activities are good AI candidates (drafting, summarizing, gap identification) vs. which require human judgment (risk acceptance, exception approval, compliance claims).</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Draft your team's AI governance rule for GRC use: what AI outputs can be used without modification? What requires human review and attestation? What AI outputs are prohibited from GRC records entirely?</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod6">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify your top three automation targets:</strong> List the three most time-consuming manual GRC activities. For each, identify whether it could be automated (evidence collection), templated (reporting), or AI-assisted (drafting).</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define your AI governance rule:</strong> Write a one-paragraph team policy specifying which GRC activities AI can assist with, what human review is required, and what AI cannot do in your compliance program.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Set a 90-day automation goal:</strong> Based on your assessment, define one specific GRC automation improvement to implement in the next 90 days with a measurable outcome (e.g., reduce evidence collection time by 30%).</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod6">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A GRC team uses an AI platform to generate a "compliance status summary" for a SOC 2 audit package. The summary states the organization is "compliant with SOC 2 Trust Services Criteria." The team includes it in the audit package without human review. What is wrong with this approach?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">Nothing — AI-generated compliance summaries are acceptable in SOC 2 audit packages as long as the AI platform is SOC 2 certified itself.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The summary language is too general — it should specify the exact SOC 2 Trust Services Criteria that were tested and by which auditor.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Two failures: (1) AI output requires human attestation before becoming a governance record — including the assumptions reviewed, evidence verified, and reviewer identity. (2) AI cannot make compliance determinations — only a licensed CPA firm issuing a SOC 2 report can state compliance with Trust Services Criteria. Using AI to claim compliance in an audit package is misrepresentation.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The team should use AI only for gap analysis, not summaries — summaries must be written manually by the CISO.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod6')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod6"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod6" onclick="markComplete('mod6')">Mark Module 6 complete</button>
+          <span class="mark-complete-hint">Move on when you've identified your automation targets and documented your team's AI governance rule.</span>
+        </div>
+      </section>
+
+
+      <!-- ASSESSMENT -->
+      <section id="certification" style="scroll-margin-top:80px;">
+        <h2>Course Assessment — Introduction to Information Security GRC</h2>
+        <p>Completing all six modules qualifies you for the course knowledge assessment. This course is a prerequisite for the <a href="governance.html">Security &amp; Privacy Governance</a> practitioner course.</p>
+
+        <table class="acad-table" style="margin-bottom:20px;">
+          <thead><tr><th>Assessment domain</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td>GRC concepts and integration principles</td><td>20%</td></tr>
+            <tr><td>Governance frameworks and standards</td><td>20%</td></tr>
+            <tr><td>Risk management principles and treatment</td><td>20%</td></tr>
+            <tr><td>Control types, evidence, and testing</td><td>20%</td></tr>
+            <tr><td>Program operations and AI governance</td><td>20%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Capstone scenario</h3>
+        <p style="color:var(--ug-text-2);">A growing SaaS company is pursuing SOC 2 Type II certification for the first time. They have a security team of two, a collection of informal security practices, and a spreadsheet risk register. They operate in AWS and handle customer PII. Their primary compliance drivers are enterprise customer contracts (requiring SOC 2) and GDPR (European customers). Your task:</p>
+        <ol style="color:var(--ug-text-2);font-size:14px;line-height:2;">
+          <li>Identify the primary governance framework(s) and explain the rationale for selection.</li>
+          <li>Outline a 6-month GRC program build using the three pillars framework.</li>
+          <li>Describe what a risk assessment would look like and who needs to approve risk treatment decisions.</li>
+          <li>List the five highest-priority control types to implement first, with rationale.</li>
+          <li>Define a governance cadence appropriate for a two-person team preparing for a SOC 2 audit.</li>
+        </ol>
+
+        <div class="callout primary">
+          <strong>Passing criteria:</strong> Correctly identifies SOC 2 + GDPR as the obligation set. Selects CIS Controls IG1 or NIST CSF as primary control framework with appropriate rationale. Risk assessment includes inherent risk, treatment options, and named approval authority. Control priorities are risk-driven, not alphabetical. Governance cadence is realistic for team size.
+        </div>
+
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed Introduction to Information Security GRC Management. Continue to Data Security &amp; Privacy Management.</div>
+          <a href="intro-data-privacy.html" class="acad-cert-btn"><i class="fas fa-arrow-right"></i> Next: Data Security &amp; Privacy</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2 &middot; Intro to InfoSec GRC</span>
+  </footer>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'aivric_intro_grc_v1';
+    var ACADEMY_COURSE_ID = 'intro-grc';
+    var MODULES = ['mod1','mod2','mod3','mod4','mod5','mod6'];
+    function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+    function saveState(s) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {} }
+    var state = loadState();
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill'); var pctEl = document.getElementById('progress-pct');
+      if (fill) fill.style.width = pct + '%'; if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) { var cert = document.getElementById('cert-block'); if (cert) cert.classList.add('show'); }
+    }
+    window.setActive = function(el) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); el.classList.add('active'); };
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].complete = true; saveState(state);
+      var btn = document.getElementById('mc-' + moduleId); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      updateProgress();
+      if (window.AcademyProgress) AcademyProgress.markComplete(ACADEMY_COURSE_ID, moduleId);
+    };
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); }); el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = false;
+    };
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if (!selected) return;
+      block.dataset.answered = 'true'; var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = true;
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var feedback = document.getElementById('feedback-' + moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o) { if (o.querySelector('[data-correct="true"]')) o.classList.add('correct'); else if (o === selected && !isCorrect) o.classList.add('wrong'); });
+      if (feedback) {
+        var expl = {
+          mod1:{correct:'Correct. Running separate control programs per framework creates governance fragmentation — duplicated work, contradictory definitions, stale evidence, and siloed reporting that cannot reflect true posture.',wrong:'The issue is not framework exclusivity or tool compatibility — it is the structural inefficiency of parallel programs that could share a single control baseline mapped to multiple obligations.'},
+          mod2:{correct:'Correct. NIST CSF 2.0 added the Govern function as a cross-cutting layer addressing organizational context, strategy, roles, policies, oversight, and supply chain risk — recognizing governance informs all other security functions.',wrong:'CSF 2.0 did not add a Certify, Measure, or standalone Supply Chain function. It added Govern as the sixth function, which explicitly acknowledges that governance decisions shape the other five functions.'},
+          mod3:{correct:'Correct. Risk acceptance at the wrong organizational level is a governance failure — the person accepting must have the authority and accountability for the residual exposure. ISO 31000 and NIST RMF both require authorized risk owners for acceptance decisions.',wrong:'The issue is not remediation timelines or tool location — it is the authority and accountability mismatch. High/Critical risks require acceptance at the appropriate organizational authority level, not at the analyst level.'},
+          mod4:{correct:'Correct. This is an operating effectiveness finding — the control design is correct (access reviews should occur), but it did not operate consistently throughout the audit period. SOC 2 Type II requires evidence of continuous operation, not just point-in-time snapshots.',wrong:'This is not a design effectiveness issue (the control is correctly designed). SOC 2 Type II explicitly tests that controls operated throughout the entire covered period — gaps in operating evidence produce operating effectiveness findings.'},
+          mod5:{correct:'Correct. Technical metrics without business translation fail to answer the four questions boards need answered: posture, change, decisions needed, and resources required. Numbers without business impact context are not actionable for non-technical leaders.',wrong:'Adding more technical detail makes the problem worse, not better. The issue is translation from technical metrics to business language — risk posture, change narrative, decision requirements, and resource needs.'},
+          mod6:{correct:'Correct. Two failures: AI requires human attestation before becoming a governance record, and only a licensed CPA firm can issue SOC 2 compliance statements. Using AI-generated compliance claims in an audit package without both fixes constitutes misrepresentation.',wrong:'The problem is not language specificity — it is the combination of missing human attestation and using AI to make compliance determinations that only an authorized auditor (CPA firm) can make. Both failures are serious.'}
+        };
+        feedback.textContent = ''; var label = document.createElement('strong'); var msg = document.createElement('span');
+        if (isCorrect) { feedback.className = 'quiz-feedback correct'; label.textContent = 'Correct! '; msg.textContent = (expl[moduleId]||{correct:''}).correct; }
+        else { feedback.className = 'quiz-feedback wrong'; label.textContent = 'Not quite. '; msg.textContent = (expl[moduleId]||{wrong:''}).wrong; }
+        feedback.appendChild(label); feedback.appendChild(msg);
+      }
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].quizCorrect = isCorrect; saveState(state);
+    };
+    window.toggleAction = function(el) { el.classList.toggle('checked'); };
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      }
+    });
+    updateProgress();
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { var id = entry.target.id; var link = document.querySelector('[data-module="' + id + '"]'); if (link) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); } } }); }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+  })();
+  </script>
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true">
+    <button class="acad-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img src="" alt=""><div class="acad-lightbox-caption"></div>
+  </div>
+  <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script>
+<script src="js/academy-badges.js"></script>
+</body>
+</html>

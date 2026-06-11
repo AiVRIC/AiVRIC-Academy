@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Introduction to DevSecOps | AiVRIC Academy</title>
+  <link rel="canonical" href="https://academy.aivric.com/intro-devsecops.html">
+  <meta name="description" content="A comprehensive introduction to DevSecOps: shift-left security, secure SDLC, application security testing, CI/CD pipeline security, container security, and program maturity. AiVRIC Academy.">
+  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="academy.css" rel="stylesheet">
+  <script src="js/academy-theme.js"></script>
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+<body>
+  <header class="acad-header">
+    <div class="bar">
+      <a class="acad-brand" href="index.html"><img src="assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+      <div class="acad-header-spacer"></div>
+      <div class="acad-top-links">
+        <a href="index.html">All Courses</a>
+        <a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a>
+        <a href="https://aivric.com/support.html">Support</a>
+        <button class="acad-theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><i class="fas fa-sun"></i></button>
+        <a href="https://aivric.com/AiVRIC-UserGuide/insider-early-access.html" class="acad-cta">Insider Access</a>
+      </div>
+      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation" onclick="document.getElementById('acad-sidebar').classList.toggle('open')">Menu</button>
+    </div>
+  </header>
+
+  <div style="background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);">
+    <div class="acad-progress-bar-wrap">
+      <span class="acad-progress-label">Course progress</span>
+      <div class="acad-progress-track"><div class="acad-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span class="acad-progress-pct" id="progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="acad-shell">
+    <aside class="acad-sidebar" id="acad-sidebar">
+      <span class="acad-sidebar-title">Introduction to DevSecOps</span>
+      <div class="acad-module-list" id="module-list">
+        <a class="acad-module-item active" href="#overview" data-module="overview" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9656;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Overview</span><span class="acad-mod-sub">Audience, outcomes, the DevSecOps shift</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod1" data-module="mod1" onclick="setActive(this)">
+          <div class="acad-mod-icon">1</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">DevSecOps Fundamentals</span><span class="acad-mod-sub">Shift-left, culture, shared responsibility</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod2" data-module="mod2" onclick="setActive(this)">
+          <div class="acad-mod-icon">2</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Secure SDLC &amp; Threat Modeling</span><span class="acad-mod-sub">SDLC phases, STRIDE, PASTA, DREAD</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod3" data-module="mod3" onclick="setActive(this)">
+          <div class="acad-mod-icon">3</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Application Security Testing</span><span class="acad-mod-sub">SAST, DAST, SCA, IAST, OWASP Top 10</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod4" data-module="mod4" onclick="setActive(this)">
+          <div class="acad-mod-icon">4</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">CI/CD Pipeline Security</span><span class="acad-mod-sub">Pipeline hardening, secrets, SBOM, supply chain</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod5" data-module="mod5" onclick="setActive(this)">
+          <div class="acad-mod-icon">5</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Container &amp; Kubernetes Security</span><span class="acad-mod-sub">Image hardening, RBAC, network policies, runtime</span></div>
+        </a>
+        <a class="acad-module-item" href="#mod6" data-module="mod6" onclick="setActive(this)">
+          <div class="acad-mod-icon">6</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Program Maturity &amp; Governance</span><span class="acad-mod-sub">BSIMM, OWASP SAMM, policy-as-code, metrics</span></div>
+        </a>
+        <a class="acad-module-item" href="#certification" data-module="certification" onclick="setActive(this)">
+          <div class="acad-mod-icon">&#9670;</div>
+          <div class="acad-mod-body"><span class="acad-mod-label">Assessment &amp; Capstone</span><span class="acad-mod-sub">Knowledge test and pipeline review scenario</span></div>
+        </a>
+      </div>
+      <div class="acad-sidebar-sep"></div>
+      <a class="acad-sidebar-link" href="index.html"><i class="fas fa-th"></i> All Courses</a>
+      <a class="acad-sidebar-link" href="intro-secops.html"><i class="fas fa-arrow-left"></i> Prev: SecOps</a>
+      <a class="acad-sidebar-link" href="https://aivric.com/support.html"><i class="fas fa-life-ring"></i> Support</a>
+    </aside>
+
+    <main class="acad-content" id="main-content">
+
+      <!-- OVERVIEW -->
+      <section id="overview" style="scroll-margin-top:80px;">
+        <span class="badge" style="background:rgba(34,197,94,.15);color:#22c55e;"><i class="fas fa-code-branch"></i> Foundational &bull; Platform-Agnostic &bull; ~3 hours</span>
+        <h1 style="margin-top:10px;">Introduction to DevSecOps</h1>
+        <p style="font-size:16px;color:var(--ug-text-2);line-height:1.75;max-width:72ch;">DevSecOps integrates security practices into every stage of the software development and operations lifecycle. Rather than treating security as a gate at the end of development, DevSecOps shifts security left — making it part of how code is written, reviewed, built, deployed, and operated. This model produces more secure software, faster, at lower remediation cost, by finding and fixing vulnerabilities when they are cheapest to address: at design and code time, not after production deployment.</p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:14px 0 24px;">
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-clock"></i> ~3 hours</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-layer-group"></i> 6 modules + assessment</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-signal"></i> Foundation</span>
+          <span style="font-size:13px;color:var(--ug-muted-2);display:flex;align-items:center;gap:5px;"><i class="fas fa-globe"></i> Platform-agnostic with CloudSignals callouts</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;">
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#22c55e;margin-bottom:10px;"><i class="fas fa-users" style="margin-right:5px;"></i>Who this course is for</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Software developers building secure applications</li>
+              <li>DevOps engineers adding security to their pipelines</li>
+              <li>Security engineers working with development teams</li>
+              <li>Platform/cloud engineers managing container workloads</li>
+              <li>Architects designing new systems or migrating legacy apps</li>
+              <li>GRC professionals assessing application security programs</li>
+            </ul>
+          </div>
+          <div class="acad-card" style="padding:16px 18px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#22c55e;margin-bottom:10px;"><i class="fas fa-check-circle" style="margin-right:5px;"></i>Prerequisites</div>
+            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ug-text-2);line-height:1.9;">
+              <li>Basic understanding of software development lifecycle concepts</li>
+              <li>Familiarity with how CI/CD pipelines work (build, test, deploy)</li>
+              <li>Basic awareness of container concepts (Docker/Kubernetes helpful but not required)</li>
+              <li><a href="intro-secops.html" style="color:#22c55e;">Introduction to Modern Cybersecurity Operations</a> recommended</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 style="margin-top:0;padding-top:0;border-top:none;">What you will be able to do</h2>
+        <ol style="font-size:14px;color:var(--ug-text-2);line-height:2;padding-left:20px;">
+          <li>Articulate the business case for DevSecOps and explain what "shift-left" means operationally.</li>
+          <li>Conduct a basic threat model using STRIDE and identify mitigating controls.</li>
+          <li>Distinguish between SAST, DAST, SCA, and IAST and select the right tool for each testing scenario.</li>
+          <li>Identify the key security controls required in a secure CI/CD pipeline.</li>
+          <li>Apply CIS Kubernetes Benchmark controls and container image hardening practices.</li>
+          <li>Measure application security program maturity using OWASP SAMM or BSIMM and define improvement roadmaps.</li>
+        </ol>
+
+        <div class="callout primary" style="margin-top:16px;">
+          <strong>Framework references in this course:</strong> OWASP Top 10 (2021), OWASP SAMM v2.0, OWASP ASVS v4.0, BSIMM v13, STRIDE/PASTA threat modeling, NIST SSDF (SP 800-218), CIS Software Supply Chain Security Guide, CIS Kubernetes Benchmark v1.8, NIST SP 800-190 (Container Security), SLSA Framework (Google/OpenSSF), OpenSSF Scorecard, SBOM/SPDX/CycloneDX standards.
+        </div>
+      </section>
+
+
+      <!-- MODULE 1 -->
+      <section id="mod1" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(34,197,94,.2);color:#22c55e;">1</div>
+          <div class="phase-head-body">
+            <h2>DevSecOps Fundamentals</h2>
+            <p class="phase-subtitle">25 min &bull; Shift-left, culture, the cost of late detection, shared ownership</p>
+          </div>
+        </div>
+
+        <h3>What DevSecOps is and why it matters</h3>
+        <p>DevSecOps is the cultural and technical integration of security practices into the DevOps workflow. Traditional security models gate security review at the end of development — a "security as a checkpoint" model that creates friction, delays release cycles, and, most importantly, finds vulnerabilities when they are most expensive to fix. The IBM Systems Science Institute estimated the cost to fix a defect found in production is 6–100× more expensive than fixing the same defect found during design or coding. DevSecOps shifts this economics by embedding security testing, threat modeling, code analysis, and configuration validation into the earliest stages of the development process.</p>
+        <p><strong>Shift-left</strong> does not mean adding security tests before deployment — it means integrating security thinking into requirements and design, security tooling into the developer workflow (IDE plugins, pre-commit hooks), and security validation into every pipeline stage. A mature DevSecOps program treats a failing security check in CI/CD the same as a failing unit test: the build does not proceed until it is resolved. This requires security tooling that is developer-friendly, fast (adding seconds to a build, not minutes), and produces low false positive rates to avoid developer fatigue.</p>
+
+        <h3>The three pillars: People, Process, Technology</h3>
+        <p><strong>People</strong>: Security champions — developers with additional security training who serve as embedded security representatives within product teams. Security champions bridge the cultural gap between security engineering and development, answer security questions without requiring a formal security review, and review pull requests for security issues. The OWASP Security Champion Guide recommends one champion per team of 8–10 developers as a starting point. <strong>Process</strong>: Security requirements in user stories, threat modeling as part of design reviews, security in Definition of Done (DoD), and post-incident review that feeds back into design improvements. <strong>Technology</strong>: Automated security testing in CI/CD (SAST, SCA, DAST), secrets scanning, SBOM generation, infrastructure-as-code scanning, container image scanning, and policy-as-code enforcement.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>DevOps stage</th><th>DevSecOps additions</th><th>Primary tool types</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Plan</strong></td><td>Security requirements, threat modeling, DPIA triggers</td><td>Threat modeling tools (OWASP Threat Dragon, Microsoft TMT)</td></tr>
+            <tr><td><strong>Code</strong></td><td>IDE security plugins, pre-commit hooks, peer review checklists</td><td>IDE SAST plugins (Snyk Code, SonarLint), Semgrep</td></tr>
+            <tr><td><strong>Build</strong></td><td>SAST, SCA, secrets scanning, IaC scanning</td><td>SAST: Semgrep, Checkmarx, CodeQL. SCA: Snyk, Dependabot, Black Duck. Secrets: Trufflehog, GitGuardian. IaC: Checkov, tfsec</td></tr>
+            <tr><td><strong>Test</strong></td><td>DAST, IAST, API security testing, fuzz testing</td><td>DAST: OWASP ZAP, Burp Suite. IAST: Contrast Security. API: 42Crunch, APIsec</td></tr>
+            <tr><td><strong>Deploy</strong></td><td>Image scanning, admission controllers, policy-as-code</td><td>Trivy, Grype, OPA/Gatekeeper, Kyverno</td></tr>
+            <tr><td><strong>Operate</strong></td><td>CSPM, CWPP, runtime security, WAF</td><td>Falco, Aqua, Prisma Cloud Runtime, AWS GuardDuty</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals bridges the DevSecOps and GRC worlds: findings from your application security testing pipeline can be ingested as asset findings in CloudSignals, automatically mapped to control families (e.g., OWASP Top 10 findings map to ISO 27001 A 8.28 Secure Coding), and tracked for remediation in the RiskOps treatment queue. This closes the loop between developer-level vulnerabilities and executive-level compliance reporting.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Assess your current DevSecOps posture</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Map your current SDLC: identify each stage (plan, code, build, test, deploy, operate). For each stage, list what security activities currently occur. The gaps you discover are your DevSecOps backlog.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Identify your security champions: do you have developers who voluntarily learn security and help their teams? If not, this is the highest-ROI first investment — security champions multiply security capacity without requiring dedicated security headcount.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Audit your CI/CD pipelines: do any pipelines run code to production without automated security testing? Every pipeline reaching production without at minimum SAST and SCA is a supply chain risk in your software delivery process.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Calculate the average time from vulnerability discovery to remediation in your codebase. If it exceeds 30 days for critical findings, your DevSecOps program lacks the workflow integration needed to drive timely fixes.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod1">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Map your SDLC security activities:</strong> Document what security activities exist at each SDLC stage. Identify the three stages with the most critical gaps and prioritize them for tooling or process additions.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Identify or recruit security champions:</strong> Identify two or three developers who have shown interest in security. Propose a security champions program with defined time allocation (e.g., 10% of sprint capacity for security activities).</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Add security to your Definition of Done:</strong> Work with engineering leadership to add at minimum: "SAST scan passes with no new Critical findings" and "All new dependencies reviewed for known vulnerabilities" to your team's DoD criteria.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod1">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A development team deploys a DAST scanner that runs weekly against the production environment to detect vulnerabilities. This is a good start. What is the primary limitation of this approach from a DevSecOps perspective?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">DAST scanners should run monthly, not weekly — more frequent scanning creates unnecessary server load and may trigger rate limiting from the application's WAF.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Testing only in production finds vulnerabilities at the most expensive point to fix — when code is already deployed. DevSecOps shifts testing left: vulnerabilities found in production require a hotfix cycle, regression testing, and potentially a security incident. The same vulnerability found at the code stage is a one-line fix with no deployment overhead. Production DAST is valuable but must be complemented by pipeline-integrated SAST and SCA at the build stage.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">DAST is not a valid security control — only SAST tools that analyze source code can reliably detect vulnerabilities, since DAST can't see inside the application logic.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod1')"><div class="quiz-radio"></div><div class="quiz-opt-text">The approach is fully compliant with DevSecOps principles — production monitoring is the final stage of the DevSecOps lifecycle and weekly scanning meets best practice requirements.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod1')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod1"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod1" onclick="markComplete('mod1')">Mark Module 1 complete</button>
+          <span class="mark-complete-hint">Move on when you've mapped your SDLC security gaps, identified champions, and updated your DoD.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 2 -->
+      <section id="mod2" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(34,197,94,.2);color:#22c55e;">2</div>
+          <div class="phase-head-body">
+            <h2>Secure SDLC and Threat Modeling</h2>
+            <p class="phase-subtitle">25 min &bull; SDLC phases, STRIDE, PASTA, DREAD, attack surface analysis</p>
+          </div>
+        </div>
+
+        <h3>The Secure Development Lifecycle (SDL)</h3>
+        <p>Microsoft introduced the Security Development Lifecycle (SDL) in 2004, and it remains the foundational reference for how security integrates into each phase of software development. The modern SDL aligns with agile and DevOps workflows: security requirements are elicited alongside functional requirements; threat modeling occurs in the design phase and is revisited when the architecture changes significantly; code review for security is part of the PR/MR process; security testing gates release approval; security operations feed findings back into the backlog. NIST SP 800-218 (Secure Software Development Framework, SSDF) provides the US government framework for secure SDLC, organized into four practice groups: Prepare the Organization (PO), Protect the Software (PS), Produce Well-Secured Software (PW), and Respond to Vulnerabilities (RV).</p>
+        <p><strong>Security requirements</strong> in the SDLC are not just "don't have SQL injection" — they include authentication and authorization requirements (who can access what data and how is that enforced), input validation requirements, encryption requirements (data at rest and in transit), logging and audit trail requirements, session management requirements, and third-party component security requirements (are you accepting components with no known CVEs? With what CVSS threshold?). Many security requirements derive directly from compliance obligations: PCI DSS requires TLS 1.2+ and no PAN in logs; HIPAA requires PHI encryption and access logging. Security requirements at design time are architectural decisions; security fixes in production are crisis management.</p>
+
+        <h3>Threat modeling: STRIDE</h3>
+        <p>Threat modeling is the process of identifying potential threats to a system at design time, before the system is built, so that mitigations can be incorporated into the design rather than bolted on afterward. <strong>STRIDE</strong> is the most widely used threat modeling methodology, developed by Microsoft. STRIDE categorizes threats by type: <strong>S</strong>poofing (attacker impersonates another user or system), <strong>T</strong>ampering (attacker modifies data in transit or at rest), <strong>R</strong>epudiation (attacker denies having performed an action), <strong>I</strong>nformation Disclosure (attacker accesses data they should not), <strong>D</strong>enial of Service (attacker degrades or eliminates service availability), <strong>E</strong>levation of Privilege (attacker gains higher permissions than authorized). For each STRIDE category, the modeler asks: where in my system is this threat applicable? What mitigations address it?</p>
+        <p><strong>PASTA</strong> (Process for Attack Simulation and Threat Analysis) is a risk-centric threat modeling methodology that works from business objectives through technical analysis to attack simulation. PASTA's seven stages produce a risk-aligned threat profile suitable for presenting to business stakeholders who need threat context in terms of business impact rather than technical vulnerability categories. PASTA is more resource-intensive than STRIDE but produces more actionable risk-level outputs for complex systems with multiple business stakeholders.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>STRIDE category</th><th>Threat example</th><th>Primary mitigation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Spoofing</strong></td><td>Session token theft, credential stuffing, JWT forgery</td><td>Strong authentication, token binding, MFA</td></tr>
+            <tr><td><strong>Tampering</strong></td><td>SQL injection, CSRF, man-in-the-middle, parameter manipulation</td><td>Input validation, CSRF tokens, TLS, signed messages</td></tr>
+            <tr><td><strong>Repudiation</strong></td><td>Covering tracks, log tampering, disabling audit trail</td><td>Tamper-evident audit logs, centralized log storage, log integrity</td></tr>
+            <tr><td><strong>Information Disclosure</strong></td><td>IDOR, excessive error messages, API data over-exposure, XXE</td><td>Authorization checks, error message sanitization, field-level filtering</td></tr>
+            <tr><td><strong>Denial of Service</strong></td><td>Rate limit bypass, resource exhaustion, ReDoS, XML bomb</td><td>Rate limiting, input size limits, circuit breakers, CDN</td></tr>
+            <tr><td><strong>Elevation of Privilege</strong></td><td>SSTI, OS command injection, insecure deserialization, privilege escalation</td><td>Principle of least privilege, sandboxing, input sanitization</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> Threat models produced during design can be formalized as risk entries in CloudSignals RiskOps, with each STRIDE threat mapped to a risk record containing: the threat description, the asset at risk, the inherent risk rating, the mitigation controls, and the residual risk score. This creates traceability from design-time security decisions to the enterprise risk register, enabling auditors to trace a compliance control back to the threat it mitigates.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Run a STRIDE threat model</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Select a feature or system component currently in design or early development. Draw a simple Data Flow Diagram (DFD) showing: external users/systems, internal processes, data stores, and the data flows between them. Mark trust boundaries — the lines across which trust changes (public internet → API gateway, API gateway → backend service, backend service → database).</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">For each element in your DFD, apply STRIDE: which categories apply to this element? An API endpoint is a candidate for Spoofing, Tampering, Information Disclosure, and Denial of Service. A database is a candidate for Tampering, Information Disclosure, and Repudiation. A message queue is a candidate for Tampering and Spoofing.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">For each identified threat, define the mitigation control and confirm it is in the design. Any threat without a mitigation becomes a security requirement backlog item to be addressed before deployment.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Score each threat using DREAD (Damage, Reproducibility, Exploitability, Affected users, Discoverability) on a 1–3 scale per category. Threats with a score of 10+ are your highest-priority mitigations.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod2">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Add threat modeling to your design review process:</strong> Require a STRIDE-based threat model for all new systems and significant architectural changes. Create a one-page DFD template your teams can use in design sessions.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Threat model an existing system:</strong> Select one production system that has never had a formal threat model. Conduct a 2-hour workshop with the system's developer and architect. Document the output and create tickets for any identified mitigations not currently implemented.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define when threat modeling is triggered:</strong> Create a written policy specifying when threat modeling is required: new system with external-facing components, new data store handling sensitive data, significant authentication/authorization changes, third-party integration handling PII.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod2">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">During a STRIDE analysis of a REST API, the team identifies that an attacker could send a specially crafted JSON payload to exhaust all available database connections. Which STRIDE category does this threat belong to?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Tampering — the attacker is modifying the JSON payload, which is a form of data tampering.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Information Disclosure — the JSON payload could leak database connection information to the attacker.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Denial of Service — exhausting all database connections prevents the application from serving legitimate requests. While the attacker manipulates the payload (a Tampering element), the primary security outcome is service degradation for all users. Mitigations include connection pool limits, request rate limiting, input size validation, and circuit breakers to prevent connection exhaustion.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod2')"><div class="quiz-radio"></div><div class="quiz-opt-text">Elevation of Privilege — gaining control over database connections could allow the attacker to escalate privileges within the database tier.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod2')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod2"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod2" onclick="markComplete('mod2')">Mark Module 2 complete</button>
+          <span class="mark-complete-hint">Move on when you've added threat modeling to your design process, conducted one existing-system exercise, and defined your trigger criteria.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 3 -->
+      <section id="mod3" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(34,197,94,.2);color:#22c55e;">3</div>
+          <div class="phase-head-body">
+            <h2>Application Security Testing</h2>
+            <p class="phase-subtitle">30 min &bull; SAST, DAST, SCA, IAST, OWASP Top 10, ASVS</p>
+          </div>
+        </div>
+
+        <h3>The application security testing spectrum</h3>
+        <p><strong>SAST</strong> (Static Application Security Testing) analyzes source code, bytecode, or binary without executing it. SAST finds injection flaws, insecure API calls, hardcoded credentials, buffer overflows, and other code-level vulnerabilities. SAST tools integrate into CI/CD and IDE. They produce false positives and require tuning — but run in seconds and find issues before any code is deployed. Leading tools: Semgrep, Checkmarx SAST, Fortify, CodeQL (GitHub), SonarQube. <strong>DAST</strong> (Dynamic Application Security Testing) tests a running application by sending malicious inputs and observing responses — the same technique an attacker uses. DAST requires a running target (staging or test environment) and finds issues SAST misses: business logic flaws, authentication failures, and runtime configuration issues. Leading tools: OWASP ZAP, Burp Suite Pro, Invicti, StackHawk. <strong>SCA</strong> (Software Composition Analysis) identifies open-source and third-party dependencies and checks them against vulnerability databases (NVD, GitHub Advisory Database, Sonatype OSS Index). SCA is critical because the majority of modern application code is third-party libraries. Leading tools: Snyk Open Source, Dependabot, FOSSA, Black Duck.</p>
+        <p><strong>IAST</strong> (Interactive Application Security Testing) instruments the running application from within — using agents that observe application behavior during functional testing to identify security flaws in context. IAST provides the accuracy of runtime analysis with much lower false positive rates than SAST. Leading tools: Contrast Security, Seeker. <strong>MAST</strong> (Mobile AST) applies SAST/DAST/IAST to mobile applications. <strong>API security testing</strong> applies DAST-like fuzzing and schema validation to REST/GraphQL APIs — a critical gap since most DAST tools were designed for web applications and miss API-specific vulnerabilities like excessive data exposure, broken object-level authorization (BOLA/IDOR), and mass assignment.</p>
+
+        <h3>OWASP Top 10 (2021)</h3>
+        <p>The OWASP Top 10 is the most widely referenced list of critical application security risks. The 2021 edition identifies: A01 Broken Access Control (moved to #1 — most prevalent finding), A02 Cryptographic Failures, A03 Injection (SQL, LDAP, OS command), A04 Insecure Design (new — design-level flaws not fixable by implementation patches), A05 Security Misconfiguration, A06 Vulnerable and Outdated Components, A07 Identification and Authentication Failures, A08 Software and Data Integrity Failures (new — covers unsigned updates, deserialization, CI/CD pipeline integrity), A09 Security Logging and Monitoring Failures, A10 Server-Side Request Forgery (SSRF, new). OWASP ASVS (Application Security Verification Standard) v4.0 provides specific verification requirements for each of these categories — offering a measurable, testable security baseline for any application.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>Testing type</th><th>When in pipeline</th><th>What it finds best</th><th>Key limitation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>SAST</strong></td><td>Code commit / PR / build stage</td><td>Injection flaws, hardcoded secrets, unsafe APIs, code-level CWEs</td><td>High false positive rate; misses runtime and business logic issues</td></tr>
+            <tr><td><strong>SCA</strong></td><td>Build stage / PR</td><td>Vulnerable open-source dependencies, license compliance issues</td><td>Only finds known CVEs — zero-day library vulnerabilities are invisible</td></tr>
+            <tr><td><strong>DAST</strong></td><td>Test stage / staging environment</td><td>Runtime issues, auth failures, SSRF, business logic, config errors</td><td>Needs running app; can't test code paths not covered by crawl</td></tr>
+            <tr><td><strong>IAST</strong></td><td>During functional testing</td><td>High accuracy runtime issues in tested code paths; low FP rate</td><td>Requires agent instrumentation; only tests code paths exercised</td></tr>
+            <tr><td><strong>Secrets scanning</strong></td><td>Pre-commit / build</td><td>Hardcoded API keys, credentials, tokens, private keys in code</td><td>Only finds secrets not already committed historically (need separate audit for history)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals asset security posture extends to application-layer findings: SAST and DAST output can be integrated as security findings against the application asset record. OWASP Top 10 category mappings automatically link application findings to the relevant compliance controls in your UCB framework, providing GRC teams with evidence that application security testing is occurring and producing tracked results.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Improve your AppSec testing coverage</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Audit your CI/CD pipelines: which pipelines include SAST? Which include SCA? Which include secrets scanning? Any pipeline reaching production without at minimum SCA (to detect vulnerable dependencies) is a supply chain security gap that should be addressed within 30 days.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Run a secrets scan on your git history using a tool like Trufflehog or GitGuardian. Long-lived repositories often contain committed credentials that were never rotated. Any valid credentials found must be rotated immediately and the exposure must be assessed for unauthorized use.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Review your SAST tool's false positive rate for your most active repositories. If developers are suppressing more than 50% of findings as false positives, the tool needs tuning. Suppressions should be documented with a rationale, not used as a way to make security gates pass.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Map your current testing coverage to the OWASP Top 10: which of the 10 categories can your current test suite detect? Which have no coverage? A01 Broken Access Control and A04 Insecure Design typically require manual review or DAST with business logic awareness — not just automated SAST.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod3">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Add SCA to all production pipelines:</strong> Every pipeline deploying to production should have SCA (Snyk, Dependabot, or equivalent) configured to fail builds on Critical severity CVEs with no applied exceptions policy.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Scan your git history for secrets:</strong> Run a secrets scanning tool against your primary code repositories' full history. Document and rotate any valid credentials discovered, and add pre-commit secrets scanning to prevent future occurrences.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Map OWASP Top 10 to your test coverage:</strong> For each of the 10 categories, identify whether your current tooling can detect it. Create backlog items to add testing coverage for any categories with no current detection capability.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod3">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A team runs SAST on every pull request and reports zero Critical findings for six months. A penetration tester then finds a critical Broken Object Level Authorization (BOLA) vulnerability in the API. Why did SAST miss it?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">SAST was not configured correctly — with proper ruleset configuration, SAST can detect all OWASP Top 10 vulnerabilities including access control flaws.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">BOLA/IDOR is a business logic vulnerability: the code correctly retrieves the object the user requests, but fails to verify the user is authorized to access that specific object. SAST analyzes code syntax and patterns — it cannot determine authorization intent without understanding business rules. BOLA detection requires runtime testing (DAST or manual penetration testing) that can observe actual authorization enforcement behavior with different user contexts.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">SAST cannot detect API vulnerabilities — it is designed only for traditional web applications and cannot analyze REST API endpoints.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod3')"><div class="quiz-radio"></div><div class="quiz-opt-text">The penetration tester likely found a false positive — BOLA vulnerabilities require authentication that automated SAST tools are not configured to test, so the finding cannot be confirmed without re-running SAST with authentication configured.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod3')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod3"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod3" onclick="markComplete('mod3')">Mark Module 3 complete</button>
+          <span class="mark-complete-hint">Move on when you've added SCA to production pipelines, scanned git history for secrets, and mapped OWASP Top 10 coverage.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 4 -->
+      <section id="mod4" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(34,197,94,.2);color:#22c55e;">4</div>
+          <div class="phase-head-body">
+            <h2>CI/CD Pipeline Security</h2>
+            <p class="phase-subtitle">25 min &bull; Pipeline hardening, secrets management, SBOM, software supply chain</p>
+          </div>
+        </div>
+
+        <h3>Why CI/CD pipelines are a primary attack target</h3>
+        <p>CI/CD pipelines have become a primary target for sophisticated attackers because they sit at the intersection of broad code access, cloud credentials, production deployment capability, and often relatively weak access controls. The 2020 SolarWinds supply chain attack compromised the build pipeline to inject malicious code into a signed software update reaching 18,000+ organizations — without ever compromising a production environment directly. In 2023, the 3CX supply chain compromise used a trojanized upstream dependency. The CISA/NSA joint advisory on "Defending Continuous Integration/Continuous Delivery (CI/CD) Environments" (2023) identified pipeline access control, secrets management, and build integrity as the three highest-priority security controls for CI/CD environments.</p>
+
+        <h3>Pipeline hardening controls</h3>
+        <p>Key pipeline security controls include: <strong>Least privilege for pipeline credentials</strong> — CI/CD service accounts should have only the permissions needed to deploy to the target environment, not admin access to cloud accounts or the ability to modify the pipeline itself. <strong>Branch protection and approval gates</strong> — direct pushes to production branches should be blocked; all changes require PR review and passing security gates. <strong>Ephemeral build environments</strong> — each build runs in a clean, isolated environment and is destroyed after completion, preventing cross-build contamination. <strong>Pinned dependencies</strong> — use commit SHA pinning for pipeline actions and tool versions rather than floating tags (e.g., `actions/checkout@v4` is a floating tag; `actions/checkout@abc123def` is a pinned SHA that cannot be tampered with by pushing a new tag). <strong>Signed commits and artifacts</strong> — require Signed commits (GPG/SSH) on protected branches; sign build artifacts and container images to establish provenance chain.</p>
+
+        <h3>Secrets management in pipelines</h3>
+        <p>Hardcoded secrets in pipelines are a critical failure mode: credentials stored as plaintext environment variables in pipeline YAML files, embedded in Dockerfiles, or committed to the repository. Pipeline secrets must be stored in a dedicated secrets management system: GitHub Actions Secrets/Environments, GitLab CI/CD Variables (protected), HashiCorp Vault, or cloud-native secret stores (AWS Secrets Manager, Azure Key Vault, GCP Secret Manager). Secrets injected at runtime should use short-lived credentials where possible (OIDC federation with cloud providers eliminates long-lived cloud credentials from pipelines entirely — the pipeline authenticates to AWS/Azure/GCP using a short-lived OIDC token rather than a stored access key).</p>
+
+        <h3>Software Bill of Materials (SBOM) and supply chain security</h3>
+        <p>An SBOM is a machine-readable inventory of all software components in an application: libraries, frameworks, licenses, versions, and known vulnerabilities. US Executive Order 14028 (May 2021) mandated SBOM production for software sold to the US federal government. SBOM formats: <strong>SPDX</strong> (Linux Foundation standard, ISO/IEC 5962:2021) and <strong>CycloneDX</strong> (OWASP standard, widely used in DevSecOps tooling). The SLSA (Supply chain Levels for Software Artifacts) framework from Google/OpenSSF provides four maturity levels for build integrity: Level 1 (documented build process), Level 2 (build service generates provenance), Level 3 (build environment and provenance are verified), Level 4 (reproducible builds with two-party review). Organizations targeting federal sales or regulated markets should target SLSA Level 2 minimum.</p>
+
+        <div class="callout warn">
+          <strong>Pipeline tokens are high-value targets:</strong> Many CI/CD platforms automatically provide the pipeline with a token granting access to the repository and, in cloud environments, to infrastructure. Attackers who compromise a pipeline job via a malicious PR or a dependency confusion attack gain access to these tokens. Always restrict what pipeline tokens can do to the minimum necessary and treat a pipeline compromise as a cloud infrastructure incident, not just a code integrity event.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Harden your CI/CD pipeline</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Audit pipeline permissions: for each CI/CD pipeline, identify what cloud credentials are available to the pipeline job. Remove all permissions not required for the build and deploy steps. If using GitHub Actions, switch to OIDC authentication with cloud providers to eliminate long-lived credentials.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Scan pipeline YAML files for hardcoded secrets using a secrets scanning tool. Review environment variable definitions in all pipeline files. Any secrets stored as plaintext values (not references to secrets manager) must be migrated to proper secret storage immediately.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Review your third-party pipeline actions/plugins: are any using floating tags (e.g., @latest, @v3)? Pin all third-party actions to a specific commit SHA. Review the OpenSSF Scorecard for any third-party tools you use to assess their supply chain security posture.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Add SBOM generation to your build pipeline for at least your production-deployed applications. Use Syft, CycloneDX Generator, or Snyk to generate SBOM at build time. Store SBOM artifacts alongside release artifacts for vulnerability retrospective analysis.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod4">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Implement OIDC authentication:</strong> For AWS, Azure, or GCP, configure OIDC federation so your CI/CD pipelines authenticate using short-lived tokens rather than stored access keys. This eliminates the entire class of long-lived credential exposure from pipelines.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Pin third-party pipeline actions to commit SHAs:</strong> Audit all uses of third-party actions in your CI/CD pipelines and replace floating tag references with pinned commit SHAs. Add Dependabot or Renovate automation to keep pinned versions current.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Add SBOM generation to your build pipeline:</strong> Select an SBOM format (CycloneDX recommended for DevSecOps tooling compatibility) and add SBOM generation as a build stage artifact. Configure your vulnerability scanner to monitor SBOM components for new CVE disclosures post-release.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod4">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A development team stores all CI/CD secrets in the pipeline platform's built-in secrets store (e.g., GitHub Actions Secrets, GitLab Variables) and never hardcodes them in pipeline YAML. Is this a complete secrets management solution?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Yes — using the platform's native secret store rather than hardcoding is fully aligned with CI/CD secrets management best practices and requires no further improvement.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">This is a good start but incomplete. Platform secrets stores are better than hardcoding, but they typically store long-lived static credentials. Best practice additionally includes: (1) using short-lived OIDC tokens instead of stored credentials for cloud access where possible, (2) secret rotation policy with defined rotation schedules, (3) access auditing to track which pipelines access which secrets, (4) least-privilege access to secrets (not all pipelines accessing all secrets), and (5) scanning for secrets that may have already been committed to pipeline YAML history before the store was adopted.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">Platform secret stores are not secure enough for production credentials — all secrets must be stored in a dedicated secrets management system like HashiCorp Vault or AWS Secrets Manager.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod4')"><div class="quiz-radio"></div><div class="quiz-opt-text">The main gap is that all secrets should be encrypted at rest using a customer-managed encryption key (CMEK) — platform-managed encryption is not acceptable for production credentials.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod4')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod4"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod4" onclick="markComplete('mod4')">Mark Module 4 complete</button>
+          <span class="mark-complete-hint">Move on when you've implemented OIDC authentication, pinned third-party actions, and added SBOM generation to your pipeline.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 5 -->
+      <section id="mod5" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(34,197,94,.2);color:#22c55e;">5</div>
+          <div class="phase-head-body">
+            <h2>Container and Kubernetes Security</h2>
+            <p class="phase-subtitle">25 min &bull; Image hardening, RBAC, network policies, Pod Security, runtime security</p>
+          </div>
+        </div>
+
+        <h3>Container image security</h3>
+        <p>Container security begins at image build time. Image hardening best practices from NIST SP 800-190 and CIS Docker Benchmark include: use minimal base images (distroless, Alpine, scratch) to reduce attack surface — a full Ubuntu base image contains thousands of packages, most unnecessary; build as a non-root user (90%+ of public container images run as root, violating least privilege); scan images for CVEs using Trivy, Grype, or Snyk Container at build time and in the registry, not just at push time; sign images using Cosign (from the Sigstore project) to establish a cryptographic provenance chain that admission controllers can verify; set image to read-only filesystem and drop all Linux capabilities except those explicitly required; never include secrets, credentials, or sensitive configuration in image layers — use Kubernetes Secrets or external secrets management at runtime.</p>
+        <p><strong>Image registry security</strong> includes: vulnerability scanning on push (ECR, ACR, GCR all include native scanning; enable it and configure block-on-Critical policy), enforce signed image policies (OPA Gatekeeper or Kyverno admission controllers can reject images without valid Cosign signatures), and configure registry access controls (pull-only access for production workloads — production should never be able to push to the registry, only pull).</p>
+
+        <h3>Kubernetes RBAC and network policies</h3>
+        <p>Kubernetes RBAC (Role-Based Access Control) governs what API operations users and service accounts can perform within the cluster. Key RBAC principles: use the default ServiceAccount for pods only when explicitly needed — most workloads should not have any cluster API access; bind the minimum permissions required and scope them to specific namespaces (RoleBindings), not cluster-wide (ClusterRoleBindings); never use the cluster-admin ClusterRoleBinding for application workloads; avoid the "catch-all" wildcard (*) in resource and verb specifications. The CIS Kubernetes Benchmark provides specific RBAC control configurations that are the industry-accepted baseline.</p>
+        <p><strong>Network Policies</strong> are the Kubernetes equivalent of security groups for pod-to-pod communication. By default, all pods in a Kubernetes cluster can communicate with all other pods — a flat network that enables unrestricted lateral movement. Network Policies implement default-deny ingress and egress, permitting only explicitly specified traffic flows. A properly configured production namespace should have: a default deny-all policy, explicit allow rules for each service's required inbound and outbound traffic, and monitoring of policy violations using a CNI plugin that supports observability (Calico, Cilium, Weave).</p>
+
+        <h3>Pod Security and runtime detection</h3>
+        <p>Kubernetes Pod Security Standards (PSS, replacing deprecated PodSecurityPolicy in K8s 1.25+) define three profiles: <strong>Privileged</strong> (no restrictions — for system-level workloads), <strong>Baseline</strong> (prevents known privilege escalation vectors — suitable for most workloads), and <strong>Restricted</strong> (most secure — requires non-root, read-only root filesystem, dropped capabilities — for internet-facing or high-sensitivity workloads). Pod Security Admission (PSA) enforces these profiles at the namespace level via labels. Runtime security tools (Falco, Aqua, Prisma Cloud Compute) detect anomalous container behavior at runtime: unexpected outbound connections, process execution not in the image's baseline, filesystem writes to unexpected locations — the behavioral signatures of container escape, lateral movement, and cryptomining.</p>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> CloudSignals continuously assesses Kubernetes posture using rules mapped to the CIS Kubernetes Benchmark and NIST SP 800-190. Findings — privileged pods, missing network policies, exposed services, RBAC misconfigurations — are surfaced as posture findings against the Kubernetes asset, linked to your compliance framework mappings, and available for RiskOps treatment tracking. This extends the same unified governance model from cloud infrastructure to container workloads.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Harden your container environment</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Scan your running container images for vulnerabilities using Trivy: `trivy image [your-image-name]`. How many Critical and High CVEs are in your production images? Any Critical CVE in a production image requires a remediation timeline.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Check how many of your pods run as root: `kubectl get pods --all-namespaces -o json | jq '.items[].spec.containers[].securityContext.runAsNonRoot'`. Any pod running as root that doesn't need to is a privilege escalation risk if the container is compromised.</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Check for default network policy: `kubectl get networkpolicy --all-namespaces`. Namespaces with no NetworkPolicy objects have unrestricted pod-to-pod communication. Add a default-deny ingress/egress NetworkPolicy to any namespace that lacks one, then add explicit allow rules for required traffic.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Review ClusterRoleBindings for broad permissions: `kubectl get clusterrolebindings -o json | jq '.items[] | select(.roleRef.name=="cluster-admin") | .subjects'`. Each subject with cluster-admin rights is a potential full-cluster compromise vector. Reduce to the minimum required subjects.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod5">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Add Kubernetes network policies:</strong> Implement default-deny NetworkPolicies in all production namespaces. Add explicit allow rules for each service's required communication paths. Test that application functionality is maintained after policy enforcement.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Enforce Pod Security Standards:</strong> Apply Pod Security Admission labels to production namespaces at minimum Baseline profile, targeting Restricted for high-sensitivity workloads. Identify and remediate any pods that fail the Baseline profile.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Add image vulnerability scanning to your registry:</strong> Enable registry scanning (ECR, ACR, GCR, or Harbor) and configure admission control to reject images with Critical CVEs that have available patches from being deployed to production namespaces.</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod5">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">A Kubernetes deployment runs a web application container. The container is compromised via a web vulnerability and the attacker executes code within it. The pod runs as root with no security context restrictions and no NetworkPolicy. What is the most significant consequence of these misconfigurations?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">The container will be automatically terminated by the Kubernetes runtime when the anomalous process execution is detected — no further action is needed.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Running as root enables container escape attempts using kernel exploits (root in container = root on host node if cgroup/namespace isolation is bypassed). No NetworkPolicy means the attacker can reach all other pods in the cluster from within the compromised container — unrestricted lateral movement across namespaces. Together, these misconfigurations transform a single web vulnerability into a potential full-cluster compromise rather than an isolated container incident.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">The impact is limited to the application itself — Kubernetes namespace isolation prevents any movement beyond the affected pod, regardless of security context or NetworkPolicy configuration.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod5')"><div class="quiz-radio"></div><div class="quiz-opt-text">The main risk is that root access will allow the attacker to modify the container image in the registry, affecting all future deployments of the application.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod5')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod5"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod5" onclick="markComplete('mod5')">Mark Module 5 complete</button>
+          <span class="mark-complete-hint">Move on when you've added network policies, enforced Pod Security Standards, and added image scanning to your registry.</span>
+        </div>
+      </section>
+
+
+      <!-- MODULE 6 -->
+      <section id="mod6" class="phase-block" style="scroll-margin-top:80px;">
+        <div class="phase-header">
+          <div class="phase-num" style="background:rgba(34,197,94,.2);color:#22c55e;">6</div>
+          <div class="phase-head-body">
+            <h2>Program Maturity and Governance</h2>
+            <p class="phase-subtitle">20 min &bull; BSIMM, OWASP SAMM, policy-as-code, developer security metrics</p>
+          </div>
+        </div>
+
+        <h3>Measuring application security program maturity</h3>
+        <p><strong>BSIMM</strong> (Building Security In Maturity Model) is an observational model based on measuring what real organizations actually do in their software security initiatives. Now in version 13, BSIMM studies over 130 firms and documents security activities across 4 domains (Governance, Intelligence, SSDL Touchpoints, Deployment) and 16 practices. BSIMM is used to compare your program against peer organizations and identify which activities the top-quartile performers do that you don't. <strong>OWASP SAMM</strong> (Software Assurance Maturity Model) v2.0 is a prescriptive framework organized into 5 business functions (Governance, Design, Implementation, Verification, Operations) with 15 security practices, each scored 0–3 for maturity. Unlike BSIMM (descriptive), SAMM is a prescriptive roadmap — it tells you what to do to reach each maturity level. Most organizations start a formal AppSec program at SAMM overall maturity 1.0–1.5 and should target 2.0 within 24 months for critical systems.</p>
+
+        <h3>Policy-as-code: governance at pipeline speed</h3>
+        <p>Policy-as-code is the practice of expressing security and compliance policies as machine-readable, testable code rather than documents. Instead of a policy document that says "all containers must run as non-root," a policy-as-code approach implements this as an OPA/Gatekeeper or Kyverno constraint that the Kubernetes admission controller enforces at deployment time. This creates the critical shift: policy violations are caught before deployment, not in audits after the fact. Policy-as-code frameworks: <strong>OPA (Open Policy Agent)</strong> with its Rego policy language — the most widely deployed general-purpose policy engine; <strong>Kyverno</strong> — Kubernetes-native policy using YAML syntax; <strong>Checkov and tfsec</strong> — IaC policy scanning for Terraform, CloudFormation, and Kubernetes manifests; <strong>Conftest</strong> — testing structured configuration files against OPA policies.</p>
+        <p>The compliance benefit of policy-as-code extends beyond enforcement: policies stored in Git create a version-controlled, auditable record of what security requirements are enforced, when they were added, who approved them, and whether they pass. This is evidence of control operating effectiveness — exactly what auditors for SOC 2 Type II, ISO 27001, and FedRAMP require to certify your controls.</p>
+
+        <table class="acad-table">
+          <thead><tr><th>DevSecOps metric</th><th>What it measures</th><th>Target</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Mean Time to Remediate (AppSec)</strong></td><td>Average time from SAST/DAST finding to fix commit</td><td>Critical: &lt;7 days; High: &lt;30 days</td></tr>
+            <tr><td><strong>Security Gate Pass Rate</strong></td><td>% of PRs/builds passing security gates without exception</td><td>≥90% pass without exception over 90 days</td></tr>
+            <tr><td><strong>Suppression/Exception Rate</strong></td><td>% of findings suppressed vs. fixed</td><td>Suppressions &lt;10% of total findings; all require documented rationale</td></tr>
+            <tr><td><strong>New Critical Vulnerabilities Introduced</strong></td><td>New Criticals per release cycle</td><td>Zero new Criticals reaching production</td></tr>
+            <tr><td><strong>SBOM Currency</strong></td><td>% of production applications with current SBOM</td><td>100% of production apps with SBOM generated at last build</td></tr>
+            <tr><td><strong>SAMM Maturity Score</strong></td><td>OWASP SAMM overall program score (0–3)</td><td>Target 2.0+ within 24 months of program launch</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout primary">
+          <strong>CloudSignals connection:</strong> DevSecOps governance metrics — SAST finding resolution rates, SCA component currency, image scan compliance, and pipeline security gate pass rates — can be tracked as control metrics in CloudSignals UCB. When these metrics are linked to controls in your ISO 27001 or SOC 2 framework, they become evidence of operating effectiveness, visible in your GRC dashboard alongside infrastructure posture findings. This creates the unified application + infrastructure + governance view that eliminates siloed reporting.
+        </div>
+
+        <div class="in-platform">
+          <div class="in-platform-label"><i class="fas fa-clipboard-check"></i> In Practice — Build your DevSecOps improvement roadmap</div>
+          <div class="in-platform-steps">
+            <div class="ip-step"><div class="ip-step-num">1</div><div class="ip-step-body">Take the OWASP SAMM self-assessment survey (owaspsamm.org). For each of the 15 security practices, score your current maturity 0–3. The output is a spider diagram showing your program shape and the specific practice gaps to address.</div></div>
+            <div class="ip-step"><div class="ip-step-num">2</div><div class="ip-step-body">Identify your highest-priority gap: which SAMM practice with a current score of 0 or 1 would produce the most security improvement if raised to 2? For most early-stage programs, that gap is in Design (threat modeling) or Implementation (security testing in CI/CD).</div></div>
+            <div class="ip-step"><div class="ip-step-num">3</div><div class="ip-step-body">Select one policy to implement as code: choose a security policy currently documented only in a PDF or wiki (e.g., "all production containers must run as non-root"). Implement it as a Kyverno or OPA/Gatekeeper admission control policy. Test it and deploy it in audit mode first, then enforce mode.</div></div>
+            <div class="ip-step"><div class="ip-step-num">4</div><div class="ip-step-body">Set quarterly DevSecOps metric targets: define target values for Mean Time to Remediate (Critical findings), Security Gate Pass Rate, and New Critical Vulnerabilities introduced per quarter. Share these with engineering leadership and track them as a program KPI.</div></div>
+          </div>
+        </div>
+
+        <div class="action-checklist" id="checklist-mod6">
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Complete OWASP SAMM self-assessment:</strong> Complete the full SAMM survey for your application security program. Export the results and share with your security leadership. Identify the top 3 practice areas for improvement in the next 12 months.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Implement one policy-as-code control:</strong> Convert one written security policy into a testable, enforced policy-as-code control (Kyverno, OPA, Checkov, or equivalent). Deploy in audit mode, remediate violations, then switch to enforce mode.</div></div>
+          <div class="action-item" onclick="toggleAction(this)"><div class="action-cb"></div><div class="action-text"><strong>Define and track your three DevSecOps KPIs:</strong> Select three metrics from the table above. Set 12-month targets. Assign ownership and a review cadence (monthly review, quarterly executive reporting).</div></div>
+        </div>
+
+        <div class="quiz-block" id="quiz-mod6">
+          <div class="quiz-label"><i class="fas fa-question-circle"></i> Knowledge Check</div>
+          <div class="quiz-question">An organization has a written security policy that states "all Kubernetes pods must run as non-root." Security audits annually find violations of this policy. The team implements this as a Kyverno admission control policy. What is the primary governance benefit of this change, beyond just enforcement?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The primary benefit is performance — admission controllers execute faster than manual policy review, reducing time to production deployment for compliant workloads.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text" data-correct="true">Policy-as-code provides continuous, automated enforcement (violations caught at deploy time, not in annual audits) and produces audit evidence: the policy is version-controlled in Git with approval history, and admission controller logs provide real-time evidence of enforcement. Auditors can verify the control is both designed and operating effectively from Git history and controller metrics — eliminating the gap between "policy exists" and "policy is actually enforced."</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The primary benefit is that violations are now visible in the SIEM — security teams can receive real-time alerts when a pod attempts to run as root, enabling faster incident response.</div></div>
+            <div class="quiz-option" onclick="selectOption(this,'mod6')"><div class="quiz-radio"></div><div class="quiz-opt-text">The governance benefit is minimal — policy-as-code only addresses technical controls and cannot satisfy the documentation requirements that governance frameworks like SOC 2 or ISO 27001 require for evidence of control operation.</div></div>
+          </div>
+          <button class="quiz-btn" onclick="checkAnswer('mod6')" disabled>Check Answer</button>
+          <div class="quiz-feedback" id="feedback-mod6"></div>
+        </div>
+
+        <div class="mark-complete-wrap">
+          <button class="mark-complete-btn" id="mc-mod6" onclick="markComplete('mod6')">Mark Module 6 complete</button>
+          <span class="mark-complete-hint">Move on when you've completed your SAMM assessment, implemented one policy-as-code control, and defined your three DevSecOps KPIs.</span>
+        </div>
+      </section>
+
+
+      <!-- ASSESSMENT -->
+      <section id="certification" style="scroll-margin-top:80px;">
+        <h2>Course Assessment — Introduction to DevSecOps</h2>
+        <p>Completing all six modules qualifies you for the knowledge assessment. This course completes the four foundational knowledge courses and is a recommended prerequisite for the practitioner-level Application Security and Cloud-Native Security tracks.</p>
+
+        <table class="acad-table" style="margin-bottom:20px;">
+          <thead><tr><th>Assessment domain</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td>DevSecOps fundamentals and shift-left economics</td><td>20%</td></tr>
+            <tr><td>Secure SDLC and threat modeling</td><td>20%</td></tr>
+            <tr><td>Application security testing (SAST/DAST/SCA)</td><td>20%</td></tr>
+            <tr><td>CI/CD pipeline security and supply chain</td><td>20%</td></tr>
+            <tr><td>Container/Kubernetes security and governance</td><td>20%</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Capstone scenario</h3>
+        <p style="color:var(--ug-text-2);">A software team is building a new API-first SaaS product. The product handles PII and is targeting SOC 2 Type II certification within 18 months. They use GitHub, GitHub Actions, Docker, Kubernetes (EKS), and Terraform. Currently: no SAST in the pipeline, SCA runs weekly as a separate report, no threat modeling process, images run as root, no network policies, no policy-as-code. Your task:</p>
+        <ol style="color:var(--ug-text-2);font-size:14px;line-height:2;">
+          <li>Design a prioritized 90-day DevSecOps implementation roadmap: what are the first, second, and third priorities, and why?</li>
+          <li>Run a high-level STRIDE threat model for an API endpoint that accepts user-uploaded files and stores them in S3. What threats apply to each component?</li>
+          <li>Design the CI/CD pipeline security controls: which tools at which stages, and what causes a build to fail?</li>
+          <li>Describe how OIDC authentication would replace the current static AWS access key stored in GitHub Secrets.</li>
+          <li>Explain how your container and Kubernetes security controls would be evidenced for SOC 2 Type II auditors.</li>
+        </ol>
+
+        <div class="callout primary">
+          <strong>Passing criteria:</strong> 90-day roadmap correctly prioritizes SCA+secrets scanning first (quickest wins), SAST+pipeline hardening second, threat modeling+IaC scanning third. STRIDE model correctly identifies Tampering and Information Disclosure for file upload endpoint, Denial of Service for S3 bucket, Spoofing for API authentication. OIDC explanation covers the token exchange flow and elimination of long-lived credentials. SOC 2 evidence answer mentions policy-as-code in Git as design evidence and admission controller enforcement logs as operating effectiveness evidence.
+        </div>
+
+        <div class="acad-cert-block" id="cert-block">
+          <div class="acad-cert-icon">&#127941;</div>
+          <div class="acad-cert-title">Course complete!</div>
+          <div class="acad-cert-sub">You've completed all four foundational knowledge courses. You're ready for the practitioner certification tracks.</div>
+          <a href="index.html" class="acad-cert-btn"><i class="fas fa-th"></i> Explore Practitioner Courses</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="acad-footer">
+    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
+    <span class="tag">Academy v2 &middot; Introduction to DevSecOps</span>
+  </footer>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'aivric_intro_devsecops_v1';
+    var ACADEMY_COURSE_ID = 'intro-devsecops';
+    var MODULES = ['mod1','mod2','mod3','mod4','mod5','mod6'];
+    function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+    function saveState(s) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {} }
+    var state = loadState();
+    function updateProgress() {
+      var done = MODULES.filter(function(m){ return state[m] && state[m].complete; }).length;
+      var pct = Math.round((done / MODULES.length) * 100);
+      var fill = document.getElementById('progress-fill'); var pctEl = document.getElementById('progress-pct');
+      if (fill) fill.style.width = pct + '%'; if (pctEl) pctEl.textContent = pct + '%';
+      if (pct === 100) { var cert = document.getElementById('cert-block'); if (cert) cert.classList.add('show'); }
+    }
+    window.setActive = function(el) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); el.classList.add('active'); };
+    window.markComplete = function(moduleId) {
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].complete = true; saveState(state);
+      var btn = document.getElementById('mc-' + moduleId); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+      var sideItem = document.querySelector('[data-module="' + moduleId + '"]');
+      if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      updateProgress();
+      if (window.AcademyProgress) AcademyProgress.markComplete(ACADEMY_COURSE_ID, moduleId);
+    };
+    window.selectOption = function(el, moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      block.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); }); el.classList.add('selected');
+      var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = false;
+    };
+    window.checkAnswer = function(moduleId) {
+      var block = document.getElementById('quiz-' + moduleId); if (!block || block.dataset.answered === 'true') return;
+      var selected = block.querySelector('.quiz-option.selected'); if (!selected) return;
+      block.dataset.answered = 'true'; var btn = block.querySelector('.quiz-btn'); if (btn) btn.disabled = true;
+      var isCorrect = selected.querySelector('[data-correct="true"]') !== null;
+      var feedback = document.getElementById('feedback-' + moduleId);
+      block.querySelectorAll('.quiz-option').forEach(function(o) { if (o.querySelector('[data-correct="true"]')) o.classList.add('correct'); else if (o === selected && !isCorrect) o.classList.add('wrong'); });
+      if (feedback) {
+        var expl = {
+          mod1:{correct:'Correct. Production-only testing is the opposite of shift-left. Vulnerabilities found in production require the most expensive remediation path — hotfix, regression testing, and potential incident disclosure — compared to seconds-to-fix at the code stage.',wrong:'DevSecOps shifts testing left to find vulnerabilities at the lowest cost. Production-only testing finds issues at the highest cost point and latest possible moment.'},
+          mod2:{correct:'Correct. Exhausting database connections removes service availability for all legitimate users — the defining characteristic of Denial of Service. The JSON payload manipulation is the technique, but DoS is the threat category.',wrong:'STRIDE categorizes by the security outcome, not the technique. Exhausting resources to prevent legitimate access is Denial of Service, even if the attacker achieves it through crafted input.'},
+          mod3:{correct:'Correct. BOLA is a business logic flaw — the code executes correctly, but doesn\'t enforce authorization rules SAST can\'t see. SAST analyzes code structure, not authorization semantics. Runtime testing (DAST, manual pentesting) is required to observe actual authorization enforcement.',wrong:'SAST cannot detect BOLA/IDOR — these are authorization logic failures that require runtime testing to observe. SAST sees code, not authorization policy decisions at runtime.'},
+          mod4:{correct:'Correct. Platform secret stores eliminate hardcoding but still store long-lived credentials. Complete secrets management adds OIDC for short-lived tokens, rotation schedules, access auditing, least-privilege access to secrets, and a historical scan for pre-existing commits.',wrong:'Platform secret stores are better than hardcoding but are not complete. Missing elements include OIDC for short-lived tokens, rotation policies, access auditing, and historical secret scanning.'},
+          mod5:{correct:'Correct. Root in a container with no security context restrictions enables kernel exploit paths to the host node. No NetworkPolicy means the compromised container can reach all other pods. Together these turn a single application vulnerability into a potential full-cluster compromise.',wrong:'Kubernetes namespace isolation helps but does not prevent all lateral movement paths, especially from a root container with no security context restrictions and no network policies.'},
+          mod6:{correct:'Correct. Policy-as-code provides continuous enforcement (not annual audits), version-controlled policy history with approval chain, and admission controller logs as real-time operating effectiveness evidence — exactly what SOC 2 and ISO 27001 auditors require.',wrong:'Policy-as-code directly addresses auditor evidence requirements: Git history = design evidence, admission controller enforcement logs = operating effectiveness evidence. This closes the gap between written policy and verifiable enforcement.'}
+        };
+        feedback.textContent = ''; var label = document.createElement('strong'); var msg = document.createElement('span');
+        if (isCorrect) { feedback.className = 'quiz-feedback correct'; label.textContent = 'Correct! '; msg.textContent = (expl[moduleId]||{correct:''}).correct; }
+        else { feedback.className = 'quiz-feedback wrong'; label.textContent = 'Not quite. '; msg.textContent = (expl[moduleId]||{wrong:''}).wrong; }
+        feedback.appendChild(label); feedback.appendChild(msg);
+      }
+      if (!state[moduleId]) state[moduleId] = {}; state[moduleId].quizCorrect = isCorrect; saveState(state);
+    };
+    window.toggleAction = function(el) { el.classList.toggle('checked'); };
+    MODULES.forEach(function(m) {
+      if (state[m] && state[m].complete) {
+        var btn = document.getElementById('mc-' + m); if (btn) { btn.textContent = 'Module complete ✓'; btn.classList.add('done'); btn.disabled = true; }
+        var sideItem = document.querySelector('[data-module="' + m + '"]');
+        if (sideItem) { sideItem.classList.add('completed'); var icon = sideItem.querySelector('.acad-mod-icon'); if (icon) icon.textContent = '✓'; }
+      }
+    });
+    updateProgress();
+    var sections = document.querySelectorAll('section[id], .phase-block[id]');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { var id = entry.target.id; var link = document.querySelector('[data-module="' + id + '"]'); if (link) { document.querySelectorAll('.acad-module-item').forEach(function(i){ i.classList.remove('active'); }); link.classList.add('active'); } } }); }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s){ observer.observe(s); });
+    }
+  })();
+  </script>
+  <div class="acad-lightbox" id="acad-lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true">
+    <button class="acad-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img src="" alt=""><div class="acad-lightbox-caption"></div>
+  </div>
+  <script>function openLightbox(f){var i=f.querySelector('img');var lb=document.getElementById('acad-lightbox');if(!lb||!i)return;lb.querySelector('img').src=i.src;lb.classList.add('open');document.body.style.overflow='hidden';}function closeLightbox(){var lb=document.getElementById('acad-lightbox');if(lb){lb.classList.remove('open');document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script>
+<script src="js/academy-badges.js"></script>
+</body>
+</html>
