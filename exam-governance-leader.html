@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Governance Leader Certification Exam | AiVRIC Academy</title>
+<link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="assets/css/font-awesome-all.css" rel="stylesheet">
+<link href="academy.css" rel="stylesheet">
+<script src="js/academy-theme.js"></script>
+<style>
+:root{--exam-color:#a78bfa;--exam-color-bg:rgba(167,139,250,.1);--exam-color-border:rgba(167,139,250,.3);}
+.exam-shell{max-width:820px;margin:0 auto;padding:32px 24px 80px;}
+.exam-cover{background:var(--ug-surface);border:1px solid var(--ug-border);border-radius:18px;padding:40px;margin-bottom:24px;}
+.exam-cover-eyebrow{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--exam-color);margin-bottom:14px;}
+.exam-cover-title{font-family:'Jost',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;margin:0 0 12px;color:var(--ug-text);}
+.exam-cover-sub{font-size:14px;color:var(--ug-text-2);line-height:1.7;max-width:60ch;margin-bottom:24px;}
+.exam-meta-row{display:flex;flex-wrap:wrap;gap:20px;padding:18px 0;border-top:1px solid var(--ug-border);border-bottom:1px solid var(--ug-border);margin-bottom:24px;}
+.exam-meta-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ug-text-2);}
+.exam-meta-item i{color:var(--exam-color);width:14px;}
+.exam-domain-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-bottom:28px;}
+.exam-domain-chip{background:var(--ug-surface-2);border:1px solid var(--ug-border);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--ug-text-2);}
+.exam-domain-chip strong{display:block;font-size:13px;color:var(--ug-text);margin-bottom:2px;}
+.btn-start{background:var(--exam-color);color:#fff;border:none;border-radius:10px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;}
+.btn-start:hover{opacity:.9;}
+
+/* Exam screen */
+.exam-progress-wrap{background:var(--ug-surface-2);border-bottom:1px solid var(--ug-border);padding:12px 24px;display:flex;align-items:center;gap:14px;position:sticky;top:56px;z-index:50;}
+.exam-progress-bar{flex:1;height:6px;background:var(--ug-border);border-radius:3px;overflow:hidden;}
+.exam-progress-fill{height:100%;background:var(--exam-color);border-radius:3px;transition:width .3s;}
+.exam-q-counter{font-size:13px;font-weight:600;color:var(--ug-text-2);white-space:nowrap;}
+.exam-unanswered-badge{font-size:12px;background:rgba(245,158,11,.15);color:#f59e0b;border-radius:6px;padding:3px 9px;font-weight:600;}
+
+.exam-q-card{background:var(--ug-surface);border:1px solid var(--ug-border);border-radius:16px;padding:28px 28px 20px;margin-bottom:16px;}
+.exam-q-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;}
+.exam-q-domain{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;background:var(--exam-color-bg);color:var(--exam-color);border:1px solid var(--exam-color-border);border-radius:6px;padding:3px 10px;}
+.exam-q-type{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;border-radius:6px;padding:3px 10px;}
+.exam-q-type.single{background:rgba(6,182,212,.1);color:#06b6d4;border:1px solid rgba(6,182,212,.3);}
+.exam-q-type.multi{background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.3);}
+.exam-q-num{font-size:12px;color:var(--ug-muted);margin-left:auto;}
+.exam-q-text{font-size:15px;line-height:1.7;color:var(--ug-text);margin-bottom:20px;font-weight:500;}
+.exam-q-hint{font-size:12px;color:var(--ug-muted);margin:-14px 0 18px;font-style:italic;}
+
+.exam-options{display:flex;flex-direction:column;gap:9px;}
+.exam-opt{display:flex;align-items:flex-start;gap:12px;background:var(--ug-surface-2);border:2px solid var(--ug-border);border-radius:10px;padding:13px 16px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none;}
+.exam-opt:hover{border-color:var(--exam-color);background:var(--exam-color-bg);}
+.exam-opt.selected{border-color:var(--exam-color);background:var(--exam-color-bg);}
+.exam-opt.correct{border-color:#22c55e!important;background:rgba(34,197,94,.1)!important;}
+.exam-opt.wrong{border-color:#ef4444!important;background:rgba(239,68,68,.1)!important;}
+.exam-opt.reveal-correct{border-color:#22c55e!important;background:rgba(34,197,94,.07)!important;}
+.exam-opt-indicator{width:20px;height:20px;border:2px solid var(--ug-border);border-radius:50%;flex-shrink:0;margin-top:1px;transition:all .15s;display:flex;align-items:center;justify-content:center;}
+.exam-opt.multi .exam-opt-indicator{border-radius:5px;}
+.exam-opt.selected .exam-opt-indicator{border-color:var(--exam-color);background:var(--exam-color);}
+.exam-opt.selected .exam-opt-indicator::after{content:'';display:block;width:8px;height:8px;background:#fff;border-radius:50%;}
+.exam-opt.multi.selected .exam-opt-indicator::after{content:'✓';border-radius:0;width:auto;height:auto;font-size:12px;font-weight:700;background:transparent;color:#fff;}
+.exam-opt.correct .exam-opt-indicator,.exam-opt.reveal-correct .exam-opt-indicator{border-color:#22c55e!important;background:#22c55e!important;}
+.exam-opt.wrong .exam-opt-indicator{border-color:#ef4444!important;background:#ef4444!important;}
+.exam-opt-text{font-size:13.5px;line-height:1.6;color:var(--ug-text);}
+
+.exam-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;}
+.btn-exam{border:none;border-radius:9px;padding:10px 22px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .15s;}
+.btn-prev{background:var(--ug-surface-2);color:var(--ug-text-2);border:1px solid var(--ug-border);}
+.btn-prev:hover{color:var(--ug-text);}
+.btn-next{background:var(--exam-color);color:#fff;}
+.btn-next:hover{opacity:.85;}
+.btn-next:disabled{opacity:.4;cursor:default;}
+.btn-review{background:var(--ug-surface-2);color:var(--ug-text-2);border:1px solid var(--ug-border);font-size:13px;padding:8px 16px;}
+.btn-submit{background:#22c55e;color:#fff;font-size:15px;padding:13px 32px;}
+.btn-submit:disabled{opacity:.4;cursor:default;}
+
+/* Review screen */
+.review-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:8px;margin:20px 0;}
+.review-tile{display:flex;align-items:center;justify-content:center;height:48px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;border:2px solid var(--ug-border);color:var(--ug-text-2);background:var(--ug-surface-2);transition:all .15s;}
+.review-tile.answered{background:var(--exam-color-bg);border-color:var(--exam-color);color:var(--exam-color);}
+.review-tile:hover{border-color:var(--exam-color);}
+
+/* Results */
+.results-header{text-align:center;padding:32px 0 24px;}
+.score-circle{width:140px;height:140px;border-radius:50%;border:6px solid var(--exam-color);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px;}
+.score-circle.pass{border-color:#22c55e;}
+.score-circle.fail{border-color:#ef4444;}
+.score-pct{font-size:38px;font-weight:800;color:var(--ug-text);}
+.score-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ug-muted);}
+.pass-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:16px;}
+.pass-badge.pass{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3);}
+.pass-badge.fail{background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.3);}
+
+.domain-breakdown{width:100%;border-collapse:collapse;margin:20px 0;}
+.domain-breakdown th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ug-muted);padding:8px 12px;text-align:left;border-bottom:2px solid var(--ug-border);}
+.domain-breakdown td{padding:10px 12px;border-bottom:1px solid var(--ug-border);font-size:13px;color:var(--ug-text);}
+.domain-bar{height:8px;border-radius:4px;background:var(--ug-border);overflow:hidden;min-width:80px;}
+.domain-bar-fill{height:100%;border-radius:4px;background:var(--exam-color);}
+.domain-bar-fill.low{background:#ef4444;}
+.domain-bar-fill.mid{background:#f59e0b;}
+.domain-bar-fill.high{background:#22c55e;}
+
+.results-q-list{margin-top:28px;}
+.results-q-item{border:1px solid var(--ug-border);border-radius:12px;margin-bottom:10px;overflow:hidden;}
+.results-q-header{display:flex;align-items:flex-start;gap:10px;padding:13px 16px;cursor:pointer;background:var(--ug-surface);}
+.results-q-header:hover{background:var(--ug-surface-2);}
+.rq-num{font-size:12px;font-weight:700;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rq-num.correct{background:rgba(34,197,94,.15);color:#22c55e;}
+.rq-num.wrong{background:rgba(239,68,68,.15);color:#ef4444;}
+.rq-text{font-size:13px;line-height:1.5;color:var(--ug-text);flex:1;}
+.rq-chevron{font-size:11px;color:var(--ug-muted);margin-left:auto;flex-shrink:0;margin-top:2px;}
+.results-q-detail{padding:14px 16px 16px;background:var(--ug-surface-2);border-top:1px solid var(--ug-border);display:none;}
+.results-q-detail.open{display:block;}
+.rq-exp{font-size:13px;color:var(--ug-text-2);line-height:1.7;margin-bottom:8px;}
+.rq-answer-row{font-size:12px;margin-bottom:4px;}
+.rq-answer-row strong{font-weight:600;}
+.rq-correct-tag{color:#22c55e;}
+.rq-wrong-tag{color:#ef4444;}
+
+.exam-cert-block{display:none;background:linear-gradient(135deg,rgba(167,139,250,.1),rgba(6,182,212,.1));border:2px solid var(--exam-color);border-radius:16px;padding:32px;text-align:center;margin-top:28px;}
+.exam-cert-block.show{display:block;}
+.exam-cert-title{font-family:'Jost',sans-serif;font-size:22px;font-weight:800;color:var(--ug-text);margin:12px 0 6px;}
+.exam-cert-sub{font-size:14px;color:var(--ug-text-2);margin-bottom:20px;}
+.btn-retake{background:var(--ug-surface-2);color:var(--ug-text-2);border:1px solid var(--ug-border);margin-top:16px;}
+</style>
+</head>
+<body>
+<header class="acad-header">
+  <div class="bar">
+    <a class="acad-brand" href="index.html"><img src="assets/images/logo/aivric.svg" alt="AiVRIC"><span class="acad-brand-sep"></span><span class="acad-brand-sub">Academy</span></a>
+    <div class="acad-header-spacer"></div>
+    <div class="acad-top-links">
+      <a href="index.html">All Courses</a>
+      <button class="acad-theme-toggle" type="button" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="exam-shell">
+
+<!-- START SCREEN -->
+<div id="screen-start">
+  <div class="exam-cover">
+    <div class="exam-cover-eyebrow"><i class="fas fa-user-shield"></i> &nbsp;Governance Leader &nbsp;&bull;&nbsp; Professional Certification</div>
+    <h1 class="exam-cover-title">Governance Leader Certification Exam</h1>
+    <p class="exam-cover-sub">This examination validates your readiness to design, operate, and explain a security and privacy governance program using integrated frameworks and platform tooling. Questions draw from all three path courses and the foundational knowledge prerequisites.</p>
+    <div class="exam-meta-row">
+      <div class="exam-meta-item"><i class="fas fa-list-check"></i> 40 questions</div>
+      <div class="exam-meta-item"><i class="fas fa-clock"></i> ~90 minutes</div>
+      <div class="exam-meta-item"><i class="fas fa-trophy"></i> Pass threshold: 80% (32/40)</div>
+      <div class="exam-meta-item"><i class="fas fa-rotate-right"></i> Unlimited attempts</div>
+      <div class="exam-meta-item"><i class="fas fa-triangle-exclamation" style="color:#f59e0b;"></i> Some questions require multiple correct answers</div>
+    </div>
+    <div class="exam-domain-list">
+      <div class="exam-domain-chip"><strong>GRC Foundations</strong>ISO 27001, NIST CSF, ISO 31000, COBIT</div>
+      <div class="exam-domain-chip"><strong>Data Privacy</strong>GDPR, CCPA/CPRA, HIPAA, ISO 27701</div>
+      <div class="exam-domain-chip"><strong>Security &amp; Privacy Governance</strong>UCB, Evidence Fabric, AI governance</div>
+      <div class="exam-domain-chip"><strong>Information Assurance</strong>A&amp;A, continuous monitoring, POA&amp;M</div>
+      <div class="exam-domain-chip"><strong>Asset Governance</strong>Ownership, criticality, TPRM, data flows</div>
+    </div>
+    <button class="btn-start" onclick="startExam()"><i class="fas fa-play"></i> &nbsp;Begin Examination</button>
+  </div>
+</div>
+
+<!-- EXAM SCREEN -->
+<div id="screen-exam" style="display:none">
+  <div class="exam-progress-wrap" id="exam-prog-bar">
+    <div class="exam-q-counter" id="q-counter">Q 1 of 40</div>
+    <div class="exam-progress-bar"><div class="exam-progress-fill" id="prog-fill" style="width:0%"></div></div>
+    <span class="exam-unanswered-badge" id="unanswered-badge">0 answered</span>
+    <button class="btn-exam btn-review" onclick="showReview()"><i class="fas fa-grid-2"></i> Review</button>
+  </div>
+  <div id="q-render" style="margin-top:20px;"></div>
+  <div class="exam-nav" style="margin-top:4px;">
+    <button class="btn-exam btn-prev" onclick="prevQ()"><i class="fas fa-arrow-left"></i> Previous</button>
+    <button class="btn-exam btn-next" id="btn-next" onclick="nextQ()">Next <i class="fas fa-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- REVIEW SCREEN -->
+<div id="screen-review" style="display:none;margin-top:20px;">
+  <div class="exam-cover">
+    <h2 style="margin:0 0 6px;font-family:'Jost',sans-serif;">Review All Questions</h2>
+    <p style="font-size:13px;color:var(--ug-text-2);margin:0 0 16px;">Purple = answered &nbsp;&bull;&nbsp; Grey = unanswered. Click any tile to go to that question.</p>
+    <div class="review-grid" id="review-grid"></div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <button class="btn-exam btn-prev" onclick="document.getElementById('screen-review').style.display='none';document.getElementById('screen-exam').style.display='';"><i class="fas fa-arrow-left"></i> Back to Exam</button>
+      <button class="btn-exam btn-submit" id="btn-submit" onclick="submitExam()"><i class="fas fa-paper-plane"></i> &nbsp;Submit Exam</button>
+      <span id="submit-hint" style="font-size:12px;color:var(--ug-muted);"></span>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS SCREEN -->
+<div id="screen-results" style="display:none;margin-top:20px;">
+  <div class="exam-cover">
+    <div class="results-header">
+      <div class="score-circle" id="score-circle">
+        <div class="score-pct" id="score-pct-text">--</div>
+        <div class="score-label">Score</div>
+      </div>
+      <div class="pass-badge" id="pass-badge"></div>
+      <p id="results-summary" style="font-size:14px;color:var(--ug-text-2);max-width:50ch;margin:0 auto;"></p>
+    </div>
+    <h3 style="margin:0 0 8px;">Performance by Domain</h3>
+    <table class="domain-breakdown" id="domain-table"></table>
+    <div class="exam-cert-block" id="cert-block">
+      <div style="font-size:48px;">🏆</div>
+      <div class="exam-cert-title">Governance Leader — Professional Certified</div>
+      <div class="exam-cert-sub">You have demonstrated the knowledge and applied understanding required to lead a security and privacy governance program. Your certificate has been recorded.</div>
+      <a href="dashboard.html" class="btn-exam btn-start" style="display:inline-block;text-decoration:none;margin-top:8px;"><i class="fas fa-award"></i> &nbsp;View My Dashboard</a>
+    </div>
+    <h3 style="margin:24px 0 8px;">Question Review</h3>
+    <div class="results-q-list" id="results-q-list"></div>
+    <button class="btn-exam btn-retake btn-exam" onclick="retake()" style="margin-top:20px;"><i class="fas fa-rotate-right"></i> Retake Exam</button>
+  </div>
+</div>
+
+</div><!-- /.exam-shell -->
+
+<script>
+(function(){
+var CERT_ID='exam_governance_leader_v1';
+var PASS=0.80;
+var Q=[
+{q:'ISO/IEC 27001:2022 reorganized its Annex A controls from 14 domains into four themes. Select THREE statements that accurately describe the 2022 revision compared to the 2013 edition.',d:'GRC Foundations',multi:true,tag:'Select THREE',opts:['Controls are organized into four themes: Organizational (37), People (8), Physical (14), and Technological (34) — totaling 93 controls','The 2022 revision increased the total control count from 93 to 114 to address new threat categories','Five new attributes were introduced for each control: control type, information security properties, cybersecurity concepts, operational capabilities, and security domains','The 2022 standard eliminated the Statement of Applicability (SoA) and replaced it with a Control Implementation Register','Eleven new controls were introduced, including Threat intelligence (5.7), Information security for use of cloud services (5.23), and Web filtering (8.23)'],ans:[0,2,4],exp:'The 2022 revision reduced controls from 114 to 93 and restructured them into 4 themes (not increased). Five attributes were added to each control. Eleven new controls were introduced including threat intelligence and cloud services. The SoA is still required under clause 6.1.3.'},
+{q:'NIST CSF 2.0 introduced a sixth function that was not present in CSF 1.1. An organization is updating its governance structure to align with CSF 2.0. Which function was added, and what gap did it address?',d:'GRC Foundations',multi:false,opts:['Monitor — addressing the operational gap in continuous detection coverage that the existing Detect function failed to provide','Govern — addressing the gap in organizational oversight, cybersecurity strategy, roles, accountability, and risk management integration that was underrepresented across all other functions in CSF 1.1','Assess — formalizing risk assessment as a standalone function distinct from Identify, since risk quantification had become sufficiently mature','Coordinate — addressing the gap in inter-organizational information sharing which became critical after the SolarWinds supply chain attack'],ans:[1],exp:'CSF 2.0 added the Govern function to address the recognized gap in organizational-level governance: policies, risk strategy, roles/responsibilities, oversight, and integration of cybersecurity into enterprise risk management. The Govern function sits above and informs all other functions rather than being a sequential step.'},
+{q:'An organization\'s risk register shows a threat scenario with Inherent Risk rated "Critical." After implementing a set of controls, residual risk is rated "High" — still above the documented risk appetite of "Medium." The risk owner wants to accept the risk and move on. Under ISO 31000:2018, what is required for a valid risk acceptance?',d:'GRC Foundations',multi:false,opts:['Acceptance is not valid — ISO 31000 prohibits accepting residual risk that exceeds documented risk appetite under any circumstances','Risk acceptance is valid if documented in the risk register with the risk owner\'s signature, regardless of who the risk owner is','Risk acceptance of residual risk above appetite requires explicit authorization from the appropriate level of management (typically senior leadership or board depending on risk magnitude), documented rationale, defined review timeline, and monitoring of the accepted risk','The risk owner has inherent authority to accept any risk within their business domain — no escalation is required if the risk owner documents the acceptance in writing'],ans:[2],exp:'ISO 31000:2018 requires that risk acceptance above appetite be formally authorized at a level of management commensurate with the risk magnitude. Acceptance requires documented rationale, an acceptance horizon, and ongoing monitoring. A risk owner does not unilaterally have authority to accept risks that exceed documented appetite without escalation.'},
+{q:'A GRC program is assessing process maturity using COBIT 2019\'s capability/maturity model based on CMMI. A process is scored at Level 3. Which statement correctly describes what Level 3 maturity means?',d:'GRC Foundations',multi:false,opts:['Managed — the process is planned, monitored, and adjusted; work products are established and controlled, but the process is not yet standardized across the organization','Defined — the process is documented as a standard organizational process tailored from the organization\'s process assets; it is consistently applied and tailored versions are used as needed','Quantitatively Managed — the process is controlled using statistical and quantitative techniques; performance is measured against defined objectives','Optimizing — continuous process improvement based on quantitative understanding of common causes of variation'],ans:[1],exp:'In the CMMI-based model used by COBIT 2019: Level 1=Performed, Level 2=Managed, Level 3=Defined, Level 4=Quantitatively Managed, Level 5=Optimizing. Defined means the process uses a standard definition from the organization\'s process library and is consistently applied. This is what distinguishes it from Level 2, where processes are managed but not standardized.'},
+{q:'Select TWO statements that accurately describe the CIS Controls v8 Implementation Group (IG) model.',d:'GRC Foundations',multi:true,tag:'Select TWO',opts:['IG1 represents "essential cyber hygiene" — the minimum baseline applicable to all organizations regardless of size or sector','IG implementation is additive and cumulative: an IG2 organization is expected to implement all IG1 safeguards plus the additional IG2 safeguards','IG1 is optional for organizations with fewer than 50 employees — the IG model is designed only for mid-market and enterprise organizations','IG3 organizations replace IG1 and IG2 safeguards with more advanced controls that supersede the basic controls','CIS Controls v8 reduced the number of controls from 20 to 18 and reorganized safeguards to reflect modern work patterns including cloud and remote work'],ans:[0,1],exp:'IG1 is the baseline for all organizations — it represents essential cyber hygiene regardless of size. IG implementation is cumulative: IG2 organizations implement all IG1 safeguards plus IG2-specific safeguards, and IG3 organizations implement all 153 safeguards across all three groups. CIS Controls v8 did reduce from 20 to 18 controls but that fact is not in the two correct options — both A and B are the definitive correct statements about the IG model.'},
+{q:'An organization with a complex risk landscape wants to demonstrate to its board that it is more secure than it was 12 months ago. Which combination of metrics most directly supports this claim?',d:'GRC Foundations',multi:false,opts:['Total vulnerability count (current vs. 12 months ago) and number of security incidents reported in the last quarter','Year-over-year change in security budget and number of security certifications achieved','Trend in residual risk scores across risk categories, mean time to detect (MTTD) improvement, critical control failure rate, and percentage of findings resolved within SLA versus the same period 12 months prior','Point-in-time compliance percentage against a single framework, compared to the previous year\'s audit score'],ans:[2],exp:'Answering "are we more secure" requires risk-based trend metrics spanning posture (residual risk trends), detection capability (MTTD), control performance (failure rates), and operational response (SLA compliance). Budget and certification count are inputs, not outcomes. A single compliance percentage against one framework captures only one dimension and can improve while overall risk increases.'},
+{q:'A risk treatment register entry shows: Inherent Likelihood = Likely, Inherent Impact = Major. A control is applied that reduces the likelihood to Unlikely. Impact remains Major. Under ISO 31000 terminology, the residual risk after the control is applied is best described as having been treated by:',d:'GRC Foundations',multi:false,opts:['Risk avoidance — because the likelihood reduction effectively prevents the risk from materializing','Risk sharing (transfer) — because the control redistributes the likelihood of the risk across different stakeholders','Risk modification (reduction/mitigation) — because the control reduces the probability dimension of risk without eliminating the risk or transferring it','Risk acceptance — because any residual risk not reduced to Low must be formally accepted'],ans:[2],exp:'ISO 31000:2018 uses the term "risk modification" for what is commonly called mitigation or reduction. Reducing likelihood while retaining some probability of occurrence is modification/reduction. Risk avoidance would eliminate the activity entirely. Transfer would shift financial consequence to a third party. Acceptance acknowledges the residual risk without further treatment. Since likelihood dropped but risk remains, this is modification.'},
+{q:'Select TWO ways in which NIST SP 800-53 Rev 5 relates to NIST CSF 2.0 in a mature governance program.',d:'GRC Foundations',multi:true,tag:'Select TWO',opts:['SP 800-53 provides specific, prescriptive control requirements that can be used to satisfy the outcome-oriented subcategories in CSF 2.0','Implementing CSF 2.0 without SP 800-53 is prohibited for US private-sector organizations — both must be adopted simultaneously','CSF 2.0 Informative References include mappings to SP 800-53 controls, enabling organizations to trace CSF outcomes to specific control families','SP 800-53 Rev 5 replaced CSF 1.1 and is the authoritative successor framework for cybersecurity risk management','Using CSF 2.0 implies adoption of SP 800-53 as the control baseline — no mapping work is required since the frameworks are already synchronized'],ans:[0,2],exp:'SP 800-53 provides detailed technical and procedural controls (e.g., AC-2, IA-5) that map to CSF outcome categories. CSF 2.0 Informative References include explicit SP 800-53 mappings. Neither framework is mandatory for private-sector organizations, and they are complementary (not replacement) frameworks. Using CSF does not automatically adopt SP 800-53 — the mapping must be applied intentionally.'},
+{q:'Under GDPR Article 33, an organization discovers evidence of a personal data breach on Tuesday morning. Forensic analysis indicates the breach began the previous Friday night. The 72-hour notification clock under Article 33 begins:',d:'Data Privacy',multi:false,opts:['Friday night, when the breach occurred — the 72-hour period is calculated from the time the breach began, regardless of when the organization became aware','Tuesday morning, when the organization became aware of the breach — the clock starts at the time of becoming aware, not the time of the breach itself','From the time the organization completes its internal investigation and is confident about the scope of the breach','72-hours after the data subjects whose data was breached have been individually notified by the organization'],ans:[1],exp:'GDPR Article 33(1) states that notification must occur "without undue delay and, where feasible, not later than 72 hours after having become aware of it." The clock starts at awareness, not at the time the breach occurred. The organization became aware on Tuesday — so notification must occur by Friday. Partial knowledge is sufficient to trigger the clock; organizations need not complete their investigation before notifying.'},
+{q:'Select THREE requirements for valid consent under GDPR Article 7 and the EDPB Guidelines 05/2020 on consent.',d:'Data Privacy',multi:true,tag:'Select THREE',opts:['Consent must be freely given — it cannot be a condition of service or bundled with acceptance of terms and conditions','Consent must be provided in writing — oral consent is never valid under GDPR for any category of personal data','Consent must be specific to one or more explicitly stated processing purposes — a single consent covering all processing activities is invalid','The data subject must be able to withdraw consent as easily as they gave it, without suffering any detriment','Organizations must obtain renewed consent from all data subjects every 24 months as a matter of course, regardless of whether processing activities have changed'],ans:[0,2,3],exp:'Valid consent requires: freely given (no power imbalance or coercion), specific (purpose-by-purpose, not blanket), informed (prior to processing), and unambiguous (clear affirmative action). Withdrawal must be as easy as giving consent. Oral consent can be valid in some circumstances — the requirement is that it be verifiable. There is no automatic renewal requirement — consent remains valid until withdrawn or the purpose changes materially.'},
+{q:'A data controller processes personal data under the legitimate interests basis (GDPR Article 6(1)(f)). A data subject submits a valid Article 21 objection to the processing. Under which condition may the controller lawfully continue processing despite the objection?',d:'Data Privacy',multi:false,opts:['The controller may always continue processing if the data was originally collected with the data subject\'s knowledge, since Article 21 does not override collection consent','The controller may continue if it can demonstrate compelling legitimate grounds for processing that override the data subject\'s interests, rights, and freedoms, or if the processing is necessary for the establishment, exercise, or defense of legal claims','The controller may continue if the data subject submitted the objection more than 30 days after the data was first collected','Article 21 objections to legitimate interests processing are advisory only — the controller may exercise commercial judgment to continue without restriction'],ans:[1],exp:'GDPR Article 21(1) states that upon objection to legitimate interests processing, the controller must stop unless it demonstrates compelling legitimate grounds that override the data subject\'s interests, or the processing is for legal claims. The burden of demonstrating compelling grounds falls on the controller, not the data subject. Timing of objection submission is irrelevant to validity.'},
+{q:'An organization\'s privacy notice states a retention period of "as long as necessary for the purpose." Under GDPR Article 5(1)(e) storage limitation and Article 13 disclosure requirements, which assessment is most accurate?',d:'Data Privacy',multi:false,opts:['Fully compliant — the storage limitation principle allows event-based retention and "as long as necessary" directly mirrors the Article 5 language','Non-compliant — GDPR Article 5 requires a specific calendar-based date or duration; event-based and purpose-based language is prohibited','Partially compliant — Article 13 requires either a specific retention period or the specific criteria used to determine the period. "As long as necessary" is too vague to qualify as stated criteria without defining what "necessary" means in operational terms','Compliant for processors but not for controllers — Article 13 disclosure requirements apply only to data processors, not to controllers collecting data directly'],ans:[2],exp:'Article 5(1)(e) establishes the storage limitation principle using purpose-based language ("no longer than necessary"). However, Article 13(2)(a) requires that privacy notices contain "the period for which the personal data will be stored, or if that is not possible, the criteria used to determine that period." Courts and DPAs have found that simply repeating "as long as necessary" without defining operational criteria is insufficient — the criteria must be specific enough for the data subject to understand how long their data will be retained.'},
+{q:'Under GDPR Article 37, which of the following scenarios makes appointment of a Data Protection Officer (DPO) mandatory?',d:'Data Privacy',multi:false,opts:['Any organization that processes personal data of EU residents and has annual revenue exceeding €10 million','A fintech company whose core business activity involves systematically processing and profiling customer financial transaction data on a large scale to detect fraud and deliver personalized product recommendations','A retail company that processes employee HR data (names, addresses, salary) for 400 employees','A law firm that processes client personal data under legal professional privilege for litigation purposes'],ans:[1],exp:'GDPR Article 37(1) mandates a DPO in three scenarios: (a) public authorities or bodies, (b) controllers or processors whose core activities require large-scale systematic monitoring of individuals, and (c) controllers or processors whose core activities involve large-scale processing of special category data. The fintech company\'s core activity is systematic large-scale monitoring/profiling — mandatory DPO. HR data for 400 employees is generally not large-scale under EDPB guidance. Client data under legal privilege is ancillary, not a core activity.'},
+{q:'Privacy by Design as described by Ann Cavoukian and reflected in GDPR Article 25 includes foundational principles. Select THREE:',d:'Data Privacy',multi:true,tag:'Select THREE',opts:['Privacy as the default setting — systems must be configured to protect privacy without requiring action by the data subject','Centralized data architecture — all personal data must be stored in a single repository to enable comprehensive auditing and control','End-to-end security — full lifecycle protection is applied to all personal data from collection through secure destruction','Visibility and transparency — all stakeholders should be able to verify that the system operates as stated, consistent with its privacy promises','Post-collection minimization — data minimization is applied during deletion only, after all processing purposes have been fulfilled'],ans:[0,2,3],exp:'Cavoukian\'s seven Privacy by Design principles include: Proactive not reactive, Privacy as the default, Privacy embedded into design, Full functionality (positive-sum), End-to-end security, Visibility and transparency, and Respect for user privacy. Centralized storage is not a principle — data minimization and distributed control are more aligned with PbD. Post-collection minimization contradicts PbD\'s proactive stance.'},
+{q:'The EDPB WP248 guidance identifies nine criteria that, when two or more apply, indicate a DPIA is required. An online retailer builds a new system that: (1) combines purchase history with real-time location data and social media behavioral profiles, and (2) uses automated decision-making to assign dynamic pricing with no human review. Which WP248 criteria are triggered?',d:'Data Privacy',multi:false,opts:['None — DPIA is only required when processing special category data (health, biometric, or racial data) under Article 9; behavioral and commercial data does not trigger the DPIA requirement','Criteria 1 (evaluation/scoring) and 6 (matching or combining datasets from multiple sources) — two criteria are met, making a DPIA mandatory','Criteria 1 (evaluation/scoring), 2 (automated decision with legal or similarly significant effect), and 6 (combining datasets) — three criteria are met, clearly mandating a DPIA with likely no alternative to conducting one','A DPIA is recommended but not mandatory since the processing uses only commercially available data sources'],ans:[2],exp:'WP248 criteria triggered: (1) Evaluation/scoring — behavioral profiling for pricing decisions, (2) Automated decision-making with significant effect — dynamic pricing without human review can have financial effects equivalent to "similarly significant" under Criterion 2, and (6) Matching/combining datasets from multiple controllers or purposes. With three criteria met, a DPIA is mandatory, not merely recommended.'},
+{q:'A Unified Control Baseline (UCB) is the central object in a security governance program. When a new regulation (such as a state-level privacy law) is added to the organization\'s compliance obligations, what is the primary operational advantage of a UCB compared to siloed compliance programs?',d:'Security & Privacy Governance',multi:false,opts:['The UCB automatically generates all required compliance evidence through AI-driven document drafting, eliminating the need for manual evidence collection','A single control that already satisfies requirements in the UCB can be assessed once and credited against multiple frameworks simultaneously — the new regulation is mapped to existing controls first, with only genuinely novel requirements triggering new control work','Using a UCB means all new regulations are automatically compliant by default — the UCB is a universal compliance instrument that supersedes individual regulatory requirements','The UCB eliminates the need for external auditors since internal control owners can self-certify compliance against all frameworks'],ans:[1],exp:'The core value proposition of a UCB is the elimination of redundant compliance work. When a new framework is added, existing UCB controls are mapped first — only requirements not already addressed by existing controls require new work. This avoids the "compliance treadmill" of separate programs for each regulation. The UCB enables a single control to serve as evidence for multiple frameworks when properly mapped.'},
+{q:'In a governance evidence lineage model, what is the key distinction between "design evidence" and "operating effectiveness evidence" as used in SOC 2 Type II and ISO 27001 assessments?',d:'Security & Privacy Governance',multi:false,opts:['Design evidence is collected during the design phase of system development; operating effectiveness evidence is collected during production operation — the distinction is temporal','Design evidence demonstrates a control exists and is designed appropriately to address the risk (policy, procedure, configuration setting); operating effectiveness evidence demonstrates the control was consistently applied over a defined observation period (logs, tickets, exception reports, attestations)','Design evidence is owned by the security engineering team; operating effectiveness evidence is owned by the compliance team — the distinction is organizational responsibility','Design evidence is required only for SOC 2; ISO 27001 uses only operating effectiveness evidence and does not evaluate control design'],ans:[1],exp:'In assurance frameworks, design adequacy asks: "Is this control designed to address the risk?" Operating effectiveness asks: "Did this control actually operate as designed throughout the period?" A control can be well-designed but inconsistently operated — SOC 2 Type II and ISO 27001 surveillance audits require both. Design evidence alone (Type I in SOC 2 parlance) is insufficient to assert the control is reliable over time.'},
+{q:'An organization is operating under both GDPR and HIPAA. Under HIPAA, a business associate gains access to Protected Health Information (PHI) as part of an analytics engagement. Which contractual instrument is the MINIMUM required before any PHI can be shared or accessed?',d:'Security & Privacy Governance',multi:false,opts:['A standard Non-Disclosure Agreement (NDA) with a confidentiality clause referencing health data is sufficient for HIPAA business associate arrangements','A Business Associate Agreement (BAA) must be in place before any PHI is accessed — HIPAA 45 CFR §164.308(b) requires covered entities to obtain satisfactory assurances from business associates in the form of a written contract or other arrangement','A Data Processing Agreement (DPA) under GDPR Article 28 is functionally equivalent to a HIPAA BAA and satisfies both requirements simultaneously','No contract is required if the business associate is a HITRUST-certified organization, as certification demonstrates adequate safeguards meeting HIPAA requirements'],ans:[1],exp:'HIPAA requires a BAA before any PHI access by a business associate. The BAA must include specific provisions: permitted uses of PHI, obligation to report breaches, safeguards, and agreement to return or destroy PHI at engagement end. An NDA is insufficient. A GDPR DPA covers different obligations (controller/processor relationship) and does not substitute for a BAA. HITRUST certification demonstrates security controls but does not substitute for the contractual BAA requirement.'},
+{q:'Select TWO statements that accurately describe the relationship between ISO/IEC 27001 and ISO/IEC 27701:2019.',d:'Security & Privacy Governance',multi:true,tag:'Select TWO',opts:['ISO 27701 is an extension standard that requires an existing ISO 27001 implementation — it cannot be independently certified without 27001 as its base','ISO 27701 introduces the concept of a Privacy Information Management System (PIMS) extending the ISMS defined by ISO 27001','ISO 27701 certification automatically satisfies GDPR compliance requirements — the certificate serves as proof of GDPR conformity to supervisory authorities','ISO 27701 applies only to data controllers; data processors must use a separate framework such as ISO 27018','ISO 27701 eliminates the need for a Data Protection Officer (DPO) if the organization achieves certification'],ans:[0,1],exp:'ISO 27701 is an extension (not standalone) — organizations must have 27001 implemented. 27701 adds PIMS requirements for both controllers and processors (it covers both, contrary to option D). Certification does not guarantee GDPR compliance (regulators evaluate legal requirements, not just technical standards). A DPO may still be mandatory under GDPR Article 37 regardless of certification.'},
+{q:'A CISO is presenting to the board and is asked: "How do we know our controls are actually working?" Which response best demonstrates mature governance practice?',d:'Security & Privacy Governance',multi:false,opts:['We have achieved ISO 27001 certification, which confirms our controls are designed and operating effectively','We track control operating effectiveness through continuous monitoring: we measure control failure rate, time-to-remediate control gaps, evidence completeness against the assessment schedule, and trend these metrics over rolling 12-month periods to distinguish improvements from regressions','Our penetration test results from last year showed no critical findings, demonstrating that our controls successfully prevent unauthorized access','We have an internal audit team that reviews policies annually — policy currency is the primary indicator of control effectiveness'],ans:[1],exp:'Board-level assurance requires evidence that controls are consistently operating, not just that they exist. ISO 27001 certification confirms design and a snapshot of operating effectiveness at audit time but not continuous operation. Penetration tests measure attack resistance at a point in time — not control consistency. Policy review confirms design adequacy but not operation. Continuous monitoring with trending metrics directly answers the board\'s question about whether controls are working over time.'},
+{q:'Under CCPA as amended by CPRA, which TWO rights were introduced by CPRA that were not in the original 2018 CCPA?',d:'Security & Privacy Governance',multi:true,tag:'Select TWO',opts:['The right to know what personal information is collected, used, shared, or sold','The right to correct inaccurate personal information held by a business','The right to opt-out of the sale of personal information','The right to limit the use and disclosure of sensitive personal information','The right to non-discrimination for exercising privacy rights'],ans:[1,3],exp:'The original CCPA (2018) introduced: right to know, right to delete, right to opt-out of sale, right to non-discrimination. CPRA (2020, effective 2023) added: right to correct inaccurate personal information, and right to limit use and disclosure of a new "sensitive personal information" category. CPRA also created the California Privacy Protection Agency (CPPA) as an enforcement body.'},
+{q:'An organization is building an AI governance policy for a generative AI assistant used by employees. The EU AI Act (2024) classifies general-purpose AI models and systems. Under the EU AI Act, which statement about general-purpose AI systems is accurate?',d:'Security & Privacy Governance',multi:false,opts:['General-purpose AI is classified as prohibited under the EU AI Act due to the inherently uncontrollable risk of emergent capabilities','All general-purpose AI systems are classified as high-risk and require a conformity assessment and registration in the EU AI database before deployment','General-purpose AI models (GPAIs) are subject to specific transparency, documentation, and copyright compliance obligations; those with systemic risk (above defined compute thresholds) face additional obligations including adversarial testing','General-purpose AI in internal enterprise use is exempt from all EU AI Act obligations since the Act applies only to consumer-facing AI systems'],ans:[2],exp:'The EU AI Act creates specific obligations for GPAI models including: transparency to downstream providers, technical documentation, copyright compliance, and summary of training data. GPAI models above 10^25 FLOPs of compute are deemed to have "systemic risk" and face additional obligations: adversarial testing, incident reporting to the Commission, cybersecurity measures. Internal enterprise use does not exempt systems from GPAI obligations if the model meets the classification thresholds.'},
+{q:'An information assurance assessor finds that a control has a well-written policy, documented procedures, and a correct configuration setting (design evidence is complete). However, testing of 10 instances over the assessment period reveals the control operated correctly in only 6 cases. How should the assessor rate this control?',d:'Information Assurance',multi:false,opts:['Pass with observation — the 60% operating rate demonstrates the control is operational; the observation will prompt improvement','Operating effectiveness deficiency — the control is designed adequately but has not operated consistently throughout the assessment period, representing a material finding that must be reported and remediated','Design deficiency — the 40% failure rate indicates the control is incorrectly designed and must be redesigned before reassessment','Not applicable — controls are rated on design only; operating effectiveness is a management responsibility, not an assessor responsibility'],ans:[1],exp:'In A&A frameworks (NIST SP 800-37, SOC 2 Type II, ISO 27001), operating effectiveness asks whether the control "operated as designed throughout the assessment period." A 60% operating rate with 4 failures out of 10 samples is a material operating effectiveness finding. Design is adequate — the problem is inconsistent application. The assessor must report the finding; it cannot be passed as an observation.'},
+{q:'FedRAMP Continuous Monitoring requires deliverables on defined cadences. Which of the following correctly describes monthly continuous monitoring deliverables for a High baseline system?',d:'Information Assurance',multi:false,opts:['Full security control assessment, penetration testing, and system security plan (SSP) update','Vulnerability scanning results, POA&M update with any new or overdue findings, and security impact analysis for any significant changes implemented during the month','Annual security awareness training completion reports and access recertification for all privileged users','Architecture review, threat model refresh, and authorization boundary validation'],ans:[1],exp:'FedRAMP monthly continuous monitoring deliverables include: vulnerability scanning results (authenticated scans across all system components), updated POA&M reflecting new findings and status changes, and security impact analysis for changes. Full assessments and penetration testing occur at defined intervals (typically annually for some controls, three years for others). Access recertification is typically quarterly or annually.'},
+{q:'Select TWO scenarios that would require a Security Impact Analysis (SIA) before implementation under NIST SP 800-137 continuous monitoring principles.',d:'Information Assurance',multi:true,tag:'Select TWO',opts:['Updating endpoint antivirus definitions on all managed workstations','Replacing the organization\'s identity provider (IdP) with a different vendor\'s solution, changing the authentication flow for all users and systems','Adding a new production database server to the authorization boundary that will process data subject to the same classification as existing systems','Replacing a department\'s laptop fleet with an updated model from the same vendor with equivalent security specifications','Changing the font used in the organization\'s HR portal'],ans:[1,2],exp:'A Security Impact Analysis is required for any change that may affect the security state of the information system. Replacing an IdP affects authentication mechanisms for all users — a significant security-relevant change. Adding a new server to the authorization boundary changes the system\'s scope and risk profile. Antivirus definition updates are routine operational changes that do not require SIA. Hardware replacement with equivalent security specs typically requires only change management review. Font changes have no security impact.'},
+{q:'A POA&M entry for a High severity finding has a scheduled completion date that passed 45 days ago with no remediation and no update to the plan. Under FedRAMP continuous monitoring and FISMA requirements, what is the required response from the system owner?',d:'Information Assurance',multi:false,opts:['The finding is automatically closed after 30 days with no remediation — overdue findings without updates are archived, not escalated','The overdue finding must be reported to the Authorizing Official (AO); a revised scheduled completion date must be documented with written justification; persistent overdue High findings may trigger AO review of the system\'s authorization status','Overdue High findings automatically result in suspension of the Authorization to Operate (ATO) without AO review','The system owner may grant themselves a 90-day extension by updating the POA&M without AO notification, provided the finding has a compensating control in place'],ans:[1],exp:'FISMA and FedRAMP require POA&M items to be actively managed with documented completion dates. Overdue items — particularly High severity — must be reported to the AO, have their scheduled dates updated with documented justification, and if persistently overdue, trigger an AO review of whether the authorization should be maintained, modified, or revoked. Automatic ATO suspension requires AO action — it is not automatic.'},
+{q:'In assessing an organization\'s continuous monitoring program for operating effectiveness, an assessor finds that a privileged access review is performed by the same team that administers the privileged accounts. Under which control principle does this represent a deficiency?',d:'Information Assurance',multi:false,opts:['Completeness — the review team has access to complete records and can therefore conduct a more thorough review than an independent party','Segregation of duties (separation of duties) — the same personnel who administer accounts reviewing their own access creates a conflict of interest that eliminates the independence required for the review to serve as an effective control','Defense in depth — privileged access reviews are only effective when layered with multiple other access controls; single-team reviews violate defense-in-depth principles','Non-repudiation — the reviewing team can repudiate their own findings since they were both preparer and reviewer'],ans:[1],exp:'Privileged access reviews are a detective control designed to identify unauthorized or excessive access. When the team that administers the accounts also performs the review, they can selectively preserve their own access without detection — a segregation of duties failure. The reviewer must be independent of the function being reviewed. This is a foundational control design principle in ISO 27001 A.5.3, NIST SP 800-53 AC-5, and SOC 2 CC6.3.'},
+{q:'An organization\'s assurance calendar schedules all 280 controls for testing once annually in a compressed two-week window. Which risk does this approach create that a risk-tiered continuous monitoring program would address?',d:'Information Assurance',multi:false,opts:['The compressed window creates no meaningful risk — annual testing is the required frequency under ISO 27001 and more frequent testing adds cost without proportionate assurance benefit','Annual point-in-time testing creates a 50-week window during which controls may fail without detection; risk-tiered monitoring with higher frequency for critical controls reduces this detection gap and aligns evidence freshness to audit periods','A two-week window reduces auditor fees compared to distributed testing — the risk is financial, not security-related','Compressed testing is required by ISO 27001 — all controls must be tested simultaneously in the same window to ensure comparative validity of results'],ans:[1],exp:'Point-in-time annual testing reveals control state only at the moment of testing. A control that passes in January can fail in March and not be detected until the following January — 10 months of undetected control failure. NIST SP 800-137 and mature GRC programs risk-tier controls: critical controls (access management, encryption, logging) are tested monthly or quarterly; lower-risk controls may be annual. This reduces both detection latency and the concentration risk of annual testing windows.'},
+{q:'In an asset governance program, a "crown jewels" analysis identifies the most critical assets for priority protection. Which combination of factors most accurately defines a crown jewel asset?',d:'Asset Governance',multi:false,opts:['The asset with the highest replacement cost as recorded on the organization\'s balance sheet','The asset supporting the largest number of concurrent users during peak business hours','An asset whose compromise — through unauthorized disclosure, modification, or unavailability — would cause catastrophic, existential, or irreversible harm to the organization\'s mission, financial viability, or legal standing — determined by combining data sensitivity, operational criticality, and exposure profile','Any asset classified as "Restricted" in the data classification scheme is automatically a crown jewel by definition'],ans:[2],exp:'Crown jewels are not defined by replacement cost, user volume, or classification alone. The determination requires combining sensitivity (what data does it hold), criticality (what business functions depend on it), and exposure (how accessible is it to potential threat actors). An asset can hold restricted data but be non-critical (an archived system). A high-criticality asset with no sensitive data is also critical. The intersection of these factors defines true crown jewels.'},
+{q:'An organization is assessing a third-party SaaS vendor that will process customer PII including national ID numbers. The vendor presents an ISO 27001:2022 certificate. Under a mature third-party risk management (TPRM) framework, what is the minimum additional due diligence required beyond accepting the certificate?',d:'Asset Governance',multi:false,opts:['No additional diligence is required — ISO 27001 certification demonstrates that all relevant security controls are in place and operating effectively','Review the certificate\'s scope statement to confirm it covers the services and data types at issue; obtain and review the Statement of Applicability; require completion of a security questionnaire covering data protection specifics; review recent penetration test findings or results; and confirm the certification body is UKAS or equivalent accredited','Require the vendor to obtain SOC 2 Type II certification in addition to ISO 27001, since ISO 27001 alone is insufficient for cloud-hosted customer PII','Conduct a full on-site audit regardless of certification status — third-party certificates cannot be relied upon for any due diligence purpose'],ans:[1],exp:'ISO 27001 certification is a necessary but not sufficient indicator. The scope may not cover the specific service or data type. The SoA reveals which Annex A controls were excluded and why — a critical risk input. Security questionnaires surface organization-specific controls and data protection practices. Recent penetration test results demonstrate operational security. Certificate acceptance without scope review is the most common TPRM failure — many vendors certify a subset of their environment.'},
+{q:'Select THREE controls that should be part of a mature asset decommissioning process for a server that contains regulated personal data.',d:'Asset Governance',multi:true,tag:'Select THREE',opts:['Cryptographic erasure or NIST SP 800-88-compliant media sanitization must be performed before physical disposal or re-use','The asset should be removed from the asset register the moment decommission is announced to keep the inventory current','Verification that all data on the asset has been either migrated per retention requirements, archived, or deleted in compliance with applicable regulations and documented retention schedules','Data flow diagrams and the ROPA (Record of Processing Activities) must be updated to remove the decommissioned asset\'s contribution to data processing activities','All employees must be individually notified when a data-holding asset is decommissioned, as GDPR requires notification for all data deletion activities'],ans:[0,2,3],exp:'Before disposal, media must be sanitized (NIST SP 800-88 is the reference standard) — cryptographic erasure for encrypted media or overwrite/degauss for physical media. All data must be accounted for: migrated, archived per retention schedule, or deleted with a deletion record. Data flow diagrams and ROPA must reflect the asset\'s removal (Article 30 requires ROPA to be maintained). Assets should not be removed from the register until disposal is complete and documented — premature removal creates inventory gaps. Employee notification is not required for decommissioning.'},
+{q:'An organization\'s asset governance program tracks both "assets" and "data flows." What is the primary governance purpose of tracking data flows separately from assets?',d:'Asset Governance',multi:false,opts:['Data flows are tracked for network capacity planning — bandwidth utilization is a key operational metric managed through the asset governance function','Data flows identify where regulated data moves between systems, jurisdictions, and third parties — providing the foundation for GDPR Article 30 Records of Processing, data transfer impact assessments (for cross-border transfers), breach notification scope determination, and change impact analysis when systems are modified or decommissioned','Data flow tracking is required only for organizations processing health data — HIPAA mandates data flow mapping and other frameworks rely on asset inventory alone','Data flows are a security architecture artifact owned by the network team; they are irrelevant to a GRC or asset governance program'],ans:[1],exp:'Data flows are governance-critical because they answer: "Where does our regulated data go?" This is needed for GDPR Article 30 ROPA (which must document flows), cross-border transfer assessments, breach scope determination (if an asset is compromised, which data does the flow indicate was exposed), and system change impact analysis (decommissioning system X — which downstream systems receive data from it?). Without data flow tracking, asset governance is incomplete.'},
+{q:'During a TPRM assessment, a risk analyst reviews a vendor\'s ISO 27001 Statement of Applicability (SoA) and finds that control A.8.25 (Secure development lifecycle) has been excluded with the justification "not applicable — we are a services organization and do not develop software." The vendor provides a SaaS platform that involves significant custom code development. What is the appropriate conclusion?',d:'Asset Governance',multi:false,opts:['The exclusion is valid — the vendor\'s internal justification is binding and auditors cannot challenge exclusions that the certification body has accepted','This exclusion raises a significant red flag. A SaaS platform involves substantial software development — excluding the secure development lifecycle control requires further investigation. The analyst should request evidence of how security is incorporated into the development process and flag this as a high-risk finding in the TPRM assessment','The SoA exclusion is irrelevant since ISO 27001 does not apply to software development — the vendor should have used ISO/IEC 27034 instead','The exclusion is automatically validated by the fact that the certification body issued the certificate — the auditor would not have issued the certificate if the exclusion was inappropriate'],ans:[1],exp:'An SoA exclusion that appears inconsistent with the vendor\'s actual business operations is a key TPRM signal. A SaaS provider that excludes A.8.25 (secure SDLC) is either miscategorizing its activities or has a genuine gap in its security program. Certification bodies perform sampling audits — they do not verify every exclusion claim. The TPRM analyst must independently assess the exclusion\'s validity and request compensating evidence.'},
+{q:'A governance leader receives a request from a business unit to implement a new AI-based decision engine that automatically denies credit applications. Under GDPR Article 22, what obligation applies to this processing?',d:'Asset Governance',multi:false,opts:['No obligation applies — Article 22 only restricts AI used in employment decisions, not commercial credit decisions','The organization must inform applicants that automated decision-making is being used, ensure they have the right to obtain human review of the decision, to express their point of view, and to contest the decision — and must implement suitable safeguards','Automated credit decisions are permitted without restriction under GDPR Article 6(1)(b) (performance of contract) — Article 22 does not apply when processing is contractually necessary','Article 22 requires the organization to publish the full model weights and decision algorithm to allow individuals to understand how their data was used'],ans:[1],exp:'GDPR Article 22 restricts "solely automated processing, including profiling, which produces legal effects or similarly significant effects." Credit denial is a decision with similarly significant legal and financial effects. The data subject has the right to: obtain human review, express their point of view, and contest the decision. Suitable safeguards must be implemented. The exception under Article 22(2)(a) allows automated decisions necessary for contract performance, but even then, safeguards and the right to human review must be provided.'},
+{q:'An information assurance program is selecting its assessment approach. The program must choose between a self-assessment and an independent third-party assessment. Under NIST SP 800-37 Rev 2, what factor most significantly influences this choice?',d:'Information Assurance',multi:false,opts:['Budget — third-party assessments are always more expensive and should only be used when cost is not a constraint','The impact level and risk profile of the information system — High impact systems and systems with externally-facing obligations (like FedRAMP) require independent assessments; lower-impact internal systems may use self-assessments with appropriate oversight','Organizational size — organizations with fewer than 500 employees are permitted to self-assess regardless of system impact level','The preference of the system owner — NIST SP 800-37 gives system owners full discretion to select the assessment type that best fits their operational model'],ans:[1],exp:'NIST SP 800-37 Rev 2 (Section 2.7 on assessors) distinguishes between assessor independence requirements based on system impact level and organizational context. High-impact systems, particularly those subject to FedRAMP, FISMA High, or other external authorization requirements, require independent (3PAO or equivalent) assessments. Lower-impact systems may use independent internal teams or self-assessments depending on organizational risk tolerance and stakeholder requirements. Budget is a consideration but not the primary governing factor.'},
+{q:'Select TWO characteristics that distinguish a mature Assurance Calendar from an ad-hoc annual testing approach.',d:'Information Assurance',multi:true,tag:'Select TWO',opts:['The assurance calendar is owned and scheduled exclusively by the external auditor to ensure independence of the assessment process','Controls associated with higher-risk areas are scheduled for testing more frequently — continuous for critical controls, quarterly for significant controls, and annual for lower-risk controls','All controls are tested with identical frequency regardless of risk level to ensure consistent and comparable results across the program','Evidence collection timing is coordinated with each framework\'s audit cycle to ensure evidence is current for each audit window','The assurance calendar compresses all testing into a single two-week window each year to minimize operational disruption to the business'],ans:[1,3],exp:'A mature assurance calendar is risk-tiered (higher-risk controls tested more frequently) and aligned to audit cycles (evidence collected for the period auditors will examine). The calendar is owned by the compliance/assurance function — not the external auditor. Uniform frequency ignores risk differentiation. Compressed annual windows create detection gaps and evidence freshness problems.'},
+{q:'Under NIST SP 800-37 Rev 2, what is the key distinction between an Authorization to Operate (ATO) issued by an Agency Authorizing Official and a Provisional ATO (P-ATO) issued by the FedRAMP Joint Authorization Board (JAB)?',d:'Information Assurance',multi:false,opts:['A P-ATO is temporary and must be converted to a full ATO within 180 days; an ATO is permanent and never expires','An ATO authorizes a specific agency\'s use of a system; a P-ATO is issued by the FedRAMP JAB and can be leveraged by multiple federal agencies, allowing them to issue their own ATOs without repeating the full assessment','A P-ATO means significant risks remain above threshold — it is a conditional authorization pending specific remediations before a full ATO can be issued','Both are equivalent in legal force — the distinction is administrative only, and either can be used interchangeably to authorize operation of a federal information system'],ans:[1],exp:'The FedRAMP JAB (consisting of DoD, DHS, and GSA CIOs) issues P-ATOs for cloud services. The P-ATO represents a provisional authorization that agencies can leverage to issue their own ATOs without repeating the full assessment — significantly reducing assessment burden. An ATO from a single agency is specific to that agency\'s use case. This reuse model is a central feature of FedRAMP\'s cloud security authorization framework.'},
+{q:'A governance committee reviews whether to adopt ISO 27001 certification or NIST CSF 2.0 as its primary framework. Which statement correctly distinguishes their primary purposes?',d:'GRC Foundations',multi:false,opts:['ISO 27001 and NIST CSF are equivalent frameworks — both produce third-party certification and are appropriate substitutes in any regulatory context','ISO 27001 is a certifiable management system standard with a formal third-party audit process (accredited CBs issue 3-year certificates with annual surveillance). NIST CSF 2.0 is a voluntary outcome-based framework for improving cybersecurity risk management communication — it has no certification mechanism. Organizations typically use NIST CSF for internal program management and ISO 27001 for customer-facing certification requirements','NIST CSF is a US government regulation applicable to all organizations; ISO 27001 is voluntary','ISO 27001 is technically prescriptive — it specifies exact configurations; NIST CSF only requires policies to exist'],ans:[1],exp:'ISO 27001 vs NIST CSF 2.0: ISO 27001 is certifiable — third-party auditors verify conformance and issue time-limited certificates recognized by customers and regulators as formal assurance evidence. NIST CSF 2.0 is voluntary and outcome-based across 6 Functions (Govern, Identify, Protect, Detect, Respond, Recover) with no certification pathway. Organizations use NIST CSF for internal maturity assessment and board reporting while pursuing ISO 27001 for external assurance needs. Both are complementary — NIST CSF subcategories map to ISO 27001 Annex A controls.'},
+{q:'Under GDPR Article 21, a data subject objects to processing of their personal data for direct marketing purposes. What obligation does this immediately create for the controller?',d:'Data Privacy',multi:false,opts:['The controller may continue processing if they demonstrate compelling legitimate grounds overriding the data subject's interests — the same balancing test applicable to general Article 6(1)(f) objections','The controller must cease processing the personal data for direct marketing immediately upon receiving the objection. The right to object to direct marketing under Article 21(3) is absolute — no compelling legitimate grounds exception exists for this purpose. Processing must stop unconditionally','The controller has 30 days to acknowledge and 90 days to implement the cessation of marketing processing','The controller may reject the objection if the data subject failed to provide specific reasons'],ans:[1],exp:'GDPR Article 21 has two distinct tracks: (1) General objection (Art. 21(1)) — when processing is based on legitimate interests, the controller can override with compelling grounds (balancing test). (2) Direct marketing objection (Art. 21(2-3)) — absolute right, no exceptions, no balancing test. The controller must stop direct marketing processing unconditionally upon receiving the objection. This right applies regardless of the legal basis used for the marketing. Controllers must inform data subjects of this right at the latest at first communication (Recital 70 confirms the unconditional nature).'},
+{q:'An organization has a Security Steering Committee approving security strategy, a CISO owning policy and operations, and system owners accountable for compliance. A new regulation requires formal board-level cybersecurity oversight. What governance gap does this reveal?',d:'Security & Privacy Governance',multi:false,opts:['No gap — a Security Steering Committee with CISO reporting provides equivalent oversight to board-level oversight for regulatory purposes','The Security Steering Committee is a management governance body. Board-level oversight requires the board of directors to formally review cybersecurity risk, challenge management decisions, and hold management accountable — providing independent fiduciary oversight that a management committee cannot provide. No mechanism currently exists for the board to receive security risk reporting or exercise oversight authority. Remediation: formal board committee mandate for cybersecurity risk with regular CISO reporting (at minimum quarterly) to the board','Adding more business unit representatives to the Steering Committee closes the gap','The CISO should be replaced by a CRO reporting directly to the board'],ans:[1],exp:'Board vs. management governance: Management governance (CISO, Steering Committee) makes operational decisions and manages day-to-day risk. Board governance provides independent fiduciary oversight — reviewing strategy, challenging management assumptions, ensuring security investment is proportionate to risk, and holding management accountable for outcomes. Regulations explicitly requiring board-level cybersecurity governance: DORA, NIS2 Directive (management body accountability for ICT risk), SEC Cybersecurity Disclosure Rules (board oversight disclosure), financial regulatory guidance (PRA, OCC). Remediation: board committee charter including cybersecurity, quarterly CISO reporting to board on material risks and KPIs, board cybersecurity competency program or qualified advisory arrangement.'}
+];
+
+var answers={};
+var currentQ=0;
+var submitted=false;
+
+function loadState(){
+  try{var s=JSON.parse(localStorage.getItem(CERT_ID)||'null');if(s&&!s.submitted){answers=s.answers||{};currentQ=s.currentQ||0;}}catch(e){}
+}
+function saveState(){
+  try{localStorage.setItem(CERT_ID,JSON.stringify({answers:answers,currentQ:currentQ,submitted:submitted}));}catch(e){}
+}
+
+function startExam(){
+  loadState();
+  document.getElementById('screen-start').style.display='none';
+  document.getElementById('screen-exam').style.display='';
+  renderQ(currentQ);
+}
+
+function renderQ(idx){
+  currentQ=idx;saveState();
+  var q=Q[idx];
+  var isMulti=q.multi;
+  var sel=answers[idx]||[];
+  var html='<div class="exam-q-card">';
+  html+='<div class="exam-q-top">';
+  html+='<span class="exam-q-domain">'+q.d+'</span>';
+  html+='<span class="exam-q-type '+(isMulti?'multi':'single')+'">'+(isMulti?'Multi-Select':'Single Select')+'</span>';
+  html+='<span class="exam-q-num">Q '+(idx+1)+' / '+Q.length+'</span>';
+  html+='</div>';
+  html+='<div class="exam-q-text">'+q.q+'</div>';
+  if(isMulti&&q.tag)html+='<div class="exam-q-hint">'+q.tag+' — select all that apply</div>';
+  html+='<div class="exam-options">';
+  q.opts.forEach(function(opt,oi){
+    var isSel=sel.indexOf(oi)>-1;
+    html+='<div class="exam-opt'+(isMulti?' multi':'')+(isSel?' selected':'')+'" onclick="toggleOpt('+idx+','+oi+')">';
+    html+='<div class="exam-opt-indicator"></div>';
+    html+='<div class="exam-opt-text">'+opt+'</div>';
+    html+='</div>';
+  });
+  html+='</div></div>';
+  document.getElementById('q-render').innerHTML=html;
+  document.getElementById('q-counter').textContent='Q '+(idx+1)+' of '+Q.length;
+  document.getElementById('prog-fill').style.width=(((idx+1)/Q.length)*100)+'%';
+  var ans=Object.keys(answers).length;
+  document.getElementById('unanswered-badge').textContent=ans+' answered';
+  document.getElementById('btn-next').textContent=idx===Q.length-1?'Review All ▸':'Next ▶';
+}
+
+function toggleOpt(qIdx,optIdx){
+  if(submitted)return;
+  var q=Q[qIdx];
+  var sel=answers[qIdx]||[];
+  if(q.multi){
+    var i=sel.indexOf(optIdx);
+    if(i>-1){sel.splice(i,1);}else{sel.push(optIdx);}
+  }else{
+    sel=[optIdx];
+  }
+  answers[qIdx]=sel;
+  saveState();
+  renderQ(qIdx);
+}
+
+function nextQ(){if(currentQ<Q.length-1){renderQ(currentQ+1);}else{showReview();}}
+function prevQ(){if(currentQ>0)renderQ(currentQ-1);}
+
+function showReview(){
+  document.getElementById('screen-exam').style.display='none';
+  document.getElementById('screen-review').style.display='';
+  var grid=document.getElementById('review-grid');
+  var html='';
+  Q.forEach(function(_,i){
+    var ans=(answers[i]||[]).length>0;
+    html+='<div class="review-tile'+(ans?' answered':'')+'" onclick="goToQ('+i+')">'+( i+1)+'</div>';
+  });
+  grid.innerHTML=html;
+  var ua=Q.length-Object.keys(answers).filter(function(k){return(answers[k]||[]).length>0;}).length;
+  var btn=document.getElementById('btn-submit');
+  var hint=document.getElementById('submit-hint');
+  btn.disabled=ua>0;
+  hint.textContent=ua>0?ua+' question(s) unanswered':'All questions answered — ready to submit';
+}
+
+function goToQ(idx){
+  document.getElementById('screen-review').style.display='none';
+  document.getElementById('screen-exam').style.display='';
+  renderQ(idx);
+}
+
+function submitExam(){
+  if(!confirm('Submit your exam? You cannot change answers after submission.'))return;
+  submitted=true;saveState();
+  calcAndShowResults();
+}
+
+function setsEqual(a,b){
+  if(a.length!==b.length)return false;
+  var sa=a.slice().sort();var sb=b.slice().sort();
+  return sa.every(function(v,i){return v===sb[i];});
+}
+
+function calcAndShowResults(){
+  document.getElementById('screen-review').style.display='none';
+  document.getElementById('screen-exam').style.display='none';
+  document.getElementById('screen-results').style.display='';
+  var domainMap={};var domainTotal={};
+  Q.forEach(function(q,i){
+    if(!domainMap[q.d]){domainMap[q.d]=0;domainTotal[q.d]=0;}
+    domainTotal[q.d]++;
+    if(setsEqual(answers[i]||[],q.ans))domainMap[q.d]++;
+  });
+  var totalCorrect=Object.values(domainMap).reduce(function(a,b){return a+b;},0);
+  var pct=Math.round((totalCorrect/Q.length)*100);
+  var pass=pct>=Math.round(PASS*100);
+  var circ=document.getElementById('score-circle');
+  circ.className='score-circle '+(pass?'pass':'fail');
+  document.getElementById('score-pct-text').textContent=pct+'%';
+  var badge=document.getElementById('pass-badge');
+  badge.className='pass-badge '+(pass?'pass':'fail');
+  badge.innerHTML=(pass?'<i class="fas fa-check-circle"></i> PASS':'<i class="fas fa-times-circle"></i> FAIL')+' &nbsp;'+totalCorrect+' / '+Q.length+' correct';
+  document.getElementById('results-summary').textContent=pass?'Congratulations! You have met the passing threshold for the Governance Leader Professional Certification.':'You did not meet the 80% passing threshold. Review the explanations below and retake when ready.';
+  if(pass)document.getElementById('cert-block').classList.add('show');
+  // Domain table
+  var tbl='<tr><th>Domain</th><th>Score</th><th>Progress</th></tr>';
+  Object.keys(domainTotal).forEach(function(d){
+    var c=domainMap[d];var t=domainTotal[d];var p=Math.round((c/t)*100);
+    var cls=p>=80?'high':p>=60?'mid':'low';
+    tbl+='<tr><td>'+d+'</td><td style="font-weight:600;">'+c+'/'+t+' ('+p+'%)</td><td><div class="domain-bar"><div class="domain-bar-fill '+cls+'" style="width:'+p+'%"></div></div></td></tr>';
+  });
+  document.getElementById('domain-table').innerHTML=tbl;
+  // Question review
+  var ql='';
+  Q.forEach(function(q,i){
+    var correct=setsEqual(answers[i]||[],q.ans);
+    var userSel=answers[i]||[];
+    ql+='<div class="results-q-item">';
+    ql+='<div class="results-q-header" onclick="this.nextElementSibling.classList.toggle(\'open\')">';
+    ql+='<div class="rq-num '+(correct?'correct':'wrong')+'">'+(i+1)+'</div>';
+    ql+='<div class="rq-text">'+q.q.substring(0,120)+(q.q.length>120?'…':'')+'</div>';
+    ql+='<i class="fas fa-chevron-down rq-chevron"></i>';
+    ql+='</div>';
+    ql+='<div class="results-q-detail">';
+    ql+='<div class="rq-exp">'+q.exp+'</div>';
+    ql+='<div class="rq-answer-row"><strong>Correct answer(s):</strong> <span class="rq-correct-tag">'+q.ans.map(function(a){return String.fromCharCode(65+a);}).join(', ')+'</span></div>';
+    ql+='<div class="rq-answer-row"><strong>Your answer(s):</strong> <span class="'+(correct?'rq-correct-tag':'rq-wrong-tag')+'">'+( userSel.length?userSel.map(function(a){return String.fromCharCode(65+a);}).join(', '):'(no answer)')+'</span></div>';
+    ql+='</div></div>';
+  });
+  document.getElementById('results-q-list').innerHTML=ql;
+  if(window.AcademyProgress)AcademyProgress.markComplete('exam-governance-leader','exam');
+}
+
+function retake(){
+  localStorage.removeItem(CERT_ID);
+  answers={};currentQ=0;submitted=false;
+  document.getElementById('screen-results').style.display='none';
+  document.getElementById('screen-start').style.display='';
+}
+
+window.startExam=startExam;window.toggleOpt=toggleOpt;window.nextQ=nextQ;window.prevQ=prevQ;
+window.showReview=showReview;window.goToQ=goToQ;window.submitExam=submitExam;window.retake=retake;
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/academy-config.js"></script>
+<script src="js/academy-auth.js"></script>
+<script src="js/academy-progress.js"></script>
+<script src="js/academy-badges.js"></script>
+</body>
+</html>
