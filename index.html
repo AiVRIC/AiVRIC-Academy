@@ -1301,6 +1301,12 @@
       if (heroSignin) heroSignin.style.display = '';
     }
   }
+  /* Magic-link / OAuth redirects land here. If Supabase reported a failure
+     (#error=...&error_description=...), hand it to the sign-in page so the
+     user sees why instead of a silent no-op. */
+  if (/[#&?](error|error_code)=/.test(window.location.hash + window.location.search)) {
+    window.location.replace('auth.html' + window.location.hash);
+  }
   document.addEventListener('DOMContentLoaded', function() {
     if (!window.AcademyAuth) return;
     AcademyAuth.getUser().then(function(user) { applyAuthState(!!user); });
