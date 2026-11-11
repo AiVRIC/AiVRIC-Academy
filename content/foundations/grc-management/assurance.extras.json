@@ -59,7 +59,7 @@
           "a": "Audit trail entries in a log that ordinary users cannot alter",
           "b": "A copy of the log exported to a shared folder that anyone can edit",
           "better": "a",
-          "why": "An auditor needs to know a record could not have been quietly edited afterwards, and a tamper-evident log gives that."
+          "why": "An auditor needs to know a record could not have been quietly edited afterward, and a tamper-evident log gives that."
         }
       ]
     },

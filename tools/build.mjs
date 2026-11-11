@@ -122,7 +122,7 @@ const orgLd = { '@type': 'EducationalOrganization', name: 'AiVRIC Learning', url
             ${continueCard}
           </div>
         </div>
-        <canvas class="sx-scene" data-scene="rise" aria-hidden="true" data-tiers='["Learn","Check","Practise","Certify"]'></canvas>
+        <canvas class="sx-scene" data-scene="rise" aria-hidden="true" data-tiers='["Learn","Check","Practice","Certify"]'></canvas>
       </section>
 
       <section class="sx-section" aria-labelledby="lx-schools-h">
