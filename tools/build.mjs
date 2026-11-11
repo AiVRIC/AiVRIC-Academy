@@ -309,7 +309,8 @@ for (const c of COURSES) {
     const rail = c.lessons.map((x, j) => x.ready
       ? `<li><a href="../${x.slug}/" data-course="${c.slug}" data-lesson="${x.slug}"${x.slug === l.slug ? ' aria-current="page"' : ''}><span class="lx-rail-n"><span>${j + 1}</span></span><span>${esc(x.title)}</span></a></li>`
       : `<li><a aria-disabled="true" style="opacity:.45;pointer-events:none"><span class="lx-rail-n"><span>${j + 1}</span></span><span>${esc(x.title)}</span></a></li>`).join('');
-    const b = meta.bridge;
+    const bridges = existsSync(join(repo, `content/${c.school}/${c.slug}/bridges.json`)) ? json(`content/${c.school}/${c.slug}/bridges.json`) : {};
+    const b = bridges[l.slug] || meta.bridge;
     const checks = meta.checks || [];
     page({
       path: `${c.url}${l.slug}/index.html`,

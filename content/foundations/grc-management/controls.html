@@ -1,0 +1,190 @@
+<section class="lx-sec" id="objective">
+  <h2><span class="lx-n">1</span>What a control is for</h2>
+  <p>A control is something the organization does, on purpose and repeatedly, to make a good outcome more likely or a bad one less likely. A second approval before a payment is released is a control. So is disk encryption, a locked server room or a review of who can reach payroll.</p>
+  <p>Every control serves a <strong>control objective</strong>: a plain statement of what must be true. Take Big Venture Incorporated, a fictional freight-software company of about 600 people. One of its objectives reads: "Only authorized people can access the finance system, and only for as long as they need it." No single control achieves that. An approval step for new access, multi-factor sign-in, a quarterly access review and removal on the day someone leaves all serve it together.</p>
+  <aside class="lx-def"><p class="lx-def-k">Definition</p><p>A <strong>control objective</strong> states the outcome a control, or a set of controls, exists to achieve. A <strong>control</strong> is the specific, repeatable activity or mechanism that achieves it.</p></aside>
+  <p>Start from the objective. Without one, nobody can say whether a control is enough, too much or aimed at the wrong thing. The obligations behind it come from frameworks and contracts (lesson 3); the exposure it reduces comes from the risk register (lesson 4).</p>
+</section>
+
+<section class="lx-sec" id="classify">
+  <h2><span class="lx-n">2</span>Two ways to classify a control</h2>
+  <p>Controls are sorted along two independent axes. <strong>Function</strong> is about timing: does it stop the event, notice it or recover from it? <strong>Nature</strong> is what it is made of: a process, a technology setting or something physical.</p>
+  <ul class="lx-list">
+    <li><strong>Preventive</strong> controls stop an unwanted event before it happens.</li>
+    <li><strong>Detective</strong> controls find an event that has happened, or is happening, so someone can act.</li>
+    <li><strong>Corrective</strong> controls limit the damage and restore normal operation afterward.</li>
+  </ul>
+  <p>Any function can be delivered by any nature, which gives a small matrix:</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Nature</th><th>Preventive</th><th>Detective</th><th>Corrective</th></tr></thead>
+      <tbody>
+        <tr><td>Administrative</td><td>Manager approval before access is granted; background checks before hire</td><td>Quarterly user access review; monthly account reconciliation</td><td>Incident response plan; revoking access after a policy breach</td></tr>
+        <tr><td>Technical</td><td>Multi-factor authentication; firewall rules that block traffic</td><td>Alerts on repeated failed sign-ins; log monitoring</td><td>Restoring systems from backup; quarantining a malicious file</td></tr>
+        <tr><td>Physical</td><td>Badge-controlled doors to the server room</td><td>Camera coverage; door-held-open alarms</td><td>Fire suppression; a standby generator</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Administrative controls are also called managerial controls. Two more labels are common. A <strong>deterrent</strong> control discourages an attempt, such as a sign-in banner warning that activity is monitored. A <strong>compensating</strong> control stands in for one that cannot be implemented as written (section 6).</p>
+  <p>Use the matrix as a design check: if every control behind an objective is preventive, nobody will notice when prevention fails.</p>
+</section>
+
+<section class="lx-sec" id="operation">
+  <h2><span class="lx-n">3</span>How a control runs, and which ones carry the weight</h2>
+  <p>A third question is who, or what, performs the control. The answer changes how it is tested and how it fails.</p>
+  <div class="lx-trio">
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Manual</p>
+      <p class="lx-trio-q">A person does it.</p>
+      <p>A manager approves a vendor before onboarding. Flexible and able to use judgment, but people get busy, skip steps and leave.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Automated</p>
+      <p class="lx-trio-q">A system does it.</p>
+      <p>The identity platform enforces multi-factor sign-in. Consistent every time, as long as nobody changes the configuration unnoticed.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">IT-dependent manual</p>
+      <p class="lx-trio-q">A person acts on system output.</p>
+      <p>A reviewer works through a system-generated list of active accounts. The review is only as good as the list: if the report is incomplete, so is the control.</p>
+    </div>
+  </div>
+  <p>Not every control deserves the same attention. A <strong>key control</strong> is one the organization relies on to meet an objective or reduce a significant risk; if it failed, the objective would not be met. <strong>Non-key</strong> controls support the key ones or add depth. Key controls get the most careful documentation and the most rigorous testing. Calling everything key spreads attention so thin that nothing gets it.</p>
+</section>
+
+<section class="lx-sec" id="statement">
+  <h2><span class="lx-n">4</span>Writing a control someone can test</h2>
+  <p>A control statement is a promise the organization will later have to prove. If a tester cannot tell from it what should have happened, they cannot tell whether it did. A good statement answers five questions:</p>
+  <ul class="lx-list">
+    <li><strong>Who</strong> performs it, named as a role, not a person or a team.</li>
+    <li><strong>What</strong> they do, as a specific action on a specific scope.</li>
+    <li><strong>When</strong>, as a frequency or trigger: quarterly, daily, on every change, on termination.</li>
+    <li><strong>How</strong>: the source they work from and what they do with exceptions.</li>
+    <li><strong>Evidence</strong>: the record the control leaves behind, and where it is kept.</li>
+  </ul>
+  <aside class="lx-note"><p class="lx-note-k">Example</p><p><strong>Weak:</strong> "User access is reviewed regularly."</p><p><strong>Strong:</strong> "Within 15 business days after each quarter ends, the owner of each in-scope application (finance, customer database, HR) reviews a system-generated list of active accounts and roles, confirms each is still needed, and raises a ticket to remove any that are not. The IT access lead completes removals within five business days. Evidence: the signed-off account list and the removal tickets, filed in the control's evidence folder."</p></aside>
+  <p>The weak version cannot fail, which is the problem. "Regularly" has no deadline, "reviewed" has no outcome and nobody is named. The strong version can be checked line by line, and a missed quarter shows up as a missing file.</p>
+  <p>The "who" hides three roles that are often blurred:</p>
+  <div class="lx-lines">
+    <div class="lx-line-row"><p class="lx-line-k">Owner</p><p>Accountable for the control's design, for it operating as written and for fixing it when it does not. One role, never a committee or "IT".</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Operator</p><p>Performs the control day to day. There may be several, such as each application owner running their own review.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Reviewer</p><p>Checks that the control was performed properly. Should be someone other than the operator, or the check means little.</p></div>
+  </div>
+  <p>One person can be owner and operator of a small control. What matters is that exactly one role is accountable, and knows it.</p>
+</section>
+
+<section class="lx-sec" id="baseline">
+  <h2><span class="lx-n">5</span>The control baseline, told honestly</h2>
+  <p>The <strong>control baseline</strong> (also called the control library) is the single list of every control the organization relies on. Audits, questionnaires and board reports all draw from it, so every control carries the same fields:</p>
+  <ul class="lx-list">
+    <li><strong>Control ID and statement</strong>, written as in section 4.</li>
+    <li><strong>Owner and frequency</strong>.</li>
+    <li><strong>Mapped requirements</strong>: every framework clause, regulation or contract term the control answers.</li>
+    <li><strong>Implementation status</strong>, with the date it was last assessed.</li>
+    <li><strong>Evidence link</strong> to where the control's records live.</li>
+    <li><strong>Last reviewed</strong>: when someone last confirmed the statement still matches reality.</li>
+  </ul>
+  <p>Implementation status is where baselines most often drift from the truth. A small, defined scale works better than a percentage:</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Status</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>Not reviewed</td><td>Nobody has assessed it yet. The status is unknown, not bad and not good.</td></tr>
+        <tr><td>Not implemented</td><td>Assessed, and the control is not in place.</td></tr>
+        <tr><td>Partially implemented</td><td>Some of the control exists, with significant gaps in scope or operation.</td></tr>
+        <tr><td>Largely implemented</td><td>In place for most of its scope, with minor gaps that are known and tracked.</td></tr>
+        <tr><td>Fully implemented</td><td>In place across its whole scope and producing the evidence its statement promises.</td></tr>
+        <tr><td>Not applicable</td><td>Does not apply, with a recorded reason and who approved it.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>"Not reviewed" must never be shown as zero or as implemented. Counted as zero, it makes the program look worse than it is; counted as implemented, which happens when a status field defaults to "in place", it makes the program look better. Report how many controls were assessed alongside how many are implemented, so leadership sees the result and how much of the baseline it covers.</p></aside>
+  <p>"Implemented" is not proof the control works; testing that is lesson 6.</p>
+</section>
+
+<section class="lx-sec" id="drift">
+  <h2><span class="lx-n">6</span>Compensating controls and control drift</h2>
+  <p>Sometimes the expected control cannot be put in place. Big Venture's legacy warehouse system cannot support multi-factor sign-in. Rather than mark the requirement met, the team allows access only through a jump host that requires multi-factor sign-in, restricts network access to it, and has the security lead review its session logs weekly. That is a <strong>compensating control</strong>. It is acceptable when:</p>
+  <ul class="lx-checklist">
+    <li>The original control is genuinely not feasible, for a recorded reason.</li>
+    <li>The alternative meets the original's intent and reduces the same risk comparably.</li>
+    <li>It has its own owner, statement and evidence, like any other control.</li>
+    <li>The risk owner approved it, with a date to revisit it.</li>
+  </ul>
+  <p>Even good controls decay. <strong>Control drift</strong> is the gap that opens between what the baseline says and what happens.</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">People leave</p><p>The owner moves on, nobody inherits the control, and the quarterly review quietly stops.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Systems change</p><p>A new application never enters review scope, or a migration stops forwarding the logs an alert depends on.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Exceptions become the rule</p><p>A one-off approval bypass during an outage is still in use six months later.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">The schedule slips</p><p>Quarterly becomes "when there is time", and the evidence folder shows the gap before anyone says so.</p></div>
+  </div>
+  <p>The defense is to treat a control as a lifecycle, not a document written once.</p>
+  <figure class="lx-fig">
+    <svg viewBox="0 0 760 250" role="img" aria-labelledby="fig5-t fig5-d">
+      <title id="fig5-t">The control lifecycle</title>
+      <desc id="fig5-d">Five stages in a row: design, implement, operate, monitor and improve, joined by arrows. A return arrow runs from improve back to design. An amber callout above the operate stage reads: drift, people leave, systems change, the schedule slips.</desc>
+      <defs>
+        <marker id="fig5-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#00d1ff"/></marker>
+        <marker id="fig5-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a78bfa"/></marker>
+      </defs>
+      <g font-family="Inter, system-ui, sans-serif" font-size="12" fill="#b6bfce" text-anchor="middle">
+        <text x="452" y="34" fill="#ffc46b">Drift: people leave, systems change, the schedule slips</text>
+        <path d="M378 42 L378 70" stroke="#ffc46b" stroke-width="1.4" stroke-dasharray="4 4" fill="none"/>
+        <rect x="18" y="72" width="124" height="76" rx="12" fill="rgba(0,209,255,.08)" stroke="#00d1ff"/>
+        <text x="80" y="100" fill="#eef2f8" font-size="14" font-weight="600">Design</text>
+        <text x="80" y="120">objective, owner,</text>
+        <text x="80" y="136">statement, evidence</text>
+        <rect x="167" y="72" width="124" height="76" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+        <text x="229" y="100" fill="#eef2f8" font-size="14" font-weight="600">Implement</text>
+        <text x="229" y="120">built and in place,</text>
+        <text x="229" y="136">status recorded</text>
+        <rect x="316" y="72" width="124" height="76" rx="12" fill="rgba(255,196,107,.06)" stroke="rgba(255,196,107,.6)"/>
+        <text x="378" y="100" fill="#eef2f8" font-size="14" font-weight="600">Operate</text>
+        <text x="378" y="120">runs on schedule,</text>
+        <text x="378" y="136">leaves evidence</text>
+        <rect x="465" y="72" width="124" height="76" rx="12" fill="rgba(46,229,157,.07)" stroke="rgba(46,229,157,.6)"/>
+        <text x="527" y="100" fill="#eef2f8" font-size="14" font-weight="600">Monitor</text>
+        <text x="527" y="120">checks and tests,</text>
+        <text x="527" y="136">drift spotted</text>
+        <rect x="614" y="72" width="124" height="76" rx="12" fill="rgba(167,139,250,.08)" stroke="rgba(167,139,250,.6)"/>
+        <text x="676" y="100" fill="#eef2f8" font-size="14" font-weight="600">Improve</text>
+        <text x="676" y="120">fix, redesign</text>
+        <text x="676" y="136">or retire</text>
+        <g stroke="#00d1ff" stroke-width="1.4" fill="none">
+          <path d="M142 110 L165 110" marker-end="url(#fig5-a)"/>
+          <path d="M291 110 L314 110" marker-end="url(#fig5-a)"/>
+          <path d="M440 110 L463 110" marker-end="url(#fig5-a)"/>
+          <path d="M589 110 L612 110" marker-end="url(#fig5-a)"/>
+        </g>
+        <path d="M676 148 L676 196 L80 196 L80 150" stroke="#a78bfa" stroke-width="1.4" stroke-dasharray="5 4" fill="none" marker-end="url(#fig5-b)"/>
+        <text x="378" y="222" fill="#7f8a9d">what monitoring finds feeds the next design</text>
+      </g>
+    </svg>
+    <figcaption>Controls are monitored for drift, and what monitoring finds goes back into the design.</figcaption>
+  </figure>
+</section>
+
+<section class="lx-sec lx-practice" id="practice">
+  <h2><span class="lx-n">7</span>In practice: audit five of your own controls</h2>
+  <p>Pick five controls you think of as key. Give it forty minutes.</p>
+  <ol class="lx-steps">
+    <li><strong>Name the objective</strong> each one serves, in one sentence.</li>
+    <li><strong>Classify each one</strong> by function, nature and how it runs. Is anything behind an objective detective?</li>
+    <li><strong>Rewrite the weakest statement</strong> to answer who, what, when, how and what evidence. Could a colleague test it from the text alone?</li>
+    <li><strong>Check ownership.</strong> One accountable owner, still here, who knows it? A reviewer who is not the operator?</li>
+    <li><strong>Re-score the status</strong> on the six-level scale, marking anything you have not looked at as "not reviewed". Compare with your last report.</li>
+  </ol>
+</section>
+
+<section class="lx-sec" id="terms">
+  <h2><span class="lx-n">8</span>Key terms</h2>
+  <dl class="lx-terms">
+    <div><dt>Control objective</dt><dd>The outcome one or more controls exist to achieve, stated as what must be true.</dd></div>
+    <div><dt>IT-dependent manual control</dt><dd>A control a person performs using system-produced information, so that information's reliability is part of the control.</dd></div>
+    <div><dt>Key control</dt><dd>A control relied on to meet an objective or reduce a significant risk; if it fails, the objective is not met.</dd></div>
+    <div><dt>Control owner</dt><dd>The one role accountable for a control's design, operation and correction.</dd></div>
+    <div><dt>Control baseline</dt><dd>The single list of every control relied on, with owner, mapping, status and evidence for each.</dd></div>
+    <div><dt>Compensating control</dt><dd>An approved alternative that meets the intent of a control that cannot be implemented.</dd></div>
+    <div><dt>Control drift</dt><dd>The growing gap between what the baseline says a control does and what actually happens.</dd></div>
+  </dl>
+</section>

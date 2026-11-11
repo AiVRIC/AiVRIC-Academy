@@ -1,0 +1,166 @@
+<section class="lx-sec" id="cadence">
+  <h2><span class="lx-n">1</span>Programs run on a rhythm</h2>
+  <p>A GRC program is not finished when the policies are approved and the first audit passes. Left alone, it decays: access lists drift, risk acceptances lapse unnoticed, policies describe a company that reorganized two years ago, and evidence goes stale. Nobody decides this. Nothing forces the next look.</p>
+  <p>Cadence is the fix. A program on a fixed calendar does its maintenance before an auditor or an incident finds the gap, and everyone knows when reviews are due, when decisions will be asked for and when the board will next see the position.</p>
+  <p>Most programs work on four nested rhythms. Here is a typical calendar for Big Venture Incorporated, a fictional freight-software company of about 600 people:</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Rhythm</th><th>What happens</th><th>Who owns it</th></tr></thead>
+      <tbody>
+        <tr><td>Annual</td><td>Risk assessment refresh; policy review and re-approval; risk appetite review; audit cycle planning; security awareness training</td><td>CISO and risk function, approved by the executive committee and the board</td></tr>
+        <tr><td>Quarterly</td><td>Steering committee; user access reviews; risk register review; board or committee reporting; reviews of critical vendors</td><td>Steering committee chair, control owners, GRC lead</td></tr>
+        <tr><td>Monthly</td><td>Metrics review; POA&amp;M and remediation status; exceptions and risk acceptances about to expire</td><td>GRC lead with control owners</td></tr>
+        <tr><td>Continuous</td><td>Control monitoring; evidence collected as the work happens; incident and issue intake</td><td>Control owners and operations teams</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The rhythms feed each other. Continuous monitoring produces the data the monthly review reads. Three monthly reviews become the quarterly report. Four quarters become the input to the annual refresh, which resets the targets for the year ahead.</p>
+  <figure class="lx-fig">
+    <svg viewBox="0 0 760 260" role="img" aria-labelledby="fig7-t fig7-d">
+      <title id="fig7-t">The GRC calendar as four nested rhythms</title>
+      <desc id="fig7-d">A twelve-month timeline with four lanes. Continuous monitoring and evidence collection run the whole year. A monthly review happens every month. Quarterly reviews fall at the end of March, June, September and December, each fed by the monthly review before it. Annual activities are spread across the year: the risk and appetite refresh in February, policy review in May, training in August and audit planning in November.</desc>
+      <defs>
+        <linearGradient id="fig7-g" x1="0" x2="1"><stop offset="0" stop-color="#00d1ff" stop-opacity=".22"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".22"/></linearGradient>
+      </defs>
+      <g font-family="Inter, system-ui, sans-serif" font-size="12" fill="#b6bfce">
+        <g stroke="rgba(175,178,206,.12)" stroke-width="1">
+          <path d="M170 40 V240"/><path d="M217.5 40 V240"/><path d="M265 40 V240"/><path d="M312.5 40 V240"/><path d="M360 40 V240"/><path d="M407.5 40 V240"/><path d="M455 40 V240"/><path d="M502.5 40 V240"/><path d="M550 40 V240"/><path d="M597.5 40 V240"/><path d="M645 40 V240"/><path d="M692.5 40 V240"/><path d="M740 40 V240"/>
+        </g>
+        <g font-size="11" fill="#7f8a9d" text-anchor="middle">
+          <text x="193.75" y="32">Jan</text><text x="241.25" y="32">Feb</text><text x="288.75" y="32">Mar</text><text x="336.25" y="32">Apr</text><text x="383.75" y="32">May</text><text x="431.25" y="32">Jun</text><text x="478.75" y="32">Jul</text><text x="526.25" y="32">Aug</text><text x="573.75" y="32">Sep</text><text x="621.25" y="32">Oct</text><text x="668.75" y="32">Nov</text><text x="716.25" y="32">Dec</text>
+        </g>
+        <g font-size="11" letter-spacing="2" fill="#7f8a9d">
+          <text x="20" y="61">CONTINUOUS</text><text x="20" y="112">MONTHLY</text><text x="20" y="162">QUARTERLY</text><text x="20" y="217">ANNUAL</text>
+        </g>
+        <text x="20" y="77">monitoring, evidence</text>
+        <text x="20" y="128">metrics, remediation</text>
+        <text x="20" y="178">reviews, reporting</text>
+        <text x="20" y="233">refresh and plan</text>
+        <rect x="170" y="52" width="570" height="26" rx="13" fill="url(#fig7-g)" stroke="#00d1ff" stroke-opacity=".7"/>
+        <text x="455" y="69" text-anchor="middle" fill="#eef2f8">monitoring, evidence collection, incident intake</text>
+        <g fill="rgba(167,139,250,.22)" stroke="#a78bfa" stroke-width="1.4">
+          <circle cx="193.75" cy="116" r="7"/><circle cx="241.25" cy="116" r="7"/><circle cx="288.75" cy="116" r="7"/><circle cx="336.25" cy="116" r="7"/><circle cx="383.75" cy="116" r="7"/><circle cx="431.25" cy="116" r="7"/><circle cx="478.75" cy="116" r="7"/><circle cx="526.25" cy="116" r="7"/><circle cx="573.75" cy="116" r="7"/><circle cx="621.25" cy="116" r="7"/><circle cx="668.75" cy="116" r="7"/><circle cx="716.25" cy="116" r="7"/>
+        </g>
+        <g stroke="#ffc46b" stroke-opacity=".6" stroke-width="1.4" stroke-dasharray="3 3">
+          <path d="M288.75 123 V150"/><path d="M431.25 123 V150"/><path d="M573.75 123 V150"/><path d="M716.25 123 V150"/>
+        </g>
+        <g fill="rgba(255,196,107,.10)" stroke="#ffc46b">
+          <rect x="252.75" y="150" width="72" height="30" rx="8"/><rect x="395.25" y="150" width="72" height="30" rx="8"/><rect x="537.75" y="150" width="72" height="30" rx="8"/><rect x="680.25" y="150" width="72" height="30" rx="8"/>
+        </g>
+        <g text-anchor="middle" fill="#eef2f8">
+          <text x="288.75" y="169">Q1 review</text><text x="431.25" y="169">Q2 review</text><text x="573.75" y="169">Q3 review</text><text x="716.25" y="169">Q4 review</text>
+        </g>
+        <g fill="rgba(46,229,157,.08)" stroke="rgba(46,229,157,.7)">
+          <rect x="185.25" y="205" width="112" height="30" rx="8"/><rect x="327.75" y="205" width="112" height="30" rx="8"/><rect x="470.25" y="205" width="112" height="30" rx="8"/><rect x="612.75" y="205" width="112" height="30" rx="8"/>
+        </g>
+        <g text-anchor="middle" fill="#eef2f8">
+          <text x="241.25" y="224">Risk + appetite</text><text x="383.75" y="224">Policy review</text><text x="526.25" y="224">Training</text><text x="668.75" y="224">Audit planning</text>
+        </g>
+      </g>
+    </svg>
+    <figcaption>Four rhythms on one calendar. Continuous data feeds the monthly review, each quarter's review draws on the months before it, and the year's quarters feed the annual refresh.</figcaption>
+  </figure>
+</section>
+
+<section class="lx-sec" id="measures">
+  <h2><span class="lx-n">2</span>Three kinds of measure</h2>
+  <p>Metrics turn the calendar from a set of meetings into a set of decisions. Three kinds are worth keeping apart, because they answer different questions:</p>
+  <div class="lx-trio">
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">KPI</p>
+      <p class="lx-trio-q">Are we doing the work?</p>
+      <p>Key performance indicators measure how well the program executes: reviews completed on time, findings closed within target, training finished.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">KRI</p>
+      <p class="lx-trio-q">Is our exposure changing?</p>
+      <p>Key risk indicators track conditions that make a risk more likely or severe, such as privileged accounts without MFA, each tied to a register risk and a threshold from appetite.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Control effectiveness</p>
+      <p class="lx-trio-q">Does the control actually work?</p>
+      <p>Measures of whether controls are in place and operating as intended, usually from testing: controls fully implemented, samples that passed, controls with open exceptions.</p>
+    </div>
+  </div>
+  <p>Any of these can be <strong>leading</strong> or <strong>lagging</strong>. A lagging indicator records what has already happened: incidents last quarter, audit findings, mean time to remediate. A leading indicator points at what is likely to happen next: patches overdue on critical systems, access reviews running late, a rising count of lapsed risk acceptances.</p>
+  <p>Lagging measures confirm the story. Leading measures give you time to change it.</p>
+</section>
+
+<section class="lx-sec" id="good-metrics">
+  <h2><span class="lx-n">3</span>What makes a metric useful</h2>
+  <p>A metric is a promise to measure something the same way every time. Before it appears in a report, it should have:</p>
+  <ul class="lx-list">
+    <li><strong>An owner:</strong> one named person who answers for the number and its trend.</li>
+    <li><strong>A definition:</strong> exactly what is counted and what is out of scope, so two people calculating it get the same answer.</li>
+    <li><strong>A data source:</strong> where the number comes from, ideally a system of record rather than someone's estimate.</li>
+    <li><strong>A target and a threshold:</strong> what good looks like, and the point at which the number triggers action or escalation.</li>
+    <li><strong>A cadence:</strong> how often it is measured and where it is reported.</li>
+  </ul>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>Show "not measured" as not measured. When a data feed breaks or a control has never been tested, the honest value is a gap, not zero and not green. A blank that renders as green tells leadership a control works when nobody knows. Give "no data" its own visible state, and count how many metrics are in it.</p></aside>
+  <p>The test of any metric is simple: what would someone do differently if it moved? Big Venture keeps metrics like these, and retires the ones that fail the test:</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">Coverage</p><p>Percentage of critical controls fully implemented. A drop names the controls and owners to chase.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Remediation</p><p>Overdue remediation items, and mean time to remediate critical findings against the target. Shows whether findings are being fixed, and how fast.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Hygiene</p><p>Percentage of access reviews completed on time, and the number of expired risk acceptances. Each late review or lapsed acceptance is an item someone must close.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Vanity</p><p>Policies published, emails filtered, tools deployed. Big numbers that grow on their own and say nothing about exposure. Nobody decides anything when they change.</p></div>
+  </div>
+</section>
+
+<section class="lx-sec" id="audiences">
+  <h2><span class="lx-n">4</span>Reporting by audience</h2>
+  <p>The same data serves three audiences, and each needs a different cut.</p>
+  <div class="lx-lines">
+    <div class="lx-line-row"><p class="lx-line-k">Operators</p><p>Detail: individual findings, tickets, systems, owners and due dates, used to do the work.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Management</p><p>Trends, exceptions and decisions needed: which metrics are off target and why, what is blocked, which risk acceptances need renewing, and which trade-offs or resources they must decide on. Monthly or quarterly.</p></div>
+    <div class="lx-line-row lx-line-gov"><p class="lx-line-k">Board</p><p>Position against appetite, the top risks and how they are moving, decisions taken since the last report and decisions needed now, and the few things that need the board's attention. Quarterly, a few pages at most.</p></div>
+  </div>
+  <p>Whatever the audience, each period must compare like with like. At quarter end, take a <strong>point-in-time snapshot</strong> of every reported metric, the risk register and control status, and keep it unchanged. Without one, "last quarter" becomes whatever someone remembers.</p>
+  <p>If a definition changes, say so in the report and restate the earlier figure on the new basis. Otherwise a trend line can show improvement that is only a change in counting.</p>
+</section>
+
+<section class="lx-sec" id="board">
+  <h2><span class="lx-n">5</span>Writing a board report</h2>
+  <p>A board report is a decision document, not a status update. The one that gets attention starts with the answer. A workable order:</p>
+  <ul class="lx-list">
+    <li><strong>The verdict.</strong> One or two sentences: is the program inside appetite, and where is it not?</li>
+    <li><strong>The top risks,</strong> each with its direction of travel since last quarter, not just a score.</li>
+    <li><strong>Decisions.</strong> What management decided under its own authority, and what the board is asked to decide or note.</li>
+    <li><strong>Supporting metrics,</strong> a handful, each with its target, and any "not measured" shown as such.</li>
+  </ul>
+  <p>Then translate. Directors do not need vulnerability identifiers; they need consequences. "Forty-two critical vulnerabilities older than thirty days on internet-facing servers" becomes "the customer tracking platform has known weaknesses attackers look for; if one were used, it could be down for days, and several contracts carry service credits for downtime." Tie each finding to revenue, contracts, regulatory exposure, safety or reputation.</p>
+  <aside class="lx-note"><p class="lx-note-k">Example</p><p>Big Venture's third-quarter board summary, with illustrative figures: "Inside appetite on four of five top risks. Ransomware recovery is outside: the September restore test of the tracking platform took 60 hours against a 24-hour tolerance. Decision needed: fund isolated backup storage this quarter, or formally accept the risk until the second quarter. For noting: expired risk acceptances fell from nine to two; 94% of critical controls fully implemented against a 95% target; vendor assessment status not measured this quarter after a system change, with data restored in October."</p></aside>
+</section>
+
+<section class="lx-sec" id="improve">
+  <h2><span class="lx-n">6</span>Closing the loop: review and improvement</h2>
+  <p>Cadence and reporting only matter if they change something. In ISO/IEC 27001, clause 9 (performance evaluation) expects an organization to decide what it will monitor and measure, how, when and by whom; to run internal audits to a plan; and to have top management review the system at planned intervals.</p>
+  <p>That <strong>management review</strong> looks at what happened to the actions from the last review, changes inside and outside the organization, performance and audit results, feedback from interested parties, progress on risk treatment and chances to improve. It ends in recorded decisions, not just a discussion.</p>
+  <p>Clause 10, on improvement, asks the organization to respond when something does not meet a requirement: correct it, deal with the consequences, find the cause and act so it does not recur. It also expects the system to keep getting more suitable, adequate and effective over time.</p>
+  <p>The same habits apply outside any standard. After an incident, a failed test or a missed review, hold a short lessons-learned session: what happened, why the program missed it, and what changes. Feed the answers into the register, the controls and next year's targets. A metric that has been green for a year with no decision attached is a candidate to retire; a gap that keeps surprising you deserves a metric of its own.</p>
+</section>
+
+<section class="lx-sec lx-practice" id="practice">
+  <h2><span class="lx-n">7</span>In practice: build a one-page quarterly report</h2>
+  <p>Use your own program, or invent a company like Big Venture.</p>
+  <ol class="lx-steps">
+    <li><strong>Draw your calendar.</strong> List what the program does annually, quarterly, monthly and continuously, with an owner for each. Mark anything that has missed its last due date.</li>
+    <li><strong>Choose five metrics.</strong> Include at least one KRI, one control effectiveness measure and one leading indicator. For each, write the owner, definition, data source, target, threshold and cadence.</li>
+    <li><strong>Find the gaps.</strong> For any metric you cannot produce today, write "not measured" and the date you expect data. Do not estimate.</li>
+    <li><strong>Draft the board page.</strong> One verdict sentence against appetite, the top three risks with their direction, one decision taken and one decision needed, each finding stated as a business consequence.</li>
+    <li><strong>Save the snapshot.</strong> Store this quarter's figures and definitions where next quarter's report can compare against them.</li>
+  </ol>
+</section>
+
+<section class="lx-sec" id="terms">
+  <h2><span class="lx-n">8</span>Key terms</h2>
+  <dl class="lx-terms">
+    <div><dt>Cadence</dt><dd>The fixed schedule on which a program repeats its reviews, measurements and reports.</dd></div>
+    <div><dt>KPI</dt><dd>Key performance indicator: a measure of how well the program executes its own work, such as reviews completed on time.</dd></div>
+    <div><dt>KRI</dt><dd>Key risk indicator: a measure of conditions that change the likelihood or impact of a specific risk, with a threshold tied to appetite.</dd></div>
+    <div><dt>Leading indicator</dt><dd>A measure that signals what is likely to happen, giving time to act before an outcome occurs.</dd></div>
+    <div><dt>Lagging indicator</dt><dd>A measure of outcomes that have already happened, such as incidents or audit findings.</dd></div>
+    <div><dt>POA&amp;M</dt><dd>Plan of action and milestones: a tracked list of known weaknesses, each with an owner, planned fix and due date.</dd></div>
+    <div><dt>Point-in-time snapshot</dt><dd>A frozen copy of metrics, register and control status at a period end, kept so later periods compare like with like.</dd></div>
+    <div><dt>Management review</dt><dd>A scheduled review by top management of program performance, ending in recorded decisions.</dd></div>
+  </dl>
+</section>

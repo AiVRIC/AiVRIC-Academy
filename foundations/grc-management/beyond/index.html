@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beyond the walls: third parties, incidents and change — GRC Management | AiVRIC Learning</title>
+    <meta name="description" content="Third-party risk across the vendor lifecycle, how incidents feed back into risk and controls, and keeping a program current as the business changes." />
+    <link rel="canonical" href="https://academy.aivric.com/foundations/grc-management/beyond/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Beyond the walls: third parties, incidents and change — GRC Management | AiVRIC Learning" />
+    <meta property="og:description" content="Third-party risk across the vendor lifecycle, how incidents feed back into risk and controls, and keeping a program current as the business changes." />
+    <meta property="og:url" content="https://academy.aivric.com/foundations/grc-management/beyond/" />
+    <meta name="theme-color" content="#050c18" />
+    <link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="../../../assets/brand/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="../../../assets/brand/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@500;600;700&family=Sora:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../assets/kit/shell.css" />
+    <link rel="stylesheet" href="../../../assets/kit/mnav.css" />
+    <link rel="stylesheet" href="../../../assets/kit/site.css" />
+    <link rel="stylesheet" href="../../../assets/learn/learn.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+  </head>
+  <body class="is-nav-solid">
+    <script src="../../../assets/kit/preloader.js" data-aivric-preloader></script>
+    <header class="site-header mnav" data-mnav>
+      <div class="mnav-bar">
+        <a class="mnav-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <nav class="mnav-menus" aria-label="Primary"><ul><li><button class="mnav-trigger" type="button" data-mnav-trigger="platform" aria-expanded="false" aria-controls="mnav-panel">Platform<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="portfolio" aria-expanded="false" aria-controls="mnav-panel">Portfolio<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="resources" aria-expanded="false" aria-controls="mnav-panel">Resources<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><a class="mnav-trigger mnav-plain" href="https://aivric.com/integrations.html">Integrations</a></li></ul></nav>
+        <div class="mnav-actions">
+          <a class="mnav-login" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a>
+          <a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a>
+        </div>
+        <button class="mnav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav-sheet"><span></span><span></span></button>
+      </div>
+      <div class="mnav-panel" id="mnav-panel" aria-hidden="true"><div class="mnav-view" data-mnav-view="platform" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="portfolio" hidden><div class="mnav-grid mnav-cols-3"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="resources" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div></div>
+    </header>
+    <div class="mnav-sheet" id="mnav-sheet" aria-hidden="true" aria-label="Menu" role="dialog">
+      <div class="mnav-sheet-head">
+        <button type="button" class="mnav-back" hidden><span aria-hidden="true">‹</span> Menu</button>
+        <a class="mnav-brand mnav-sheet-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <button type="button" class="mnav-close" aria-label="Close menu">×</button>
+      </div>
+      <div class="mnav-sheet-body">
+        <ul class="mnav-sheet-list"><li><button type="button" class="mnav-sheet-item" data-mnav-sub="platform">Platform<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="portfolio">Portfolio<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="resources">Resources<span aria-hidden="true">›</span></button></li><li><a class="mnav-sheet-item" href="https://aivric.com/integrations.html">Integrations</a></li></ul>
+        <div class="mnav-sub" data-mnav-subview="platform" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="portfolio" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="resources" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div>
+      </div>
+      <div class="mnav-sheet-cta"><a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a><a class="mnav-login-btn" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a></div>
+    </div>
+
+    <main id="main" class="sx-page lx-page">
+
+      <div class="lx-progress" aria-hidden="true"><span></span></div>
+      <div class="sx-wrap lx-lesson">
+        <nav class="lx-rail" aria-label="Course outline">
+          <a class="lx-rail-course" href="../"><small>Foundations · GRC Management</small><b>GRC Management Fundamentals</b>
+            <div class="lx-course-bar lx-rail-bar" data-course-bar="grc-management" data-total="8"><span></span></div></a>
+          <ol><li><a href="../what-grc-is/" data-course="grc-management" data-lesson="what-grc-is"><span class="lx-rail-n"><span>1</span></span><span>What GRC is, and why it exists</span></a></li><li><a href="../governance/" data-course="grc-management" data-lesson="governance"><span class="lx-rail-n"><span>2</span></span><span>Governance: direction, accountability and policy</span></a></li><li><a href="../frameworks/" data-course="grc-management" data-lesson="frameworks"><span class="lx-rail-n"><span>3</span></span><span>Frameworks, standards and regulations</span></a></li><li><a href="../risk/" data-course="grc-management" data-lesson="risk"><span class="lx-rail-n"><span>4</span></span><span>Risk management: from register to decision</span></a></li><li><a href="../controls/" data-course="grc-management" data-lesson="controls"><span class="lx-rail-n"><span>5</span></span><span>Controls: designing what you rely on</span></a></li><li><a href="../assurance/" data-course="grc-management" data-lesson="assurance"><span class="lx-rail-n"><span>6</span></span><span>Assurance: testing, evidence and audits</span></a></li><li><a href="../operating/" data-course="grc-management" data-lesson="operating"><span class="lx-rail-n"><span>7</span></span><span>Running the program: cadence, metrics and reporting</span></a></li><li><a href="../beyond/" data-course="grc-management" data-lesson="beyond" aria-current="page"><span class="lx-rail-n"><span>8</span></span><span>Beyond the walls: third parties, incidents and change</span></a></li></ol>
+          <div class="lx-toc"><p>On this page</p><a href="#third-parties">You can outsource the work, not the accountability</a><a href="#lifecycle">The third-party risk lifecycle</a><a href="#diligence">Reading the evidence a vendor gives you</a><a href="#incidents">Incidents: when the program meets reality</a><a href="#change">Change: keeping the program current</a><a href="#together">Putting it together</a><a href="#practice">In practice: test the program beyond your walls</a><a href="#terms">Key terms</a><a href="#check">Knowledge check</a></div>
+        </nav>
+        <article class="lx-article">
+          <header class="lx-article-head">
+            <nav class="sx-crumbs" aria-label="Breadcrumb" style="padding:0"><ol><li><a href="../../../">Learning</a></li><li><a href="../../../foundations/">Foundations</a></li><li><a href="../">GRC Management</a></li></ol></nav>
+            <p class="sx-eyebrow" style="margin-top:22px">Lesson 8 of 8 · 40 min</p>
+            <h1>Beyond the walls: third parties, incidents and change</h1>
+            <p class="sx-lede">Third-party risk across the vendor lifecycle, how incidents feed back into risk and controls, and keeping a program current as the business changes.</p>
+            <div class="lx-objectives"><p>By the end of this lesson you can</p><ul><li>Run third-party risk across the vendor lifecycle, in proportion to each vendor's tier</li><li>Read an independent report for its scope, period and exceptions</li><li>Feed an incident back into the risk register, controls, policy and metrics</li><li>Recognize business changes that should reopen scope and risk assessment</li></ul></div>
+          </header>
+<section class="lx-sec" id="third-parties">
+  <h2><span class="lx-n">1</span>You can outsource the work, not the accountability</h2>
+  <p>Every organization relies on others: cloud hosting, payroll, email, support software. Each is a third party, an outside organization whose service may touch your data, your systems or your operations.</p>
+  <p>Take Big Venture Incorporated, a fictional company of about 600 people that sells freight-management software. Its platform runs on a cloud provider, its support team works in a hosted ticketing tool, and a small firm prints and mails tax forms. Employee names, bank details and tax identifiers flow to all three.</p>
+  <ul class="lx-list">
+    <li><strong>Accountability stays with you.</strong> Customers and regulators look to the organization that collected the data. Privacy and sector rules commonly require a written contract with vendors that handle regulated data, and hold you responsible for overseeing them.</li>
+    <li><strong>Data and access flow outward.</strong> A vendor with a copy of your data or a login to your environment is part of your attack surface, whether or not it appears on your network diagram.</li>
+    <li><strong>Dependence is a risk of its own.</strong> If a critical vendor goes down, your service goes down with it.</li>
+  </ul>
+  <p>Vendors have vendors. A <strong>fourth party</strong> is a third party's own supplier, such as the cloud provider behind your ticketing tool. You rarely have a contract with it, so you manage it through the third party: ask which subcontractors handle your data and require notice when that list changes.</p>
+  <aside class="lx-def"><p class="lx-def-k">Definition</p><p><strong>Third-party risk management</strong> is identifying, assessing, contracting for and monitoring the risks of relying on outside organizations, in proportion to how much each one matters, from before the contract is signed until after it ends.</p></aside>
+</section>
+
+<section class="lx-sec" id="lifecycle">
+  <h2><span class="lx-n">2</span>The third-party risk lifecycle</h2>
+  <p>Third-party risk is managed across the whole relationship, not only at purchase. Monitoring can send a vendor back to due diligence, and offboarding closes the record the inventory opened.</p>
+  <div class="lx-lines">
+    <div class="lx-line-row"><p class="lx-line-k">Inventory</p><p>Every vendor, its owner, the data it receives and the access it has. Expense reports and single sign-on logs find the ones nobody registered.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Tiering</p><p>Rank each vendor by criticality to operations and by the data and access it holds. The tier sets how much scrutiny follows.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Due diligence</p><p>Before the contract, assess security with a questionnaire, independent reports and external signals, at a depth set by the tier.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Contract</p><p>Security requirements, prompt notice of a breach, a right to audit or to receive assurance reports, limits on subcontracting, and data return or deletion at the end.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Ongoing monitoring</p><p>Reassess on the tier's cadence, review each new report, watch for incidents and material changes, and track findings to closure.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Offboarding</p><p>Revoke accounts and keys, get your data back or written confirmation it was deleted, and update the inventory.</p></div>
+  </div>
+  <p>A simple tiering model at Big Venture:</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Tier</th><th>What puts a vendor here</th><th>Big Venture example</th><th>Diligence and monitoring</th></tr></thead>
+      <tbody>
+        <tr><td>Critical</td><td>Sensitive data or production access, or an outage stops the service</td><td>The cloud provider hosting the payroll platform</td><td>Full questionnaire, report review, contract security terms; yearly</td></tr>
+        <tr><td>Moderate</td><td>Some sensitive data or internal access, with workarounds if it fails</td><td>The support ticketing tool</td><td>Short questionnaire, report if one exists; every two years</td></tr>
+        <tr><td>Low</td><td>No sensitive data, no access, easy to replace</td><td>A font license for marketing</td><td>Basic contract and ownership checks at renewal</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A tier is not permanent. When the printing firm began receiving full bank details, its tier should have changed too.</p>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>Tiering by spend. A free tool with broad production access can be riskier than the largest invoice. Tier by data, access and dependence.</p></aside>
+</section>
+
+<section class="lx-sec" id="diligence">
+  <h2><span class="lx-n">3</span>Reading the evidence a vendor gives you</h2>
+  <p>For critical vendors, the strongest evidence is an independent report, such as a SOC 2 report or an ISO 27001 certificate: someone outside the vendor checked. Both are easy to misread.</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">Scope</p><p>Does it cover the service you are buying? A report on corporate IT says little about the product holding your data. Read the system description or the certificate's scope statement.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Period</p><p>A SOC 2 Type II report covers a period that has already ended; for the gap since, ask for a bridge letter. A certificate has issue and expiry dates and is kept current by surveillance audits.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Exceptions</p><p>The auditor lists tests where a control did not operate as described. Ask what the vendor did about each, and decide whether it matters for your data.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">What is left to you</p><p>Complementary user entity controls are the ones the vendor assumes you run. The report also shows whether its key suppliers were tested or carved out.</p></div>
+  </div>
+  <p>Questionnaires fill in what reports miss, but they are the vendor's own answers. Ask for evidence on the points that matter most, and reuse one question set so answers compare.</p>
+  <p>External security ratings score a vendor from what is visible on the internet: exposed services, certificate hygiene, leaked credentials. They help spot changes between reviews. They cannot see how a vendor handles your data inside its systems, and can include assets it does not own. Treat a rating as one input, never the answer.</p>
+  <p>Due diligence ends like every risk activity in this course: in a decision. Approve, approve with conditions, or decline, recorded with who decided and when to revisit.</p>
+</section>
+
+<section class="lx-sec" id="incidents">
+  <h2><span class="lx-n">4</span>Incidents: when the program meets reality</h2>
+  <p>An incident is the moment a risk on the register stops being hypothetical. The GRC question is whether the program learns from it. Most organizations describe response in four phases, consistent with NIST's incident handling guidance:</p>
+  <ul class="lx-list">
+    <li><strong>Prepare.</strong> Roles, playbooks, contacts, logging and tools, agreed before they are needed.</li>
+    <li><strong>Detect and analyze.</strong> Recognize that something is wrong, establish scope and severity, and record what is learned as it is learned.</li>
+    <li><strong>Contain, eradicate and recover.</strong> Stop the spread, remove the cause and restore normal operation.</li>
+    <li><strong>Post-incident activity.</strong> Review what worked and what did not, and turn the findings into changes.</li>
+  </ul>
+  <p>The last phase is where GRC takes over. Suppose Big Venture's ticketing vendor reports that an attacker used a stolen session to export attachments, some of them customer shipping records. The follow-up should reach every part of the program:</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">Risk register</p><p>"Vendor data leak" was scored unlikely, and it has happened. Re-rate it and check whether the residual risk is still inside appetite.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Corrective actions</p><p>Each gap becomes a dated, owned action: shorter session timeouts, no customer records in tickets, limits on attachment retention.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Policy and vendors</p><p>Update the data handling standard, retier the vendor if its role has grown, and check the contract: did notice arrive as promised?</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Metrics</p><p>Track time to detect, time to contain and closure of actions, so leadership can see whether the next one goes better.</p></div>
+  </div>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>Notification obligations. Laws, regulators and contracts may require you to inform customers, individuals or authorities within set timeframes, and the clock can start when you learn of an incident, including one at a vendor. Triggers and timelines vary, so legal and compliance should review every significant incident early.</p></aside>
+  <figure class="lx-fig">
+    <svg viewBox="0 0 760 300" role="img" aria-labelledby="fig8-t fig8-d">
+      <title id="fig8-t">The incident feedback loop</title>
+      <desc id="fig8-d">A loop of six steps. An incident leads to a post-incident review, which re-rates the risk register, which sends control gaps into the corrective action plan, which produces evidence and metrics, which update preparation, which shapes how the next incident is handled. Legal and compliance review notification obligations throughout.</desc>
+      <defs>
+        <marker id="fig8-mc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#00d1ff"/></marker>
+        <marker id="fig8-mp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a78bfa"/></marker>
+        <marker id="fig8-mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2ee59d"/></marker>
+        <marker id="fig8-ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#ffc46b"/></marker>
+      </defs>
+      <g font-family="Inter, system-ui, sans-serif" font-size="12" fill="#b6bfce" text-anchor="middle">
+        <rect x="30" y="40" width="170" height="60" rx="12" fill="rgba(255,196,107,.08)" stroke="#ffc46b"/>
+        <text x="115" y="65" fill="#eef2f8" font-size="14" font-weight="600">Incident</text>
+        <text x="115" y="84">detect, contain, recover</text>
+        <rect x="295" y="40" width="170" height="60" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+        <text x="380" y="65" fill="#eef2f8" font-size="14" font-weight="600">Post-incident review</text>
+        <text x="380" y="84">what failed, and why</text>
+        <rect x="560" y="40" width="170" height="60" rx="12" fill="rgba(0,209,255,.08)" stroke="#00d1ff"/>
+        <text x="645" y="65" fill="#eef2f8" font-size="14" font-weight="600">Risk register</text>
+        <text x="645" y="84">re-rate likelihood, impact</text>
+        <rect x="560" y="200" width="170" height="60" rx="12" fill="rgba(167,139,250,.08)" stroke="#a78bfa"/>
+        <text x="645" y="225" fill="#eef2f8" font-size="14" font-weight="600">Controls</text>
+        <text x="645" y="244">gaps into the action plan</text>
+        <rect x="295" y="200" width="170" height="60" rx="12" fill="rgba(46,229,157,.07)" stroke="rgba(46,229,157,.6)"/>
+        <text x="380" y="225" fill="#eef2f8" font-size="14" font-weight="600">Evidence and metrics</text>
+        <text x="380" y="244">show the fix works</text>
+        <rect x="30" y="200" width="170" height="60" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+        <text x="115" y="225" fill="#eef2f8" font-size="14" font-weight="600">Preparation</text>
+        <text x="115" y="244">policy, playbooks, training</text>
+        <g fill="none" stroke-width="1.5">
+          <path d="M200 70 L291 70" stroke="#00d1ff" marker-end="url(#fig8-mc)"/>
+          <path d="M465 70 L556 70" stroke="#00d1ff" marker-end="url(#fig8-mc)"/>
+          <path d="M645 100 L645 196" stroke="#a78bfa" marker-end="url(#fig8-mp)"/>
+          <path d="M560 230 L469 230" stroke="#2ee59d" marker-end="url(#fig8-mg)"/>
+          <path d="M295 230 L204 230" stroke="#2ee59d" marker-end="url(#fig8-mg)"/>
+          <path d="M115 200 L115 104" stroke="#ffc46b" stroke-dasharray="4 4" marker-end="url(#fig8-ma)"/>
+        </g>
+        <text x="380" y="146" fill="#eef2f8" font-size="13">Each incident is read back</text>
+        <text x="380" y="164">into risk, controls and evidence</text>
+        <text x="380" y="290" font-size="11" letter-spacing="2" fill="#7f8a9d">LEGAL AND COMPLIANCE REVIEW NOTIFICATION THROUGHOUT</text>
+      </g>
+    </svg>
+    <figcaption>An incident is closed when the program has changed, not only when systems are restored.</figcaption>
+  </figure>
+</section>
+
+<section class="lx-sec" id="change">
+  <h2><span class="lx-n">5</span>Change: keeping the program current</h2>
+  <p>A GRC program describes the organization as it was when someone last looked. Every significant change makes part of it wrong: scope that misses a system, risks never assessed, controls mapped to an environment that is gone. The triggers are predictable:</p>
+  <ul class="lx-list">
+    <li><strong>New products and markets.</strong> New data types, new obligations and new frameworks customers ask about.</li>
+    <li><strong>Acquisitions.</strong> The acquired company brings its own systems, vendors and gaps. Its controls belong in the common control set, not beside it.</li>
+    <li><strong>Cloud migrations.</strong> Some controls shift to the provider and new configurations become yours, so owners and evidence sources change.</li>
+    <li><strong>New regulations.</strong> New obligations to map against existing controls, with the gaps planned and owned.</li>
+    <li><strong>New technology, such as AI.</strong> Questions about where company data goes, who sees the outputs and which new rules apply.</li>
+  </ul>
+  <p>The answer is not a bigger annual review. It is one question built into existing processes such as procurement, architecture review and product launch: does this change our scope, our risks or our controls? If so, the assessment reopens before the change ships.</p>
+  <aside class="lx-note"><p class="lx-note-k">Example</p><p>Big Venture plans a feature that uses a third-party AI model to flag unusual shipment patterns. One change touches the whole course: a new critical vendor to tier, customer data flowing somewhere new, a risk assessment for wrong or leaked outputs, contract terms on whether the provider may train on customer data, and emerging AI rules to map.</p></aside>
+</section>
+
+<section class="lx-sec" id="together">
+  <h2><span class="lx-n">6</span>Putting it together</h2>
+  <p>This course began with three questions. They are also a fair test of this lesson.</p>
+  <div class="lx-trio">
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Governance</p>
+      <p class="lx-trio-q">Who decided?</p>
+      <p>Someone owns every vendor relationship, every post-incident action and every accepted change in risk, and the record says who.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Risk</p>
+      <p class="lx-trio-q">What could go wrong?</p>
+      <p>The register reflects vendors, past incidents and recent changes, not only the risks obvious when it was first written.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Compliance</p>
+      <p class="lx-trio-q">Can we show it?</p>
+      <p>Due diligence, contracts, incident reviews and closed actions leave evidence an auditor, customer or board can follow.</p>
+    </div>
+  </div>
+  <p>The five signs of maturity from the first lesson still hold, stretched past the organization's own walls:</p>
+  <ul class="lx-checklist">
+    <li>Every control has a named owner, including the ones a vendor runs for you and the ones it expects you to run.</li>
+    <li>Every significant risk ends in a decision, vendor approvals and re-ratings included.</li>
+    <li>Evidence is collected as the work happens, from each year's vendor report to the incident timeline.</li>
+    <li>One control answers every framework, and a new regulation or acquisition is mapped into it.</li>
+    <li>Leadership sees one picture, and it includes third parties, incidents and change.</li>
+  </ul>
+</section>
+
+<section class="lx-sec lx-practice" id="practice">
+  <h2><span class="lx-n">7</span>In practice: test the program beyond your walls</h2>
+  <p>Take forty-five minutes with your vendor list and risk register.</p>
+  <ol class="lx-steps">
+    <li><strong>Tier five vendors.</strong> Pick five from your inventory or last quarter's invoices, note each one's data and access, and assign a tier. Does the scrutiny each gets match its tier?</li>
+    <li><strong>Read one report properly.</strong> For your most critical vendor, write down the scope, the period or expiry date, any exceptions, and the controls it expects you to run. Who on your side runs them?</li>
+    <li><strong>Trace one incident.</strong> Choose a recent incident or near miss. Which risk did it touch, was it re-rated, and where are the follow-up actions tracked?</li>
+    <li><strong>Plant one trigger.</strong> Find one existing process where a single question about scope, risk and controls would catch change early. Write the question and name who answers it.</li>
+  </ol>
+</section>
+
+<section class="lx-sec" id="terms">
+  <h2><span class="lx-n">8</span>Key terms</h2>
+  <dl class="lx-terms">
+    <div><dt>Fourth party</dt><dd>A third party's own supplier or subcontractor, usually managed through the contract with the third party.</dd></div>
+    <div><dt>Vendor tiering</dt><dd>Ranking vendors by criticality, data and access so that due diligence and monitoring match the risk each one carries.</dd></div>
+    <div><dt>Bridge letter</dt><dd>A statement from a service organization's management covering the time since its last report period ended.</dd></div>
+    <div><dt>Complementary user entity controls</dt><dd>Controls a service organization assumes its customers operate, listed in its SOC 2 report.</dd></div>
+    <div><dt>Post-incident review</dt><dd>A structured look back at an incident, ending in owned, dated changes to risks, controls and policy.</dd></div>
+  </dl>
+</section>
+
+          <section class="lx-check" id="check" aria-labelledby="lx-check-h">
+            <div class="lx-check-head"><h2 id="lx-check-h">Knowledge check</h2><span class="lx-check-score" data-score>5 questions</span></div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q1</span>A critical vendor sends a SOC 2 Type II report whose period ended nine months ago. It lists one exception in access reviews and carves out the vendor's hosting provider. What is the soundest reading?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>It is clean enough: one exception is normal, and the auditor's opinion speaks for the vendor's current controls.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>It is too old to rely on, so decline the vendor, or pause onboarding, until a report for the current year is issued.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>It covers a past period: get a bridge letter, follow up the exception, and assess the carved-out host separately.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>The carve-out means the hosting provider was tested by the same auditor in a separate report, so no more work is needed.</span></button></div>
+              <p class="lx-why" data-why="A Type II report describes a period that has ended, an exception needs a response, and a carved-out subservice organization was not tested in this report. An older report is still useful evidence; it just needs the gap and the exclusions covered." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q2</span>Procurement wants to skip the security review of a new critical vendor because its external security rating is excellent. What should the GRC team say?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>The rating is one input: it sees only what is visible from the internet, so complete the diligence the tier requires.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Agreed: an excellent rating is independent, continuously updated evidence and can replace the questionnaire and report.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>Ratings are unreliable and should never be used in vendor decisions, at any tier, so remove them from the process.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Skip the review for now and run the full diligence at the first renewal, once the vendor has been in use for a year.</span></button></div>
+              <p class="lx-why" data-why="External ratings are useful for spotting changes and triaging lower tiers, but they cannot see internal practices and can include assets the vendor does not own. For a critical vendor they complement due diligence; they do not replace it." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q3</span>After a phishing incident at Big Venture is contained, which follow-up best reflects a mature GRC program?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>Close the ticket once systems are restored and users can sign in again, since recovery was the goal of the response.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Send the whole company a phishing reminder, enroll the affected users in extra training, and record it as resolved.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>Ask the incident response team to write a report and file it with last year's audit evidence, ready for the next audit.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Re-rate the risk, give each gap an owner and date, update policy and training, track metrics, and have legal review notification.</span></button></div>
+              <p class="lx-why" data-why="An incident is closed for GRC purposes when the program has changed: the risk re-rated, gaps owned and tracked, policy updated, metrics recorded and notification obligations reviewed by the people who own them." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q4</span>Big Venture acquires a smaller company with its own cloud environment, vendors and security policies. What should the GRC program do?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>Leave the acquired company's program running separately until the next annual review brings it into scope.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Treat it as a trigger: reopen scope, assess its risks and vendors, and map its controls into one control set.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>Ask the acquired company to adopt Big Venture's policies and treat its controls as matching from that date.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Wait for the next external audit to report any gaps the acquisition introduced, then plan the fixes from that.</span></button></div>
+              <p class="lx-why" data-why="Acquisitions bring new systems, vendors and gaps. Reopening scope and risk assessment and mapping the new controls into one control set keeps the program accurate; running it alongside or waiting for an audit recreates the fragmentation this course warns against." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q5</span>Big Venture ends its contract with a vendor that held employee bank details. Which offboarding step matters most?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>Sending the vendor a closing survey and recording its final service levels in the inventory</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Archiving the vendor's last questionnaire and report with the contract for future reference</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>Revoking its access and getting the data returned, or written confirmation it was deleted</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Lowering the vendor's tier to low now the contract has ended, and closing its record</span></button></div>
+              <p class="lx-why" data-why="The risk does not end with the contract while the vendor still has access or holds your data. Revoking access and confirming return or deletion closes the exposure, and the inventory is then updated to match." aria-live="polite"></p>
+            </div>
+            <div class="lx-check-foot">
+              <p>Answer every question to complete the lesson. Your answers stay in this browser.</p>
+              <span>
+                <button type="button" class="sx-btn sx-btn-ghost" data-retry style="cursor:pointer;font:inherit">Try again</button>
+                <button type="button" class="sx-btn sx-btn-primary" data-complete disabled style="cursor:pointer;font:inherit">Complete the lesson <span class="sx-arrow" aria-hidden="true">✓</span></button>
+                <span class="lx-done" data-complete-msg hidden>✓ Lesson complete</span>
+              </span>
+            </div>
+          </section>
+          <aside class="lx-bridge" aria-label="See it in AiVRIC Enterprise Vision">
+            <div class="lx-bridge-copy">
+              <p class="sx-eyebrow">See it in AiVRIC Enterprise Vision</p>
+              <h3>Vendors and threats in the same record</h3>
+              <p>Enterprise Vision rates every vendor through Black Kite (grade, cyber score, ransomware susceptibility and probable financial impact) tied to your own POA&amp;M, and brings threat intelligence into the same workspace as your risk register, controls and decisions.</p>
+              <a class="sx-btn sx-btn-ghost" href="https://aivric.com/enterprise/?utm_source=academy&utm_medium=web&utm_campaign=learning&utm_content=grc-management_beyond">See Enterprise Vision <span class="sx-arrow" aria-hidden="true">→</span></a>
+            </div>
+            <figure><img src="../../../assets/learn/stills/threats.jpg" alt="Threat intelligence in AiVRIC Enterprise Vision, in a demo workspace" loading="lazy" decoding="async" width="1280" height="800" /><figcaption>Demo workspace · sample data</figcaption></figure>
+          </aside>
+          <nav class="lx-pager" aria-label="Lessons">
+            <a href="../operating/"><small>← Previous</small><b>Running the program: cadence, metrics and reporting</b></a>
+            <a class="is-next" href="../"><small>Course complete →</small><b>Back to the course</b></a>
+          </nav>
+        </article>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+          <p>Security, compliance, and risk intelligence, hosted on Google Cloud in the US.</p>
+          <p class="footer-contact"><a href="mailto:info@aivric.com">info@aivric.com</a><br /><a href="tel:+19543426637">+1 954 342 6637</a></p>
+          <p class="footer-social"><a href="https://www.linkedin.com/company/aivric">LinkedIn</a> · <a href="https://x.com/aivric">X</a> · <a href="https://www.facebook.com/61581937785235/">Facebook</a> · <a href="https://www.instagram.com/aivrictechnologies/">Instagram</a></p>
+        </div>
+        <div>
+          <h4>Use Cases</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/compliance/">Compliance Overview</a>
+            <a href="https://aivric.com/compliance/hipaa/">HIPAA</a>
+            <a href="https://aivric.com/compliance/soc2/">SOC 2</a>
+            <a href="https://aivric.com/compliance/cmmc/">CMMC</a>
+            <a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a>
+            <a href="https://aivric.com/enterprise/ciso/">For the CISO</a>
+          </div>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a>
+            <a href="https://aivric.com/providers/">Client Vision</a>
+            <a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a>
+            <a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a>
+            <a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a>
+            <a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a>
+            <a href="https://aivric.com/solutions-portal.html">All Products</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/about.html">About Us</a><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a><a href="https://aivric.com/pricing.html">Pricing</a><a href="https://aivric.com/blog-portal.html">Blog</a
+            ><a href="https://aivric.com/trust/">Trust Center</a><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a><a href="../../../">Academy</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>&copy; 2026 AiVRIC Technologies. All Rights Reserved.</span>
+        <span class="footer-pill">ISO 27001-Aligned</span>
+        <span><a href="https://aivric.com/terms-of-use.html">Terms of Service</a> · <a href="https://aivric.com/privacy-policy.html">Privacy Policy</a></span>
+      </div>
+    </footer>
+
+    <script type="application/json" id="lx-data">{"course":"grc-management","lesson":"beyond","checks":[{"answer":2},{"answer":0},{"answer":3},{"answer":1},{"answer":2}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AiVRIC Learning","item":"https://academy.aivric.com/"},{"@type":"ListItem","position":2,"name":"Foundations","item":"https://academy.aivric.com/foundations/"},{"@type":"ListItem","position":3,"name":"GRC Management Fundamentals","item":"https://academy.aivric.com/foundations/grc-management/"},{"@type":"ListItem","position":4,"name":"Beyond the walls: third parties, incidents and change","item":"https://academy.aivric.com/foundations/grc-management/beyond/"}]},{"@type":"LearningResource","name":"Beyond the walls: third parties, incidents and change","description":"Third-party risk across the vendor lifecycle, how incidents feed back into risk and controls, and keeping a program current as the business changes.","url":"https://academy.aivric.com/foundations/grc-management/beyond/","isAccessibleForFree":true,"timeRequired":"PT40M","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"GRC Management Fundamentals","url":"https://academy.aivric.com/foundations/grc-management/"},"provider":{"@type":"Organization","name":"AiVRIC","sameAs":"https://aivric.com/"}}]}</script>
+    <script defer src="../../../assets/kit/mnav.js"></script>
+    <script defer src="../../../assets/kit/site.js"></script>
+    <script defer src="../../../assets/learn/learn.js"></script>
+  </body>
+</html>

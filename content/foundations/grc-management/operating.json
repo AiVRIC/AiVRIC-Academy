@@ -1,0 +1,65 @@
+{
+  "objectives": [
+    "Lay out an annual, quarterly, monthly and continuous GRC calendar",
+    "Tell KPIs, KRIs and control effectiveness measures apart, and leading from lagging",
+    "Define a metric with an owner, source, target and an honest \"not measured\"",
+    "Write a board report that leads with a verdict and asks for decisions"
+  ],
+  "checks": [
+    {
+      "q": "A dashboard shows \"0 overdue vendor assessments\" in green, but the export from the vendor management tool has failed for two months. How should the next report show this metric?",
+      "options": [
+        "Keep it green, since the tool recorded no overdue assessments in the period.",
+        "As \"not measured\", with the reason and the date data is expected back.",
+        "Leave it out of the report until the export is fixed and the data is complete.",
+        "Carry forward the last successful value, since vendor status changes slowly."
+      ],
+      "answer": 1,
+      "why": "A missing value is a gap, not zero and not green. Showing it as green claims something nobody knows; dropping it or carrying an old value forward hides the gap. \"Not measured\" with a reason and a date is honest and can be acted on."
+    },
+    {
+      "q": "Which of these is a key risk indicator rather than a key performance indicator?",
+      "options": [
+        "Percentage of staff who completed security awareness training by the annual deadline",
+        "Number of policies reviewed and re-approved by their named owners this year",
+        "Number of internet-facing servers with critical vulnerabilities older than 30 days",
+        "Percentage of steering committee meetings held on schedule with a quorum present"
+      ],
+      "answer": 2,
+      "why": "The other three measure whether the program is doing its own work. Aging critical vulnerabilities on exposed systems track a condition that changes the likelihood of a specific risk, which is what a KRI does."
+    },
+    {
+      "q": "A CISO's draft board paper opens with twelve pages of dashboard charts and ends with \"questions welcome\". What change matters most?",
+      "options": [
+        "Open with a verdict against appetite, the top risks and their direction, and the decisions needed.",
+        "Add charts for the remaining controls so the board can see the whole program in one place.",
+        "Replace the charts with a full table of open findings, each with its owner and due date.",
+        "Move the paper to an appendix and present the same charts verbally at the meeting instead."
+      ],
+      "answer": 0,
+      "why": "A board report is a decision document. Directors need the position against appetite, the few risks that matter and the decisions in front of them, not more operator-level detail."
+    },
+    {
+      "q": "Last quarter 88% of critical controls were reported as fully implemented; this quarter it is 93%. This quarter the team also stopped counting controls on systems being decommissioned. What should the report do?",
+      "options": [
+        "Report the rise to 93% as the quarter's improvement in control implementation.",
+        "Average the two quarters to smooth out the change and report about 90%.",
+        "Drop the metric for this quarter, since the two figures cannot be compared.",
+        "Note the definition change and restate last quarter's figure on that basis."
+      ],
+      "answer": 3,
+      "why": "Part of the rise may be a change in counting, not in controls. Saying so and restating the earlier figure on the new definition keeps the trend comparing like with like."
+    },
+    {
+      "q": "Which activity normally belongs in the monthly rhythm rather than the annual one?",
+      "options": [
+        "Refreshing the organization-wide risk assessment and its ratings",
+        "Checking which exceptions and risk acceptances expire next month",
+        "Reviewing the risk appetite statement with the board of directors",
+        "Reviewing and re-approving the full set of security policies"
+      ],
+      "answer": 1,
+      "why": "Expiring exceptions need a short loop so none lapse unnoticed. Risk assessment refresh, appetite review and policy re-approval are larger exercises usually run once a year."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+<section class="lx-sec" id="kinds">
+  <h2><span class="lx-n">1</span>Must, agreed, chosen</h2>
+  <p>Every compliance program starts with a list of things the organization is expected to meet. The names look alike but carry very different weight, so first sort each one by where its authority comes from:</p>
+  <div class="lx-trio">
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Laws and regulations</p>
+      <p class="lx-trio-q">What must we do, whatever we prefer?</p>
+      <p>Set by governments, enforced by regulators with investigations and penalties. Examples: the HIPAA Security Rule, the GDPR.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Contractual obligations</p>
+      <p class="lx-trio-q">What did we sign up to?</p>
+      <p>Binding because the organization agreed to them, enforced by the other party. Examples: PCI DSS, which reaches merchants through the card brands and their banks; security terms in customer contracts.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Standards and frameworks</p>
+      <p class="lx-trio-q">What do we use to organize and prove our work?</p>
+      <p>Voluntary in law, adopted by choice, often because customers ask. Examples: ISO/IEC 27001, SOC 2, NIST CSF.</p>
+    </div>
+  </div>
+  <p>Take a fictional 350-person company selling a patient scheduling platform to clinics in the US and Europe. Handling health data for US clinics makes it a business associate, so the HIPAA Security Rule applies to it directly. Processing patient data for European clinics brings the GDPR. Taking card payments brings PCI DSS through its bank. Larger customers' contracts add terms such as breach notice deadlines and annual penetration tests.</p>
+  <p>None of that is optional. Then come the frameworks, in three kinds:</p>
+  <ul class="lx-list">
+    <li><strong>Certifiable standards</strong>, such as ISO/IEC 27001, where an accredited body audits the organization and issues a certificate.</li>
+    <li><strong>Attestation frameworks</strong>, such as SOC 2, where an independent auditor examines the organization's controls against published criteria and issues a report with an opinion.</li>
+    <li><strong>Voluntary frameworks and catalogs</strong>, such as NIST CSF, NIST SP 800-53 and CIS Controls, used to structure the program. Nothing is issued.</li>
+  </ul>
+  <aside class="lx-def"><p class="lx-def-k">Definition</p><p>A <strong>framework</strong> is a published, structured set of requirements, outcomes or controls that an organization uses to build, measure or demonstrate its security program. A framework only becomes mandatory when a law, regulation or contract makes it so.</p></aside>
+</section>
+
+<section class="lx-sec" id="iso27001">
+  <h2><span class="lx-n">2</span>ISO/IEC 27001: a certifiable management system</h2>
+  <p>ISO/IEC 27001, published jointly by ISO and IEC and currently in its 2022 edition, specifies the requirements for an <strong>information security management system</strong> (ISMS). It certifies how an organization manages security, not a product or a set of technical settings.</p>
+  <p>The standard has two parts that work differently:</p>
+  <ul class="lx-list">
+    <li><strong>Clauses 4 to 10</strong> are the management system requirements, and all of them apply: context and scope, leadership, planning (including risk assessment and treatment), support, operation, performance evaluation and improvement.</li>
+    <li><strong>Annex A</strong> is a reference list of controls. The organization checks its risk treatment against it and records which controls apply, and why, in a <strong>Statement of Applicability</strong>.</li>
+  </ul>
+  <p>The 2022 edition reorganized Annex A into 93 controls in four themes:</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">Organizational</p><p>Policies, roles, assets, suppliers, incident management, continuity and legal requirements.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">People</p><p>Screening, terms of employment, awareness and training, and duties after someone leaves.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Physical</p><p>Secure areas, entry controls, equipment protection, clear desk and secure disposal.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Technological</p><p>Authentication, access rights, malware protection, logging, backup and secure development.</p></div>
+  </div>
+  <p>A companion standard, <strong>ISO/IEC 27002</strong>, is guidance on each Annex A control: its purpose and typical implementation. Organizations certify against 27001, never 27002.</p>
+  <p>Certification is done by a <strong>certification body</strong> that has itself been accredited to audit against the standard. The certificate covers a defined scope, such as one product and the teams that run it, and is kept current by periodic surveillance audits and recertification. On someone else's certificate, read the scope statement first.</p>
+</section>
+
+<section class="lx-sec" id="soc2">
+  <h2><span class="lx-n">3</span>SOC 2: an attestation, not a certificate</h2>
+  <p>SOC 2 is an examination framework from the AICPA, the US professional body for CPAs. A licensed CPA firm examines a service organization's system description and controls against the <strong>Trust Services Criteria</strong> and issues a report with its opinion. There is no certificate and no pass mark: the deliverable is the report, usually shared with customers under a nondisclosure agreement.</p>
+  <p>The criteria are grouped into five categories, and the organization chooses which are in scope:</p>
+  <ul class="lx-list">
+    <li><strong>Security</strong> is always included. Its criteria, known as the common criteria, form the core of every SOC 2 report.</li>
+    <li><strong>Availability, processing integrity, confidentiality and privacy</strong> are optional, added when customers rely on them: availability for a hosting service, processing integrity for a payroll processor.</li>
+  </ul>
+  <p>The criteria describe what must be achieved, not how. Each organization designs its own controls to meet them, so two SOC 2 reports can look very different. How the examination works, including Type I and Type II reports, is lesson 6.</p>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>Neither a SOC 2 report nor an ISO/IEC 27001 certificate shows that an organization meets HIPAA, the GDPR or PCI DSS. They overlap a great deal, but each law and contract has requirements of its own.</p></aside>
+</section>
+
+<section class="lx-sec" id="nist-cis">
+  <h2><span class="lx-n">4</span>NIST CSF, NIST SP 800-53 and CIS Controls</h2>
+  <p>The voluntary frameworks issue nothing. They give a program its structure and vocabulary without an auditor's schedule attached.</p>
+  <p>The <strong>NIST Cybersecurity Framework (CSF) 2.0</strong> describes security as outcomes, not controls, and is written for organizations of any size or sector. It is organized into six functions, each broken into categories and subcategories:</p>
+  <ul class="lx-list">
+    <li><strong>Govern:</strong> strategy, expectations, roles and policy, new as a function in version 2.0.</li>
+    <li><strong>Identify:</strong> understanding assets, risks and where to improve.</li>
+    <li><strong>Protect:</strong> safeguards that manage risk.</li>
+    <li><strong>Detect:</strong> finding and analyzing possible attacks and compromises.</li>
+    <li><strong>Respond:</strong> acting on a detected incident.</li>
+    <li><strong>Recover:</strong> restoring operations after an incident.</li>
+  </ul>
+  <p>Organizations use the CSF to describe a current and a target profile; the gap between them becomes a roadmap.</p>
+  <p><strong>NIST SP 800-53 Rev. 5</strong> is a detailed catalog of security and privacy controls, grouped into families such as access control, incident response and supply chain risk management, with enhancements that add rigor. It is mandatory for US federal information systems, with baselines published in SP 800-53B, and widely used elsewhere as a model of a well-specified control.</p>
+  <p><strong>CIS Controls v8</strong>, from the Center for Internet Security, is a prioritized set of 18 controls, each broken into specific safeguards. Its Implementation Groups set the order: IG1 is the essential baseline for every organization, IG2 adds safeguards for more complex environments, and IG3 adds the rest for those facing sophisticated attackers.</p>
+  <aside class="lx-note"><p class="lx-note-k">Example</p><p>The scheduling company uses CIS IG1 to decide what to fix first, reports to its board in the six CSF functions, and borrows 800-53 wording when it writes controls. None is audited; all three shape the control set the audits examine.</p></aside>
+</section>
+
+<section class="lx-sec" id="choosing">
+  <h2><span class="lx-n">5</span>Side by side, and choosing</h2>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Name</th><th>Type</th><th>Issued by</th><th>What you get</th><th>Typical driver</th></tr></thead>
+      <tbody>
+        <tr><td>HIPAA Security Rule</td><td>Law (US regulation)</td><td>US Department of Health and Human Services</td><td>Nothing issued; the regulator enforces</td><td>Handling electronic health information</td></tr>
+        <tr><td>GDPR</td><td>Law (EU regulation)</td><td>European Union</td><td>Nothing issued; supervisory authorities enforce</td><td>Personal data of people in the EU</td></tr>
+        <tr><td>PCI DSS</td><td>Contractual standard</td><td>PCI Security Standards Council; card brands enforce</td><td>A self-assessment or an assessor's report</td><td>Accepting card payments</td></tr>
+        <tr><td>ISO/IEC 27001:2022</td><td>Certifiable standard</td><td>ISO and IEC</td><td>A certificate for a defined scope</td><td>International customers and tenders</td></tr>
+        <tr><td>SOC 2</td><td>Attestation framework</td><td>AICPA</td><td>A CPA firm's report and opinion</td><td>US customers' vendor reviews</td></tr>
+        <tr><td>NIST CSF 2.0</td><td>Voluntary framework</td><td>NIST</td><td>None; profiles you build yourself</td><td>Structuring and reporting a program</td></tr>
+        <tr><td>NIST SP 800-53 Rev. 5</td><td>Control catalog</td><td>NIST</td><td>None by itself</td><td>US federal systems; a reference library</td></tr>
+        <tr><td>CIS Controls v8</td><td>Prioritized control set</td><td>Center for Internet Security</td><td>None</td><td>A practical starting baseline</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Choosing is less about which framework is best and more about who is asking. Work through three questions in order:</p>
+  <ul class="lx-list">
+    <li><strong>What does the law require?</strong> Not choices. List them first.</li>
+    <li><strong>What do customers require?</strong> Read contracts, lost deals and questionnaires. US buyers often ask for SOC 2; European buyers and public tenders often ask for ISO/IEC 27001.</li>
+    <li><strong>What does the business need?</strong> A voluntary framework to structure and report on the program.</li>
+  </ul>
+  <p>Then sequence. The scheduling company's US pipeline keeps asking for SOC 2, and a European hospital group wants ISO/IEC 27001 next year. It builds one control set against both and its legal obligations, takes the SOC 2 examination first because that unblocks the most revenue, then pursues certification on the same controls and evidence.</p>
+</section>
+
+<section class="lx-sec" id="crosswalk">
+  <h2><span class="lx-n">6</span>Crosswalks and the common control set</h2>
+  <p>A <strong>crosswalk</strong> (or mapping) records which requirements in one framework correspond to which in another. Built around the organization's own controls, it becomes a <strong>common control set</strong>: each control written, owned and tested once, and mapped to every requirement it answers.</p>
+  <figure class="lx-fig">
+    <svg viewBox="0 0 760 320" role="img" aria-labelledby="fig3-t fig3-d">
+      <title id="fig3-t">One control, many requirements</title>
+      <desc id="fig3-d">A single control, multi-factor authentication on remote, administrative and application access, sits in the center. Lines connect it to six requirements: ISO/IEC 27001 Annex A 8.5, NIST SP 800-53 IA-2 enhancements, and HIPAA 164.312(d) on the left; SOC 2 CC6.1, NIST CSF PR.AA and CIS Control 6 on the right. Solid lines mean the control meets the requirement; dashed lines mean it meets part of it. One evidence record sits under the control.</desc>
+      <defs>
+        <linearGradient id="fig3-g" x1="0" x2="1"><stop offset="0" stop-color="#00d1ff"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+      </defs>
+      <g font-family="Inter, system-ui, sans-serif" font-size="13" fill="#b6bfce">
+        <text x="20" y="28" font-size="11" letter-spacing="2" fill="#7f8a9d">REQUIREMENTS</text>
+        <text x="740" y="28" font-size="11" letter-spacing="2" fill="#7f8a9d" text-anchor="end">REQUIREMENTS</text>
+        <g>
+          <rect x="20" y="48" width="200" height="48" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+          <text x="34" y="68" fill="#eef2f8">ISO/IEC 27001</text><text x="34" y="85" font-size="11.5">A.8.5 Secure authentication</text>
+          <rect x="20" y="118" width="200" height="48" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+          <text x="34" y="138" fill="#eef2f8">NIST SP 800-53</text><text x="34" y="155" font-size="11.5">IA-2(1) and IA-2(2)</text>
+          <rect x="20" y="188" width="200" height="48" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+          <text x="34" y="208" fill="#eef2f8">HIPAA Security Rule</text><text x="34" y="225" font-size="11.5">164.312(d) authentication</text>
+        </g>
+        <g>
+          <rect x="540" y="48" width="200" height="48" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+          <text x="554" y="68" fill="#eef2f8">SOC 2</text><text x="554" y="85" font-size="11.5">CC6.1 logical access</text>
+          <rect x="540" y="118" width="200" height="48" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+          <text x="554" y="138" fill="#eef2f8">NIST CSF 2.0</text><text x="554" y="155" font-size="11.5">PR.AA identity and access</text>
+          <rect x="540" y="188" width="200" height="48" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+          <text x="554" y="208" fill="#eef2f8">CIS Controls v8</text><text x="554" y="225" font-size="11.5">Control 6 access control</text>
+        </g>
+        <g stroke="url(#fig3-g)" stroke-width="1.4" fill="none" opacity=".85">
+          <path d="M220 142 C 250 142, 255 142, 280 142"/>
+          <path d="M220 212 C 252 212, 256 168, 280 164"/>
+        </g>
+        <g stroke="#a78bfa" stroke-width="1.4" fill="none" opacity=".8" stroke-dasharray="4 4">
+          <path d="M220 72 C 252 72, 256 116, 280 120"/>
+          <path d="M540 72 C 508 72, 504 116, 480 120"/>
+          <path d="M540 142 C 510 142, 505 142, 480 142"/>
+          <path d="M540 212 C 508 212, 504 168, 480 164"/>
+        </g>
+        <rect x="280" y="92" width="200" height="100" rx="14" fill="rgba(0,209,255,.08)" stroke="#00d1ff"/>
+        <text x="380" y="124" text-anchor="middle" fill="#eef2f8" font-size="15" font-weight="600">One control</text>
+        <text x="380" y="146" text-anchor="middle">MFA on remote, admin</text>
+        <text x="380" y="164" text-anchor="middle">and application access</text>
+        <path d="M380 192 L380 250" stroke="rgba(46,229,157,.6)" stroke-width="1.4"/>
+        <rect x="262" y="250" width="236" height="40" rx="10" fill="rgba(46,229,157,.07)" stroke="rgba(46,229,157,.6)"/>
+        <text x="380" y="275" text-anchor="middle" fill="#eef2f8">One owner, one evidence record</text>
+        <path d="M20 270 L60 270" stroke="#00d1ff" stroke-width="1.6"/><text x="68" y="274" font-size="11.5">meets the requirement</text>
+        <path d="M20 294 L60 294" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="4 4"/><text x="68" y="298" font-size="11.5">meets part of it</text>
+      </g>
+    </svg>
+    <figcaption>One control answers six requirements. Most mappings are partial: the control is one of several that together meet each requirement.</figcaption>
+  </figure>
+  <p>The type of each mapping matters. Multi-factor authentication fully answers a requirement to verify who is seeking access, but only partly answers SOC 2's logical access criterion, which also expects access to be granted, removed and reviewed. Recording that MFA covers CC6.1, without "partially", leaves a gap an auditor will find. The usual relationships:</p>
+  <ul class="lx-list">
+    <li><strong>Equivalent:</strong> the control and the requirement ask for the same thing.</li>
+    <li><strong>Partial:</strong> the control covers part of the requirement; other controls cover the rest.</li>
+    <li><strong>Broader:</strong> the control does more than the requirement asks.</li>
+    <li><strong>Related:</strong> the topics overlap, but neither satisfies the other.</li>
+  </ul>
+  <p>Mappings also age. ISO/IEC 27001's move to the 2022 edition renumbered and regrouped Annex A; CSF 2.0 added a function. Each mapping should record the edition it points to, its owner and its last review, so a framework update becomes a planned review rather than a surprise.</p>
+  <p>Meta-frameworks such as the Secure Controls Framework publish a control set already mapped to many laws and frameworks; some programs start from one. The mappings remain the organization's to check.</p>
+</section>
+
+<section class="lx-sec lx-practice" id="practice">
+  <h2><span class="lx-n">7</span>In practice: build a one-page crosswalk</h2>
+  <p>Forty-five minutes and a spreadsheet.</p>
+  <ol class="lx-steps">
+    <li><strong>Sort your obligations.</strong> List every law, contract and framework that applies, and label each must, agreed or chosen.</li>
+    <li><strong>Pick three controls</strong> you already run, such as MFA, backups and access reviews. Write each as one sentence with an owner.</li>
+    <li><strong>Map each control</strong> to the matching requirement in at least three of your obligations. Mark every mapping as equivalent, partial, broader or related, and note the edition you mapped to.</li>
+    <li><strong>Find the gaps.</strong> For every partial mapping, name the control that covers the rest. If there is none, you found the gap before an auditor did.</li>
+  </ol>
+</section>
+
+<section class="lx-sec" id="terms">
+  <h2><span class="lx-n">8</span>Key terms</h2>
+  <dl class="lx-terms">
+    <div><dt>Certification</dt><dd>An accredited certification body's formal statement that a management system, within a stated scope, meets a standard such as ISO/IEC 27001.</dd></div>
+    <div><dt>Attestation</dt><dd>An independent auditor's examination and written opinion on an organization's controls against published criteria, as in a SOC 2 report.</dd></div>
+    <div><dt>Statement of Applicability</dt><dd>The ISO/IEC 27001 record of which Annex A controls the organization applies, which it excludes, and why.</dd></div>
+    <div><dt>Trust Services Criteria</dt><dd>The AICPA's criteria for SOC 2, grouped into security (always in scope), availability, processing integrity, confidentiality and privacy.</dd></div>
+    <div><dt>Crosswalk</dt><dd>A recorded mapping between frameworks' requirements, or between an organization's controls and those requirements.</dd></div>
+    <div><dt>Common control set</dt><dd>One set of owned controls, each mapped to every requirement it answers, so that work and evidence are done once and reused.</dd></div>
+  </dl>
+</section>

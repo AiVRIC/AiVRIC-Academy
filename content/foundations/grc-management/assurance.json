@@ -1,0 +1,65 @@
+{
+  "objectives": [
+    "Tell a test of design from a test of operating effectiveness",
+    "Judge whether evidence is audit-ready, and strengthen weak evidence",
+    "Explain how SOC 2 Type I and Type II reports and ISO 27001 certification audits work",
+    "Turn a finding into a tracked corrective action and validate the fix"
+  ],
+  "checks": [
+    {
+      "q": "A tester walks one offboarding request through from HR ticket to account deactivation and confirms the procedure would remove access within a day. What has the test shown?",
+      "options": [
+        "That the control operated effectively for the whole year, since the walkthrough used a real request",
+        "That the control is ready to be included in a SOC 2 Type II report without further sampling",
+        "That the control is suitably designed, but not yet that it operated consistently over the period",
+        "That no further testing is needed, because a walkthrough covers both design and operation"
+      ],
+      "answer": 2,
+      "why": "A single walkthrough is a test of design. Operating effectiveness needs instances sampled from across the period and checked against the control description."
+    },
+    {
+      "q": "In an interview, the owner of the quarterly access review explains clearly how each review is done and says none were missed. The auditor still asks for more. Why?",
+      "options": [
+        "Inquiry alone does not show it operated; inspection, observation or re-performance must back it up",
+        "Auditors may not rely on anything a control owner says, so the interview carries no weight as evidence",
+        "Interviews count as evidence only when they are recorded, transcribed and signed by the control owner",
+        "Quarterly controls must always be re-performed in full by the auditor, whatever other evidence exists"
+      ],
+      "answer": 0,
+      "why": "Inquiry is useful for understanding a control but is the weakest method. An honest account of what usually happens says nothing about what happened each quarter, so it is backed up with records or re-performance."
+    },
+    {
+      "q": "Which is the strongest evidence that production changes were approved throughout a twelve-month review period?",
+      "options": [
+        "A dated screenshot of one approved change, taken from the deployment tool the week before fieldwork",
+        "The change management policy, signed by the CTO, requiring approval for every production change",
+        "A spreadsheet the release manager keeps of the approvals he remembers giving, updated after each release",
+        "A pipeline export of every production change in the period, each linked to its approver and timestamp"
+      ],
+      "answer": 3,
+      "why": "The pipeline export is complete, dated, attributable, from the system of record and covers the whole period. A policy shows intent, a single screenshot shows one instance, and a hand-kept list is neither complete nor verifiable."
+    },
+    {
+      "q": "A prospective customer receives a SOC 2 Type II report whose review period ended five months ago and asks what has changed since. What usually answers that question?",
+      "options": [
+        "A letter from the auditor extending the report's opinion to cover the months since the period ended",
+        "A bridge letter from management stating whether there have been material changes since the period",
+        "An ISO 27001 surveillance audit report, since surveillance audits run every year between certifications",
+        "Nothing is needed, because a SOC 2 Type II report stays valid for three years after it is issued"
+      ],
+      "answer": 1,
+      "why": "A bridge letter comes from management, not the auditor, and covers the gap between the end of the report period and today. It carries only management's word, so it is a stopgap until the next report."
+    },
+    {
+      "q": "Testing finds three leavers whose accounts stayed active for a week. The owner disables them the same day and asks for the finding to be closed. What should happen next?",
+      "options": [
+        "Close it, because the accounts are now disabled and the owner has confirmed none were used after the leavers left",
+        "Change the control to allow ten business days, so that the written control matches what happens in practice",
+        "Treat the fix as a correction: find the root cause, plan a corrective action, and close once a retest passes",
+        "Leave it open until the next external audit, so the auditor can decide whether it is still a problem worth fixing"
+      ],
+      "answer": 2,
+      "why": "Disabling the accounts fixes the instance, not the cause. The finding closes only when a corrective action is in place and someone other than the owner has retested the control. Loosening the control is a risk decision, not a fix."
+    }
+  ]
+}

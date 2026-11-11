@@ -1,0 +1,65 @@
+{
+  "objectives": [
+    "Classify a control by function, by nature and by how it runs",
+    "Write a control statement that someone else can test",
+    "Assign one accountable owner and keep operator and reviewer apart",
+    "Keep a control baseline whose statuses match what is actually in place"
+  ],
+  "checks": [
+    {
+      "q": "Every Monday the security lead pulls a report of newly created admin accounts from the identity system and investigates any that lack an approved request. How is this control best classified?",
+      "options": [
+        "Preventive and automated, because the identity system builds the report and blocks unapproved accounts from signing in",
+        "Corrective and manual, because the security lead disables each unapproved account once the investigation confirms it",
+        "Deterrent and administrative, because staff who know the weekly report exists are less likely to create accounts informally",
+        "Detective and IT-dependent manual, because a person acts on system-generated output after the accounts exist"
+      ],
+      "answer": 3,
+      "why": "The review finds accounts that already exist, so it is detective. A person performs it using a system report, which makes it IT-dependent manual: if the report is incomplete, the control is too."
+    },
+    {
+      "q": "Which rewrite turns \"Backups are tested regularly\" into a control statement that can be tested?",
+      "options": [
+        "\"Each month, the infrastructure lead restores one production database from the previous night's backup to a test environment, checks the data is complete, and files the result in the evidence folder.\"",
+        "\"Backups of all production systems are tested on a regular schedule by the IT operations team, in line with industry best practice, and failed restores are escalated to management.\"",
+        "\"The organization is committed to ensuring that every production backup can be restored quickly and completely, and the IT team confirms this as often as the business requires.\"",
+        "\"Backups are tested frequently by qualified staff using approved tools, results are reviewed by management at suitable intervals, and any issues found are addressed and closed promptly.\""
+      ],
+      "answer": 0,
+      "why": "Only the first names who, what, when, how and the evidence produced. The others use words like \"regular\", \"frequently\" and \"committed\" that no tester can check."
+    },
+    {
+      "q": "A baseline has 120 controls: 70 assessed as fully implemented, 30 assessed at lower levels, and 20 never assessed. How should the 20 appear in the report to leadership?",
+      "options": [
+        "As fully implemented, since none of them has produced an audit finding or a reported failure",
+        "As not implemented, scored at zero, so that the overall result errs on the conservative side",
+        "As not reviewed, shown separately, with coverage reported as 100 of 120 assessed",
+        "Left out until they are assessed, so the report covers only controls with a known status"
+      ],
+      "answer": 2,
+      "why": "An unassessed control has an unknown status. Counting it as implemented overstates the program, counting it as zero understates it, and hiding it conceals how much of the baseline the result covers."
+    },
+    {
+      "q": "A quarterly access review is performed by four application owners and checked by the IT manager. Who should be recorded as the control's owner?",
+      "options": [
+        "All four application owners jointly, since each of them runs the review for their own system",
+        "One named role accountable for the control's design and operation, such as the IT manager",
+        "The IT department as a team, so the control keeps an owner when individual people leave",
+        "The internal auditor, since they test the control each year and report on how well it works"
+      ],
+      "answer": 1,
+      "why": "A control needs exactly one accountable owner, named as a role. The application owners are operators. Internal audit gives independent assurance and should not own the controls it tests."
+    },
+    {
+      "q": "A legacy system cannot support multi-factor sign-in. Which response is an acceptable compensating control?",
+      "options": [
+        "Mark the requirement as met in the baseline, noting that the system will be replaced within two years and the risk is only temporary",
+        "Mark the control as not applicable, recording that the system cannot technically support multi-factor sign-in and who agreed to it",
+        "Route access through a jump host that enforces multi-factor sign-in, review its logs weekly, and get the risk owner's dated approval",
+        "Require users of the legacy system to choose longer passwords and change them every 60 days, with the new rule written into the access policy"
+      ],
+      "answer": 2,
+      "why": "A compensating control must meet the intent of the original, reduce the same risk comparably, have its own owner and evidence, and be approved and time-bound. Marking the requirement met or not applicable misstates the baseline, and longer passwords do not address the same risk to a comparable degree."
+    }
+  ]
+}

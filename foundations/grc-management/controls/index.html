@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Controls: designing what you rely on — GRC Management | AiVRIC Learning</title>
+    <meta name="description" content="Control types and categories, writing a control that can be tested, ownership, and keeping a control baseline honest about what is actually implemented." />
+    <link rel="canonical" href="https://academy.aivric.com/foundations/grc-management/controls/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Controls: designing what you rely on — GRC Management | AiVRIC Learning" />
+    <meta property="og:description" content="Control types and categories, writing a control that can be tested, ownership, and keeping a control baseline honest about what is actually implemented." />
+    <meta property="og:url" content="https://academy.aivric.com/foundations/grc-management/controls/" />
+    <meta name="theme-color" content="#050c18" />
+    <link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="../../../assets/brand/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="../../../assets/brand/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@500;600;700&family=Sora:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../assets/kit/shell.css" />
+    <link rel="stylesheet" href="../../../assets/kit/mnav.css" />
+    <link rel="stylesheet" href="../../../assets/kit/site.css" />
+    <link rel="stylesheet" href="../../../assets/learn/learn.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+  </head>
+  <body class="is-nav-solid">
+    <script src="../../../assets/kit/preloader.js" data-aivric-preloader></script>
+    <header class="site-header mnav" data-mnav>
+      <div class="mnav-bar">
+        <a class="mnav-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <nav class="mnav-menus" aria-label="Primary"><ul><li><button class="mnav-trigger" type="button" data-mnav-trigger="platform" aria-expanded="false" aria-controls="mnav-panel">Platform<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="portfolio" aria-expanded="false" aria-controls="mnav-panel">Portfolio<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="resources" aria-expanded="false" aria-controls="mnav-panel">Resources<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><a class="mnav-trigger mnav-plain" href="https://aivric.com/integrations.html">Integrations</a></li></ul></nav>
+        <div class="mnav-actions">
+          <a class="mnav-login" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a>
+          <a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a>
+        </div>
+        <button class="mnav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav-sheet"><span></span><span></span></button>
+      </div>
+      <div class="mnav-panel" id="mnav-panel" aria-hidden="true"><div class="mnav-view" data-mnav-view="platform" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="portfolio" hidden><div class="mnav-grid mnav-cols-3"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="resources" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div></div>
+    </header>
+    <div class="mnav-sheet" id="mnav-sheet" aria-hidden="true" aria-label="Menu" role="dialog">
+      <div class="mnav-sheet-head">
+        <button type="button" class="mnav-back" hidden><span aria-hidden="true">‹</span> Menu</button>
+        <a class="mnav-brand mnav-sheet-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <button type="button" class="mnav-close" aria-label="Close menu">×</button>
+      </div>
+      <div class="mnav-sheet-body">
+        <ul class="mnav-sheet-list"><li><button type="button" class="mnav-sheet-item" data-mnav-sub="platform">Platform<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="portfolio">Portfolio<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="resources">Resources<span aria-hidden="true">›</span></button></li><li><a class="mnav-sheet-item" href="https://aivric.com/integrations.html">Integrations</a></li></ul>
+        <div class="mnav-sub" data-mnav-subview="platform" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="portfolio" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="resources" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div>
+      </div>
+      <div class="mnav-sheet-cta"><a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a><a class="mnav-login-btn" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a></div>
+    </div>
+
+    <main id="main" class="sx-page lx-page">
+
+      <div class="lx-progress" aria-hidden="true"><span></span></div>
+      <div class="sx-wrap lx-lesson">
+        <nav class="lx-rail" aria-label="Course outline">
+          <a class="lx-rail-course" href="../"><small>Foundations · GRC Management</small><b>GRC Management Fundamentals</b>
+            <div class="lx-course-bar lx-rail-bar" data-course-bar="grc-management" data-total="8"><span></span></div></a>
+          <ol><li><a href="../what-grc-is/" data-course="grc-management" data-lesson="what-grc-is"><span class="lx-rail-n"><span>1</span></span><span>What GRC is, and why it exists</span></a></li><li><a href="../governance/" data-course="grc-management" data-lesson="governance"><span class="lx-rail-n"><span>2</span></span><span>Governance: direction, accountability and policy</span></a></li><li><a href="../frameworks/" data-course="grc-management" data-lesson="frameworks"><span class="lx-rail-n"><span>3</span></span><span>Frameworks, standards and regulations</span></a></li><li><a href="../risk/" data-course="grc-management" data-lesson="risk"><span class="lx-rail-n"><span>4</span></span><span>Risk management: from register to decision</span></a></li><li><a href="../controls/" data-course="grc-management" data-lesson="controls" aria-current="page"><span class="lx-rail-n"><span>5</span></span><span>Controls: designing what you rely on</span></a></li><li><a href="../assurance/" data-course="grc-management" data-lesson="assurance"><span class="lx-rail-n"><span>6</span></span><span>Assurance: testing, evidence and audits</span></a></li><li><a href="../operating/" data-course="grc-management" data-lesson="operating"><span class="lx-rail-n"><span>7</span></span><span>Running the program: cadence, metrics and reporting</span></a></li><li><a href="../beyond/" data-course="grc-management" data-lesson="beyond"><span class="lx-rail-n"><span>8</span></span><span>Beyond the walls: third parties, incidents and change</span></a></li></ol>
+          <div class="lx-toc"><p>On this page</p><a href="#objective">What a control is for</a><a href="#classify">Two ways to classify a control</a><a href="#operation">How a control runs, and which ones carry the weight</a><a href="#statement">Writing a control someone can test</a><a href="#baseline">The control baseline, told honestly</a><a href="#drift">Compensating controls and control drift</a><a href="#practice">In practice: audit five of your own controls</a><a href="#terms">Key terms</a><a href="#check">Knowledge check</a></div>
+        </nav>
+        <article class="lx-article">
+          <header class="lx-article-head">
+            <nav class="sx-crumbs" aria-label="Breadcrumb" style="padding:0"><ol><li><a href="../../../">Learning</a></li><li><a href="../../../foundations/">Foundations</a></li><li><a href="../">GRC Management</a></li></ol></nav>
+            <p class="sx-eyebrow" style="margin-top:22px">Lesson 5 of 8 · 40 min</p>
+            <h1>Controls: designing what you rely on</h1>
+            <p class="sx-lede">Control types and categories, writing a control that can be tested, ownership, and keeping a control baseline honest about what is actually implemented.</p>
+            <div class="lx-objectives"><p>By the end of this lesson you can</p><ul><li>Classify a control by function, by nature and by how it runs</li><li>Write a control statement that someone else can test</li><li>Assign one accountable owner and keep operator and reviewer apart</li><li>Keep a control baseline whose statuses match what is actually in place</li></ul></div>
+          </header>
+<section class="lx-sec" id="objective">
+  <h2><span class="lx-n">1</span>What a control is for</h2>
+  <p>A control is something the organization does, on purpose and repeatedly, to make a good outcome more likely or a bad one less likely. A second approval before a payment is released is a control. So is disk encryption, a locked server room or a review of who can reach payroll.</p>
+  <p>Every control serves a <strong>control objective</strong>: a plain statement of what must be true. Take Big Venture Incorporated, a fictional freight-software company of about 600 people. One of its objectives reads: "Only authorized people can access the finance system, and only for as long as they need it." No single control achieves that. An approval step for new access, multi-factor sign-in, a quarterly access review and removal on the day someone leaves all serve it together.</p>
+  <aside class="lx-def"><p class="lx-def-k">Definition</p><p>A <strong>control objective</strong> states the outcome a control, or a set of controls, exists to achieve. A <strong>control</strong> is the specific, repeatable activity or mechanism that achieves it.</p></aside>
+  <p>Start from the objective. Without one, nobody can say whether a control is enough, too much or aimed at the wrong thing. The obligations behind it come from frameworks and contracts (lesson 3); the exposure it reduces comes from the risk register (lesson 4).</p>
+</section>
+
+<section class="lx-sec" id="classify">
+  <h2><span class="lx-n">2</span>Two ways to classify a control</h2>
+  <p>Controls are sorted along two independent axes. <strong>Function</strong> is about timing: does it stop the event, notice it or recover from it? <strong>Nature</strong> is what it is made of: a process, a technology setting or something physical.</p>
+  <ul class="lx-list">
+    <li><strong>Preventive</strong> controls stop an unwanted event before it happens.</li>
+    <li><strong>Detective</strong> controls find an event that has happened, or is happening, so someone can act.</li>
+    <li><strong>Corrective</strong> controls limit the damage and restore normal operation afterward.</li>
+  </ul>
+  <p>Any function can be delivered by any nature, which gives a small matrix:</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Nature</th><th>Preventive</th><th>Detective</th><th>Corrective</th></tr></thead>
+      <tbody>
+        <tr><td>Administrative</td><td>Manager approval before access is granted; background checks before hire</td><td>Quarterly user access review; monthly account reconciliation</td><td>Incident response plan; revoking access after a policy breach</td></tr>
+        <tr><td>Technical</td><td>Multi-factor authentication; firewall rules that block traffic</td><td>Alerts on repeated failed sign-ins; log monitoring</td><td>Restoring systems from backup; quarantining a malicious file</td></tr>
+        <tr><td>Physical</td><td>Badge-controlled doors to the server room</td><td>Camera coverage; door-held-open alarms</td><td>Fire suppression; a standby generator</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Administrative controls are also called managerial controls. Two more labels are common. A <strong>deterrent</strong> control discourages an attempt, such as a sign-in banner warning that activity is monitored. A <strong>compensating</strong> control stands in for one that cannot be implemented as written (section 6).</p>
+  <p>Use the matrix as a design check: if every control behind an objective is preventive, nobody will notice when prevention fails.</p>
+</section>
+
+<section class="lx-sec" id="operation">
+  <h2><span class="lx-n">3</span>How a control runs, and which ones carry the weight</h2>
+  <p>A third question is who, or what, performs the control. The answer changes how it is tested and how it fails.</p>
+  <div class="lx-trio">
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Manual</p>
+      <p class="lx-trio-q">A person does it.</p>
+      <p>A manager approves a vendor before onboarding. Flexible and able to use judgment, but people get busy, skip steps and leave.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Automated</p>
+      <p class="lx-trio-q">A system does it.</p>
+      <p>The identity platform enforces multi-factor sign-in. Consistent every time, as long as nobody changes the configuration unnoticed.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">IT-dependent manual</p>
+      <p class="lx-trio-q">A person acts on system output.</p>
+      <p>A reviewer works through a system-generated list of active accounts. The review is only as good as the list: if the report is incomplete, so is the control.</p>
+    </div>
+  </div>
+  <p>Not every control deserves the same attention. A <strong>key control</strong> is one the organization relies on to meet an objective or reduce a significant risk; if it failed, the objective would not be met. <strong>Non-key</strong> controls support the key ones or add depth. Key controls get the most careful documentation and the most rigorous testing. Calling everything key spreads attention so thin that nothing gets it.</p>
+</section>
+
+<section class="lx-sec" id="statement">
+  <h2><span class="lx-n">4</span>Writing a control someone can test</h2>
+  <p>A control statement is a promise the organization will later have to prove. If a tester cannot tell from it what should have happened, they cannot tell whether it did. A good statement answers five questions:</p>
+  <ul class="lx-list">
+    <li><strong>Who</strong> performs it, named as a role, not a person or a team.</li>
+    <li><strong>What</strong> they do, as a specific action on a specific scope.</li>
+    <li><strong>When</strong>, as a frequency or trigger: quarterly, daily, on every change, on termination.</li>
+    <li><strong>How</strong>: the source they work from and what they do with exceptions.</li>
+    <li><strong>Evidence</strong>: the record the control leaves behind, and where it is kept.</li>
+  </ul>
+  <aside class="lx-note"><p class="lx-note-k">Example</p><p><strong>Weak:</strong> "User access is reviewed regularly."</p><p><strong>Strong:</strong> "Within 15 business days after each quarter ends, the owner of each in-scope application (finance, customer database, HR) reviews a system-generated list of active accounts and roles, confirms each is still needed, and raises a ticket to remove any that are not. The IT access lead completes removals within five business days. Evidence: the signed-off account list and the removal tickets, filed in the control's evidence folder."</p></aside>
+  <p>The weak version cannot fail, which is the problem. "Regularly" has no deadline, "reviewed" has no outcome and nobody is named. The strong version can be checked line by line, and a missed quarter shows up as a missing file.</p>
+  <p>The "who" hides three roles that are often blurred:</p>
+  <div class="lx-lines">
+    <div class="lx-line-row"><p class="lx-line-k">Owner</p><p>Accountable for the control's design, for it operating as written and for fixing it when it does not. One role, never a committee or "IT".</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Operator</p><p>Performs the control day to day. There may be several, such as each application owner running their own review.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Reviewer</p><p>Checks that the control was performed properly. Should be someone other than the operator, or the check means little.</p></div>
+  </div>
+  <p>One person can be owner and operator of a small control. What matters is that exactly one role is accountable, and knows it.</p>
+</section>
+
+<section class="lx-sec" id="baseline">
+  <h2><span class="lx-n">5</span>The control baseline, told honestly</h2>
+  <p>The <strong>control baseline</strong> (also called the control library) is the single list of every control the organization relies on. Audits, questionnaires and board reports all draw from it, so every control carries the same fields:</p>
+  <ul class="lx-list">
+    <li><strong>Control ID and statement</strong>, written as in section 4.</li>
+    <li><strong>Owner and frequency</strong>.</li>
+    <li><strong>Mapped requirements</strong>: every framework clause, regulation or contract term the control answers.</li>
+    <li><strong>Implementation status</strong>, with the date it was last assessed.</li>
+    <li><strong>Evidence link</strong> to where the control's records live.</li>
+    <li><strong>Last reviewed</strong>: when someone last confirmed the statement still matches reality.</li>
+  </ul>
+  <p>Implementation status is where baselines most often drift from the truth. A small, defined scale works better than a percentage:</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Status</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>Not reviewed</td><td>Nobody has assessed it yet. The status is unknown, not bad and not good.</td></tr>
+        <tr><td>Not implemented</td><td>Assessed, and the control is not in place.</td></tr>
+        <tr><td>Partially implemented</td><td>Some of the control exists, with significant gaps in scope or operation.</td></tr>
+        <tr><td>Largely implemented</td><td>In place for most of its scope, with minor gaps that are known and tracked.</td></tr>
+        <tr><td>Fully implemented</td><td>In place across its whole scope and producing the evidence its statement promises.</td></tr>
+        <tr><td>Not applicable</td><td>Does not apply, with a recorded reason and who approved it.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>"Not reviewed" must never be shown as zero or as implemented. Counted as zero, it makes the program look worse than it is; counted as implemented, which happens when a status field defaults to "in place", it makes the program look better. Report how many controls were assessed alongside how many are implemented, so leadership sees the result and how much of the baseline it covers.</p></aside>
+  <p>"Implemented" is not proof the control works; testing that is lesson 6.</p>
+</section>
+
+<section class="lx-sec" id="drift">
+  <h2><span class="lx-n">6</span>Compensating controls and control drift</h2>
+  <p>Sometimes the expected control cannot be put in place. Big Venture's legacy warehouse system cannot support multi-factor sign-in. Rather than mark the requirement met, the team allows access only through a jump host that requires multi-factor sign-in, restricts network access to it, and has the security lead review its session logs weekly. That is a <strong>compensating control</strong>. It is acceptable when:</p>
+  <ul class="lx-checklist">
+    <li>The original control is genuinely not feasible, for a recorded reason.</li>
+    <li>The alternative meets the original's intent and reduces the same risk comparably.</li>
+    <li>It has its own owner, statement and evidence, like any other control.</li>
+    <li>The risk owner approved it, with a date to revisit it.</li>
+  </ul>
+  <p>Even good controls decay. <strong>Control drift</strong> is the gap that opens between what the baseline says and what happens.</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">People leave</p><p>The owner moves on, nobody inherits the control, and the quarterly review quietly stops.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Systems change</p><p>A new application never enters review scope, or a migration stops forwarding the logs an alert depends on.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Exceptions become the rule</p><p>A one-off approval bypass during an outage is still in use six months later.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">The schedule slips</p><p>Quarterly becomes "when there is time", and the evidence folder shows the gap before anyone says so.</p></div>
+  </div>
+  <p>The defense is to treat a control as a lifecycle, not a document written once.</p>
+  <figure class="lx-fig">
+    <svg viewBox="0 0 760 250" role="img" aria-labelledby="fig5-t fig5-d">
+      <title id="fig5-t">The control lifecycle</title>
+      <desc id="fig5-d">Five stages in a row: design, implement, operate, monitor and improve, joined by arrows. A return arrow runs from improve back to design. An amber callout above the operate stage reads: drift, people leave, systems change, the schedule slips.</desc>
+      <defs>
+        <marker id="fig5-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#00d1ff"/></marker>
+        <marker id="fig5-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a78bfa"/></marker>
+      </defs>
+      <g font-family="Inter, system-ui, sans-serif" font-size="12" fill="#b6bfce" text-anchor="middle">
+        <text x="452" y="34" fill="#ffc46b">Drift: people leave, systems change, the schedule slips</text>
+        <path d="M378 42 L378 70" stroke="#ffc46b" stroke-width="1.4" stroke-dasharray="4 4" fill="none"/>
+        <rect x="18" y="72" width="124" height="76" rx="12" fill="rgba(0,209,255,.08)" stroke="#00d1ff"/>
+        <text x="80" y="100" fill="#eef2f8" font-size="14" font-weight="600">Design</text>
+        <text x="80" y="120">objective, owner,</text>
+        <text x="80" y="136">statement, evidence</text>
+        <rect x="167" y="72" width="124" height="76" rx="12" fill="rgba(255,255,255,.04)" stroke="rgba(175,178,206,.28)"/>
+        <text x="229" y="100" fill="#eef2f8" font-size="14" font-weight="600">Implement</text>
+        <text x="229" y="120">built and in place,</text>
+        <text x="229" y="136">status recorded</text>
+        <rect x="316" y="72" width="124" height="76" rx="12" fill="rgba(255,196,107,.06)" stroke="rgba(255,196,107,.6)"/>
+        <text x="378" y="100" fill="#eef2f8" font-size="14" font-weight="600">Operate</text>
+        <text x="378" y="120">runs on schedule,</text>
+        <text x="378" y="136">leaves evidence</text>
+        <rect x="465" y="72" width="124" height="76" rx="12" fill="rgba(46,229,157,.07)" stroke="rgba(46,229,157,.6)"/>
+        <text x="527" y="100" fill="#eef2f8" font-size="14" font-weight="600">Monitor</text>
+        <text x="527" y="120">checks and tests,</text>
+        <text x="527" y="136">drift spotted</text>
+        <rect x="614" y="72" width="124" height="76" rx="12" fill="rgba(167,139,250,.08)" stroke="rgba(167,139,250,.6)"/>
+        <text x="676" y="100" fill="#eef2f8" font-size="14" font-weight="600">Improve</text>
+        <text x="676" y="120">fix, redesign</text>
+        <text x="676" y="136">or retire</text>
+        <g stroke="#00d1ff" stroke-width="1.4" fill="none">
+          <path d="M142 110 L165 110" marker-end="url(#fig5-a)"/>
+          <path d="M291 110 L314 110" marker-end="url(#fig5-a)"/>
+          <path d="M440 110 L463 110" marker-end="url(#fig5-a)"/>
+          <path d="M589 110 L612 110" marker-end="url(#fig5-a)"/>
+        </g>
+        <path d="M676 148 L676 196 L80 196 L80 150" stroke="#a78bfa" stroke-width="1.4" stroke-dasharray="5 4" fill="none" marker-end="url(#fig5-b)"/>
+        <text x="378" y="222" fill="#7f8a9d">what monitoring finds feeds the next design</text>
+      </g>
+    </svg>
+    <figcaption>Controls are monitored for drift, and what monitoring finds goes back into the design.</figcaption>
+  </figure>
+</section>
+
+<section class="lx-sec lx-practice" id="practice">
+  <h2><span class="lx-n">7</span>In practice: audit five of your own controls</h2>
+  <p>Pick five controls you think of as key. Give it forty minutes.</p>
+  <ol class="lx-steps">
+    <li><strong>Name the objective</strong> each one serves, in one sentence.</li>
+    <li><strong>Classify each one</strong> by function, nature and how it runs. Is anything behind an objective detective?</li>
+    <li><strong>Rewrite the weakest statement</strong> to answer who, what, when, how and what evidence. Could a colleague test it from the text alone?</li>
+    <li><strong>Check ownership.</strong> One accountable owner, still here, who knows it? A reviewer who is not the operator?</li>
+    <li><strong>Re-score the status</strong> on the six-level scale, marking anything you have not looked at as "not reviewed". Compare with your last report.</li>
+  </ol>
+</section>
+
+<section class="lx-sec" id="terms">
+  <h2><span class="lx-n">8</span>Key terms</h2>
+  <dl class="lx-terms">
+    <div><dt>Control objective</dt><dd>The outcome one or more controls exist to achieve, stated as what must be true.</dd></div>
+    <div><dt>IT-dependent manual control</dt><dd>A control a person performs using system-produced information, so that information's reliability is part of the control.</dd></div>
+    <div><dt>Key control</dt><dd>A control relied on to meet an objective or reduce a significant risk; if it fails, the objective is not met.</dd></div>
+    <div><dt>Control owner</dt><dd>The one role accountable for a control's design, operation and correction.</dd></div>
+    <div><dt>Control baseline</dt><dd>The single list of every control relied on, with owner, mapping, status and evidence for each.</dd></div>
+    <div><dt>Compensating control</dt><dd>An approved alternative that meets the intent of a control that cannot be implemented.</dd></div>
+    <div><dt>Control drift</dt><dd>The growing gap between what the baseline says a control does and what actually happens.</dd></div>
+  </dl>
+</section>
+
+          <section class="lx-check" id="check" aria-labelledby="lx-check-h">
+            <div class="lx-check-head"><h2 id="lx-check-h">Knowledge check</h2><span class="lx-check-score" data-score>5 questions</span></div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q1</span>Every Monday the security lead pulls a report of newly created admin accounts from the identity system and investigates any that lack an approved request. How is this control best classified?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>Preventive and automated, because the identity system builds the report and blocks unapproved accounts from signing in</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Corrective and manual, because the security lead disables each unapproved account once the investigation confirms it</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>Deterrent and administrative, because staff who know the weekly report exists are less likely to create accounts informally</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Detective and IT-dependent manual, because a person acts on system-generated output after the accounts exist</span></button></div>
+              <p class="lx-why" data-why="The review finds accounts that already exist, so it is detective. A person performs it using a system report, which makes it IT-dependent manual: if the report is incomplete, the control is too." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q2</span>Which rewrite turns &quot;Backups are tested regularly&quot; into a control statement that can be tested?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>&quot;Each month, the infrastructure lead restores one production database from the previous night's backup to a test environment, checks the data is complete, and files the result in the evidence folder.&quot;</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>&quot;Backups of all production systems are tested on a regular schedule by the IT operations team, in line with industry best practice, and failed restores are escalated to management.&quot;</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>&quot;The organization is committed to ensuring that every production backup can be restored quickly and completely, and the IT team confirms this as often as the business requires.&quot;</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>&quot;Backups are tested frequently by qualified staff using approved tools, results are reviewed by management at suitable intervals, and any issues found are addressed and closed promptly.&quot;</span></button></div>
+              <p class="lx-why" data-why="Only the first names who, what, when, how and the evidence produced. The others use words like &quot;regular&quot;, &quot;frequently&quot; and &quot;committed&quot; that no tester can check." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q3</span>A baseline has 120 controls: 70 assessed as fully implemented, 30 assessed at lower levels, and 20 never assessed. How should the 20 appear in the report to leadership?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>As fully implemented, since none of them has produced an audit finding or a reported failure</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>As not implemented, scored at zero, so that the overall result errs on the conservative side</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>As not reviewed, shown separately, with coverage reported as 100 of 120 assessed</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Left out until they are assessed, so the report covers only controls with a known status</span></button></div>
+              <p class="lx-why" data-why="An unassessed control has an unknown status. Counting it as implemented overstates the program, counting it as zero understates it, and hiding it conceals how much of the baseline the result covers." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q4</span>A quarterly access review is performed by four application owners and checked by the IT manager. Who should be recorded as the control's owner?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>All four application owners jointly, since each of them runs the review for their own system</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>One named role accountable for the control's design and operation, such as the IT manager</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>The IT department as a team, so the control keeps an owner when individual people leave</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>The internal auditor, since they test the control each year and report on how well it works</span></button></div>
+              <p class="lx-why" data-why="A control needs exactly one accountable owner, named as a role. The application owners are operators. Internal audit gives independent assurance and should not own the controls it tests." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q5</span>A legacy system cannot support multi-factor sign-in. Which response is an acceptable compensating control?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>Mark the requirement as met in the baseline, noting that the system will be replaced within two years and the risk is only temporary</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Mark the control as not applicable, recording that the system cannot technically support multi-factor sign-in and who agreed to it</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>Route access through a jump host that enforces multi-factor sign-in, review its logs weekly, and get the risk owner's dated approval</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Require users of the legacy system to choose longer passwords and change them every 60 days, with the new rule written into the access policy</span></button></div>
+              <p class="lx-why" data-why="A compensating control must meet the intent of the original, reduce the same risk comparably, have its own owner and evidence, and be approved and time-bound. Marking the requirement met or not applicable misstates the baseline, and longer passwords do not address the same risk to a comparable degree." aria-live="polite"></p>
+            </div>
+            <div class="lx-check-foot">
+              <p>Answer every question to complete the lesson. Your answers stay in this browser.</p>
+              <span>
+                <button type="button" class="sx-btn sx-btn-ghost" data-retry style="cursor:pointer;font:inherit">Try again</button>
+                <button type="button" class="sx-btn sx-btn-primary" data-complete disabled style="cursor:pointer;font:inherit">Complete the lesson <span class="sx-arrow" aria-hidden="true">✓</span></button>
+                <span class="lx-done" data-complete-msg hidden>✓ Lesson complete</span>
+              </span>
+            </div>
+          </section>
+          <aside class="lx-bridge" aria-label="See it in AiVRIC Enterprise Vision">
+            <div class="lx-bridge-copy">
+              <p class="sx-eyebrow">See it in AiVRIC Enterprise Vision</p>
+              <h3>The control baseline, honest about status</h3>
+              <p>In Enterprise Vision the control baseline goes in once. Each control shows who owns it and which requirements it supports, with its implementation status, and every change you make lands on the workspace's audit trail.</p>
+              <a class="sx-btn sx-btn-ghost" href="https://aivric.com/compliance/soc2/?utm_source=academy&utm_medium=web&utm_campaign=learning&utm_content=grc-management_controls">See it in the SOC 2 guide <span class="sx-arrow" aria-hidden="true">→</span></a>
+            </div>
+            <figure><img src="../../../assets/learn/stills/crosswalk.jpg" alt="The control baseline in AiVRIC Enterprise Vision, crosswalked to several frameworks, in a demo workspace" loading="lazy" decoding="async" width="1280" height="800" /><figcaption>Demo workspace · sample data</figcaption></figure>
+          </aside>
+          <nav class="lx-pager" aria-label="Lessons">
+            <a href="../risk/"><small>← Previous</small><b>Risk management: from register to decision</b></a>
+            <a class="is-next" href="../assurance/"><small>Next lesson →</small><b>Assurance: testing, evidence and audits</b></a>
+          </nav>
+        </article>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+          <p>Security, compliance, and risk intelligence, hosted on Google Cloud in the US.</p>
+          <p class="footer-contact"><a href="mailto:info@aivric.com">info@aivric.com</a><br /><a href="tel:+19543426637">+1 954 342 6637</a></p>
+          <p class="footer-social"><a href="https://www.linkedin.com/company/aivric">LinkedIn</a> · <a href="https://x.com/aivric">X</a> · <a href="https://www.facebook.com/61581937785235/">Facebook</a> · <a href="https://www.instagram.com/aivrictechnologies/">Instagram</a></p>
+        </div>
+        <div>
+          <h4>Use Cases</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/compliance/">Compliance Overview</a>
+            <a href="https://aivric.com/compliance/hipaa/">HIPAA</a>
+            <a href="https://aivric.com/compliance/soc2/">SOC 2</a>
+            <a href="https://aivric.com/compliance/cmmc/">CMMC</a>
+            <a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a>
+            <a href="https://aivric.com/enterprise/ciso/">For the CISO</a>
+          </div>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a>
+            <a href="https://aivric.com/providers/">Client Vision</a>
+            <a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a>
+            <a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a>
+            <a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a>
+            <a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a>
+            <a href="https://aivric.com/solutions-portal.html">All Products</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/about.html">About Us</a><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a><a href="https://aivric.com/pricing.html">Pricing</a><a href="https://aivric.com/blog-portal.html">Blog</a
+            ><a href="https://aivric.com/trust/">Trust Center</a><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a><a href="../../../">Academy</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>&copy; 2026 AiVRIC Technologies. All Rights Reserved.</span>
+        <span class="footer-pill">ISO 27001-Aligned</span>
+        <span><a href="https://aivric.com/terms-of-use.html">Terms of Service</a> · <a href="https://aivric.com/privacy-policy.html">Privacy Policy</a></span>
+      </div>
+    </footer>
+
+    <script type="application/json" id="lx-data">{"course":"grc-management","lesson":"controls","checks":[{"answer":3},{"answer":0},{"answer":2},{"answer":1},{"answer":2}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AiVRIC Learning","item":"https://academy.aivric.com/"},{"@type":"ListItem","position":2,"name":"Foundations","item":"https://academy.aivric.com/foundations/"},{"@type":"ListItem","position":3,"name":"GRC Management Fundamentals","item":"https://academy.aivric.com/foundations/grc-management/"},{"@type":"ListItem","position":4,"name":"Controls: designing what you rely on","item":"https://academy.aivric.com/foundations/grc-management/controls/"}]},{"@type":"LearningResource","name":"Controls: designing what you rely on","description":"Control types and categories, writing a control that can be tested, ownership, and keeping a control baseline honest about what is actually implemented.","url":"https://academy.aivric.com/foundations/grc-management/controls/","isAccessibleForFree":true,"timeRequired":"PT40M","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"GRC Management Fundamentals","url":"https://academy.aivric.com/foundations/grc-management/"},"provider":{"@type":"Organization","name":"AiVRIC","sameAs":"https://aivric.com/"}}]}</script>
+    <script defer src="../../../assets/kit/mnav.js"></script>
+    <script defer src="../../../assets/kit/site.js"></script>
+    <script defer src="../../../assets/learn/learn.js"></script>
+  </body>
+</html>

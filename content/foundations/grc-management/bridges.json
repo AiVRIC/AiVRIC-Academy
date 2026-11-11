@@ -1,0 +1,51 @@
+{
+  "_note": "The 'See it in AiVRIC Enterprise Vision' panel for each lesson. Every product statement here is one aivric.com already makes (the /enterprise, /enterprise/ciso and /compliance pages and the approved films); tools/build.mjs reads a lesson's bridge from here when its own .json has none.",
+  "what-grc-is": {
+    "still": "crosswalk", "alt": "One control in AiVRIC Enterprise Vision, crosswalked to several frameworks at once, in a demo workspace",
+    "title": "One control set, every framework",
+    "text": "In AiVRIC Enterprise Vision the control baseline is the single set of controls this lesson describes. It goes in once, and the frameworks you answer to are crosswalked to it, so one piece of work answers SOC 2, ISO 27001 and HIPAA at the same time.",
+    "link": "https://aivric.com/compliance/", "cta": "See continuous compliance"
+  },
+  "governance": {
+    "still": "groc", "alt": "The GROC report in AiVRIC Enterprise Vision, with the governance view, in a demo workspace",
+    "title": "Your risk appetite, on the record",
+    "text": "In Enterprise Vision, leadership declares a tolerance for each risk area and the overall appetite is calculated from them, never typed in. Policy is generated as family standards from the controls in your baseline, cross-walked to frameworks such as SOC 2, ISO 27002 and GDPR, then reviewed, approved and published.",
+    "link": "https://aivric.com/enterprise/ciso/", "cta": "See it for the CISO"
+  },
+  "frameworks": {
+    "still": "crosswalk", "alt": "One control in AiVRIC Enterprise Vision, crosswalked to several frameworks at once, in a demo workspace",
+    "title": "One baseline, crosswalked",
+    "text": "Enterprise Vision keeps one control baseline and crosswalks it to the frameworks you answer to, so a requirement in SOC 2, ISO 27001 or HIPAA points at the same control and the same evidence. The framework guides walk through SOC 2, HIPAA, CMMC and the EU AI Act screen by screen.",
+    "link": "https://aivric.com/compliance/", "cta": "Read the framework guides"
+  },
+  "risk": {
+    "still": "decisions", "alt": "The decisions queue in AiVRIC Enterprise Vision, in a demo workspace",
+    "title": "Every decision measured against the line",
+    "text": "In Enterprise Vision, each declared tolerance is compared with live posture from your scans, registers and threat intelligence. Where measured exposure sits above the line, the area shows as exceeding it, and accepting that risk needs a written justification on the record.",
+    "link": "https://aivric.com/enterprise/ciso/", "cta": "See decisions against appetite"
+  },
+  "controls": {
+    "still": "crosswalk", "alt": "The control baseline in AiVRIC Enterprise Vision, crosswalked to several frameworks, in a demo workspace",
+    "title": "The control baseline, honest about status",
+    "text": "In Enterprise Vision the control baseline goes in once. Each control shows who owns it and which requirements it supports, with its implementation status, and every change you make lands on the workspace's audit trail.",
+    "link": "https://aivric.com/compliance/soc2/", "cta": "See it in the SOC 2 guide"
+  },
+  "assurance": {
+    "still": "poam", "alt": "The POA&M in AiVRIC Enterprise Vision, in a demo workspace",
+    "title": "From finding to fix to proof",
+    "text": "In Enterprise Vision every POA&M item is tied to the control it fixes, with an owner and a deadline. Every control, decision and action lands on an append-only audit trail, ready for the audit, and TrustSignals shares an approved snapshot with customers, never raw findings.",
+    "link": "https://aivric.com/compliance/soc2/", "cta": "See the SOC 2 guide"
+  },
+  "operating": {
+    "still": "roar", "alt": "The ROAR report in AiVRIC Enterprise Vision, in a demo workspace",
+    "title": "The board report, the same way every quarter",
+    "text": "ROAR in Enterprise Vision is a frozen, print-ready snapshot of posture, findings, risks, the remediation roadmap and trends, with the same numbers every time it is shown. GROC adds the governance view and the KRIs and KPIs you report against, and one formula feeds every view, so they always agree.",
+    "link": "https://aivric.com/enterprise/ciso/", "cta": "See board reporting"
+  },
+  "beyond": {
+    "still": "threats", "alt": "Threat intelligence in AiVRIC Enterprise Vision, in a demo workspace",
+    "title": "Vendors and threats in the same record",
+    "text": "Enterprise Vision rates every vendor through Black Kite (grade, cyber score, ransomware susceptibility and probable financial impact) tied to your own POA&M, and brings threat intelligence into the same workspace as your risk register, controls and decisions.",
+    "link": "https://aivric.com/enterprise/", "cta": "See Enterprise Vision"
+  }
+}

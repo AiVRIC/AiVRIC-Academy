@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Assurance: testing, evidence and audits — GRC Management | AiVRIC Learning</title>
+    <meta name="description" content="Design versus operating effectiveness, what makes evidence audit-ready, how SOC 2 Type I and Type II differ, and handling exceptions and corrective action plans." />
+    <link rel="canonical" href="https://academy.aivric.com/foundations/grc-management/assurance/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Assurance: testing, evidence and audits — GRC Management | AiVRIC Learning" />
+    <meta property="og:description" content="Design versus operating effectiveness, what makes evidence audit-ready, how SOC 2 Type I and Type II differ, and handling exceptions and corrective action plans." />
+    <meta property="og:url" content="https://academy.aivric.com/foundations/grc-management/assurance/" />
+    <meta name="theme-color" content="#050c18" />
+    <link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="../../../assets/brand/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="../../../assets/brand/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@500;600;700&family=Sora:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../assets/kit/shell.css" />
+    <link rel="stylesheet" href="../../../assets/kit/mnav.css" />
+    <link rel="stylesheet" href="../../../assets/kit/site.css" />
+    <link rel="stylesheet" href="../../../assets/learn/learn.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+  </head>
+  <body class="is-nav-solid">
+    <script src="../../../assets/kit/preloader.js" data-aivric-preloader></script>
+    <header class="site-header mnav" data-mnav>
+      <div class="mnav-bar">
+        <a class="mnav-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <nav class="mnav-menus" aria-label="Primary"><ul><li><button class="mnav-trigger" type="button" data-mnav-trigger="platform" aria-expanded="false" aria-controls="mnav-panel">Platform<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="portfolio" aria-expanded="false" aria-controls="mnav-panel">Portfolio<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="resources" aria-expanded="false" aria-controls="mnav-panel">Resources<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><a class="mnav-trigger mnav-plain" href="https://aivric.com/integrations.html">Integrations</a></li></ul></nav>
+        <div class="mnav-actions">
+          <a class="mnav-login" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a>
+          <a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a>
+        </div>
+        <button class="mnav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav-sheet"><span></span><span></span></button>
+      </div>
+      <div class="mnav-panel" id="mnav-panel" aria-hidden="true"><div class="mnav-view" data-mnav-view="platform" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="portfolio" hidden><div class="mnav-grid mnav-cols-3"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="resources" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div></div>
+    </header>
+    <div class="mnav-sheet" id="mnav-sheet" aria-hidden="true" aria-label="Menu" role="dialog">
+      <div class="mnav-sheet-head">
+        <button type="button" class="mnav-back" hidden><span aria-hidden="true">‹</span> Menu</button>
+        <a class="mnav-brand mnav-sheet-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <button type="button" class="mnav-close" aria-label="Close menu">×</button>
+      </div>
+      <div class="mnav-sheet-body">
+        <ul class="mnav-sheet-list"><li><button type="button" class="mnav-sheet-item" data-mnav-sub="platform">Platform<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="portfolio">Portfolio<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="resources">Resources<span aria-hidden="true">›</span></button></li><li><a class="mnav-sheet-item" href="https://aivric.com/integrations.html">Integrations</a></li></ul>
+        <div class="mnav-sub" data-mnav-subview="platform" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="portfolio" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="resources" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div>
+      </div>
+      <div class="mnav-sheet-cta"><a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a><a class="mnav-login-btn" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a></div>
+    </div>
+
+    <main id="main" class="sx-page lx-page">
+
+      <div class="lx-progress" aria-hidden="true"><span></span></div>
+      <div class="sx-wrap lx-lesson">
+        <nav class="lx-rail" aria-label="Course outline">
+          <a class="lx-rail-course" href="../"><small>Foundations · GRC Management</small><b>GRC Management Fundamentals</b>
+            <div class="lx-course-bar lx-rail-bar" data-course-bar="grc-management" data-total="8"><span></span></div></a>
+          <ol><li><a href="../what-grc-is/" data-course="grc-management" data-lesson="what-grc-is"><span class="lx-rail-n"><span>1</span></span><span>What GRC is, and why it exists</span></a></li><li><a href="../governance/" data-course="grc-management" data-lesson="governance"><span class="lx-rail-n"><span>2</span></span><span>Governance: direction, accountability and policy</span></a></li><li><a href="../frameworks/" data-course="grc-management" data-lesson="frameworks"><span class="lx-rail-n"><span>3</span></span><span>Frameworks, standards and regulations</span></a></li><li><a href="../risk/" data-course="grc-management" data-lesson="risk"><span class="lx-rail-n"><span>4</span></span><span>Risk management: from register to decision</span></a></li><li><a href="../controls/" data-course="grc-management" data-lesson="controls"><span class="lx-rail-n"><span>5</span></span><span>Controls: designing what you rely on</span></a></li><li><a href="../assurance/" data-course="grc-management" data-lesson="assurance" aria-current="page"><span class="lx-rail-n"><span>6</span></span><span>Assurance: testing, evidence and audits</span></a></li><li><a href="../operating/" data-course="grc-management" data-lesson="operating"><span class="lx-rail-n"><span>7</span></span><span>Running the program: cadence, metrics and reporting</span></a></li><li><a href="../beyond/" data-course="grc-management" data-lesson="beyond"><span class="lx-rail-n"><span>8</span></span><span>Beyond the walls: third parties, incidents and change</span></a></li></ol>
+          <div class="lx-toc"><p>On this page</p><a href="#what-assurance">What assurance is, and who gives it</a><a href="#design-operating">Design versus operating effectiveness</a><a href="#methods">How controls are tested</a><a href="#evidence">Evidence that stands up</a><a href="#external">External assurance: how SOC 2 and ISO 27001 audits work</a><a href="#findings">Findings, exceptions and corrective action</a><a href="#practice">In practice: test one control yourself</a><a href="#terms">Key terms</a><a href="#check">Knowledge check</a></div>
+        </nav>
+        <article class="lx-article">
+          <header class="lx-article-head">
+            <nav class="sx-crumbs" aria-label="Breadcrumb" style="padding:0"><ol><li><a href="../../../">Learning</a></li><li><a href="../../../foundations/">Foundations</a></li><li><a href="../">GRC Management</a></li></ol></nav>
+            <p class="sx-eyebrow" style="margin-top:22px">Lesson 6 of 8 · 45 min</p>
+            <h1>Assurance: testing, evidence and audits</h1>
+            <p class="sx-lede">Design versus operating effectiveness, what makes evidence audit-ready, how SOC 2 Type I and Type II differ, and handling exceptions and corrective action plans.</p>
+            <div class="lx-objectives"><p>By the end of this lesson you can</p><ul><li>Tell a test of design from a test of operating effectiveness</li><li>Judge whether evidence is audit-ready, and strengthen weak evidence</li><li>Explain how SOC 2 Type I and Type II reports and ISO 27001 certification audits work</li><li>Turn a finding into a tracked corrective action and validate the fix</li></ul></div>
+          </header>
+<section class="lx-sec" id="what-assurance">
+  <h2><span class="lx-n">1</span>What assurance is, and who gives it</h2>
+  <p>A control written in a policy is a promise. Assurance is the work of checking whether the promise is kept: an objective examination that gives someone, from a control owner to the board or a customer, confidence that a control works as intended.</p>
+  <p>Assurance comes in levels. Each is more independent of the people running the control than the one before, and independence is what makes a conclusion worth relying on.</p>
+  <div class="lx-lines">
+    <div class="lx-line-row"><p class="lx-line-k">Management self-assessment</p><p>Control owners check their own controls on a schedule. Cheap and frequent, but the people checking are the people being checked.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Second-line monitoring</p><p>Security, risk or compliance functions test the first line's controls and challenge owners. More objective, though still part of management.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Internal audit</p><p>The third line: independent of management, reporting to the board or its audit committee, and planning its audits around risk.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">External audit or assessment</p><p>An independent firm or body examines controls against a standard and issues a report or certificate outsiders can rely on.</p></div>
+  </div>
+  <p>This lesson follows Big Venture Incorporated, a fictional freight-software company with about 600 staff, as it moves from a SOC 2 Type I report to its first Type II.</p>
+  <figure class="lx-fig">
+    <svg viewBox="0 0 760 250" role="img" aria-labelledby="fig6-t fig6-d">
+      <title id="fig6-t">The evidence chain</title>
+      <desc id="fig6-d">Six steps in a row: a control is tested, the test produces evidence, evidence may reveal a finding, the finding gets a corrective action, and the fixed control is retested. A dashed line loops from retest back to the control, showing that a finding closes only when the retest passes.</desc>
+      <defs>
+        <marker id="fig6-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b6bfce"/></marker>
+        <marker id="fig6-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a78bfa"/></marker>
+      </defs>
+      <g font-family="Inter, system-ui, sans-serif" font-size="12" fill="#b6bfce">
+        <text x="10" y="28" font-size="11" letter-spacing="2" fill="#7f8a9d">THE EVIDENCE CHAIN</text>
+        <rect x="10" y="50" width="100" height="56" rx="10" fill="rgba(0,209,255,.08)" stroke="#00d1ff"/>
+        <text x="60" y="83" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Control</text>
+        <rect x="138" y="50" width="100" height="56" rx="10" fill="rgba(0,209,255,.08)" stroke="#00d1ff"/>
+        <text x="188" y="83" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Test</text>
+        <rect x="266" y="50" width="100" height="56" rx="10" fill="rgba(46,229,157,.07)" stroke="#2ee59d"/>
+        <text x="316" y="83" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Evidence</text>
+        <rect x="394" y="50" width="100" height="56" rx="10" fill="rgba(255,196,107,.08)" stroke="#ffc46b"/>
+        <text x="444" y="83" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Finding</text>
+        <rect x="522" y="50" width="100" height="56" rx="10" fill="rgba(167,139,250,.08)" stroke="#a78bfa"/>
+        <text x="572" y="75" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Corrective</text>
+        <text x="572" y="93" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">action</text>
+        <rect x="650" y="50" width="100" height="56" rx="10" fill="rgba(46,229,157,.07)" stroke="#2ee59d"/>
+        <text x="700" y="83" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Retest</text>
+        <g stroke="#b6bfce" stroke-width="1.4" fill="none" opacity=".8">
+          <path d="M112 78 L136 78" marker-end="url(#fig6-a)"/>
+          <path d="M240 78 L264 78" marker-end="url(#fig6-a)"/>
+          <path d="M368 78 L392 78" marker-end="url(#fig6-a)"/>
+          <path d="M496 78 L520 78" marker-end="url(#fig6-a)"/>
+          <path d="M624 78 L648 78" marker-end="url(#fig6-a)"/>
+        </g>
+        <text x="60" y="130" text-anchor="middle">owned, with a</text>
+        <text x="60" y="146" text-anchor="middle">clear objective</text>
+        <text x="188" y="130" text-anchor="middle">design, then</text>
+        <text x="188" y="146" text-anchor="middle">operation</text>
+        <text x="316" y="130" text-anchor="middle">from the system</text>
+        <text x="316" y="146" text-anchor="middle">of record</text>
+        <text x="444" y="130" text-anchor="middle">severity and</text>
+        <text x="444" y="146" text-anchor="middle">root cause</text>
+        <text x="572" y="130" text-anchor="middle">owner, dates,</text>
+        <text x="572" y="146" text-anchor="middle">linked control</text>
+        <text x="700" y="130" text-anchor="middle">the fix works</text>
+        <text x="700" y="146" text-anchor="middle">over time</text>
+        <path d="M700 160 C 700 214, 60 214, 60 162" stroke="#a78bfa" stroke-width="1.4" fill="none" stroke-dasharray="4 4" opacity=".85" marker-end="url(#fig6-b)"/>
+        <text x="380" y="236" text-anchor="middle" font-size="13" fill="#eef2f8">A finding closes only when the retest passes; if it fails, the loop runs again</text>
+      </g>
+    </svg>
+    <figcaption>The evidence chain: a finding closes only when the fixed control has been tested again.</figcaption>
+  </figure>
+</section>
+
+<section class="lx-sec" id="design-operating">
+  <h2><span class="lx-n">2</span>Design versus operating effectiveness</h2>
+  <p>Every control test answers one of two questions, and auditors keep them apart.</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">Test of design</p><p>Would the control, as designed, meet its objective? The tester walks one instance through from start to finish and asks whether it addresses the risk and would catch the problem it exists for.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Test of operating effectiveness</p><p>Did the control actually operate, consistently and as designed, across a defined period? The tester checks instances from across the period against the control description.</p></div>
+  </div>
+  <p>Design comes first: there is no point sampling a control that could not work. A quarterly access review that skips contractors and service accounts can run flawlessly every quarter and still fail on design.</p>
+  <aside class="lx-note"><p class="lx-note-k">Example</p><p>Big Venture's offboarding control says IT disables a leaver's accounts within one business day of the HR termination date. On design it passes. On operation, the tester compares termination dates with deactivation times for a sample of the year's leavers, and finds three accounts that stayed active for a week.</p></aside>
+</section>
+
+<section class="lx-sec" id="methods">
+  <h2><span class="lx-n">3</span>How controls are tested</h2>
+  <p>Testers combine four methods, roughly from least to most convincing.</p>
+  <ul class="lx-list">
+    <li><strong>Inquiry:</strong> asking the people who run the control how it works.</li>
+    <li><strong>Observation:</strong> watching it performed, such as an approval gate stopping an unapproved deployment.</li>
+    <li><strong>Inspection:</strong> examining the records the control produced: tickets, approvals, logs, configurations.</li>
+    <li><strong>Re-performance:</strong> running the control independently and comparing results, such as working out from HR records which accounts should have been disabled, then checking the identity system.</li>
+  </ul>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>Inquiry alone is not evidence that a control operated. An owner's honest account of what usually happens says nothing about what happened on a given day, so auditors corroborate it with one of the other methods.</p></aside>
+  <p><strong>Sampling.</strong> Most controls run too often to check every instance. The <strong>population</strong> is every instance in the period under review, such as every production change or every leaver. The <strong>sample</strong> is the subset the tester inspects. The <strong>period</strong> is the window the conclusion covers.</p>
+  <p>Three principles matter more than any table: the more often a control runs, the more instances get tested; the population must be complete; and the tester, not the owner, picks the sample, spread across the whole period, so nobody can steer it toward the good months.</p>
+</section>
+
+<section class="lx-sec" id="evidence">
+  <h2><span class="lx-n">4</span>Evidence that stands up</h2>
+  <p>Evidence turns "we do this" into "here is proof we did". Audit-ready evidence is:</p>
+  <ul class="lx-checklist">
+    <li><strong>Complete:</strong> every instance in scope, not just the ones that went well.</li>
+    <li><strong>Accurate:</strong> it reflects what happened, from a report or query that can be shown to be correct.</li>
+    <li><strong>Dated:</strong> it shows when the control operated, not only when someone captured it.</li>
+    <li><strong>Attributable:</strong> it shows who performed, approved or reviewed the work.</li>
+    <li><strong>From the system of record:</strong> taken from the tool where the work happens, not retyped.</li>
+    <li><strong>Retained:</strong> kept, unaltered, as long as the audit, contract or law requires.</li>
+    <li><strong>Covering the whole period:</strong> no unexplained gaps in the window being tested.</li>
+  </ul>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Control</th><th>Weak evidence</th><th>Strong evidence</th></tr></thead>
+      <tbody>
+        <tr><td>Quarterly access review</td><td>An email saying the reviews are done</td><td>An identity-system export of every account, each reviewer decision, the sign-off date and removal tickets</td></tr>
+        <tr><td>Change approval</td><td>An undated, cropped screenshot of one approved change</td><td>Every deployment in the period from the pipeline, each linked to its approval with approver and timestamp</td></tr>
+        <tr><td>Offboarding</td><td>A hand-edited spreadsheet of leavers marked "done"</td><td>The HR termination report matched to deactivation logs, with the time between them for each leaver</td></tr>
+        <tr><td>Backups</td><td>A policy stating backups run nightly</td><td>Job logs for the period and a dated restore test with its result and who ran it</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Continuous collection beats the scramble.</strong> Big Venture prepared its Type I by chasing screenshots in the weeks before fieldwork, finding gaps too late to fix. For the Type II period, evidence is captured as each control runs, and the compliance team checks a sample each month. Gaps now surface in the month they open.</p>
+  <p><strong>Integrity.</strong> An auditor needs to know a record could not have been quietly edited afterwards. Strong programs rely on tamper-evident records: logs ordinary users cannot alter, append-only audit trails, and storage where changes are themselves logged. An audit trail shows who did what, and when.</p>
+</section>
+
+<section class="lx-sec" id="external">
+  <h2><span class="lx-n">5</span>External assurance: how SOC 2 and ISO 27001 audits work</h2>
+  <p>Lesson 3 described what SOC 2 and ISO 27001 are. Here the focus is how their audits run.</p>
+  <p>A SOC 2 report is issued by an independent CPA firm that examines a service organization's controls against the Trust Services Criteria and gives its opinion. It comes in two types.</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">Type I: design at a point in time</p><p>Whether the system description is fair and the controls were suitably designed as of a specific date. Often a first report, but silent on how controls performed over time.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Type II: design and operation over a period</p><p>Also whether the controls operated effectively throughout a review period, commonly several months to a year, tested with the methods and sampling above.</p></div>
+  </div>
+  <p>A Type II report lists each test performed and its result. Where a control did not operate as described, it records an <strong>exception</strong>, also called a deviation. Readers weigh which controls exceptions touch and how management responded. Serious or widespread failures can lead the auditor to qualify its opinion.</p>
+  <p>Because a report covers a fixed period, customers reading it months later ask what has happened since. A <strong>bridge letter</strong> from the organization's management, not the auditor, states whether there have been material changes since the period ended. It carries only management's word.</p>
+  <p>For ISO 27001, an accredited certification body audits the management system against the standard in two stages. <strong>Stage 1</strong> reviews design and documentation, such as the scope, risk assessment and Statement of Applicability, and judges readiness. <strong>Stage 2</strong> tests whether the system is implemented and working. Certification runs on a three-year cycle, with <strong>surveillance audits</strong> at least annually and a recertification audit before the certificate expires. Major nonconformities must be resolved to the certification body's satisfaction before a certificate is granted.</p>
+  <aside class="lx-def"><p class="lx-def-k">Definition</p><p>An <strong>attestation</strong>, such as a SOC 2 report, is an independent opinion on controls within a stated scope and period. A <strong>certification</strong>, such as ISO 27001, confirms a management system conformed to a standard when audited. Neither says an organization is secure.</p></aside>
+</section>
+
+<section class="lx-sec" id="findings">
+  <h2><span class="lx-n">6</span>Findings, exceptions and corrective action</h2>
+  <ul class="lx-list">
+    <li><strong>Severity:</strong> rate each finding by the risk it leaves open, on a scale defined in advance. A missed review on a system holding customer data outranks a late training reminder.</li>
+    <li><strong>Root cause:</strong> ask why until the answer is something you can change. "IT forgot" is a symptom; "deactivation waits on a ticket HR raises by hand" is a cause.</li>
+    <li><strong>Correction and corrective action:</strong> a correction fixes the instance (disable the accounts today); a corrective action removes the cause (feed HR terminations straight into the identity system). Both are needed.</li>
+  </ul>
+  <p>Findings are tracked in a corrective action plan. US federal programs call it a <strong>plan of action and milestones (POA&amp;M)</strong>, a format now used well beyond government.</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Item</th><th>Severity</th><th>Linked control</th><th>Owner</th><th>Milestones</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>F-01: three leavers active for a week</td><td>High</td><td>Offboarding</td><td>IT operations lead</td><td>Automated deactivation by Feb 15; retest by May 30</td><td>In progress</td></tr>
+        <tr><td>F-02: Q3 review missed for finance app</td><td>Medium</td><td>Quarterly access review</td><td>Finance systems owner</td><td>Review done by Jan 31; escalation in place by Feb 28; retest at Q1 review</td><td>Open</td></tr>
+        <tr><td>F-03: no restore test in period</td><td>Medium</td><td>Backup and restore</td><td>Infrastructure manager</td><td>Test run Jan 10; quarterly schedule set; retest after Q2 test</td><td>Fixed, awaiting validation</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Closing the loop.</strong> An item closes when someone other than the owner validates the fix, not when the owner says it is in. An operating failure needs the fixed control to run long enough to build a new population, which is then sampled as before. Big Venture's offboarding fix went live in February; in May the second line tested every leaver since, found each disabled within the day, and closed F-01 with that evidence attached.</p>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>Rewriting a control to match what happened, such as changing "one business day" to "ten", is not a fix. It changes the risk carried, so it is a decision for the risk owner to make and record.</p></aside>
+</section>
+
+<section class="lx-sec lx-practice" id="practice">
+  <h2><span class="lx-n">7</span>In practice: test one control yourself</h2>
+  <ol class="lx-steps">
+    <li><strong>Pick a control that runs often,</strong> such as change approval or offboarding. Write down its objective and the evidence it should leave.</li>
+    <li><strong>Test the design.</strong> Walk one instance through. Would it catch the problem it exists for, including contractors and emergency changes?</li>
+    <li><strong>Build the population</strong> for the last quarter from the system of record, and note how you know it is complete.</li>
+    <li><strong>Sample and inspect</strong> instances spread across the quarter. Record every exception.</li>
+    <li><strong>Grade the evidence</strong> against the seven properties. What would it take to capture the missing ones as the control runs?</li>
+    <li><strong>Write one POA&amp;M entry</strong> for the worst gap, including how the fix will be retested.</li>
+  </ol>
+</section>
+
+<section class="lx-sec" id="terms">
+  <h2><span class="lx-n">8</span>Key terms</h2>
+  <dl class="lx-terms">
+    <div><dt>Test of design</dt><dd>A check of whether a control, as designed, would meet its objective.</dd></div>
+    <div><dt>Operating effectiveness</dt><dd>Whether a control ran consistently and as designed across a defined period.</dd></div>
+    <div><dt>Population and sample</dt><dd>Every instance of a control in the period under review, and the subset a tester inspects.</dd></div>
+    <div><dt>Exception</dt><dd>An instance where a tested control did not operate as described; in SOC 2, also a deviation.</dd></div>
+    <div><dt>Bridge letter</dt><dd>A management letter covering the time since a SOC 2 report's period ended.</dd></div>
+    <div><dt>Surveillance audit</dt><dd>A periodic certification body audit between ISO 27001 certification and recertification.</dd></div>
+    <div><dt>POA&amp;M</dt><dd>Plan of action and milestones: tracked findings, each with a linked control, owner, dated milestones and status.</dd></div>
+  </dl>
+</section>
+
+          <section class="lx-check" id="check" aria-labelledby="lx-check-h">
+            <div class="lx-check-head"><h2 id="lx-check-h">Knowledge check</h2><span class="lx-check-score" data-score>5 questions</span></div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q1</span>A tester walks one offboarding request through from HR ticket to account deactivation and confirms the procedure would remove access within a day. What has the test shown?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>That the control operated effectively for the whole year, since the walkthrough used a real request</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>That the control is ready to be included in a SOC 2 Type II report without further sampling</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>That the control is suitably designed, but not yet that it operated consistently over the period</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>That no further testing is needed, because a walkthrough covers both design and operation</span></button></div>
+              <p class="lx-why" data-why="A single walkthrough is a test of design. Operating effectiveness needs instances sampled from across the period and checked against the control description." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q2</span>In an interview, the owner of the quarterly access review explains clearly how each review is done and says none were missed. The auditor still asks for more. Why?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>Inquiry alone does not show it operated; inspection, observation or re-performance must back it up</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Auditors may not rely on anything a control owner says, so the interview carries no weight as evidence</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>Interviews count as evidence only when they are recorded, transcribed and signed by the control owner</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Quarterly controls must always be re-performed in full by the auditor, whatever other evidence exists</span></button></div>
+              <p class="lx-why" data-why="Inquiry is useful for understanding a control but is the weakest method. An honest account of what usually happens says nothing about what happened each quarter, so it is backed up with records or re-performance." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q3</span>Which is the strongest evidence that production changes were approved throughout a twelve-month review period?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>A dated screenshot of one approved change, taken from the deployment tool the week before fieldwork</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>The change management policy, signed by the CTO, requiring approval for every production change</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>A spreadsheet the release manager keeps of the approvals he remembers giving, updated after each release</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>A pipeline export of every production change in the period, each linked to its approver and timestamp</span></button></div>
+              <p class="lx-why" data-why="The pipeline export is complete, dated, attributable, from the system of record and covers the whole period. A policy shows intent, a single screenshot shows one instance, and a hand-kept list is neither complete nor verifiable." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q4</span>A prospective customer receives a SOC 2 Type II report whose review period ended five months ago and asks what has changed since. What usually answers that question?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>A letter from the auditor extending the report's opinion to cover the months since the period ended</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>A bridge letter from management stating whether there have been material changes since the period</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>An ISO 27001 surveillance audit report, since surveillance audits run every year between certifications</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Nothing is needed, because a SOC 2 Type II report stays valid for three years after it is issued</span></button></div>
+              <p class="lx-why" data-why="A bridge letter comes from management, not the auditor, and covers the gap between the end of the report period and today. It carries only management's word, so it is a stopgap until the next report." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q5</span>Testing finds three leavers whose accounts stayed active for a week. The owner disables them the same day and asks for the finding to be closed. What should happen next?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>Close it, because the accounts are now disabled and the owner has confirmed none were used after the leavers left</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Change the control to allow ten business days, so that the written control matches what happens in practice</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>Treat the fix as a correction: find the root cause, plan a corrective action, and close once a retest passes</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Leave it open until the next external audit, so the auditor can decide whether it is still a problem worth fixing</span></button></div>
+              <p class="lx-why" data-why="Disabling the accounts fixes the instance, not the cause. The finding closes only when a corrective action is in place and someone other than the owner has retested the control. Loosening the control is a risk decision, not a fix." aria-live="polite"></p>
+            </div>
+            <div class="lx-check-foot">
+              <p>Answer every question to complete the lesson. Your answers stay in this browser.</p>
+              <span>
+                <button type="button" class="sx-btn sx-btn-ghost" data-retry style="cursor:pointer;font:inherit">Try again</button>
+                <button type="button" class="sx-btn sx-btn-primary" data-complete disabled style="cursor:pointer;font:inherit">Complete the lesson <span class="sx-arrow" aria-hidden="true">✓</span></button>
+                <span class="lx-done" data-complete-msg hidden>✓ Lesson complete</span>
+              </span>
+            </div>
+          </section>
+          <aside class="lx-bridge" aria-label="See it in AiVRIC Enterprise Vision">
+            <div class="lx-bridge-copy">
+              <p class="sx-eyebrow">See it in AiVRIC Enterprise Vision</p>
+              <h3>From finding to fix to proof</h3>
+              <p>In Enterprise Vision every POA&amp;M item is tied to the control it fixes, with an owner and a deadline. Every control, decision and action lands on an append-only audit trail, ready for the audit, and TrustSignals shares an approved snapshot with customers, never raw findings.</p>
+              <a class="sx-btn sx-btn-ghost" href="https://aivric.com/compliance/soc2/?utm_source=academy&utm_medium=web&utm_campaign=learning&utm_content=grc-management_assurance">See the SOC 2 guide <span class="sx-arrow" aria-hidden="true">→</span></a>
+            </div>
+            <figure><img src="../../../assets/learn/stills/poam.jpg" alt="The POA&amp;M in AiVRIC Enterprise Vision, in a demo workspace" loading="lazy" decoding="async" width="1280" height="800" /><figcaption>Demo workspace · sample data</figcaption></figure>
+          </aside>
+          <nav class="lx-pager" aria-label="Lessons">
+            <a href="../controls/"><small>← Previous</small><b>Controls: designing what you rely on</b></a>
+            <a class="is-next" href="../operating/"><small>Next lesson →</small><b>Running the program: cadence, metrics and reporting</b></a>
+          </nav>
+        </article>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+          <p>Security, compliance, and risk intelligence, hosted on Google Cloud in the US.</p>
+          <p class="footer-contact"><a href="mailto:info@aivric.com">info@aivric.com</a><br /><a href="tel:+19543426637">+1 954 342 6637</a></p>
+          <p class="footer-social"><a href="https://www.linkedin.com/company/aivric">LinkedIn</a> · <a href="https://x.com/aivric">X</a> · <a href="https://www.facebook.com/61581937785235/">Facebook</a> · <a href="https://www.instagram.com/aivrictechnologies/">Instagram</a></p>
+        </div>
+        <div>
+          <h4>Use Cases</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/compliance/">Compliance Overview</a>
+            <a href="https://aivric.com/compliance/hipaa/">HIPAA</a>
+            <a href="https://aivric.com/compliance/soc2/">SOC 2</a>
+            <a href="https://aivric.com/compliance/cmmc/">CMMC</a>
+            <a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a>
+            <a href="https://aivric.com/enterprise/ciso/">For the CISO</a>
+          </div>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a>
+            <a href="https://aivric.com/providers/">Client Vision</a>
+            <a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a>
+            <a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a>
+            <a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a>
+            <a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a>
+            <a href="https://aivric.com/solutions-portal.html">All Products</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/about.html">About Us</a><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a><a href="https://aivric.com/pricing.html">Pricing</a><a href="https://aivric.com/blog-portal.html">Blog</a
+            ><a href="https://aivric.com/trust/">Trust Center</a><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a><a href="../../../">Academy</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>&copy; 2026 AiVRIC Technologies. All Rights Reserved.</span>
+        <span class="footer-pill">ISO 27001-Aligned</span>
+        <span><a href="https://aivric.com/terms-of-use.html">Terms of Service</a> · <a href="https://aivric.com/privacy-policy.html">Privacy Policy</a></span>
+      </div>
+    </footer>
+
+    <script type="application/json" id="lx-data">{"course":"grc-management","lesson":"assurance","checks":[{"answer":2},{"answer":0},{"answer":3},{"answer":1},{"answer":2}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AiVRIC Learning","item":"https://academy.aivric.com/"},{"@type":"ListItem","position":2,"name":"Foundations","item":"https://academy.aivric.com/foundations/"},{"@type":"ListItem","position":3,"name":"GRC Management Fundamentals","item":"https://academy.aivric.com/foundations/grc-management/"},{"@type":"ListItem","position":4,"name":"Assurance: testing, evidence and audits","item":"https://academy.aivric.com/foundations/grc-management/assurance/"}]},{"@type":"LearningResource","name":"Assurance: testing, evidence and audits","description":"Design versus operating effectiveness, what makes evidence audit-ready, how SOC 2 Type I and Type II differ, and handling exceptions and corrective action plans.","url":"https://academy.aivric.com/foundations/grc-management/assurance/","isAccessibleForFree":true,"timeRequired":"PT45M","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"GRC Management Fundamentals","url":"https://academy.aivric.com/foundations/grc-management/"},"provider":{"@type":"Organization","name":"AiVRIC","sameAs":"https://aivric.com/"}}]}</script>
+    <script defer src="../../../assets/kit/mnav.js"></script>
+    <script defer src="../../../assets/kit/site.js"></script>
+    <script defer src="../../../assets/learn/learn.js"></script>
+  </body>
+</html>

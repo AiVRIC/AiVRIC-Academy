@@ -1,0 +1,166 @@
+<section class="lx-sec" id="what-risk">
+  <h2><span class="lx-n">1</span>What a risk is</h2>
+  <p>A risk is not a vulnerability, a threat or an audit finding, although all three feed into one. A risk is something that might happen in the future and, if it did, would get in the way of what the organization is trying to achieve. Written well, it has three parts:</p>
+  <div class="lx-trio">
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Cause</p>
+      <p class="lx-trio-q">Why could it happen?</p>
+      <p>The condition that makes the event possible: an unpatched system, a single point of failure, a supplier with broad access.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Event</p>
+      <p class="lx-trio-q">What would happen?</p>
+      <p>What occurs: ransomware runs, an account is taken over, a key system stops.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Consequence</p>
+      <p class="lx-trio-q">What would it cost us?</p>
+      <p>The effect on an objective: lost revenue, missed commitments, regulatory action, harm to customers or staff.</p>
+    </div>
+  </div>
+  <p>The link to objectives is what makes a risk worth managing. ISO 31000 describes risk in terms of how uncertainty affects objectives, and allows that the effect can be positive as well as negative. If you cannot say which objective a risk threatens, you cannot say how much it matters.</p>
+  <aside class="lx-def"><p class="lx-def-k">Definition</p><p>A <strong>risk statement</strong> describes one risk in a fixed shape: <strong>If</strong> an event occurs, <strong>because</strong> of a cause, <strong>then</strong> something happens, <strong>resulting in</strong> a consequence for an objective.</p></aside>
+  <aside class="lx-note"><p class="lx-note-k">Example</p><p>Big Venture Incorporated, a fictional freight-software company with about 600 staff, had a register entry that read "Ransomware." That is a threat, not a risk. Rewritten: "If ransomware reaches the warehouse management system, because the remote access gateway is unpatched, then shipping stops at all four distribution centers, resulting in missed delivery commitments and contract penalties." Now there is a cause to fix and a consequence someone can weigh.</p></aside>
+</section>
+
+<section class="lx-sec" id="process">
+  <h2><span class="lx-n">2</span>The risk process</h2>
+  <p>ISO 31000:2018 gives guidance, not requirements, for managing any kind of risk. Its process is a loop, and in plain terms it runs like this:</p>
+  <div class="lx-lines">
+    <div class="lx-line-row"><p class="lx-line-k">Establish context</p><p>Set the scope, the objectives at stake and the criteria for judging risk: the scales, appetite and tolerance.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Identify</p><p>Find the risks: workshops with system owners, past incidents, audit findings, new projects and changes.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Analyze</p><p>Understand each risk: its causes, the controls already in place, and how likely and how severe it is.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Evaluate</p><p>Compare the result with your criteria to decide which risks need action and in what order.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Treat</p><p>Choose and carry out a response, then judge whether what remains is acceptable.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Monitor and review</p><p>Check that treatments work and ratings still hold.</p></div>
+    <div class="lx-line-row lx-line-gov"><p class="lx-line-k">Communicate</p><p>Consult the people who own and are affected by each risk throughout, and record decisions so they can be seen and challenged.</p></div>
+  </div>
+  <p>Identification, analysis and evaluation together make up risk assessment. For information systems, <strong>NIST SP 800-30</strong> is the widely used US guide to doing that assessment. It frames risk around threats, the vulnerabilities they exploit, and the resulting likelihood and impact.</p>
+</section>
+
+<section class="lx-sec" id="assess">
+  <h2><span class="lx-n">3</span>Assessing risk: qualitative and quantitative</h2>
+  <p>Most programs start <strong>qualitative</strong>. Each risk gets a likelihood and an impact on a five-point scale, and the two are multiplied into a score from 1 to 25. The scales only work when each point is defined in words. At Big Venture, likelihood 4 means "expected to happen within a year," and impact 5 means "core operations stop for more than a day, or a major customer is lost." Scores then fall into bands: 1 to 4 low, 5 to 9 medium, 10 to 16 high, 20 and above critical.</p>
+  <p>The matrix is fast and good at sorting a long list. It is also easy to over-trust.</p>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>The numbers on a 5×5 matrix are ordered labels, not measurements. A 4 is not twice a 2, so multiplying them gives a ranking, not a quantity. Two assessors often score the same risk differently, ratings drift toward the middle, and a 20 cannot be set against the cost of a control. Use the matrix to prioritize, not to measure.</p></aside>
+  <p><strong>Quantitative</strong> assessment expresses risk in money and frequency instead. The classic form multiplies the expected loss from one event by how many times a year it is expected to happen, giving an annualized loss expectancy. Current practice estimates both as ranges and simulates a spread of possible annual losses, which can be compared directly with the cost of a treatment.</p>
+  <p>Quantitative work needs data and people who can defend the estimates. A sensible pattern is qualitative scoring for the whole register and quantitative analysis for the few decisions large enough to justify it.</p>
+</section>
+
+<section class="lx-sec" id="residual">
+  <h2><span class="lx-n">4</span>Inherent risk, residual risk and the yardstick</h2>
+  <p><strong>Inherent risk</strong> is the rating before controls: how likely and how bad the event would be if nothing were in place to stop it. <strong>Residual risk</strong> is the rating with the controls that exist and work today. Controls are what sit between the two. The gap between the two ratings is the value they deliver.</p>
+  <p>Give credit only for controls that are implemented and operating. A planned or never-tested control should not lower the residual rating; lessons 5 and 6 cover designing controls and proving they work.</p>
+  <p>A residual rating means nothing until it is compared with something: the risk appetite from lesson 2, made specific. <strong>Appetite</strong> is leadership's broad statement of how much risk it will take on; <strong>tolerance</strong> is the measurable threshold for a category of risk. Big Venture's appetite statement says it has a low appetite for disruption to shipping; its tolerance for operational risk is a residual score of 9 or below. Evaluation is the comparison.</p>
+  <figure class="lx-fig">
+    <svg viewBox="0 0 760 300" role="img" aria-labelledby="fig4-t fig4-d">
+      <title id="fig4-t">Inherent risk, controls and residual risk against tolerance</title>
+      <desc id="fig4-d">Two risks on a score axis from 0 to 25, with a tolerance line at 9. Ransomware on the warehouse system starts at an inherent score of 20 and controls bring it to a residual 8, inside tolerance. The legacy file server starts at 15 and controls bring it to 10, still above tolerance, so it needs a decision.</desc>
+      <defs>
+        <marker id="fig4-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b6bfce"/></marker>
+      </defs>
+      <g font-family="Inter, system-ui, sans-serif" font-size="13" fill="#b6bfce">
+        <text x="20" y="72" fill="#eef2f8" font-size="14" font-weight="600">R-07 Ransomware</text>
+        <text x="20" y="92" font-size="12" fill="#7f8a9d">MFA, patching, backups</text>
+        <rect x="200" y="56" width="416" height="24" rx="6" fill="rgba(0,209,255,.16)" stroke="#00d1ff"/>
+        <text x="624" y="73">Inherent 20</text>
+        <rect x="200" y="96" width="166" height="24" rx="6" fill="rgba(46,229,157,.16)" stroke="#2ee59d"/>
+        <text x="212" y="113" fill="#eef2f8">Residual 8</text>
+        <text x="398" y="113" fill="#2ee59d">within tolerance</text>
+        <path d="M612 82 Q 520 90 372 94" stroke="#b6bfce" stroke-width="1.2" fill="none" stroke-dasharray="4 4" marker-end="url(#fig4-arrow)"/>
+        <text x="500" y="98" font-size="11" fill="#7f8a9d" text-anchor="middle">controls</text>
+        <text x="20" y="182" fill="#eef2f8" font-size="14" font-weight="600">R-12 Legacy server</text>
+        <text x="20" y="202" font-size="12" fill="#7f8a9d">allow-list, segmentation</text>
+        <rect x="200" y="166" width="312" height="24" rx="6" fill="rgba(0,209,255,.16)" stroke="#00d1ff"/>
+        <text x="520" y="183">Inherent 15</text>
+        <rect x="200" y="206" width="208" height="24" rx="6" fill="rgba(255,196,107,.18)" stroke="#ffc46b"/>
+        <text x="416" y="223" fill="#ffc46b">Residual 10, above tolerance: decide</text>
+        <path d="M508 192 Q 470 198 414 204" stroke="#b6bfce" stroke-width="1.2" fill="none" stroke-dasharray="4 4" marker-end="url(#fig4-arrow)"/>
+        <line x1="387" y1="42" x2="387" y2="240" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="6 5"/>
+        <text x="387" y="34" text-anchor="middle" fill="#a78bfa" font-size="12">Tolerance: 9</text>
+        <line x1="200" y1="250" x2="720" y2="250" stroke="rgba(175,178,206,.28)"/>
+        <g font-size="11" fill="#7f8a9d" text-anchor="middle">
+          <text x="200" y="268">0</text><text x="304" y="268">5</text><text x="408" y="268">10</text>
+          <text x="512" y="268">15</text><text x="616" y="268">20</text><text x="720" y="268">25</text>
+        </g>
+        <text x="460" y="290" text-anchor="middle" font-size="11" letter-spacing="2" fill="#7f8a9d">RISK SCORE (LIKELIHOOD × IMPACT)</text>
+      </g>
+    </svg>
+    <figcaption>Controls take each risk from its inherent to its residual rating. Below the tolerance line the owner can accept and monitor; above it, someone with more authority must decide.</figcaption>
+  </figure>
+</section>
+
+<section class="lx-sec" id="treat">
+  <h2><span class="lx-n">5</span>Treating risk, and accepting it properly</h2>
+  <p>Every risk that has been assessed ends in one of four responses. ISO 31000 lists the options in finer detail, but they all fold into these:</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">Mitigate (reduce)</p><p>Add or strengthen controls to lower likelihood or impact. Big Venture adds multi-factor authentication to the remote access gateway and tests restores from offline backups every quarter.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Accept</p><p>Keep the risk, knowingly. Big Venture accepts that a regional office's internet link may fail for a few hours, since staff can work from a nearby warehouse.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Transfer (share)</p><p>Move part of the consequence to someone else through insurance or contracts. Big Venture buys cyber insurance and makes its payroll provider liable for breaches on its side.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Avoid</p><p>Stop the activity that creates the risk. Big Venture drops a plan to store driver license scans in its portal, since nothing needs them.</p></div>
+  </div>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>Transfer moves money, not accountability. An insurer may pay for recovery and a supplier may owe damages, but customers, regulators and the board still hold the organization responsible.</p></aside>
+  <p>Most risks get a combination: mitigate, then accept what remains. Acceptance is where programs most often go wrong: "we'll live with it" in a meeting is not a decision. A properly accepted risk has:</p>
+  <ul class="lx-checklist">
+    <li><strong>A decider with authority.</strong> Within tolerance, the risk owner can usually accept. Above tolerance, the decision belongs to an executive or a risk committee, as set in the decision rights from lesson 2.</li>
+    <li><strong>A rationale</strong> for why accepting beats treating further, in terms a reviewer can test.</li>
+    <li><strong>Compensating controls</strong> where the normal control is missing, such as closer monitoring or tighter network access.</li>
+    <li><strong>An expiry or review date.</strong> No acceptance is permanent.</li>
+    <li><strong>Re-evaluation triggers</strong>: events that reopen the decision early, such as a new exploit, an incident or a slipped deadline.</li>
+  </ul>
+  <p>A policy <strong>exception</strong> is the same thing under another name: a time-bound accepted risk against a specific requirement. Big Venture's standard bans unsupported operating systems, but one legacy file server must run until a migration finishes. The exception is recorded as an accepted risk with an owner, compensating controls and a hard end date.</p>
+</section>
+
+<section class="lx-sec" id="register">
+  <h2><span class="lx-n">6</span>The risk register</h2>
+  <p>The register is where all of this is written down, one entry per risk, from statement to decision. Here are Big Venture's two risks from the figure.</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Field</th><th>R-07</th><th>R-12</th></tr></thead>
+      <tbody>
+        <tr><td>Statement</td><td>If ransomware reaches the warehouse system, because remote access is unpatched or a login is phished, then shipping stops at all four sites, resulting in missed deliveries and penalties.</td><td>If the legacy file server is compromised, because its operating system is unsupported, then manifests with customer contact data could be exposed, resulting in notification costs and lost accounts.</td></tr>
+        <tr><td>Owner</td><td>VP of Operations</td><td>Director of IT</td></tr>
+        <tr><td>Category</td><td>Operational</td><td>Information security and privacy</td></tr>
+        <tr><td>Inherent rating</td><td>4 × 5 = 20, critical</td><td>3 × 5 = 15, high</td></tr>
+        <tr><td>Controls</td><td>C-03 MFA on remote access; C-11 critical patches in 14 days; C-19 offline backups, restores tested quarterly</td><td>C-07 network segmentation; C-22 customer IP allow-list; compensating: daily log review</td></tr>
+        <tr><td>Residual rating</td><td>2 × 4 = 8, medium</td><td>2 × 5 = 10, high</td></tr>
+        <tr><td>Treatment</td><td>Mitigate</td><td>Accept as a time-bound exception; retire the server</td></tr>
+        <tr><td>Decision</td><td>Residual accepted, within tolerance</td><td>Accepted above tolerance until 31 March 2027</td></tr>
+        <tr><td>Decider</td><td>VP of Operations (risk owner)</td><td>Executive risk committee</td></tr>
+        <tr><td>Rationale</td><td>Within the tolerance of 9; further reduction would cost far more than the remaining exposure.</td><td>Migration is due in the first quarter; isolating the server now would break three customers' shipments.</td></tr>
+        <tr><td>Review date</td><td>30 June 2027, or sooner if a restore test fails</td><td>Monthly until expiry; early if a new exploit appears or the migration slips</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The register should not stand alone. It points in two directions:</p>
+  <ul class="lx-list">
+    <li><strong>To controls.</strong> Each risk names the controls it relies on, so if C-19 fails a test, R-07's residual rating is visibly in question. Lesson 5 covers the control baseline.</li>
+    <li><strong>To remediation.</strong> Mitigation work becomes items on a remediation plan, often called a plan of action and milestones (POA&amp;M), each with an owner and due dates. Retiring R-12's server is one. Lesson 6 covers tracking and closing them.</li>
+  </ul>
+</section>
+
+<section class="lx-sec lx-practice" id="practice">
+  <h2><span class="lx-n">7</span>In practice: take one risk to a decision</h2>
+  <p>Pick one risk from your register, or one that has never been written down. Give it forty minutes.</p>
+  <ol class="lx-steps">
+    <li><strong>Rewrite the statement</strong> in the "If, because, then, resulting in" shape, and name the objective it threatens.</li>
+    <li><strong>Rate it twice.</strong> Score the inherent risk, list the controls really in place, then score the residual risk. Flag any control you are not sure has been tested.</li>
+    <li><strong>Find the yardstick.</strong> Locate the tolerance that applies. If there isn't one, write down what you would propose and who would need to approve it.</li>
+    <li><strong>Choose a treatment</strong> and write the decision as the register would hold it: decider, rationale and review date.</li>
+    <li><strong>Check the authority.</strong> Is the person you named actually allowed to accept a risk at that level? If you can't tell, that gap is your first governance finding.</li>
+  </ol>
+</section>
+
+<section class="lx-sec" id="terms">
+  <h2><span class="lx-n">8</span>Key terms</h2>
+  <dl class="lx-terms">
+    <div><dt>Risk statement</dt><dd>A one-sentence description of a risk that links its cause, the event and the consequence for an objective.</dd></div>
+    <div><dt>Inherent risk</dt><dd>The level of risk before controls are taken into account.</dd></div>
+    <div><dt>Residual risk</dt><dd>The level of risk that remains with the controls that are implemented and operating today.</dd></div>
+    <div><dt>Risk tolerance</dt><dd>The measurable threshold, set within the risk appetite, that residual risk in a category is evaluated against.</dd></div>
+    <div><dt>Risk treatment</dt><dd>The chosen response to a risk: mitigate, accept, transfer or avoid, often in combination.</dd></div>
+    <div><dt>Risk acceptance</dt><dd>A recorded decision, by someone with authority, to carry a risk as it is, with a rationale and a review date.</dd></div>
+    <div><dt>Exception</dt><dd>A time-bound accepted risk against a specific policy or standard requirement, usually with compensating controls.</dd></div>
+    <div><dt>POA&amp;M</dt><dd>Plan of action and milestones: the tracked list of remediation work, each item with an owner and due dates.</dd></div>
+  </dl>
+</section>

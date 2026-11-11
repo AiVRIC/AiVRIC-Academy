@@ -1,0 +1,178 @@
+<section class="lx-sec" id="direction">
+  <h2><span class="lx-n">1</span>Direction and accountability</h2>
+  <p>Governance is how an organization decides what security is for, who answers for it, and how it will know whether it is working. It is not the same as running security. Management runs the program: it builds controls, fixes findings and staffs the team. Governance sets the direction that work follows and holds management to account for it.</p>
+  <div class="lx-trio">
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Direction</p>
+      <p class="lx-trio-q">What are we trying to achieve?</p>
+      <p>The business objectives security serves, how much risk the organization will carry, and the policies it commits to.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Accountability</p>
+      <p class="lx-trio-q">Who answers for it?</p>
+      <p>Named owners for decisions, risks and controls, each with the authority and resources the role needs.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Oversight</p>
+      <p class="lx-trio-q">How do we know it is working?</p>
+      <p>Regular reporting, challenge and review, so direction changes when the business or the threats change.</p>
+    </div>
+  </div>
+  <p>The split shows up in who holds which role. The examples in this lesson follow Big Venture Incorporated, a fictional freight-software company of about 600 people whose customers track shipments on its web platform.</p>
+  <div class="lx-lines">
+    <div class="lx-line-row"><p class="lx-line-k">Governing body</p><p>Big Venture's board, through its audit and risk committee. Approves the risk appetite, receives security reporting, and asks whether management is staying inside what was agreed.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Executive management</p><p>The CEO and the leadership team. Accountable to the board for the program, approve top-level policy and fund the work.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Security leadership</p><p>The CISO and the security function. Turn direction into standards and a plan, run the risk register and report on progress.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Owners</p><p>Engineering, IT and business managers who own systems, risks and controls, and do the day-to-day work the standards require.</p></div>
+  </div>
+  <aside class="lx-def"><p class="lx-def-k">Definition</p><p><strong>Security governance</strong> is the system by which an organization's leadership sets direction for security, assigns accountability for it, and oversees whether that direction is being followed.</p></aside>
+</section>
+
+<section class="lx-sec" id="committee">
+  <h2><span class="lx-n">2</span>The steering committee and decision rights</h2>
+  <p>Boards meet a few times a year and cannot weigh every security decision. Most organizations close the gap with a <strong>security or risk steering committee</strong>: a standing group of senior managers that makes the decisions too big for one team and too frequent for the board. What makes it work is a written <strong>charter</strong>, approved by executive management and reviewed every year.</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">Purpose and membership</p><p>Why the committee exists and who sits on it. Big Venture's committee has the COO as chair, the CISO, the CTO, the heads of legal, finance and operations, and internal audit attending without a vote.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Decision rights</p><p>What the committee can decide on its own (approve standards, accept risks within tolerance, prioritize the security roadmap) and what it can only recommend.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Cadence and quorum</p><p>Monthly meetings, a quorum for decisions, minutes that record each decision with its owner and rationale, and a route for urgent decisions between meetings.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Escalation and reporting</p><p>What goes up to the executive team or the board: any risk outside tolerance, any breach of policy with customer impact, and a quarterly summary of the program.</p></div>
+  </div>
+  <p>A charter says what the committee may decide. A <strong>decision-rights matrix</strong> says who does what for each recurring decision. The common form is RACI: who is Responsible for doing the work, who is Accountable for the outcome, who is Consulted before, and who is Informed after.</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Decision</th><th>Board</th><th>Executives</th><th>Committee</th><th>CISO</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Set the risk appetite</td><td>A</td><td>R</td><td>C</td><td>C</td><td>I</td></tr>
+        <tr><td>Approve the security policy</td><td>I</td><td>A</td><td>C</td><td>R</td><td>I</td></tr>
+        <tr><td>Approve a security standard</td><td>–</td><td>I</td><td>A</td><td>R</td><td>C</td></tr>
+        <tr><td>Accept a risk outside tolerance</td><td>I</td><td>A</td><td>C</td><td>C</td><td>R</td></tr>
+        <tr><td>Grant a time-limited exception</td><td>–</td><td>–</td><td>I</td><td>A</td><td>R</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>Each decision needs exactly one A. Two accountable people means neither is, and a decision with no A gets made by whoever happens to be in the room.</p></aside>
+</section>
+
+<section class="lx-sec" id="hierarchy">
+  <h2><span class="lx-n">3</span>The document hierarchy</h2>
+  <p>Governance is written down in four kinds of document. Each answers a different question, is approved at a different level and changes at a different speed. Mixing them is how policy sets become long, stale and ignored.</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Document</th><th>Answers</th><th>Approved by</th><th>Reviewed</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Policy</td><td>What we commit to, and why</td><td>Executive management</td><td>Yearly, or on major change</td><td>Mandatory</td></tr>
+        <tr><td>Standard</td><td>The specific, measurable rule</td><td>Steering committee or CISO</td><td>Yearly, or when technology changes</td><td>Mandatory</td></tr>
+        <tr><td>Procedure</td><td>The steps to meet the rule</td><td>The owning team's manager</td><td>When the process changes</td><td>Mandatory for those who perform it</td></tr>
+        <tr><td>Guideline</td><td>A recommended way to do it well</td><td>Security function</td><td>As needed</td><td>Advisory</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Policies stay short and stable because they carry the highest approval. The detail lives lower down, where it can change without going back to the executive team.</p>
+  <figure class="lx-fig">
+    <svg viewBox="0 0 760 310" role="img" aria-labelledby="fig2-t fig2-d">
+      <title id="fig2-t">The document hierarchy for access control</title>
+      <desc id="fig2-d">A four-tier pyramid with policy at the top, then standard, procedure and guideline. Each tier links to the matching document in one access control chain: the access control policy, the identity and access standard, the quarterly access review procedure and passphrase guidance.</desc>
+      <g font-family="Inter, system-ui, sans-serif" font-size="12" fill="#b6bfce">
+        <text x="20" y="24" font-size="11" letter-spacing="2" fill="#7f8a9d">THE HIERARCHY</text>
+        <text x="440" y="24" font-size="11" letter-spacing="2" fill="#7f8a9d">ONE CHAIN: ACCESS CONTROL</text>
+        <rect x="110" y="40" width="200" height="54" rx="10" fill="rgba(167,139,250,.08)" stroke="#a78bfa"/>
+        <text x="210" y="63" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Policy</text>
+        <text x="210" y="81" text-anchor="middle">what and why</text>
+        <rect x="80" y="106" width="260" height="54" rx="10" fill="rgba(0,209,255,.08)" stroke="#00d1ff"/>
+        <text x="210" y="129" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Standard</text>
+        <text x="210" y="147" text-anchor="middle">the specific rule</text>
+        <rect x="50" y="172" width="320" height="54" rx="10" fill="rgba(46,229,157,.07)" stroke="#2ee59d"/>
+        <text x="210" y="195" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Procedure</text>
+        <text x="210" y="213" text-anchor="middle">the steps</text>
+        <rect x="20" y="238" width="380" height="54" rx="10" fill="rgba(255,196,107,.06)" stroke="#ffc46b" stroke-dasharray="5 4"/>
+        <text x="210" y="261" text-anchor="middle" fill="#eef2f8" font-size="14" font-weight="600">Guideline</text>
+        <text x="210" y="279" text-anchor="middle">advice, not a requirement</text>
+        <g fill="none" stroke-width="1.4" stroke-dasharray="4 4">
+          <path d="M310 67 L430 67" stroke="#a78bfa"/>
+          <path d="M340 133 L430 133" stroke="#00d1ff"/>
+          <path d="M370 199 L430 199" stroke="#2ee59d"/>
+          <path d="M400 265 L430 265" stroke="#ffc46b"/>
+        </g>
+        <text x="440" y="62" fill="#eef2f8" font-size="13" font-weight="600">Access control policy</text>
+        <text x="440" y="80">Access follows least privilege and is reviewed.</text>
+        <text x="440" y="128" fill="#eef2f8" font-size="13" font-weight="600">Identity and access standard</text>
+        <text x="440" y="146">MFA on all remote access; reviews each quarter.</text>
+        <text x="440" y="194" fill="#eef2f8" font-size="13" font-weight="600">Quarterly access review procedure</text>
+        <text x="440" y="212">Export access, managers confirm, revoke, record.</text>
+        <text x="440" y="260" fill="#eef2f8" font-size="13" font-weight="600">Passphrase guidance</text>
+        <text x="440" y="278">Suggested ways to choose a strong passphrase.</text>
+      </g>
+    </svg>
+    <figcaption>One topic, four documents. Each level implements the one above it; only the guideline is optional.</figcaption>
+  </figure>
+  <aside class="lx-note"><p class="lx-note-k">Example</p><p>Big Venture's first policy set ran to forty pages and named a specific password length. Every tool change meant re-approving the whole policy, so nobody did. Moving the password rule into the identity standard cut the policy to two pages and let the committee update the rule in one meeting.</p></aside>
+</section>
+
+<section class="lx-sec" id="lifecycle">
+  <h2><span class="lx-n">4</span>The policy lifecycle</h2>
+  <p>A policy is not finished when it is written. It moves through a lifecycle, and each stage leaves a record an auditor may later ask to see.</p>
+  <ul class="lx-list">
+    <li><strong>Draft.</strong> The owner writes or revises it, tied to the risks and obligations it addresses.</li>
+    <li><strong>Review.</strong> Legal, the affected teams and the steering committee comment before approval, not after.</li>
+    <li><strong>Approve.</strong> The approver named in the decision-rights matrix signs off, with a date and a version number.</li>
+    <li><strong>Publish.</strong> The approved version goes somewhere everyone it applies to can find it.</li>
+    <li><strong>Attest.</strong> Staff confirm they have read it, at hire and again on a set cycle or after a significant change.</li>
+    <li><strong>Review on a cadence.</strong> At least yearly, and sooner after an incident, a reorganization or a new obligation.</li>
+    <li><strong>Retire.</strong> A policy that no longer applies is withdrawn formally, so it stops being cited.</li>
+  </ul>
+  <p>Version control ties the stages together. Keep every <strong>issued version</strong>, with its approval record and the dates it was in force, not just the current text. When a customer, auditor or regulator asks what the rule was on a past date, the answer has to come from the document as approved then.</p>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>A shared wiki page that anyone can edit is a draft, not an issued policy. If the approved version cannot be told apart from later edits, there is no evidence of what was approved.</p></aside>
+</section>
+
+<section class="lx-sec" id="appetite">
+  <h2><span class="lx-n">5</span>Risk appetite and risk tolerance</h2>
+  <p>The policy set says what the organization will do. The <strong>risk appetite</strong> says how much risk it is prepared to carry while doing it, and it is the measure every later risk decision is held against. Leadership sets it, usually executive management proposing and the governing body approving.</p>
+  <p>Appetite is broad and written in words. <strong>Risk tolerance</strong> turns it into measurable thresholds for each area, so a manager can tell from a dashboard whether the organization is inside appetite without asking the board.</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Area</th><th>Appetite (set by leadership)</th><th>Tolerances (measured)</th></tr></thead>
+      <tbody>
+        <tr><td>Customer data</td><td>Low. We do not take risks that could expose customer shipment or personal data.</td><td>Critical flaws on internet-facing systems fixed within 7 days. MFA on every production admin account. Access reviews closed within 10 working days of quarter end.</td></tr>
+        <tr><td>Service availability</td><td>Moderate. Short outages of internal tools are acceptable; outages of the tracking platform are not.</td><td>Tracking platform restored within 4 hours and no more than 15 minutes of data lost. Backups restore-tested every quarter.</td></tr>
+        <tr><td>New technology</td><td>Moderate to high. We adopt new tools to move faster, once they are reviewed.</td><td>No customer data in any tool before a security review. Vendors handling customer data assessed before contract signature.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>When a measure crosses a tolerance, the charter and the decision-rights matrix say who must accept, treat or escalate it. Lesson 4 covers assessing and treating individual risks against these thresholds.</p>
+</section>
+
+<section class="lx-sec" id="standards">
+  <h2><span class="lx-n">6</span>Governance in the standards</h2>
+  <p>Two widely used frameworks put governance first. Lesson 3 covers frameworks in depth; here is what each expects of leadership.</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">ISO/IEC 27001:2022, clause 5</p><p>The Leadership clause expects top management to show active commitment: setting an information security policy and objectives that fit the organization's strategy, building security into business processes, providing resources, and promoting improvement. It also requires roles, responsibilities and authorities to be assigned and communicated, including who reports on the management system's performance to top management.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">NIST CSF 2.0, Govern</p><p>Version 2.0, published in February 2024, added Govern as a sixth function at the center of the framework, informing the other five. Its categories cover organizational context, risk management strategy (including appetite and tolerance statements), roles and responsibilities, policy, oversight, and supply chain risk management.</p></div>
+  </div>
+  <p>Both treat accountability as something leadership keeps even when it delegates the work, and an auditor will look for evidence that it does.</p>
+</section>
+
+<section class="lx-sec lx-practice" id="practice">
+  <h2><span class="lx-n">7</span>In practice: test your governance</h2>
+  <p>Set aside forty minutes and work from the documents you have today.</p>
+  <ol class="lx-steps">
+    <li><strong>Find the approvals.</strong> For your top-level security policy, find who approved the version in force, on what date, and when it is next due for review.</li>
+    <li><strong>Map five decisions.</strong> Write a RACI row for setting appetite, approving a standard, accepting a risk, granting an exception and approving a policy change. Check each row has exactly one A.</li>
+    <li><strong>Sort the documents.</strong> Put each security document in one of the four tiers. Flag any policy that contains procedure steps or settings that change often.</li>
+    <li><strong>Draft an appetite.</strong> Write one appetite sentence for two risk areas, and at least two measurable tolerances for each.</li>
+    <li><strong>Pull a past version.</strong> Try to produce the access policy as it stood a year ago, with its approval record. If you cannot, fix version control before anything else.</li>
+  </ol>
+</section>
+
+<section class="lx-sec" id="terms">
+  <h2><span class="lx-n">8</span>Key terms</h2>
+  <dl class="lx-terms">
+    <div><dt>Governance</dt><dd>The way leadership sets direction for security, assigns accountability and oversees whether direction is followed.</dd></div>
+    <div><dt>Charter</dt><dd>The approved document that sets a committee's purpose, membership, decision rights, cadence and escalation routes.</dd></div>
+    <div><dt>Decision rights</dt><dd>Who may make, shape or must be told about each recurring decision, often recorded as a RACI matrix.</dd></div>
+    <div><dt>Policy</dt><dd>A short, mandatory statement of what the organization commits to and why, approved by executive management.</dd></div>
+    <div><dt>Standard</dt><dd>A mandatory, specific and measurable rule that implements a policy.</dd></div>
+    <div><dt>Procedure</dt><dd>The step-by-step method for meeting a standard, owned by the team that performs it.</dd></div>
+    <div><dt>Guideline</dt><dd>Advisory guidance on good practice; recommended but not required.</dd></div>
+    <div><dt>Risk tolerance</dt><dd>Measurable thresholds for a risk area that show whether the organization is inside its risk appetite.</dd></div>
+  </dl>
+</section>

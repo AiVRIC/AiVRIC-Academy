@@ -1,0 +1,65 @@
+{
+  "objectives": [
+    "Distinguish governance from management and place the roles that carry each",
+    "Set out a steering committee charter and the decision rights a program runs on",
+    "Sort documents into policy, standard, procedure and guideline, and run them through a lifecycle",
+    "Write a risk appetite statement and turn it into measurable tolerances"
+  ],
+  "checks": [
+    {
+      "q": "A company's board tells its new CISO: \"You own governance now, so security no longer needs to come to us.\" What is wrong with this arrangement?",
+      "options": [
+        "Nothing, as long as the CISO reports to the CEO rather than the CIO and personally owns the risk register.",
+        "The CISO should hand governance to internal audit instead, since it is the one function independent of management.",
+        "The board should delegate governance to the steering committee instead, since it meets monthly and has the expertise.",
+        "The board can delegate the work but not accountability, so it must still set appetite and receive reporting."
+      ],
+      "answer": 3,
+      "why": "Governance means direction and accountability, and leadership keeps that accountability even when management does the work. A steering committee helps, but it acts under the board's direction rather than replacing it."
+    },
+    {
+      "q": "A document reads: \"All company laptops must use full-disk encryption, with recovery keys held in the central key service.\" Which type of document is this?",
+      "options": [
+        "A security standard",
+        "A company-wide policy",
+        "A security procedure",
+        "A security guideline"
+      ],
+      "answer": 0,
+      "why": "It is a specific, mandatory and checkable rule, which is a standard. A policy would state the commitment (protect data on company devices) without naming the mechanism; a procedure would give the steps to turn encryption on."
+    },
+    {
+      "q": "Leadership has stated a low appetite for risks that could expose customer data. Which of these is a risk tolerance that supports it?",
+      "options": [
+        "\"We accept no avoidable risk to customer shipment or personal data.\"",
+        "\"The CISO is accountable to the board for protecting customer data.\"",
+        "\"Critical flaws on internet-facing systems are fixed within 7 days.\"",
+        "\"The steering committee meets every month to review customer data risk.\""
+      ],
+      "answer": 2,
+      "why": "A tolerance is a measurable threshold that shows whether the organization is inside its appetite. The first option restates the appetite in vaguer words, and the others describe accountability and cadence rather than a threshold."
+    },
+    {
+      "q": "In a decision-rights matrix, both the COO and the CTO are marked Accountable for approving exceptions to security standards. What is the likely result?",
+      "options": [
+        "Exceptions get stronger scrutiny, because two senior people must both sign off.",
+        "Neither truly owns it, so exceptions stall or go to whoever is asked first.",
+        "The matrix works, as long as both of them are also marked Responsible for it.",
+        "The steering committee automatically becomes the accountable party instead."
+      ],
+      "answer": 1,
+      "why": "Each decision needs exactly one Accountable person. Two-person review can be built in by marking one as Consulted, but splitting accountability leaves no single owner for the outcome."
+    },
+    {
+      "q": "An auditor asks to see the access control policy that was in force in March of last year. The team has only the current wiki page, which several people have edited since. What part of the policy lifecycle was missing?",
+      "options": [
+        "Staff attesting that they read it, at hire and every year after",
+        "A yearly review of the page on a set cadence, signed by its owner",
+        "Keeping each issued version with its approval and in-force dates",
+        "Publishing the policy where all staff it applies to can find it"
+      ],
+      "answer": 2,
+      "why": "Only kept issued versions with approval records can show what the rule was on a past date. A yearly review is good practice, but reviewing and overwriting the same page still leaves no record of what was approved."
+    }
+  ]
+}

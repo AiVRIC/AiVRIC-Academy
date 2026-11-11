@@ -5,22 +5,14 @@
     "Describe the roles in the IIA Three Lines Model",
     "Check a program against five signs of maturity"
   ],
-  "bridge": {
-    "still": "crosswalk",
-    "alt": "One control in AiVRIC Enterprise Vision, crosswalked to several frameworks at once, in a demo workspace",
-    "title": "One control set, every framework",
-    "text": "In AiVRIC Enterprise Vision the control baseline is the single set of controls this lesson describes: each control has an owner and a status, and is crosswalked to every framework that asks about it, so one piece of work answers SOC 2, ISO 27001 and HIPAA at once.",
-    "link": "https://aivric.com/compliance/",
-    "cta": "See continuous compliance"
-  },
   "checks": [
     {
       "q": "A company runs separate teams for SOC 2, ISO 27001 and HIPAA, each with its own control list and evidence folder. What is the main problem this creates?",
       "options": [
-        "The frameworks conflict, so the company cannot hold a SOC 2 report and an ISO 27001 certificate at the same time.",
-        "The same controls are documented, tested and evidenced several times, evidence goes stale between audits, and leadership never sees one picture of the program.",
-        "HIPAA requires a dedicated compliance team, so the other two programs must be merged into it.",
-        "Auditors will not accept evidence that was collected by a different team."
+        "The frameworks conflict, so the company cannot hold a SOC 2 report and an ISO 27001 certificate in the same year.",
+        "Shared controls are evidenced once per framework, evidence goes stale between audits, and no one sees the whole program.",
+        "HIPAA forbids sharing controls with other frameworks, so the three teams must stay separate and keep their own evidence.",
+        "Auditors reject any evidence collected by a different team, so each team must re-collect its own before every audit."
       ],
       "answer": 1,
       "why": "Nothing stops an organization holding both a SOC 2 report and an ISO 27001 certificate. The cost of silos is duplication, stale point-in-time evidence and reporting that cannot show the whole program."
@@ -28,10 +20,10 @@
     {
       "q": "Which question does the risk part of GRC answer?",
       "options": [
-        "Who owns each decision, and what have we committed to?",
-        "What are we legally required to do?",
-        "What could stop us reaching our objectives, and is the remaining exposure acceptable?",
-        "Which framework should we certify against first?"
+        "Who owns each decision, and what have we formally committed to?",
+        "What are we required to do, and can we show that we do it?",
+        "What could go wrong, and is the remaining exposure acceptable?",
+        "Which framework should we pursue first, and who will audit it?"
       ],
       "answer": 2,
       "why": "Governance answers who decides and what was committed to; compliance answers what is required and whether it can be shown; risk answers what could go wrong and whether the exposure is within appetite."
@@ -39,10 +31,10 @@
     {
       "q": "In the IIA Three Lines Model, who provides independent and objective assurance to the governing body?",
       "options": [
-        "The first line: management that runs the controls",
+        "The first line: the managers who run the controls day to day",
         "The second line: the security, risk and compliance functions",
-        "The third line: internal audit",
-        "The external auditor, as part of the second line"
+        "The third line: internal audit, independent of management",
+        "The external auditor, acting as part of the second line"
       ],
       "answer": 2,
       "why": "Internal audit is the third line, and its value comes from independence from management. External auditors sit outside the model, though they rely on it."
@@ -50,10 +42,10 @@
     {
       "q": "A risk was \"accepted\" in a leadership meeting last year. Which detail matters most for the decision to stand up later?",
       "options": [
-        "That the meeting had a quorum",
-        "A record of who decided, the rationale, and when the decision should be reviewed",
-        "That the risk was scored on a five-by-five matrix",
-        "That every attendee signed the minutes"
+        "That the meeting had a quorum and the vote was unanimous",
+        "A record of who decided, why, and when it will be reviewed",
+        "That the risk was first scored on a standard five-by-five matrix",
+        "That every attendee signed the printed minutes afterward"
       ],
       "answer": 1,
       "why": "An accepted risk is only defensible if it is attributable, explained and time-bound. Without those three, the acceptance cannot be reviewed, renewed or challenged."

@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Risk management: from register to decision — GRC Management | AiVRIC Learning</title>
+    <meta name="description" content="Identifying and assessing risk, inherent and residual risk, the four treatment options, and why every risk should end in a decision someone owns." />
+    <link rel="canonical" href="https://academy.aivric.com/foundations/grc-management/risk/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Risk management: from register to decision — GRC Management | AiVRIC Learning" />
+    <meta property="og:description" content="Identifying and assessing risk, inherent and residual risk, the four treatment options, and why every risk should end in a decision someone owns." />
+    <meta property="og:url" content="https://academy.aivric.com/foundations/grc-management/risk/" />
+    <meta name="theme-color" content="#050c18" />
+    <link rel="icon" href="../../../assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="../../../assets/brand/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="../../../assets/brand/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@500;600;700&family=Sora:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../assets/kit/shell.css" />
+    <link rel="stylesheet" href="../../../assets/kit/mnav.css" />
+    <link rel="stylesheet" href="../../../assets/kit/site.css" />
+    <link rel="stylesheet" href="../../../assets/learn/learn.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+  </head>
+  <body class="is-nav-solid">
+    <script src="../../../assets/kit/preloader.js" data-aivric-preloader></script>
+    <header class="site-header mnav" data-mnav>
+      <div class="mnav-bar">
+        <a class="mnav-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <nav class="mnav-menus" aria-label="Primary"><ul><li><button class="mnav-trigger" type="button" data-mnav-trigger="platform" aria-expanded="false" aria-controls="mnav-panel">Platform<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="portfolio" aria-expanded="false" aria-controls="mnav-panel">Portfolio<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="resources" aria-expanded="false" aria-controls="mnav-panel">Resources<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><a class="mnav-trigger mnav-plain" href="https://aivric.com/integrations.html">Integrations</a></li></ul></nav>
+        <div class="mnav-actions">
+          <a class="mnav-login" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a>
+          <a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a>
+        </div>
+        <button class="mnav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav-sheet"><span></span><span></span></button>
+      </div>
+      <div class="mnav-panel" id="mnav-panel" aria-hidden="true"><div class="mnav-view" data-mnav-view="platform" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="portfolio" hidden><div class="mnav-grid mnav-cols-3"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="resources" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div></div>
+    </header>
+    <div class="mnav-sheet" id="mnav-sheet" aria-hidden="true" aria-label="Menu" role="dialog">
+      <div class="mnav-sheet-head">
+        <button type="button" class="mnav-back" hidden><span aria-hidden="true">‹</span> Menu</button>
+        <a class="mnav-brand mnav-sheet-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <button type="button" class="mnav-close" aria-label="Close menu">×</button>
+      </div>
+      <div class="mnav-sheet-body">
+        <ul class="mnav-sheet-list"><li><button type="button" class="mnav-sheet-item" data-mnav-sub="platform">Platform<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="portfolio">Portfolio<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="resources">Resources<span aria-hidden="true">›</span></button></li><li><a class="mnav-sheet-item" href="https://aivric.com/integrations.html">Integrations</a></li></ul>
+        <div class="mnav-sub" data-mnav-subview="platform" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="portfolio" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="resources" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div>
+      </div>
+      <div class="mnav-sheet-cta"><a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a><a class="mnav-login-btn" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a></div>
+    </div>
+
+    <main id="main" class="sx-page lx-page">
+
+      <div class="lx-progress" aria-hidden="true"><span></span></div>
+      <div class="sx-wrap lx-lesson">
+        <nav class="lx-rail" aria-label="Course outline">
+          <a class="lx-rail-course" href="../"><small>Foundations · GRC Management</small><b>GRC Management Fundamentals</b>
+            <div class="lx-course-bar lx-rail-bar" data-course-bar="grc-management" data-total="8"><span></span></div></a>
+          <ol><li><a href="../what-grc-is/" data-course="grc-management" data-lesson="what-grc-is"><span class="lx-rail-n"><span>1</span></span><span>What GRC is, and why it exists</span></a></li><li><a href="../governance/" data-course="grc-management" data-lesson="governance"><span class="lx-rail-n"><span>2</span></span><span>Governance: direction, accountability and policy</span></a></li><li><a href="../frameworks/" data-course="grc-management" data-lesson="frameworks"><span class="lx-rail-n"><span>3</span></span><span>Frameworks, standards and regulations</span></a></li><li><a href="../risk/" data-course="grc-management" data-lesson="risk" aria-current="page"><span class="lx-rail-n"><span>4</span></span><span>Risk management: from register to decision</span></a></li><li><a href="../controls/" data-course="grc-management" data-lesson="controls"><span class="lx-rail-n"><span>5</span></span><span>Controls: designing what you rely on</span></a></li><li><a href="../assurance/" data-course="grc-management" data-lesson="assurance"><span class="lx-rail-n"><span>6</span></span><span>Assurance: testing, evidence and audits</span></a></li><li><a href="../operating/" data-course="grc-management" data-lesson="operating"><span class="lx-rail-n"><span>7</span></span><span>Running the program: cadence, metrics and reporting</span></a></li><li><a href="../beyond/" data-course="grc-management" data-lesson="beyond"><span class="lx-rail-n"><span>8</span></span><span>Beyond the walls: third parties, incidents and change</span></a></li></ol>
+          <div class="lx-toc"><p>On this page</p><a href="#what-risk">What a risk is</a><a href="#process">The risk process</a><a href="#assess">Assessing risk: qualitative and quantitative</a><a href="#residual">Inherent risk, residual risk and the yardstick</a><a href="#treat">Treating risk, and accepting it properly</a><a href="#register">The risk register</a><a href="#practice">In practice: take one risk to a decision</a><a href="#terms">Key terms</a><a href="#check">Knowledge check</a></div>
+        </nav>
+        <article class="lx-article">
+          <header class="lx-article-head">
+            <nav class="sx-crumbs" aria-label="Breadcrumb" style="padding:0"><ol><li><a href="../../../">Learning</a></li><li><a href="../../../foundations/">Foundations</a></li><li><a href="../">GRC Management</a></li></ol></nav>
+            <p class="sx-eyebrow" style="margin-top:22px">Lesson 4 of 8 · 50 min</p>
+            <h1>Risk management: from register to decision</h1>
+            <p class="sx-lede">Identifying and assessing risk, inherent and residual risk, the four treatment options, and why every risk should end in a decision someone owns.</p>
+            <div class="lx-objectives"><p>By the end of this lesson you can</p><ul><li>Write a risk statement that links cause, event and consequence to an objective</li><li>Assess risk on a likelihood and impact matrix and explain its limits</li><li>Distinguish inherent from residual risk and evaluate residual risk against tolerance</li><li>Choose a treatment and record an owned, time-bound decision in a risk register</li></ul></div>
+          </header>
+<section class="lx-sec" id="what-risk">
+  <h2><span class="lx-n">1</span>What a risk is</h2>
+  <p>A risk is not a vulnerability, a threat or an audit finding, although all three feed into one. A risk is something that might happen in the future and, if it did, would get in the way of what the organization is trying to achieve. Written well, it has three parts:</p>
+  <div class="lx-trio">
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Cause</p>
+      <p class="lx-trio-q">Why could it happen?</p>
+      <p>The condition that makes the event possible: an unpatched system, a single point of failure, a supplier with broad access.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Event</p>
+      <p class="lx-trio-q">What would happen?</p>
+      <p>What occurs: ransomware runs, an account is taken over, a key system stops.</p>
+    </div>
+    <div class="lx-trio-item">
+      <p class="lx-trio-k">Consequence</p>
+      <p class="lx-trio-q">What would it cost us?</p>
+      <p>The effect on an objective: lost revenue, missed commitments, regulatory action, harm to customers or staff.</p>
+    </div>
+  </div>
+  <p>The link to objectives is what makes a risk worth managing. ISO 31000 describes risk in terms of how uncertainty affects objectives, and allows that the effect can be positive as well as negative. If you cannot say which objective a risk threatens, you cannot say how much it matters.</p>
+  <aside class="lx-def"><p class="lx-def-k">Definition</p><p>A <strong>risk statement</strong> describes one risk in a fixed shape: <strong>If</strong> an event occurs, <strong>because</strong> of a cause, <strong>then</strong> something happens, <strong>resulting in</strong> a consequence for an objective.</p></aside>
+  <aside class="lx-note"><p class="lx-note-k">Example</p><p>Big Venture Incorporated, a fictional freight-software company with about 600 staff, had a register entry that read "Ransomware." That is a threat, not a risk. Rewritten: "If ransomware reaches the warehouse management system, because the remote access gateway is unpatched, then shipping stops at all four distribution centers, resulting in missed delivery commitments and contract penalties." Now there is a cause to fix and a consequence someone can weigh.</p></aside>
+</section>
+
+<section class="lx-sec" id="process">
+  <h2><span class="lx-n">2</span>The risk process</h2>
+  <p>ISO 31000:2018 gives guidance, not requirements, for managing any kind of risk. Its process is a loop, and in plain terms it runs like this:</p>
+  <div class="lx-lines">
+    <div class="lx-line-row"><p class="lx-line-k">Establish context</p><p>Set the scope, the objectives at stake and the criteria for judging risk: the scales, appetite and tolerance.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Identify</p><p>Find the risks: workshops with system owners, past incidents, audit findings, new projects and changes.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Analyze</p><p>Understand each risk: its causes, the controls already in place, and how likely and how severe it is.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Evaluate</p><p>Compare the result with your criteria to decide which risks need action and in what order.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Treat</p><p>Choose and carry out a response, then judge whether what remains is acceptable.</p></div>
+    <div class="lx-line-row"><p class="lx-line-k">Monitor and review</p><p>Check that treatments work and ratings still hold.</p></div>
+    <div class="lx-line-row lx-line-gov"><p class="lx-line-k">Communicate</p><p>Consult the people who own and are affected by each risk throughout, and record decisions so they can be seen and challenged.</p></div>
+  </div>
+  <p>Identification, analysis and evaluation together make up risk assessment. For information systems, <strong>NIST SP 800-30</strong> is the widely used US guide to doing that assessment. It frames risk around threats, the vulnerabilities they exploit, and the resulting likelihood and impact.</p>
+</section>
+
+<section class="lx-sec" id="assess">
+  <h2><span class="lx-n">3</span>Assessing risk: qualitative and quantitative</h2>
+  <p>Most programs start <strong>qualitative</strong>. Each risk gets a likelihood and an impact on a five-point scale, and the two are multiplied into a score from 1 to 25. The scales only work when each point is defined in words. At Big Venture, likelihood 4 means "expected to happen within a year," and impact 5 means "core operations stop for more than a day, or a major customer is lost." Scores then fall into bands: 1 to 4 low, 5 to 9 medium, 10 to 16 high, 20 and above critical.</p>
+  <p>The matrix is fast and good at sorting a long list. It is also easy to over-trust.</p>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>The numbers on a 5×5 matrix are ordered labels, not measurements. A 4 is not twice a 2, so multiplying them gives a ranking, not a quantity. Two assessors often score the same risk differently, ratings drift toward the middle, and a 20 cannot be set against the cost of a control. Use the matrix to prioritize, not to measure.</p></aside>
+  <p><strong>Quantitative</strong> assessment expresses risk in money and frequency instead. The classic form multiplies the expected loss from one event by how many times a year it is expected to happen, giving an annualized loss expectancy. Current practice estimates both as ranges and simulates a spread of possible annual losses, which can be compared directly with the cost of a treatment.</p>
+  <p>Quantitative work needs data and people who can defend the estimates. A sensible pattern is qualitative scoring for the whole register and quantitative analysis for the few decisions large enough to justify it.</p>
+</section>
+
+<section class="lx-sec" id="residual">
+  <h2><span class="lx-n">4</span>Inherent risk, residual risk and the yardstick</h2>
+  <p><strong>Inherent risk</strong> is the rating before controls: how likely and how bad the event would be if nothing were in place to stop it. <strong>Residual risk</strong> is the rating with the controls that exist and work today. Controls are what sit between the two. The gap between the two ratings is the value they deliver.</p>
+  <p>Give credit only for controls that are implemented and operating. A planned or never-tested control should not lower the residual rating; lessons 5 and 6 cover designing controls and proving they work.</p>
+  <p>A residual rating means nothing until it is compared with something: the risk appetite from lesson 2, made specific. <strong>Appetite</strong> is leadership's broad statement of how much risk it will take on; <strong>tolerance</strong> is the measurable threshold for a category of risk. Big Venture's appetite statement says it has a low appetite for disruption to shipping; its tolerance for operational risk is a residual score of 9 or below. Evaluation is the comparison.</p>
+  <figure class="lx-fig">
+    <svg viewBox="0 0 760 300" role="img" aria-labelledby="fig4-t fig4-d">
+      <title id="fig4-t">Inherent risk, controls and residual risk against tolerance</title>
+      <desc id="fig4-d">Two risks on a score axis from 0 to 25, with a tolerance line at 9. Ransomware on the warehouse system starts at an inherent score of 20 and controls bring it to a residual 8, inside tolerance. The legacy file server starts at 15 and controls bring it to 10, still above tolerance, so it needs a decision.</desc>
+      <defs>
+        <marker id="fig4-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b6bfce"/></marker>
+      </defs>
+      <g font-family="Inter, system-ui, sans-serif" font-size="13" fill="#b6bfce">
+        <text x="20" y="72" fill="#eef2f8" font-size="14" font-weight="600">R-07 Ransomware</text>
+        <text x="20" y="92" font-size="12" fill="#7f8a9d">MFA, patching, backups</text>
+        <rect x="200" y="56" width="416" height="24" rx="6" fill="rgba(0,209,255,.16)" stroke="#00d1ff"/>
+        <text x="624" y="73">Inherent 20</text>
+        <rect x="200" y="96" width="166" height="24" rx="6" fill="rgba(46,229,157,.16)" stroke="#2ee59d"/>
+        <text x="212" y="113" fill="#eef2f8">Residual 8</text>
+        <text x="398" y="113" fill="#2ee59d">within tolerance</text>
+        <path d="M612 82 Q 520 90 372 94" stroke="#b6bfce" stroke-width="1.2" fill="none" stroke-dasharray="4 4" marker-end="url(#fig4-arrow)"/>
+        <text x="500" y="98" font-size="11" fill="#7f8a9d" text-anchor="middle">controls</text>
+        <text x="20" y="182" fill="#eef2f8" font-size="14" font-weight="600">R-12 Legacy server</text>
+        <text x="20" y="202" font-size="12" fill="#7f8a9d">allow-list, segmentation</text>
+        <rect x="200" y="166" width="312" height="24" rx="6" fill="rgba(0,209,255,.16)" stroke="#00d1ff"/>
+        <text x="520" y="183">Inherent 15</text>
+        <rect x="200" y="206" width="208" height="24" rx="6" fill="rgba(255,196,107,.18)" stroke="#ffc46b"/>
+        <text x="416" y="223" fill="#ffc46b">Residual 10, above tolerance: decide</text>
+        <path d="M508 192 Q 470 198 414 204" stroke="#b6bfce" stroke-width="1.2" fill="none" stroke-dasharray="4 4" marker-end="url(#fig4-arrow)"/>
+        <line x1="387" y1="42" x2="387" y2="240" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="6 5"/>
+        <text x="387" y="34" text-anchor="middle" fill="#a78bfa" font-size="12">Tolerance: 9</text>
+        <line x1="200" y1="250" x2="720" y2="250" stroke="rgba(175,178,206,.28)"/>
+        <g font-size="11" fill="#7f8a9d" text-anchor="middle">
+          <text x="200" y="268">0</text><text x="304" y="268">5</text><text x="408" y="268">10</text>
+          <text x="512" y="268">15</text><text x="616" y="268">20</text><text x="720" y="268">25</text>
+        </g>
+        <text x="460" y="290" text-anchor="middle" font-size="11" letter-spacing="2" fill="#7f8a9d">RISK SCORE (LIKELIHOOD × IMPACT)</text>
+      </g>
+    </svg>
+    <figcaption>Controls take each risk from its inherent to its residual rating. Below the tolerance line the owner can accept and monitor; above it, someone with more authority must decide.</figcaption>
+  </figure>
+</section>
+
+<section class="lx-sec" id="treat">
+  <h2><span class="lx-n">5</span>Treating risk, and accepting it properly</h2>
+  <p>Every risk that has been assessed ends in one of four responses. ISO 31000 lists the options in finer detail, but they all fold into these:</p>
+  <div class="lx-grid2">
+    <div class="lx-tile"><p class="lx-tile-k">Mitigate (reduce)</p><p>Add or strengthen controls to lower likelihood or impact. Big Venture adds multi-factor authentication to the remote access gateway and tests restores from offline backups every quarter.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Accept</p><p>Keep the risk, knowingly. Big Venture accepts that a regional office's internet link may fail for a few hours, since staff can work from a nearby warehouse.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Transfer (share)</p><p>Move part of the consequence to someone else through insurance or contracts. Big Venture buys cyber insurance and makes its payroll provider liable for breaches on its side.</p></div>
+    <div class="lx-tile"><p class="lx-tile-k">Avoid</p><p>Stop the activity that creates the risk. Big Venture drops a plan to store driver license scans in its portal, since nothing needs them.</p></div>
+  </div>
+  <aside class="lx-note"><p class="lx-note-k">Watch out</p><p>Transfer moves money, not accountability. An insurer may pay for recovery and a supplier may owe damages, but customers, regulators and the board still hold the organization responsible.</p></aside>
+  <p>Most risks get a combination: mitigate, then accept what remains. Acceptance is where programs most often go wrong: "we'll live with it" in a meeting is not a decision. A properly accepted risk has:</p>
+  <ul class="lx-checklist">
+    <li><strong>A decider with authority.</strong> Within tolerance, the risk owner can usually accept. Above tolerance, the decision belongs to an executive or a risk committee, as set in the decision rights from lesson 2.</li>
+    <li><strong>A rationale</strong> for why accepting beats treating further, in terms a reviewer can test.</li>
+    <li><strong>Compensating controls</strong> where the normal control is missing, such as closer monitoring or tighter network access.</li>
+    <li><strong>An expiry or review date.</strong> No acceptance is permanent.</li>
+    <li><strong>Re-evaluation triggers</strong>: events that reopen the decision early, such as a new exploit, an incident or a slipped deadline.</li>
+  </ul>
+  <p>A policy <strong>exception</strong> is the same thing under another name: a time-bound accepted risk against a specific requirement. Big Venture's standard bans unsupported operating systems, but one legacy file server must run until a migration finishes. The exception is recorded as an accepted risk with an owner, compensating controls and a hard end date.</p>
+</section>
+
+<section class="lx-sec" id="register">
+  <h2><span class="lx-n">6</span>The risk register</h2>
+  <p>The register is where all of this is written down, one entry per risk, from statement to decision. Here are Big Venture's two risks from the figure.</p>
+  <div class="lx-tablewrap">
+    <table class="lx-table">
+      <thead><tr><th>Field</th><th>R-07</th><th>R-12</th></tr></thead>
+      <tbody>
+        <tr><td>Statement</td><td>If ransomware reaches the warehouse system, because remote access is unpatched or a login is phished, then shipping stops at all four sites, resulting in missed deliveries and penalties.</td><td>If the legacy file server is compromised, because its operating system is unsupported, then manifests with customer contact data could be exposed, resulting in notification costs and lost accounts.</td></tr>
+        <tr><td>Owner</td><td>VP of Operations</td><td>Director of IT</td></tr>
+        <tr><td>Category</td><td>Operational</td><td>Information security and privacy</td></tr>
+        <tr><td>Inherent rating</td><td>4 × 5 = 20, critical</td><td>3 × 5 = 15, high</td></tr>
+        <tr><td>Controls</td><td>C-03 MFA on remote access; C-11 critical patches in 14 days; C-19 offline backups, restores tested quarterly</td><td>C-07 network segmentation; C-22 customer IP allow-list; compensating: daily log review</td></tr>
+        <tr><td>Residual rating</td><td>2 × 4 = 8, medium</td><td>2 × 5 = 10, high</td></tr>
+        <tr><td>Treatment</td><td>Mitigate</td><td>Accept as a time-bound exception; retire the server</td></tr>
+        <tr><td>Decision</td><td>Residual accepted, within tolerance</td><td>Accepted above tolerance until 31 March 2027</td></tr>
+        <tr><td>Decider</td><td>VP of Operations (risk owner)</td><td>Executive risk committee</td></tr>
+        <tr><td>Rationale</td><td>Within the tolerance of 9; further reduction would cost far more than the remaining exposure.</td><td>Migration is due in the first quarter; isolating the server now would break three customers' shipments.</td></tr>
+        <tr><td>Review date</td><td>30 June 2027, or sooner if a restore test fails</td><td>Monthly until expiry; early if a new exploit appears or the migration slips</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The register should not stand alone. It points in two directions:</p>
+  <ul class="lx-list">
+    <li><strong>To controls.</strong> Each risk names the controls it relies on, so if C-19 fails a test, R-07's residual rating is visibly in question. Lesson 5 covers the control baseline.</li>
+    <li><strong>To remediation.</strong> Mitigation work becomes items on a remediation plan, often called a plan of action and milestones (POA&amp;M), each with an owner and due dates. Retiring R-12's server is one. Lesson 6 covers tracking and closing them.</li>
+  </ul>
+</section>
+
+<section class="lx-sec lx-practice" id="practice">
+  <h2><span class="lx-n">7</span>In practice: take one risk to a decision</h2>
+  <p>Pick one risk from your register, or one that has never been written down. Give it forty minutes.</p>
+  <ol class="lx-steps">
+    <li><strong>Rewrite the statement</strong> in the "If, because, then, resulting in" shape, and name the objective it threatens.</li>
+    <li><strong>Rate it twice.</strong> Score the inherent risk, list the controls really in place, then score the residual risk. Flag any control you are not sure has been tested.</li>
+    <li><strong>Find the yardstick.</strong> Locate the tolerance that applies. If there isn't one, write down what you would propose and who would need to approve it.</li>
+    <li><strong>Choose a treatment</strong> and write the decision as the register would hold it: decider, rationale and review date.</li>
+    <li><strong>Check the authority.</strong> Is the person you named actually allowed to accept a risk at that level? If you can't tell, that gap is your first governance finding.</li>
+  </ol>
+</section>
+
+<section class="lx-sec" id="terms">
+  <h2><span class="lx-n">8</span>Key terms</h2>
+  <dl class="lx-terms">
+    <div><dt>Risk statement</dt><dd>A one-sentence description of a risk that links its cause, the event and the consequence for an objective.</dd></div>
+    <div><dt>Inherent risk</dt><dd>The level of risk before controls are taken into account.</dd></div>
+    <div><dt>Residual risk</dt><dd>The level of risk that remains with the controls that are implemented and operating today.</dd></div>
+    <div><dt>Risk tolerance</dt><dd>The measurable threshold, set within the risk appetite, that residual risk in a category is evaluated against.</dd></div>
+    <div><dt>Risk treatment</dt><dd>The chosen response to a risk: mitigate, accept, transfer or avoid, often in combination.</dd></div>
+    <div><dt>Risk acceptance</dt><dd>A recorded decision, by someone with authority, to carry a risk as it is, with a rationale and a review date.</dd></div>
+    <div><dt>Exception</dt><dd>A time-bound accepted risk against a specific policy or standard requirement, usually with compensating controls.</dd></div>
+    <div><dt>POA&amp;M</dt><dd>Plan of action and milestones: the tracked list of remediation work, each item with an owner and due dates.</dd></div>
+  </dl>
+</section>
+
+          <section class="lx-check" id="check" aria-labelledby="lx-check-h">
+            <div class="lx-check-head"><h2 id="lx-check-h">Knowledge check</h2><span class="lx-check-score" data-score>5 questions</span></div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q1</span>Which of these register entries is written as a usable risk statement?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>Phishing: staff in finance and sales receive convincing fake invoice and payment request emails several times every week.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Finding: our patching process is weak, with critical updates often applied weeks late, and it needs to be improved.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>If a finance mailbox is taken over, because email lacks MFA, then fake payment requests could be approved, causing financial loss.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Rated critical: likelihood 5 and impact 4, for a score of 20, with the risk owner still to be confirmed next quarter.</span></button></div>
+              <p class="lx-why" data-why="A risk statement links a cause, an event and a consequence for an objective. The first option describes a threat, the second is a finding about a weakness, and the fourth is a rating with no risk described." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q2</span>A risk scores 20 before controls and 8 with the controls that are implemented and tested. The tolerance for its category is 9. What should happen next?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>The owner can accept the residual risk, record why and when to review it, and keep monitoring the controls.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>The risk must go to the board for a decision, because its inherent score of 20 put it in the critical band.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>The risk can be closed and removed from the register, since its residual score is now below tolerance.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>More controls must be added until the residual score falls into the low band of 1 to 4, then it can be accepted.</span></button></div>
+              <p class="lx-why" data-why="Evaluation compares residual risk with tolerance. Within tolerance, the owner can usually accept, but the risk stays on the register because the rating depends on controls that keep working. Nothing requires driving every risk to the lowest band." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q3</span>A company buys a cyber insurance policy that covers ransomware recovery costs. Which statement about this treatment is correct?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>The ransomware risk has been avoided, because the insurer pays for recovery, so it can leave the register.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Accountability for the risk now sits with the insurer, so the company no longer needs a named risk owner.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>Insurance is a form of risk acceptance, so the signed policy document is the only record the register needs.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>Part of the financial cost is transferred, but the company stays accountable for the risk and its controls.</span></button></div>
+              <p class="lx-why" data-why="Transfer moves money, not accountability. Customers, regulators and the board still hold the company responsible, and the insurer will expect the controls to be in place." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q4</span>An engineering manager is granted an exception to the patching standard for a legacy server. Which record makes this a properly accepted risk?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>An email from the manager saying the server is low priority and will be patched in the next maintenance window</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>A decision by someone with authority, giving rationale, compensating controls, an expiry and review triggers</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>A ticket assigned to the server team noting that it will be patched when time allows, linked to the standard</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>A line in the team meeting minutes, signed by everyone present, saying the team agreed to live with the risk</span></button></div>
+              <p class="lx-why" data-why="An exception is a time-bound accepted risk. It needs a decider with the right authority, a rationale, compensating controls, an end date and re-evaluation triggers. Without them it cannot be reviewed, renewed or challenged." aria-live="polite"></p>
+            </div>
+            <div class="lx-q">
+              <p class="lx-q-t"><span>Q5</span>Two risks on a 5x5 matrix both score 12. The CFO asks whether together they add up to 24 points of exposure, and whether that justifies a control costing a set amount. What is the best answer?</p>
+              <div class="lx-opts"><button type="button" class="lx-opt"><span class="lx-opt-l">A</span><span>Yes: matrix scores are additive, so the combined 24 points can be compared directly with the control's cost.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">B</span><span>Yes, provided both risks were scored by the same assessor using the same defined likelihood scale.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">C</span><span>No: matrix scores only rank risks; setting exposure against cost needs estimates in money and frequency.</span></button><button type="button" class="lx-opt"><span class="lx-opt-l">D</span><span>No: a score of 12 sits in the medium band, which is too low to justify spending money on any new control.</span></button></div>
+              <p class="lx-why" data-why="Likelihood and impact ratings on a matrix are ordinal, so their product ranks risks but does not measure them. Adding scores or setting them against cost needs quantitative analysis, such as estimated loss ranges and frequency." aria-live="polite"></p>
+            </div>
+            <div class="lx-check-foot">
+              <p>Answer every question to complete the lesson. Your answers stay in this browser.</p>
+              <span>
+                <button type="button" class="sx-btn sx-btn-ghost" data-retry style="cursor:pointer;font:inherit">Try again</button>
+                <button type="button" class="sx-btn sx-btn-primary" data-complete disabled style="cursor:pointer;font:inherit">Complete the lesson <span class="sx-arrow" aria-hidden="true">✓</span></button>
+                <span class="lx-done" data-complete-msg hidden>✓ Lesson complete</span>
+              </span>
+            </div>
+          </section>
+          <aside class="lx-bridge" aria-label="See it in AiVRIC Enterprise Vision">
+            <div class="lx-bridge-copy">
+              <p class="sx-eyebrow">See it in AiVRIC Enterprise Vision</p>
+              <h3>Every decision measured against the line</h3>
+              <p>In Enterprise Vision, each declared tolerance is compared with live posture from your scans, registers and threat intelligence. Where measured exposure sits above the line, the area shows as exceeding it, and accepting that risk needs a written justification on the record.</p>
+              <a class="sx-btn sx-btn-ghost" href="https://aivric.com/enterprise/ciso/?utm_source=academy&utm_medium=web&utm_campaign=learning&utm_content=grc-management_risk">See decisions against appetite <span class="sx-arrow" aria-hidden="true">→</span></a>
+            </div>
+            <figure><img src="../../../assets/learn/stills/decisions.jpg" alt="The decisions queue in AiVRIC Enterprise Vision, in a demo workspace" loading="lazy" decoding="async" width="1280" height="800" /><figcaption>Demo workspace · sample data</figcaption></figure>
+          </aside>
+          <nav class="lx-pager" aria-label="Lessons">
+            <a href="../frameworks/"><small>← Previous</small><b>Frameworks, standards and regulations</b></a>
+            <a class="is-next" href="../controls/"><small>Next lesson →</small><b>Controls: designing what you rely on</b></a>
+          </nav>
+        </article>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="https://aivric.com/"><img src="../../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+          <p>Security, compliance, and risk intelligence, hosted on Google Cloud in the US.</p>
+          <p class="footer-contact"><a href="mailto:info@aivric.com">info@aivric.com</a><br /><a href="tel:+19543426637">+1 954 342 6637</a></p>
+          <p class="footer-social"><a href="https://www.linkedin.com/company/aivric">LinkedIn</a> · <a href="https://x.com/aivric">X</a> · <a href="https://www.facebook.com/61581937785235/">Facebook</a> · <a href="https://www.instagram.com/aivrictechnologies/">Instagram</a></p>
+        </div>
+        <div>
+          <h4>Use Cases</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/compliance/">Compliance Overview</a>
+            <a href="https://aivric.com/compliance/hipaa/">HIPAA</a>
+            <a href="https://aivric.com/compliance/soc2/">SOC 2</a>
+            <a href="https://aivric.com/compliance/cmmc/">CMMC</a>
+            <a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a>
+            <a href="https://aivric.com/enterprise/ciso/">For the CISO</a>
+          </div>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a>
+            <a href="https://aivric.com/providers/">Client Vision</a>
+            <a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a>
+            <a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a>
+            <a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a>
+            <a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a>
+            <a href="https://aivric.com/solutions-portal.html">All Products</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/about.html">About Us</a><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a><a href="https://aivric.com/pricing.html">Pricing</a><a href="https://aivric.com/blog-portal.html">Blog</a
+            ><a href="https://aivric.com/trust/">Trust Center</a><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a><a href="../../../">Academy</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>&copy; 2026 AiVRIC Technologies. All Rights Reserved.</span>
+        <span class="footer-pill">ISO 27001-Aligned</span>
+        <span><a href="https://aivric.com/terms-of-use.html">Terms of Service</a> · <a href="https://aivric.com/privacy-policy.html">Privacy Policy</a></span>
+      </div>
+    </footer>
+
+    <script type="application/json" id="lx-data">{"course":"grc-management","lesson":"risk","checks":[{"answer":2},{"answer":0},{"answer":3},{"answer":1},{"answer":2}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AiVRIC Learning","item":"https://academy.aivric.com/"},{"@type":"ListItem","position":2,"name":"Foundations","item":"https://academy.aivric.com/foundations/"},{"@type":"ListItem","position":3,"name":"GRC Management Fundamentals","item":"https://academy.aivric.com/foundations/grc-management/"},{"@type":"ListItem","position":4,"name":"Risk management: from register to decision","item":"https://academy.aivric.com/foundations/grc-management/risk/"}]},{"@type":"LearningResource","name":"Risk management: from register to decision","description":"Identifying and assessing risk, inherent and residual risk, the four treatment options, and why every risk should end in a decision someone owns.","url":"https://academy.aivric.com/foundations/grc-management/risk/","isAccessibleForFree":true,"timeRequired":"PT50M","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"GRC Management Fundamentals","url":"https://academy.aivric.com/foundations/grc-management/"},"provider":{"@type":"Organization","name":"AiVRIC","sameAs":"https://aivric.com/"}}]}</script>
+    <script defer src="../../../assets/kit/mnav.js"></script>
+    <script defer src="../../../assets/kit/site.js"></script>
+    <script defer src="../../../assets/learn/learn.js"></script>
+  </body>
+</html>

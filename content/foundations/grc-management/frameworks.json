@@ -1,0 +1,65 @@
+{
+  "objectives": [
+    "Tell laws, contracts, certifiable standards, attestations and voluntary frameworks apart",
+    "Describe what ISO 27001, SOC 2, NIST CSF, NIST 800-53 and CIS Controls each are",
+    "Choose and sequence frameworks from who is asking for them",
+    "Map one control to many requirements, and mark each mapping's type"
+  ],
+  "checks": [
+    {
+      "q": "A prospect asks a software company for its \"SOC 2 certificate\". What should the company's GRC lead explain?",
+      "options": [
+        "SOC 2 certificates are issued by NIST after an audit, so the company should request a copy from NIST directly.",
+        "SOC 2 is an attestation: a CPA firm examines the controls and issues a report with its opinion, not a certificate.",
+        "SOC 2 certificates are only issued once all five Trust Services Criteria categories are in scope for a full year.",
+        "SOC 2 is a US regulation, so the company can point prospects to its annual regulatory filings instead."
+      ],
+      "answer": 1,
+      "why": "SOC 2 is an AICPA attestation framework. The deliverable is a CPA firm's report and opinion, usually shared under NDA. Certificates belong to certifiable standards such as ISO/IEC 27001."
+    },
+    {
+      "q": "A company is preparing for ISO/IEC 27001:2022 certification. Which statement about the standard is correct?",
+      "options": [
+        "All 93 Annex A controls must be implemented in full, and no exclusions are allowed in the Statement of Applicability.",
+        "The organization certifies against ISO/IEC 27002, since that is the standard that contains the detailed controls.",
+        "Annex A is optional reading, and the auditor only examines the risk register and the risk treatment plan.",
+        "Clauses 4 to 10 all apply, while Annex A controls are chosen and justified in a Statement of Applicability."
+      ],
+      "answer": 3,
+      "why": "All of clauses 4 to 10 apply. Annex A is a reference set the organization checks its risk treatment against, recording which controls apply and why in the Statement of Applicability. ISO/IEC 27002 is guidance, not a certifiable standard."
+    },
+    {
+      "q": "A clinic software vendor holds a current ISO/IEC 27001 certificate. A new US customer asks whether it meets the HIPAA Security Rule. What is the right answer?",
+      "options": [
+        "Not on its own: HIPAA is a law with its own requirements, though many of the vendor's ISO controls will map to it.",
+        "Yes: an ISO/IEC 27001 certificate covers HIPAA automatically, since Annex A includes every Security Rule safeguard.",
+        "The question does not arise: HIPAA applies only to hospitals and clinics, never to the software vendors serving them.",
+        "Only a SOC 2 report with the privacy category in scope can answer a HIPAA question from a US healthcare customer."
+      ],
+      "answer": 0,
+      "why": "Frameworks overlap with laws but do not replace them. A vendor handling health data for covered entities is a business associate, and the Security Rule applies to it directly; a crosswalk shows which existing controls answer it and where the gaps are."
+    },
+    {
+      "q": "A team maps its control \"MFA on all remote, admin and application access\" to SOC 2 CC6.1, which also expects access to be granted, removed and reviewed. How should the mapping be recorded?",
+      "options": [
+        "Equivalent, because MFA is the most important part of logical access control.",
+        "Related, because MFA and access provisioning are different topics entirely.",
+        "Partial, naming the controls that cover provisioning, removal and review.",
+        "Not mapped at all, because one control may only answer one framework."
+      ],
+      "answer": 2,
+      "why": "The control meets part of the criterion. Marking it partial, and naming the controls that cover the rest, keeps the gap visible. Marking it equivalent hides the gap until an auditor finds it."
+    },
+    {
+      "q": "A small company with no security program wants a prioritized list of what to put in place first, without an audit attached. Which framework fits best?",
+      "options": [
+        "NIST SP 800-53 Rev. 5 at the high baseline",
+        "SOC 2 with all five categories in scope",
+        "ISO/IEC 27001 certification in year one",
+        "CIS Controls v8, Implementation Group 1"
+      ],
+      "answer": 3,
+      "why": "CIS Controls v8 is a prioritized set of 18 controls, and IG1 is the essential baseline every organization should start with. SOC 2 and ISO/IEC 27001 bring an external audit, and the 800-53 high baseline is far more than a small company needs to begin."
+    }
+  ]
+}

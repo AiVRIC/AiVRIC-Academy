@@ -1,0 +1,65 @@
+{
+  "objectives": [
+    "Write a risk statement that links cause, event and consequence to an objective",
+    "Assess risk on a likelihood and impact matrix and explain its limits",
+    "Distinguish inherent from residual risk and evaluate residual risk against tolerance",
+    "Choose a treatment and record an owned, time-bound decision in a risk register"
+  ],
+  "checks": [
+    {
+      "q": "Which of these register entries is written as a usable risk statement?",
+      "options": [
+        "Phishing: staff in finance and sales receive convincing fake invoice and payment request emails several times every week.",
+        "Finding: our patching process is weak, with critical updates often applied weeks late, and it needs to be improved.",
+        "If a finance mailbox is taken over, because email lacks MFA, then fake payment requests could be approved, causing financial loss.",
+        "Rated critical: likelihood 5 and impact 4, for a score of 20, with the risk owner still to be confirmed next quarter."
+      ],
+      "answer": 2,
+      "why": "A risk statement links a cause, an event and a consequence for an objective. The first option describes a threat, the second is a finding about a weakness, and the fourth is a rating with no risk described."
+    },
+    {
+      "q": "A risk scores 20 before controls and 8 with the controls that are implemented and tested. The tolerance for its category is 9. What should happen next?",
+      "options": [
+        "The owner can accept the residual risk, record why and when to review it, and keep monitoring the controls.",
+        "The risk must go to the board for a decision, because its inherent score of 20 put it in the critical band.",
+        "The risk can be closed and removed from the register, since its residual score is now below tolerance.",
+        "More controls must be added until the residual score falls into the low band of 1 to 4, then it can be accepted."
+      ],
+      "answer": 0,
+      "why": "Evaluation compares residual risk with tolerance. Within tolerance, the owner can usually accept, but the risk stays on the register because the rating depends on controls that keep working. Nothing requires driving every risk to the lowest band."
+    },
+    {
+      "q": "A company buys a cyber insurance policy that covers ransomware recovery costs. Which statement about this treatment is correct?",
+      "options": [
+        "The ransomware risk has been avoided, because the insurer pays for recovery, so it can leave the register.",
+        "Accountability for the risk now sits with the insurer, so the company no longer needs a named risk owner.",
+        "Insurance is a form of risk acceptance, so the signed policy document is the only record the register needs.",
+        "Part of the financial cost is transferred, but the company stays accountable for the risk and its controls."
+      ],
+      "answer": 3,
+      "why": "Transfer moves money, not accountability. Customers, regulators and the board still hold the company responsible, and the insurer will expect the controls to be in place."
+    },
+    {
+      "q": "An engineering manager is granted an exception to the patching standard for a legacy server. Which record makes this a properly accepted risk?",
+      "options": [
+        "An email from the manager saying the server is low priority and will be patched in the next maintenance window",
+        "A decision by someone with authority, giving rationale, compensating controls, an expiry and review triggers",
+        "A ticket assigned to the server team noting that it will be patched when time allows, linked to the standard",
+        "A line in the team meeting minutes, signed by everyone present, saying the team agreed to live with the risk"
+      ],
+      "answer": 1,
+      "why": "An exception is a time-bound accepted risk. It needs a decider with the right authority, a rationale, compensating controls, an end date and re-evaluation triggers. Without them it cannot be reviewed, renewed or challenged."
+    },
+    {
+      "q": "Two risks on a 5x5 matrix both score 12. The CFO asks whether together they add up to 24 points of exposure, and whether that justifies a control costing a set amount. What is the best answer?",
+      "options": [
+        "Yes: matrix scores are additive, so the combined 24 points can be compared directly with the control's cost.",
+        "Yes, provided both risks were scored by the same assessor using the same defined likelihood scale.",
+        "No: matrix scores only rank risks; setting exposure against cost needs estimates in money and frequency.",
+        "No: a score of 12 sits in the medium band, which is too low to justify spending money on any new control."
+      ],
+      "answer": 2,
+      "why": "Likelihood and impact ratings on a matrix are ordinal, so their product ranks risks but does not measure them. Adding scores or setting them against cost needs quantitative analysis, such as estimated loss ranges and frequency."
+    }
+  ]
+}

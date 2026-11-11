@@ -1,0 +1,65 @@
+{
+  "objectives": [
+    "Run third-party risk across the vendor lifecycle, in proportion to each vendor's tier",
+    "Read an independent report for its scope, period and exceptions",
+    "Feed an incident back into the risk register, controls, policy and metrics",
+    "Recognize business changes that should reopen scope and risk assessment"
+  ],
+  "checks": [
+    {
+      "q": "A critical vendor sends a SOC 2 Type II report whose period ended nine months ago. It lists one exception in access reviews and carves out the vendor's hosting provider. What is the soundest reading?",
+      "options": [
+        "It is clean enough: one exception is normal, and the auditor's opinion speaks for the vendor's current controls.",
+        "It is too old to rely on, so decline the vendor, or pause onboarding, until a report for the current year is issued.",
+        "It covers a past period: get a bridge letter, follow up the exception, and assess the carved-out host separately.",
+        "The carve-out means the hosting provider was tested by the same auditor in a separate report, so no more work is needed."
+      ],
+      "answer": 2,
+      "why": "A Type II report describes a period that has ended, an exception needs a response, and a carved-out subservice organization was not tested in this report. An older report is still useful evidence; it just needs the gap and the exclusions covered."
+    },
+    {
+      "q": "Procurement wants to skip the security review of a new critical vendor because its external security rating is excellent. What should the GRC team say?",
+      "options": [
+        "The rating is one input: it sees only what is visible from the internet, so complete the diligence the tier requires.",
+        "Agreed: an excellent rating is independent, continuously updated evidence and can replace the questionnaire and report.",
+        "Ratings are unreliable and should never be used in vendor decisions, at any tier, so remove them from the process.",
+        "Skip the review for now and run the full diligence at the first renewal, once the vendor has been in use for a year."
+      ],
+      "answer": 0,
+      "why": "External ratings are useful for spotting changes and triaging lower tiers, but they cannot see internal practices and can include assets the vendor does not own. For a critical vendor they complement due diligence; they do not replace it."
+    },
+    {
+      "q": "After a phishing incident at Big Venture is contained, which follow-up best reflects a mature GRC program?",
+      "options": [
+        "Close the ticket once systems are restored and users can sign in again, since recovery was the goal of the response.",
+        "Send the whole company a phishing reminder, enroll the affected users in extra training, and record it as resolved.",
+        "Ask the incident response team to write a report and file it with last year's audit evidence, ready for the next audit.",
+        "Re-rate the risk, give each gap an owner and date, update policy and training, track metrics, and have legal review notification."
+      ],
+      "answer": 3,
+      "why": "An incident is closed for GRC purposes when the program has changed: the risk re-rated, gaps owned and tracked, policy updated, metrics recorded and notification obligations reviewed by the people who own them."
+    },
+    {
+      "q": "Big Venture acquires a smaller company with its own cloud environment, vendors and security policies. What should the GRC program do?",
+      "options": [
+        "Leave the acquired company's program running separately until the next annual review brings it into scope.",
+        "Treat it as a trigger: reopen scope, assess its risks and vendors, and map its controls into one control set.",
+        "Ask the acquired company to adopt Big Venture's policies and treat its controls as matching from that date.",
+        "Wait for the next external audit to report any gaps the acquisition introduced, then plan the fixes from that."
+      ],
+      "answer": 1,
+      "why": "Acquisitions bring new systems, vendors and gaps. Reopening scope and risk assessment and mapping the new controls into one control set keeps the program accurate; running it alongside or waiting for an audit recreates the fragmentation this course warns against."
+    },
+    {
+      "q": "Big Venture ends its contract with a vendor that held employee bank details. Which offboarding step matters most?",
+      "options": [
+        "Sending the vendor a closing survey and recording its final service levels in the inventory",
+        "Archiving the vendor's last questionnaire and report with the contract for future reference",
+        "Revoking its access and getting the data returned, or written confirmation it was deleted",
+        "Lowering the vendor's tier to low now the contract has ended, and closing its record"
+      ],
+      "answer": 2,
+      "why": "The risk does not end with the contract while the vendor still has access or holds your data. Revoking access and confirming return or deletion closes the exposure, and the inventory is then updated to match."
+    }
+  ]
+}
