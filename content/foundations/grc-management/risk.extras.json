@@ -1,0 +1,85 @@
+{
+  "tldr": [
+    {
+      "section": "what-risk",
+      "text": "This lesson takes a risk all the way to a decision. A risk is not a threat or a finding. Write it as if an event happens, because of a cause, then something follows, resulting in a consequence for an objective."
+    },
+    {
+      "section": "process",
+      "text": "ISO 31000 describes a loop. You set the context and criteria, identify, analyze and evaluate risks, treat them, then monitor and review, talking with risk owners throughout. NIST SP 800-30 is the common US guide to the assessment steps.",
+      "say": "I S O thirty-one thousand describes a loop. You set the context and criteria, identify, analyze and evaluate risks, treat them, then monitor and review, talking with risk owners throughout. Nist special publication eight hundred thirty is the common US guide to the assessment steps."
+    },
+    {
+      "section": "assess",
+      "text": "Most programs start qualitative, scoring likelihood and impact from one to five and multiplying them. Use that matrix to rank risks, not to measure them. Save quantitative analysis in money and frequency for the few decisions that justify it."
+    },
+    {
+      "section": "residual",
+      "text": "Inherent risk is the rating before controls, and residual risk is the rating with the controls that really work today. Give credit only for controls that operate. Then compare the residual score with tolerance, which at Big Venture is nine for operational risk."
+    },
+    {
+      "section": "treat",
+      "text": "Every assessed risk ends in mitigate, accept, transfer or avoid, often mitigate, then accept what remains. Transfer moves money, not accountability. A proper acceptance names a decider with authority, a rationale, compensating controls, an expiry date and triggers for an early review."
+    },
+    {
+      "section": "register",
+      "text": "The register holds each risk from statement to decision, with its owner, ratings, controls, treatment, decider and review date. It points to the controls each risk relies on, and to the plan of action and milestones for remediation."
+    },
+    {
+      "section": "check",
+      "text": "Now pick the better risk statements, use the calculator to watch controls move a score toward tolerance, and sort the treatments. Then take one of your own risks to a decision, or start the knowledge check."
+    }
+  ],
+  "activities": [
+    {
+      "type": "choose",
+      "after": "what-risk",
+      "title": "Pick the usable risk statement",
+      "prompt": "Each pair has one usable risk statement. Pick the one that links a cause, an event and a consequence for an objective.",
+      "pairs": [
+        { "a": "Ransomware.", "b": "If ransomware hits the warehouse system, because the gateway is unpatched, shipping stops and deliveries slip", "better": "b", "why": "A single word names a threat; the statement gives a cause to fix and a consequence someone can weigh." },
+        { "a": "If a finance mailbox is taken over, because email lacks MFA, fake payments are approved, causing loss", "b": "Finding: critical patches are applied weeks late and the process needs to improve", "better": "a", "why": "A finding describes a weakness; it only becomes a risk once it is tied to an event and its consequence." },
+        { "a": "Phishing: finance staff receive fake invoice emails several times a week", "b": "If the legacy server is compromised, because its OS is unsupported, customer data leaks and accounts are lost", "better": "b", "why": "The first option describes a threat in action, with no consequence for an objective." },
+        { "a": "If the tracking platform stops, because of a single point of failure, customers cannot track shipments", "b": "Rated critical: likelihood 5, impact 4, score 20, owner to be confirmed", "better": "a", "why": "A rating with no risk described gives nobody anything to treat or weigh." }
+      ]
+    },
+    {
+      "type": "matrix",
+      "after": "residual",
+      "title": "Rate R-07 before and after controls",
+      "prompt": "Switch on the controls Big Venture has in place and watch the score move from inherent to residual. Compare the result with the tolerance of 9 for operational risk.",
+      "scenario": "At Big Venture Incorporated, if ransomware reaches the warehouse system, because remote access is unpatched or a login is phished, shipping stops at all four sites, resulting in missed deliveries and penalties.",
+      "inherent": { "l": 4, "i": 5 },
+      "tolerance": 9,
+      "controls": [
+        { "label": "C-03 MFA on remote access", "dl": -1, "di": 0 },
+        { "label": "C-11 critical patches applied within 14 days", "dl": -1, "di": 0 },
+        { "label": "C-19 offline backups, restores tested every quarter", "dl": 0, "di": -1 },
+        { "label": "A further control that is planned but not yet in place", "dl": 0, "di": 0 }
+      ],
+      "why": "The three working controls take R-07 from 20, critical, to 8, medium, just inside the tolerance of 9, so the risk owner can accept the residual risk and keep monitoring. The planned control earns no credit until it operates, and if a restore test fails, the residual rating is in question again."
+    },
+    {
+      "type": "sort",
+      "after": "treat",
+      "title": "Name the treatment",
+      "prompt": "Sort each of Big Venture's responses into the treatment it represents.",
+      "buckets": [
+        { "id": "mitigate", "label": "Mitigate" },
+        { "id": "accept", "label": "Accept" },
+        { "id": "transfer", "label": "Transfer" },
+        { "id": "avoid", "label": "Avoid" }
+      ],
+      "items": [
+        { "text": "Add multi-factor authentication to the remote access gateway", "bucket": "mitigate", "why": "A new control lowers the likelihood of the event." },
+        { "text": "Test restores from offline backups every quarter", "bucket": "mitigate", "why": "Strengthening a control lowers the impact if ransomware does run." },
+        { "text": "Keep the risk that a regional office's internet link fails for a few hours", "bucket": "accept", "why": "Staff can work from a nearby warehouse, so the risk is knowingly kept." },
+        { "text": "Run the unsupported legacy server until migration, as an exception with a hard end date", "bucket": "accept", "why": "An exception is a time-bound accepted risk, even when compensating controls sit around it." },
+        { "text": "Buy cyber insurance that covers ransomware recovery costs", "bucket": "transfer", "why": "Insurance moves part of the financial consequence, not the accountability, so the risk stays on the register." },
+        { "text": "Make the payroll provider liable by contract for breaches on its side", "bucket": "transfer", "why": "A contract shares the consequence with the supplier, but customers still hold Big Venture responsible." },
+        { "text": "Drop the plan to store driver license scans in the portal", "bucket": "avoid", "why": "Stopping the activity removes the risk, since nothing needed the scans." },
+        { "text": "Decide not to collect a data field that no process uses", "bucket": "avoid", "why": "Not starting the activity at all means the risk never arises." }
+      ]
+    }
+  ]
+}

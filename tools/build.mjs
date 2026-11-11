@@ -59,6 +59,7 @@ function page({ path, title, desc, body, data, ld, crumbs }) {
     <link rel="stylesheet" href="${root}assets/kit/mnav.css" />
     <link rel="stylesheet" href="${root}assets/kit/site.css" />
     <link rel="stylesheet" href="${root}assets/learn/learn.css" />
+    <link rel="stylesheet" href="${root}assets/learn/tools.css" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
   </head>
@@ -72,7 +73,9 @@ ${body}
 ${data ? `    <script type="application/json" id="lx-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>\n` : ''}${graph.length ? `    <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>\n` : ''}    <script defer src="${root}assets/kit/mnav.js"></script>
     <script defer src="${root}assets/kit/site.js"></script>
     <script defer src="${root}assets/learn/learn.js"></script>
-  </body>
+    <script defer src="${root}assets/learn/tools.js"></script>
+${data && data.activities && data.activities.length ? `    <script defer src="${root}assets/learn/activities.js"></script>
+` : ''}  </body>
 </html>
 `;
   mkdirSync(dirname(join(repo, path)), { recursive: true });
@@ -286,8 +289,9 @@ for (const c of COURSES) {
           </div>
           <aside class="lx-side" data-reveal>
             ${c.audience ? `<h3>Who it's for</h3><ul>${c.audience.map((a) => `<li>${esc(a)}</li>`).join('')}</ul>` : ''}
+            <button type="button" class="lx-tool" data-tool="notebook" style="justify-content:center">Your notebook <span data-nb-count></span></button>
             <h3>How it works</h3>
-            <ul><li>Free and open: no sign-up to read</li><li>A knowledge check closes each lesson</li><li>Progress saved in this browser</li><li>Certificate with learner accounts (coming)</li></ul>
+            <ul><li>Free and open: no sign-up to read</li><li>Listen to a two-minute TLDR of every lesson</li><li>Practice activities and a knowledge check in each lesson</li><li>Notebook, flashcards and progress saved in this browser</li><li>Certificate with learner accounts (coming)</li></ul>
             ${first ? `<a class="sx-btn sx-btn-primary" href="${first}/">Start lesson 1 <span class="sx-arrow" aria-hidden="true">→</span></a>` : ''}
             ${order.length ? `<button type="button" class="sx-btn sx-btn-ghost" data-reset="${c.slug}" style="justify-content:center;cursor:pointer;font:inherit">Clear my progress</button>` : ''}
           </aside>
@@ -312,11 +316,37 @@ for (const c of COURSES) {
     const bridges = existsSync(join(repo, `content/${c.school}/${c.slug}/bridges.json`)) ? json(`content/${c.school}/${c.slug}/bridges.json`) : {};
     const b = bridges[l.slug] || meta.bridge;
     const checks = meta.checks || [];
+    const extras = existsSync(join(repo, `${base}.extras.json`)) ? json(`${base}.extras.json`) : {};
+    const tldr = extras.tldr || [], acts = extras.activities || [];
+    // each activity goes in right after the section it practices, in the order listed
+    let lessonBody = body.replace(/\{\{ROOT\}\}/g, root);
+    acts.forEach((a, k) => {
+      const at = lessonBody.indexOf(`id="${a.after}"`);
+      const end = at < 0 ? -1 : lessonBody.indexOf('</section>', at);
+      const slot = `\n<div class="lx-act" data-act="${k}" id="activity-${k + 1}"><noscript><p>${esc(a.title)}: this activity needs JavaScript.</p></noscript></div>`;
+      if (end < 0) { lessonBody += slot; return; }
+      // after any activities already placed behind this section
+      let pos = end + '</section>'.length;
+      while (lessonBody.startsWith('\n<div class="lx-act"', pos)) pos = lessonBody.indexOf('</div>', pos) + '</div>'.length;
+      lessonBody = lessonBody.slice(0, pos) + slot + lessonBody.slice(pos);
+    });
+    const secs = tldr.length ? Math.round(tldr.reduce((n, t) => n + t.text.split(/\s+/).length, 0) / 2.5) : 0;
+    const ICON = {
+      listen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>',
+      notebook: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v16l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6"/></svg>',
+      flash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v10"/></svg>',
+    };
+    const tools = `<div class="lx-tools" role="toolbar" aria-label="Learning tools">
+              ${tldr.length ? `<button type="button" class="lx-tool is-main" data-tool="listen">${ICON.listen}Listen to the TLDR <small>${Math.max(1, Math.round(secs / 60))} min</small></button>` : ''}
+              <button type="button" class="lx-tool" data-tool="notebook">${ICON.notebook}Notebook <span data-nb-count></span></button>
+              <button type="button" class="lx-tool" data-tool="flash">${ICON.flash}Flashcards</button>
+              ${acts.length ? `<a class="lx-tool" href="#activity-1">Practice: ${acts.length} activit${acts.length > 1 ? 'ies' : 'y'}</a>` : ''}
+            </div>`;
     page({
       path: `${c.url}${l.slug}/index.html`,
       title: `${l.title} — ${c.short || c.title} | AiVRIC Learning`,
       desc: l.summary,
-      data: { course: c.slug, lesson: l.slug, checks: checks.map((q) => ({ answer: q.answer })) },
+      data: { course: c.slug, lesson: l.slug, title: l.title, checks: checks.map((q) => ({ answer: q.answer })), tldr, activities: acts },
       crumbs: [['AiVRIC Learning', ''], ['Foundations', 'foundations/'], [c.title, c.url], [l.title, `${c.url}${l.slug}/`]],
       ld: [{ '@type': 'LearningResource', name: l.title, description: l.summary, url: `${SITE}${c.url}${l.slug}/`, isAccessibleForFree: true, timeRequired: `PT${l.minutes}M`, learningResourceType: 'Lesson', isPartOf: { '@type': 'Course', name: c.title, url: SITE + c.url }, provider: { '@type': 'Organization', name: 'AiVRIC', sameAs: 'https://aivric.com/' } }],
       body: `
@@ -334,9 +364,10 @@ for (const c of COURSES) {
             <p class="sx-eyebrow" style="margin-top:22px">Lesson ${i + 1} of ${c.lessons.length} · ${l.minutes} min</p>
             <h1>${esc(l.title)}</h1>
             <p class="sx-lede">${esc(l.summary)}</p>
+            ${tools}
             ${meta.objectives ? `<div class="lx-objectives"><p>By the end of this lesson you can</p><ul>${meta.objectives.map((o) => `<li>${esc(o)}</li>`).join('')}</ul></div>` : ''}
           </header>
-${body.replace(/\{\{ROOT\}\}/g, root)}
+${lessonBody}
           ${checks.length ? `<section class="lx-check" id="check" aria-labelledby="lx-check-h">
             <div class="lx-check-head"><h2 id="lx-check-h">Knowledge check</h2><span class="lx-check-score" data-score>${checks.length} questions</span></div>
             ${checks.map((q, qi) => `<div class="lx-q">

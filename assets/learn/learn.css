@@ -299,3 +299,17 @@ a.lx-mod:hover { box-shadow: inset 0 0 0 1px rgba(0,209,255,.45); background: rg
 }
 .lx-article { min-width: 0; }
 .lx-tablewrap { max-width: 100%; -webkit-overflow-scrolling: touch; }
+
+/* ---- list items with a marker: the marker sits in a gutter and the text flows as one block, so bold and plain runs
+   inside an item never become separate grid or flex items (found 11 Nov 2026: one word per line in the steps) ---------- */
+.lx-steps li, .lx-checklist li, .lx-objectives li, .lx-outcomes li, .lx-side li { display: block; position: relative; }
+.lx-steps li { padding-left: 42px; }
+.lx-steps li::before { position: absolute; left: 0; top: 1px; display: grid; }
+.lx-checklist li { padding: 14px 16px 14px 44px; }
+.lx-checklist li::before { position: absolute; left: 18px; top: 14px; }
+.lx-objectives li { padding-left: 20px; }
+.lx-objectives li::before { position: absolute; left: 0; top: 0; }
+.lx-outcomes li { padding: 16px 16px 16px 44px; }
+.lx-outcomes li::before { position: absolute; left: 18px; top: 16px; }
+.lx-side li { padding-left: 16px; }
+.lx-side li::before { position: absolute; left: 0; top: 0; margin-top: 9px; }

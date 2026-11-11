@@ -1,0 +1,201 @@
+{
+  "tldr": [
+    {
+      "section": "cadence",
+      "text": "This lesson is about keeping a GRC program running after the first audit. Left alone, a program decays, so it runs on a calendar. Continuous monitoring feeds a monthly review, three monthly reviews become a quarterly report, and four quarters feed the annual refresh.",
+      "say": "This lesson is about keeping a G R C program running after the first audit. Left alone, a program decays, so it runs on a calendar. Continuous monitoring feeds a monthly review, three monthly reviews become a quarterly report, and four quarters feed the annual refresh."
+    },
+    {
+      "section": "measures",
+      "text": "Keep three kinds of measure apart. KPIs ask whether you are doing the work, KRIs ask whether your exposure is changing, and control effectiveness asks whether a control actually works. Lagging measures confirm the story, and leading ones give you time to change it.",
+      "say": "Keep three kinds of measure apart. K P I s ask whether you are doing the work, K R I s ask whether your exposure is changing, and control effectiveness asks whether a control actually works. Lagging measures confirm the story, and leading ones give you time to change it."
+    },
+    {
+      "section": "good-metrics",
+      "text": "A useful metric has an owner, a clear definition, a data source, a target and threshold, and a cadence. When data is missing, show it as not measured, never as zero or green. Ask what anyone would do if it moved."
+    },
+    {
+      "section": "audiences",
+      "text": "Operators need detail, management needs trends and decisions, and the board needs to see its position against appetite in a few pages. Take a frozen snapshot each quarter, and restate earlier figures whenever a definition changes, so you compare like with like."
+    },
+    {
+      "section": "board",
+      "text": "A board report is a decision document. Open with the verdict against appetite, then the top risks and their direction, then the decisions taken and needed. Translate technical findings into consequences for revenue, contracts and reputation."
+    },
+    {
+      "section": "improve",
+      "text": "Cadence only matters if it changes something. Management review should end in recorded decisions, and every incident, failed test or missed review deserves a short lessons-learned session that feeds the register, the controls and next year's targets."
+    },
+    {
+      "section": "check",
+      "text": "Now put it to work. Sort the program's activities onto the calendar and the measures into their kinds, pick the stronger board-report lines, and then take the knowledge check."
+    }
+  ],
+  "activities": [
+    {
+      "type": "sort",
+      "after": "cadence",
+      "title": "Find each activity's rhythm",
+      "prompt": "Place each of Big Venture's GRC activities on the rhythm it normally runs to.",
+      "buckets": [
+        {
+          "id": "an",
+          "label": "Annual"
+        },
+        {
+          "id": "q",
+          "label": "Quarterly"
+        },
+        {
+          "id": "m",
+          "label": "Monthly"
+        },
+        {
+          "id": "c",
+          "label": "Continuous"
+        }
+      ],
+      "items": [
+        {
+          "text": "Risk appetite review",
+          "bucket": "an",
+          "why": "Appetite is reviewed once a year, with the executive committee and the board approving it."
+        },
+        {
+          "text": "User access reviews",
+          "bucket": "q",
+          "why": "Access reviews run each quarter and are owned by the control owners."
+        },
+        {
+          "text": "Status of open remediation items",
+          "bucket": "m",
+          "why": "Remediation is tracked monthly so overdue items surface before the quarterly report."
+        },
+        {
+          "text": "Collecting evidence as the work happens",
+          "bucket": "c",
+          "why": "Evidence is captured each time a control runs, not saved up for a review."
+        },
+        {
+          "text": "Risk assessment refresh",
+          "bucket": "an",
+          "why": "The full risk assessment is refreshed once a year, drawing on the four quarters before it."
+        },
+        {
+          "text": "Board or committee reporting",
+          "bucket": "q",
+          "why": "The board sees the program's position each quarter, built from the monthly reviews."
+        },
+        {
+          "text": "Metrics review with control owners",
+          "bucket": "m",
+          "why": "The monthly review reads the data that continuous monitoring produces."
+        },
+        {
+          "text": "Incident and issue intake",
+          "bucket": "c",
+          "why": "Incidents arrive whenever they happen, so intake never waits for a meeting."
+        },
+        {
+          "text": "Risk register review",
+          "bucket": "q",
+          "why": "The register is reviewed every quarter, between the yearly risk assessment refreshes."
+        }
+      ]
+    },
+    {
+      "type": "sort",
+      "after": "measures",
+      "title": "KPI, KRI or control effectiveness?",
+      "prompt": "Big Venture tracks these measures. Sort each one by the question it answers.",
+      "buckets": [
+        {
+          "id": "kpi",
+          "label": "KPI: are we doing the work?"
+        },
+        {
+          "id": "kri",
+          "label": "KRI: is our exposure changing?"
+        },
+        {
+          "id": "ce",
+          "label": "Control effectiveness: does it work?"
+        }
+      ],
+      "items": [
+        {
+          "text": "Access reviews completed on time",
+          "bucket": "kpi",
+          "why": "It measures whether the program is doing its own work on schedule."
+        },
+        {
+          "text": "Privileged accounts without multi-factor sign-in",
+          "bucket": "kri",
+          "why": "It tracks a condition that makes a specific risk more likely, with a threshold set from appetite."
+        },
+        {
+          "text": "Sampled instances that passed testing this quarter",
+          "bucket": "ce",
+          "why": "It comes from testing and shows whether the control operates as intended."
+        },
+        {
+          "text": "Findings closed within target",
+          "bucket": "kpi",
+          "why": "Closing findings on time measures how well the program executes, even though the findings are about controls."
+        },
+        {
+          "text": "Controls with open exceptions from testing",
+          "bucket": "ce",
+          "why": "An exception is a tested instance where the control did not operate as described."
+        },
+        {
+          "text": "Internet-facing servers running unsupported operating systems",
+          "bucket": "kri",
+          "why": "It tracks a live exposure condition against a threshold set from appetite; it is neither work done nor a test result."
+        },
+        {
+          "text": "Critical controls fully implemented",
+          "bucket": "ce",
+          "why": "It shows whether controls are in place across their scope, which is a control effectiveness measure."
+        },
+        {
+          "text": "Security awareness training completed by the deadline",
+          "bucket": "kpi",
+          "why": "Training finished on time is the program doing its own work."
+        }
+      ]
+    },
+    {
+      "type": "choose",
+      "after": "board",
+      "title": "Write the board line",
+      "prompt": "Big Venture's GRC lead is drafting the quarterly board page. In each pair, pick the line that belongs there.",
+      "pairs": [
+        {
+          "a": "Forty-two critical vulnerabilities older than thirty days on internet-facing servers.",
+          "b": "The tracking platform has known weaknesses attackers look for, and an attack could take it down for days.",
+          "better": "b",
+          "why": "Directors need the consequence for the business, not a technical count."
+        },
+        {
+          "a": "Inside appetite on four of five top risks; ransomware recovery is outside tolerance.",
+          "b": "This quarter the team published new policies and deployed two new security tools.",
+          "better": "a",
+          "why": "The verdict against appetite comes first, and activity counts say nothing about exposure."
+        },
+        {
+          "a": "Vendor assessments: all green, though the data feed failed this quarter.",
+          "b": "Vendor assessments: not measured this quarter after a system change, with data restored in October.",
+          "better": "b",
+          "why": "A missing value is a gap, and showing it green tells the board something nobody knows."
+        },
+        {
+          "a": "Decision needed: fund isolated backup storage now, or formally accept the risk until the second quarter.",
+          "b": "Backup resilience remains an area of focus, and the team will keep the board informed.",
+          "better": "a",
+          "why": "A board report is a decision document, so it names the choice in front of the board."
+        }
+      ]
+    }
+  ]
+}

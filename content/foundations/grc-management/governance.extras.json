@@ -1,0 +1,86 @@
+{
+  "tldr": [
+    {
+      "section": "direction",
+      "text": "This lesson is about governance, the way leadership sets direction for security, assigns accountability and oversees whether it is working. Management runs the program. Governance sets the direction that work follows and holds management to account."
+    },
+    {
+      "section": "committee",
+      "text": "Boards meet only a few times a year, so most organizations add a steering committee with a written charter. A decision rights matrix, often a RACI, then says who does what for each recurring decision. Each decision needs exactly one accountable person.",
+      "say": "Boards meet only a few times a year, so most organizations add a steering committee with a written charter. A decision rights matrix, often a racy, then says who does what for each recurring decision. Each decision needs exactly one accountable person."
+    },
+    {
+      "section": "hierarchy",
+      "text": "Governance is written down in four kinds of document. A policy says what you commit to and why. A standard sets the specific, measurable rule. A procedure gives the steps to meet it, and a guideline offers advice that is not required."
+    },
+    {
+      "section": "lifecycle",
+      "text": "A policy moves through a lifecycle, from draft and review to approval, publishing, staff attestation, regular review and retirement. Keep every issued version with its approval record and in-force dates, so you can show what the rule was on any past date."
+    },
+    {
+      "section": "appetite",
+      "text": "Risk appetite says, in words, how much risk leadership will carry. Risk tolerance turns it into measurable thresholds, such as fixing critical flaws on internet-facing systems within seven days, so a manager can tell from a dashboard whether you are inside appetite."
+    },
+    {
+      "section": "standards",
+      "text": "ISO 27001 and NIST CSF 2.0 both put leadership first, through the Leadership clause and the Govern function. Each treats accountability as something leadership keeps even when it delegates the work, and an auditor will look for evidence that it does.",
+      "say": "I S O twenty-seven thousand one and nist C S F two point oh both put leadership first, through the Leadership clause and the Govern function. Each treats accountability as something leadership keeps even when it delegates the work, and an auditor will look for evidence that it does."
+    },
+    {
+      "section": "check",
+      "text": "Now try the exercises to sort documents, order the policy lifecycle and tell appetite from tolerance. Then test your own governance with the practice steps, or go straight to the knowledge check."
+    }
+  ],
+  "activities": [
+    {
+      "type": "sort",
+      "after": "hierarchy",
+      "title": "Sort the document into its tier",
+      "prompt": "Each line comes from one of Big Venture's security documents. Decide whether it belongs in a policy, a standard, a procedure or a guideline.",
+      "buckets": [
+        { "id": "pol", "label": "Policy" },
+        { "id": "std", "label": "Standard" },
+        { "id": "proc", "label": "Procedure" },
+        { "id": "guide", "label": "Guideline" }
+      ],
+      "items": [
+        { "text": "Access follows least privilege and is reviewed.", "bucket": "pol", "why": "It states the commitment and leaves the mechanism to the documents below it." },
+        { "text": "We protect customer shipment and personal data on every company device.", "bucket": "pol", "why": "A short, stable statement of what the company commits to is policy." },
+        { "text": "MFA is required on all remote access.", "bucket": "std", "why": "It is a specific, mandatory and checkable rule, which makes it a standard." },
+        { "text": "User access is reviewed every quarter.", "bucket": "std", "why": "A measurable rule that implements the access policy belongs in a standard." },
+        { "text": "Passwords for company accounts must meet the minimum length set by security.", "bucket": "std", "why": "Big Venture moved its password rule out of the policy and into the identity standard." },
+        { "text": "Export the access list, have managers confirm it, revoke what is unneeded, record the result.", "bucket": "proc", "why": "Step-by-step method owned by the team that performs it is a procedure." },
+        { "text": "To turn on disk encryption, open the device settings and follow these steps in order.", "bucket": "proc", "why": "It gives the steps to meet a rule rather than the rule itself." },
+        { "text": "Suggested ways to choose a strong passphrase.", "bucket": "guide", "why": "Advice on doing it well, recommended but not required, is a guideline." }
+      ]
+    },
+    {
+      "type": "sequence",
+      "after": "lifecycle",
+      "title": "Put the policy lifecycle in order",
+      "prompt": "Arrange the stages a policy moves through, from first draft to withdrawal.",
+      "steps": [
+        "The owner drafts it, tied to the risks and obligations it addresses",
+        "Legal, the affected teams and the steering committee comment on it",
+        "The approver named in the decision-rights matrix signs it off, with a date and version",
+        "The approved version goes where everyone it applies to can find it",
+        "Staff confirm they have read it, at hire and on a set cycle",
+        "It is reviewed at least yearly, and sooner after an incident or a new obligation",
+        "Once it no longer applies, it is formally withdrawn so it stops being cited"
+      ],
+      "why": "Comments come before approval, not after, and only an approved version is published and attested. Review on a cadence keeps it current until retirement, and every issued version is kept along the way."
+    },
+    {
+      "type": "choose",
+      "after": "appetite",
+      "title": "Find the tolerance",
+      "prompt": "Each pair holds one appetite statement and one tolerance from Big Venture's table. Pick the tolerance: the one a manager could check on a dashboard.",
+      "pairs": [
+        { "a": "Low appetite for risks that could expose customer shipment or personal data", "b": "MFA on every production admin account", "better": "b", "why": "A tolerance is a measurable threshold; the other option is the broad appetite it supports." },
+        { "a": "Tracking platform restored within 4 hours, with no more than 15 minutes of data lost", "b": "Short outages of internal tools are acceptable; outages of the tracking platform are not", "better": "a", "why": "Hours and minutes can be measured, while the other option describes the appetite in words." },
+        { "a": "We adopt new tools to move faster, once they are reviewed", "b": "No customer data in any tool before a security review", "better": "b", "why": "Whether customer data entered an unreviewed tool can be checked; the appetite statement cannot." },
+        { "a": "Access reviews closed within 10 working days of quarter end", "b": "We do not take risks that could expose customer data", "better": "a", "why": "A deadline in working days is a threshold that shows whether the company is inside its low appetite." }
+      ]
+    }
+  ]
+}

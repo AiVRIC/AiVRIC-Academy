@@ -1,0 +1,174 @@
+{
+  "tldr": [
+    {
+      "section": "objective",
+      "text": "This lesson is about controls, the things an organization does on purpose and repeatedly to make good outcomes more likely. Every control serves an objective, a plain statement of what must be true, so start there."
+    },
+    {
+      "section": "classify",
+      "text": "You can sort any control two ways. By function, it prevents, detects or corrects. By nature, it is administrative, technical or physical. If every control behind an objective is preventive, nobody will notice when prevention fails."
+    },
+    {
+      "section": "operation",
+      "text": "Ask who performs it, too. A manual control relies on a person, an automated one on a system, and an IT-dependent manual control is only as good as the report behind it. Give your key controls the closest attention.",
+      "say": "Ask who performs it, too. A manual control relies on a person, an automated one on a system, and an I T dependent manual control is only as good as the report behind it. Give your key controls the closest attention."
+    },
+    {
+      "section": "statement",
+      "text": "A control statement is a promise you will have to prove. Write it so a tester can check who does what, when, how, and what evidence it leaves. Name one accountable owner, and keep the reviewer separate from the operator."
+    },
+    {
+      "section": "baseline",
+      "text": "The control baseline is the single list of every control you rely on, each with an owner, mappings, status and evidence. Score status on a defined scale, and never count a control nobody has reviewed as zero or as implemented."
+    },
+    {
+      "section": "drift",
+      "text": "When the expected control is not feasible, a compensating control can meet its intent, with its own owner, the risk owner's approval and a date to revisit. Watch for drift. People leave, systems change and schedules slip, so treat each control as a lifecycle."
+    },
+    {
+      "section": "check",
+      "text": "Now try it yourself. Sort a set of controls by function, pick the statements a tester could actually check, then take the knowledge check to see how well the ideas have settled."
+    }
+  ],
+  "activities": [
+    {
+      "type": "sort",
+      "after": "classify",
+      "title": "Prevent, detect or correct",
+      "prompt": "Sort each of Big Venture's controls by its function: does it stop the event, notice it or recover from it?",
+      "buckets": [
+        { "id": "p", "label": "Preventive" },
+        { "id": "d", "label": "Detective" },
+        { "id": "c", "label": "Corrective" }
+      ],
+      "items": [
+        {
+          "text": "Quarterly review of who can reach the payroll system",
+          "bucket": "d",
+          "why": "It finds access that already exists and should not, so someone can act; it does not stop the access being granted."
+        },
+        {
+          "text": "Manager approval before a new account is granted",
+          "bucket": "p",
+          "why": "The approval happens before the access exists, so it stops unwanted access up front."
+        },
+        {
+          "text": "Fire suppression in the server room",
+          "bucket": "c",
+          "why": "It limits the damage once a fire has started rather than stopping one from starting."
+        },
+        {
+          "text": "Alerts on repeated failed sign-ins",
+          "bucket": "d",
+          "why": "The alert fires on attempts that are already happening, so someone can respond."
+        },
+        {
+          "text": "Multi-factor sign-in on the finance system",
+          "bucket": "p",
+          "why": "It blocks any sign-in without the second factor before anyone gets in."
+        },
+        {
+          "text": "Restoring the tracking platform from backup after an outage",
+          "bucket": "c",
+          "why": "It restores normal operation after the event has happened."
+        },
+        {
+          "text": "Badge-controlled doors to the server room",
+          "bucket": "p",
+          "why": "It keeps unauthorized people out before they reach the equipment."
+        },
+        {
+          "text": "Door-held-open alarm on the server room",
+          "bucket": "d",
+          "why": "It notices a door that is already open, so it is detective even though it is physical."
+        },
+        {
+          "text": "Revoking a user's access after a policy breach",
+          "bucket": "c",
+          "why": "It acts after the breach to limit further damage, which makes it corrective even though it removes access."
+        }
+      ]
+    },
+    {
+      "type": "choose",
+      "after": "statement",
+      "title": "Which one could a tester check?",
+      "prompt": "In each pair, pick the version of Big Venture's control that a tester could check from the text alone.",
+      "pairs": [
+        {
+          "a": "User access is reviewed regularly by the relevant teams.",
+          "b": "Each quarter, application owners review a system-generated account list and ticket any access to remove.",
+          "better": "b",
+          "why": "The strong version names who, what and when and leaves tickets behind, while \"regularly\" has no deadline and \"reviewed\" has no outcome."
+        },
+        {
+          "a": "The IT access lead completes each approved removal within five business days.",
+          "b": "Access that is no longer needed is removed promptly by IT.",
+          "better": "a",
+          "why": "\"Promptly\" can never be missed, but five business days can, and a named role answers for it."
+        },
+        {
+          "a": "Owner: the IT department, so the control keeps an owner when people leave.",
+          "b": "Owner: the IT access lead, accountable for its design, operation and fixes.",
+          "better": "b",
+          "why": "A control needs exactly one accountable role, and a whole department means nobody in particular."
+        },
+        {
+          "a": "Evidence: the signed-off account list and removal tickets, filed in the control's evidence folder.",
+          "b": "Evidence: available from the control owner on request.",
+          "better": "a",
+          "why": "Naming the record and where it is kept means a missed quarter shows up as a missing file."
+        }
+      ]
+    },
+    {
+      "type": "sort",
+      "after": "baseline",
+      "title": "Score the status honestly",
+      "prompt": "Big Venture is re-scoring its control baseline. Pick the status each control should carry.",
+      "buckets": [
+        { "id": "nr", "label": "Not reviewed" },
+        { "id": "pi", "label": "Partially implemented" },
+        { "id": "fi", "label": "Fully implemented" },
+        { "id": "na", "label": "Not applicable" }
+      ],
+      "items": [
+        {
+          "text": "Added to the baseline last year, and nobody has assessed it since",
+          "bucket": "nr",
+          "why": "Its status is unknown, which is neither good nor bad until someone looks."
+        },
+        {
+          "text": "Access review runs for finance but skips the customer database and HR",
+          "bucket": "pi",
+          "why": "Two of its three in-scope applications are missing, which is a significant gap in scope."
+        },
+        {
+          "text": "Enforced on every in-scope system, with the evidence its statement promises",
+          "bucket": "fi",
+          "why": "It is in place across its whole scope and leaves the records its statement says it will."
+        },
+        {
+          "text": "Status field defaulted to \"in place\", but no one has ever checked it",
+          "bucket": "nr",
+          "why": "A default is not an assessment, and showing it as implemented makes the program look better than it is."
+        },
+        {
+          "text": "Covers no system in scope, with the reason and the approver recorded",
+          "bucket": "na",
+          "why": "Not applicable needs a recorded reason and someone who approved it, and this one has both."
+        },
+        {
+          "text": "Runs for some teams only, and two of the last four quarters were missed",
+          "bucket": "pi",
+          "why": "Missed quarters and partial coverage are significant gaps in operation and scope, not minor ones."
+        },
+        {
+          "text": "Runs across its whole scope, and every quarter's evidence is on file",
+          "bucket": "fi",
+          "why": "Full scope plus a complete evidence folder is what fully implemented means."
+        }
+      ]
+    }
+  ]
+}

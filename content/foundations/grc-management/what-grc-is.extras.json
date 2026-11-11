@@ -1,0 +1,94 @@
+{
+  "tldr": [
+    {
+      "section": "one-system",
+      "text": "This lesson explains what GRC is. Governance, risk and compliance are three questions about one organization. Who decides, and what have we committed to? What could go wrong, and is it acceptable? What must we do, and can we show it?",
+      "say": "This lesson explains what G R C is. Governance, risk and compliance are three questions about one organization. Who decides, and what have we committed to? What could go wrong, and is it acceptable? What must we do, and can we show it?"
+    },
+    {
+      "section": "why",
+      "text": "Few organizations set out to build a GRC program. The questions arrive from outside, from customers, regulators, boards, insurers and partners. GRC is what you build when you decide to answer them once, from a system, instead of again and again from memory.",
+      "say": "Few organizations set out to build a G R C program. The questions arrive from outside, from customers, regulators, boards, insurers and partners. G R C is what you build when you decide to answer them once, from a system, instead of again and again from memory."
+    },
+    {
+      "section": "silos",
+      "text": "When separate teams own each framework, the same control is evidenced many times, evidence goes stale, risks have no owner and reports disagree. Integrated GRC fixes the structure with one set of controls, mapped to every obligation, and evidence collected once and reused.",
+      "say": "When separate teams own each framework, the same control is evidenced many times, evidence goes stale, risks have no owner and reports disagree. Integrated G R C fixes the structure with one set of controls, mapped to every obligation, and evidence collected once and reused."
+    },
+    {
+      "section": "three-lines",
+      "text": "The Three Lines Model describes who does what. The governing body sets direction and approves risk appetite. The first line runs controls day to day. The second line advises, monitors and challenges. The third line, internal audit, gives independent assurance."
+    },
+    {
+      "section": "good",
+      "text": "A mature program is not about the size of its documents. Every control has a named owner, every significant risk ends in a recorded decision, evidence is collected as the work happens, and leadership sees one consistent picture."
+    },
+    {
+      "section": "practice",
+      "text": "Then map your own program. List your obligations, find controls that are evidenced more than once, trace one risk to the decision behind it, and write one sentence about what an integrated program would change for you."
+    },
+    {
+      "section": "check",
+      "text": "Before you move on, try the exercises to sort work into the three questions and the three lines. Then take the knowledge check to see how well the ideas in this lesson have stuck."
+    }
+  ],
+  "activities": [
+    {
+      "type": "sort",
+      "after": "one-system",
+      "title": "Which question does it answer?",
+      "prompt": "Each task answers one of the three GRC questions. Sort it into governance, risk or compliance.",
+      "buckets": [
+        { "id": "g", "label": "Governance: who decides, and what have we committed to?" },
+        { "id": "r", "label": "Risk: what could go wrong, and is it acceptable?" },
+        { "id": "c", "label": "Compliance: what must we do, and can we show it?" }
+      ],
+      "items": [
+        { "text": "Naming who owns the decision to approve security standards", "bucket": "g", "why": "Assigning ownership of decisions is accountability, which is governance." },
+        { "text": "Setting the business objectives the security program serves", "bucket": "g", "why": "Direction for security is the first part of governance." },
+        { "text": "Signing off the information security policy the company commits to", "bucket": "g", "why": "Policies are the commitments the organization signs up to, so they belong to governance." },
+        { "text": "Estimating how likely an account takeover is, and how bad it would be", "bucket": "r", "why": "Likelihood and impact are how risk sizes what could go wrong." },
+        { "text": "Judging whether the remaining ransomware exposure is acceptable", "bucket": "r", "why": "Deciding whether remaining exposure sits inside what leadership agreed to carry is a risk judgment." },
+        { "text": "Listing what could stop the company reaching its objectives", "bucket": "r", "why": "Finding what could get in the way of objectives is where risk work starts." },
+        { "text": "Listing the laws, contracts and frameworks that apply to the company", "bucket": "c", "why": "Knowing which obligations apply is the first half of compliance." },
+        { "text": "Showing an auditor dated, attributable records of last quarter's access review", "bucket": "c", "why": "Proving the organization does what it says is the evidence half of compliance." },
+        { "text": "Answering a customer's security questionnaire with evidence", "bucket": "c", "why": "A questionnaire asks what you are required to do and whether you can show it." }
+      ]
+    },
+    {
+      "type": "sort",
+      "after": "three-lines",
+      "title": "Place the role in the Three Lines Model",
+      "prompt": "Sort each responsibility at Big Venture Incorporated into the role that carries it.",
+      "buckets": [
+        { "id": "gov", "label": "Governing body" },
+        { "id": "l1", "label": "First line" },
+        { "id": "l2", "label": "Second line" },
+        { "id": "l3", "label": "Third line" }
+      ],
+      "items": [
+        { "text": "Approves the risk appetite and holds management to it", "bucket": "gov", "why": "Setting direction and approving appetite is the governing body's role." },
+        { "text": "Receives security reporting and asks whether management stays inside what was agreed", "bucket": "gov", "why": "Oversight on behalf of stakeholders sits with the board or its committee." },
+        { "text": "Engineering managers run the quarterly access review on their own systems", "bucket": "l1", "why": "Teams who run controls day to day are the first line." },
+        { "text": "IT operations patches servers and keeps backups running", "bucket": "l1", "why": "Delivering the service and owning its risks is first-line work." },
+        { "text": "The security function writes the standards that controls must meet", "bucket": "l2", "why": "Expertise and support on risk matters, including standards, is the second line." },
+        { "text": "The risk team maintains the risk register", "bucket": "l2", "why": "The model places the risk register with the second-line risk function." },
+        { "text": "Compliance checks that the first line's controls actually work", "bucket": "l2", "why": "Monitoring and challenge by management's own functions is second line, not independent assurance." },
+        { "text": "Internal audit tells the board whether risk management is working", "bucket": "l3", "why": "Independent and objective assurance to the governing body is the third line." },
+        { "text": "Gives assurance that is useful because it is independent of management", "bucket": "l3", "why": "Independence from management is what defines the third line." }
+      ]
+    },
+    {
+      "type": "choose",
+      "after": "good",
+      "title": "Spot the mature program",
+      "prompt": "Each pair describes two ways of running the same part of a program. Pick the one that shows a healthier GRC program.",
+      "pairs": [
+        { "a": "Evidence is saved as each access review closes", "b": "Evidence is assembled in the week before the audit", "better": "a", "why": "Evidence collected as the work happens shows today's state, not a snapshot built for the auditor." },
+        { "a": "Each framework team tests MFA and keeps its own evidence for it", "b": "One MFA control is tested once and answers every framework that asks", "better": "b", "why": "One control answering every framework removes the duplicate testing and evidence that silos create." },
+        { "a": "A risk is accepted in a leadership meeting and noted as agreed", "b": "A risk is accepted with who decided, why, and when it will be reviewed", "better": "b", "why": "Only an attributable, explained and time-bound acceptance can be reviewed or challenged later." },
+        { "a": "Every control has a named owner, and the owner knows it", "b": "Controls are owned by the security team as a whole", "better": "a", "why": "A control owned by everyone is owned by no one; a named owner is the first sign of maturity." }
+      ]
+    }
+  ]
+}
