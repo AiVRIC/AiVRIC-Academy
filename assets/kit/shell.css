@@ -1,0 +1,71 @@
+/* ==========================================================================
+   The site header and footer on the older aivric.com pages (the ones not yet rebuilt on the kit).
+   tools/site-shell.mjs puts the kit's header (mnav) and footer on those pages. They keep their own
+   stylesheets (bootstrap, the template's style.css), so this file carries what the kit pages get from
+   styles.css, nav.css and aivric.css for these two pieces, scoped to them.
+   Load order on an older page: its own CSS, then this file, then mnav.css. The resets here are one class
+   deep, so they beat the old element rules (ul li, a, p, h4) and lose to mnav.css, which loads after.
+   ========================================================================== */
+
+/* ---- header --------------------------------------------------------------------------------- */
+.site-header.mnav {
+  position: sticky; top: 0; z-index: 1000; display: block; margin: 0; padding: 0;
+  background: #050c18; border-bottom: 1px solid rgba(175, 178, 206, 0.24);
+  font: 400 16px/1.5 Inter, system-ui, sans-serif; color: #ededf3; text-align: left;
+}
+/* mnav.css keeps the bar transparent (!important) unless the body has is-nav-solid, which the kit pages set by script;
+   the older pages never do, so the bar is made solid here, two classes deep so it outranks mnav.css */
+.site-header.mnav { background: var(--mnav-bg, #050c18) !important; border-bottom-color: var(--mnav-line, rgba(175, 178, 206, 0.24)) !important; }
+.mnav :where(ul, ol), .mnav-sheet :where(ul, ol) { list-style: none; margin: 0; padding: 0; }
+.mnav :where(li), .mnav-sheet :where(li) { list-style: none; margin: 0; padding: 0; float: none; }
+.mnav :where(a), .mnav-sheet :where(a) { text-decoration: none; }
+.mnav :where(p, h1, h2, h3, h4), .mnav-sheet :where(p, h1, h2, h3, h4) { margin: 0; }
+.mnav :where(button), .mnav-sheet :where(button) { font: inherit; letter-spacing: inherit; text-transform: none; box-shadow: none; }
+.mnav :where(img), .mnav-sheet :where(img) { display: block; max-width: none; }
+.mnav-sheet { font: 400 16px/1.5 Inter, system-ui, sans-serif; text-align: left; }
+/* the brand's call to action, as aivric.css gives it on the kit pages (two classes deep: it beats mnav.css) */
+.mnav .mnav-cta, .mnav-sheet .mnav-cta {
+  background: #00d1ff; color: #050c18; border-radius: 8px; box-shadow: 0 10px 30px -12px rgba(0, 209, 255, 0.55);
+}
+.mnav .mnav-cta:hover, .mnav-sheet .mnav-cta:hover { background: #00e8ff; color: #050c18; }
+
+/* ---- footer --------------------------------------------------------------------------------- */
+.site-footer {
+  display: block; margin: 0; padding: 56px 0 24px; position: relative; z-index: 1;
+  background: #050c18; border-top: 1px solid rgba(175, 178, 206, 0.18);
+  color: #c3c3cc; font: 400 16px/1.7 "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; text-align: left;
+}
+.site-footer .container { width: min(1160px, 92%); max-width: none; margin: 0 auto; padding: 0; }
+.site-footer .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; }
+.site-footer .footer-brand { display: inline-block; margin: 0; }
+.site-footer .footer-brand img { display: block; height: 32px; width: auto; max-width: 100%; }
+.site-footer .footer-grid p { margin: 0 0 16px; color: #c3c3cc; font-size: inherit; line-height: 1.7; }
+.site-footer .footer-grid h4 {
+  margin: 0 0 12px; padding: 0; color: rgba(195, 195, 204, 0.72);
+  font: 700 13px/1.1 Sora, "IBM Plex Sans", sans-serif; letter-spacing: 0.2em; text-transform: uppercase;
+}
+.site-footer .footer-links { display: grid; gap: 8px; font-size: 14px; }
+.site-footer .footer-links a { display: block; color: #ededf3; font-size: 14px; line-height: 1.15; text-decoration: none; }
+.site-footer .footer-links a:hover { color: #00d1ff; }
+.site-footer .footer-contact { margin-top: 14px; }
+.site-footer .footer-contact a { color: inherit; text-decoration: none; }
+.site-footer .footer-social { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+.site-footer .footer-social a { color: #94a3b8; font-size: 14px; background: none; border: 0; padding: 0; text-decoration: none; }
+.site-footer :is(.footer-contact, .footer-social) a:hover { color: #00d1ff; }
+.site-footer .footer-bottom {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;
+  margin: 32px auto 0; padding: 20px 0 0; border-top: 1px solid rgba(175, 178, 206, 0.18); background: none;
+  color: rgba(195, 195, 204, 0.72); font-size: 13px; line-height: 1.15;
+}
+.site-footer .footer-bottom a { color: inherit; text-decoration: none; }
+.site-footer .footer-bottom a:hover { color: #00d1ff; }
+.site-footer .footer-pill {
+  display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 999px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #2ee59d;
+  box-shadow: inset 0 0 0 1px rgba(46, 229, 157, 0.45); background: rgba(46, 229, 157, 0.08);
+}
+@media (max-width: 1024px) { .site-footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) {
+  .site-footer .footer-grid { grid-template-columns: 1fr; }
+  .site-footer .footer-bottom { flex-direction: column; align-items: flex-start; }
+}

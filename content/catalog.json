@@ -1,0 +1,51 @@
+{
+  "schools": [
+    {
+      "key": "foundations",
+      "name": "Foundations",
+      "tone": "#00d1ff",
+      "glow": "rgba(0,209,255,.22)",
+      "tagline": "Vendor-neutral courses in the disciplines behind security, risk and compliance.",
+      "lede": "Courses on the work itself, not on a product: how programs are governed, how risk is decided and evidenced, how information is managed and how AI systems are audited. Free to read, with a knowledge check in every lesson.",
+      "courses": ["grc-management", "information-management", "ai-auditing"]
+    },
+    {
+      "key": "platform",
+      "name": "AiVRIC Platform",
+      "tone": "#a78bfa",
+      "glow": "rgba(167,139,250,.22)",
+      "tagline": "Training and certification on AiVRIC Enterprise Vision, Client Vision and the capabilities inside them.",
+      "lede": "Learn to run a security, risk and compliance program in AiVRIC: set up a workspace, connect its feeds, work the control baseline, record decisions and report to leadership. Certification returns with learner accounts.",
+      "courses": []
+    },
+    {
+      "key": "paths",
+      "name": "Paths by role",
+      "tone": "#2ee59d",
+      "glow": "rgba(46,229,157,.2)",
+      "tagline": "The order to take courses in for the job you do, or the one you're moving into.",
+      "lede": "",
+      "courses": []
+    }
+  ],
+  "courses": {
+    "grc-management": { "school": "foundations", "status": "live" },
+    "information-management": {
+      "school": "foundations", "status": "outline",
+      "title": "Information Management Fundamentals", "short": "Information Management", "level": "Foundations", "hours": "About 5 hours",
+      "summary": "Knowing what information you hold, where it lives, who may use it and when it should go: classification, handling, retention and privacy as one discipline."
+    },
+    "ai-auditing": {
+      "school": "foundations", "status": "outline",
+      "title": "AI Auditing & Security Architecture", "short": "AI Auditing & Security", "level": "Foundations to Practitioner", "hours": "About 7 hours",
+      "summary": "How AI systems are governed, attacked, defended and audited: model and data risk, AI security architecture, and the evidence an AI audit looks for."
+    }
+  },
+  "paths": [
+    { "role": "GRC analyst", "steps": [["GRC Management Fundamentals", "grc-management"], ["Information Management Fundamentals", "information-management"], ["Enterprise Vision Practitioner", null]] },
+    { "role": "Security leader / CISO", "steps": [["GRC Management Fundamentals", "grc-management"], ["AI Auditing & Security Architecture", "ai-auditing"], ["Enterprise Vision for leaders", null]] },
+    { "role": "Auditor", "steps": [["GRC Management Fundamentals", "grc-management"], ["AI Auditing & Security Architecture", "ai-auditing"], ["Evidence and the audit trail in AiVRIC", null]] },
+    { "role": "Security architect", "steps": [["AI Auditing & Security Architecture", "ai-auditing"], ["Information Management Fundamentals", "information-management"], ["Enterprise Vision Administrator", null]] },
+    { "role": "MSP or vCISO", "steps": [["GRC Management Fundamentals", "grc-management"], ["Client Vision Partner", null], ["Running programs for many clients", null]] }
+  ]
+}

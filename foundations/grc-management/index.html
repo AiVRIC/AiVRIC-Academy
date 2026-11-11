@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GRC Management Fundamentals — AiVRIC Learning</title>
+    <meta name="description" content="How organizations govern security, decide on risk and prove what they do: the working model behind every framework, audit and board report, taught without a product in the way." />
+    <link rel="canonical" href="https://academy.aivric.com/foundations/grc-management/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="GRC Management Fundamentals — AiVRIC Learning" />
+    <meta property="og:description" content="How organizations govern security, decide on risk and prove what they do: the working model behind every framework, audit and board report, taught without a product in the way." />
+    <meta property="og:url" content="https://academy.aivric.com/foundations/grc-management/" />
+    <meta name="theme-color" content="#050c18" />
+    <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="../../assets/brand/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@500;600;700&family=Sora:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/kit/shell.css" />
+    <link rel="stylesheet" href="../../assets/kit/mnav.css" />
+    <link rel="stylesheet" href="../../assets/kit/site.css" />
+    <link rel="stylesheet" href="../../assets/learn/learn.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+  </head>
+  <body class="is-nav-solid">
+    <script src="../../assets/kit/preloader.js" data-aivric-preloader></script>
+    <header class="site-header mnav" data-mnav>
+      <div class="mnav-bar">
+        <a class="mnav-brand" href="https://aivric.com/"><img src="../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <nav class="mnav-menus" aria-label="Primary"><ul><li><button class="mnav-trigger" type="button" data-mnav-trigger="platform" aria-expanded="false" aria-controls="mnav-panel">Platform<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="portfolio" aria-expanded="false" aria-controls="mnav-panel">Portfolio<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="resources" aria-expanded="false" aria-controls="mnav-panel">Resources<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><a class="mnav-trigger mnav-plain" href="https://aivric.com/integrations.html">Integrations</a></li></ul></nav>
+        <div class="mnav-actions">
+          <a class="mnav-login" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a>
+          <a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a>
+        </div>
+        <button class="mnav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav-sheet"><span></span><span></span></button>
+      </div>
+      <div class="mnav-panel" id="mnav-panel" aria-hidden="true"><div class="mnav-view" data-mnav-view="platform" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="portfolio" hidden><div class="mnav-grid mnav-cols-3"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="resources" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div></div>
+    </header>
+    <div class="mnav-sheet" id="mnav-sheet" aria-hidden="true" aria-label="Menu" role="dialog">
+      <div class="mnav-sheet-head">
+        <button type="button" class="mnav-back" hidden><span aria-hidden="true">‹</span> Menu</button>
+        <a class="mnav-brand mnav-sheet-brand" href="https://aivric.com/"><img src="../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <button type="button" class="mnav-close" aria-label="Close menu">×</button>
+      </div>
+      <div class="mnav-sheet-body">
+        <ul class="mnav-sheet-list"><li><button type="button" class="mnav-sheet-item" data-mnav-sub="platform">Platform<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="portfolio">Portfolio<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="resources">Resources<span aria-hidden="true">›</span></button></li><li><a class="mnav-sheet-item" href="https://aivric.com/integrations.html">Integrations</a></li></ul>
+        <div class="mnav-sub" data-mnav-subview="platform" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="portfolio" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="resources" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="../../">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div>
+      </div>
+      <div class="mnav-sheet-cta"><a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a><a class="mnav-login-btn" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a></div>
+    </div>
+
+    <main id="main" class="sx-page lx-page">
+
+      <section class="sx-hero" aria-labelledby="lx-h1">
+        <nav class="sx-crumbs sx-wrap" aria-label="Breadcrumb"><ol><li><a href="../../">AiVRIC Learning</a></li><li><a href="../../foundations/">Foundations</a></li><li><span aria-current="page">GRC Management</span></li></ol></nav>
+        <div class="sx-wrap">
+          <div class="sx-hero-inner">
+            <p class="sx-eyebrow" data-reveal>Foundations course</p>
+            <h1 class="sx-h1" id="lx-h1" data-reveal style="--d:.08s">GRC Management Fundamentals</h1>
+            <p class="sx-lede" data-reveal style="--d:.16s">Governance, risk and compliance are one system with three questions: who decided, what could go wrong, and can we show it. This course teaches that system the way practitioners run it, from the first policy to the board report.</p>
+            <div class="lx-meta" data-reveal style="--d:.2s"><span class="lx-chip"><b>Foundations</b></span><span class="lx-chip">About 6 hours</span><span class="lx-chip">8 lessons</span><span class="lx-chip is-cyan"><span class="lx-dot"></span>Free</span></div>
+            <div class="sx-actions" data-reveal style="--d:.24s"><a class="sx-btn sx-btn-primary" href="what-grc-is/" data-start="grc-management" data-base="" data-order="what-grc-is">Start the course <span class="sx-arrow" aria-hidden="true">→</span></a><span class="lx-chip" data-course-count="grc-management" data-total="1"></span></div>
+          </div>
+        </div>
+      </section>
+      <section class="sx-section" style="padding-top:0">
+        <div class="sx-wrap lx-course-grid">
+          <div>
+            <div data-reveal><p class="sx-eyebrow">What you'll be able to do</p><ul class="lx-outcomes"><li>Explain how governance, risk and compliance fit together, and what breaks when they don't</li><li>Set up the accountability, policy hierarchy and risk appetite a program runs on</li><li>Use frameworks and regulations as inputs to one control set, not as separate projects</li><li>Run a risk register that ends in recorded, owned decisions</li><li>Design controls, test them and keep evidence that stands up in an audit</li><li>Run the program on a cadence, with metrics and reporting leadership can act on</li></ul></div>
+            <div style="margin-top:48px" data-reveal>
+              <p class="sx-eyebrow">The course</p>
+              <div class="lx-syllabus">
+            <a class="lx-mod" href="what-grc-is/" data-course="grc-management" data-lesson="what-grc-is"><span class="lx-mod-n"><span>01</span></span><span><h3>What GRC is, and why it exists</h3><p>Three questions, one system: what governance, risk and compliance each answer, who does what across the three lines, and why fragmented programs fail.</p></span><span class="lx-mod-t">35 min</span></a>
+            <div class="lx-mod is-locked"><span class="lx-mod-n"><span>02</span></span><span><h3>Governance: direction, accountability and policy</h3><p>Charters, committees and decision rights; the policy, standard, procedure and guideline hierarchy; and the risk appetite statement everything else is measured against.</p></span><span class="lx-mod-t">In writing</span></div>
+            <div class="lx-mod is-locked"><span class="lx-mod-n"><span>03</span></span><span><h3>Frameworks, standards and regulations</h3><p>What ISO 27001, NIST CSF, NIST 800-53, CIS Controls and SOC 2 each are, how laws differ from frameworks, and how one common control set answers many of them.</p></span><span class="lx-mod-t">In writing</span></div>
+            <div class="lx-mod is-locked"><span class="lx-mod-n"><span>04</span></span><span><h3>Risk management: from register to decision</h3><p>Identifying and assessing risk, inherent and residual risk, the four treatment options, and why every risk should end in a decision someone owns.</p></span><span class="lx-mod-t">In writing</span></div>
+            <div class="lx-mod is-locked"><span class="lx-mod-n"><span>05</span></span><span><h3>Controls: designing what you rely on</h3><p>Control types and categories, writing a control that can be tested, ownership, and keeping a control baseline honest about what is actually implemented.</p></span><span class="lx-mod-t">In writing</span></div>
+            <div class="lx-mod is-locked"><span class="lx-mod-n"><span>06</span></span><span><h3>Assurance: testing, evidence and audits</h3><p>Design versus operating effectiveness, what makes evidence audit-ready, how SOC 2 Type I and Type II differ, and handling exceptions and corrective action plans.</p></span><span class="lx-mod-t">In writing</span></div>
+            <div class="lx-mod is-locked"><span class="lx-mod-n"><span>07</span></span><span><h3>Running the program: cadence, metrics and reporting</h3><p>The annual, quarterly and monthly rhythm of a GRC program, metrics that drive decisions, and reporting a board can hold the program to.</p></span><span class="lx-mod-t">In writing</span></div>
+            <div class="lx-mod is-locked"><span class="lx-mod-n"><span>08</span></span><span><h3>Beyond the walls: third parties, incidents and change</h3><p>Third-party risk across the vendor lifecycle, how incidents feed back into risk and controls, and keeping a program current as the business changes.</p></span><span class="lx-mod-t">In writing</span></div>
+            <div class="lx-mod is-final is-locked"><span class="lx-mod-n"><span>✦</span></span><span><h3>Course assessment</h3><p>20 questions across the whole course; 80% to pass. Opens with learner accounts, alongside the course certificate.</p></span><span class="lx-mod-t">Coming</span></div>
+              </div>
+            </div>
+            <div style="margin-top:48px" data-reveal><p class="sx-eyebrow">Frameworks and sources referenced</p><div class="lx-frameworks"><span class="lx-chip">ISO/IEC 27001:2022</span><span class="lx-chip">NIST CSF 2.0</span><span class="lx-chip">NIST SP 800-53 Rev. 5</span><span class="lx-chip">ISO 31000:2018</span><span class="lx-chip">COSO ERM (2017)</span><span class="lx-chip">CIS Controls v8</span><span class="lx-chip">AICPA SOC 2 Trust Services Criteria</span><span class="lx-chip">IIA Three Lines Model (2020)</span></div></div>
+          </div>
+          <aside class="lx-side" data-reveal>
+            <h3>Who it's for</h3><ul><li>Analysts and engineers moving into GRC, risk or audit roles</li><li>Security leaders who own a program but inherited its structure</li><li>Founders and operators answering their first customer security review</li><li>Consultants and vCISOs who run programs for several organizations</li></ul>
+            <h3>How it works</h3>
+            <ul><li>Free and open: no sign-up to read</li><li>A knowledge check closes each lesson</li><li>Progress saved in this browser</li><li>Certificate with learner accounts (coming)</li></ul>
+            <a class="sx-btn sx-btn-primary" href="what-grc-is/">Start lesson 1 <span class="sx-arrow" aria-hidden="true">→</span></a>
+            <button type="button" class="sx-btn sx-btn-ghost" data-reset="grc-management" style="justify-content:center;cursor:pointer;font:inherit">Clear my progress</button>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="https://aivric.com/"><img src="../../assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+          <p>Security, compliance, and risk intelligence, hosted on Google Cloud in the US.</p>
+          <p class="footer-contact"><a href="mailto:info@aivric.com">info@aivric.com</a><br /><a href="tel:+19543426637">+1 954 342 6637</a></p>
+          <p class="footer-social"><a href="https://www.linkedin.com/company/aivric">LinkedIn</a> · <a href="https://x.com/aivric">X</a> · <a href="https://www.facebook.com/61581937785235/">Facebook</a> · <a href="https://www.instagram.com/aivrictechnologies/">Instagram</a></p>
+        </div>
+        <div>
+          <h4>Use Cases</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/compliance/">Compliance Overview</a>
+            <a href="https://aivric.com/compliance/hipaa/">HIPAA</a>
+            <a href="https://aivric.com/compliance/soc2/">SOC 2</a>
+            <a href="https://aivric.com/compliance/cmmc/">CMMC</a>
+            <a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a>
+            <a href="https://aivric.com/enterprise/ciso/">For the CISO</a>
+          </div>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a>
+            <a href="https://aivric.com/providers/">Client Vision</a>
+            <a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a>
+            <a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a>
+            <a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a>
+            <a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a>
+            <a href="https://aivric.com/solutions-portal.html">All Products</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/about.html">About Us</a><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a><a href="https://aivric.com/pricing.html">Pricing</a><a href="https://aivric.com/blog-portal.html">Blog</a
+            ><a href="https://aivric.com/trust/">Trust Center</a><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a><a href="../../">Academy</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>&copy; 2026 AiVRIC Technologies. All Rights Reserved.</span>
+        <span class="footer-pill">ISO 27001-Aligned</span>
+        <span><a href="https://aivric.com/terms-of-use.html">Terms of Service</a> · <a href="https://aivric.com/privacy-policy.html">Privacy Policy</a></span>
+      </div>
+    </footer>
+
+    <script type="application/json" id="lx-data">{"catalog":[{"slug":"grc-management","title":"GRC Management Fundamentals","url":"foundations/grc-management/","lessons":[{"slug":"what-grc-is","title":"What GRC is, and why it exists"}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AiVRIC Learning","item":"https://academy.aivric.com/"},{"@type":"ListItem","position":2,"name":"Foundations","item":"https://academy.aivric.com/foundations/"},{"@type":"ListItem","position":3,"name":"GRC Management Fundamentals","item":"https://academy.aivric.com/foundations/grc-management/"}]},{"@type":"Course","name":"GRC Management Fundamentals","description":"How organizations govern security, decide on risk and prove what they do: the working model behind every framework, audit and board report, taught without a product in the way.","url":"https://academy.aivric.com/foundations/grc-management/","isAccessibleForFree":true,"inLanguage":"en","educationalLevel":"Foundations","provider":{"@type":"Organization","name":"AiVRIC","sameAs":"https://aivric.com/"}}]}</script>
+    <script defer src="../../assets/kit/mnav.js"></script>
+    <script defer src="../../assets/kit/site.js"></script>
+    <script defer src="../../assets/learn/learn.js"></script>
+  </body>
+</html>

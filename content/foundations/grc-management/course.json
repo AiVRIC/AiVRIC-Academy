@@ -1,0 +1,36 @@
+{
+  "slug": "grc-management",
+  "school": "foundations",
+  "title": "GRC Management Fundamentals",
+  "short": "GRC Management",
+  "level": "Foundations",
+  "hours": "About 6 hours",
+  "summary": "How organizations govern security, decide on risk and prove what they do: the working model behind every framework, audit and board report, taught without a product in the way.",
+  "lede": "Governance, risk and compliance are one system with three questions: who decided, what could go wrong, and can we show it. This course teaches that system the way practitioners run it, from the first policy to the board report.",
+  "audience": [
+    "Analysts and engineers moving into GRC, risk or audit roles",
+    "Security leaders who own a program but inherited its structure",
+    "Founders and operators answering their first customer security review",
+    "Consultants and vCISOs who run programs for several organizations"
+  ],
+  "outcomes": [
+    "Explain how governance, risk and compliance fit together, and what breaks when they don't",
+    "Set up the accountability, policy hierarchy and risk appetite a program runs on",
+    "Use frameworks and regulations as inputs to one control set, not as separate projects",
+    "Run a risk register that ends in recorded, owned decisions",
+    "Design controls, test them and keep evidence that stands up in an audit",
+    "Run the program on a cadence, with metrics and reporting leadership can act on"
+  ],
+  "frameworks": ["ISO/IEC 27001:2022", "NIST CSF 2.0", "NIST SP 800-53 Rev. 5", "ISO 31000:2018", "COSO ERM (2017)", "CIS Controls v8", "AICPA SOC 2 Trust Services Criteria", "IIA Three Lines Model (2020)"],
+  "lessons": [
+    { "slug": "what-grc-is", "title": "What GRC is, and why it exists", "minutes": 35, "summary": "Three questions, one system: what governance, risk and compliance each answer, who does what across the three lines, and why fragmented programs fail.", "still": "crosswalk" },
+    { "slug": "governance", "title": "Governance: direction, accountability and policy", "minutes": 40, "summary": "Charters, committees and decision rights; the policy, standard, procedure and guideline hierarchy; and the risk appetite statement everything else is measured against." },
+    { "slug": "frameworks", "title": "Frameworks, standards and regulations", "minutes": 45, "summary": "What ISO 27001, NIST CSF, NIST 800-53, CIS Controls and SOC 2 each are, how laws differ from frameworks, and how one common control set answers many of them." },
+    { "slug": "risk", "title": "Risk management: from register to decision", "minutes": 50, "summary": "Identifying and assessing risk, inherent and residual risk, the four treatment options, and why every risk should end in a decision someone owns." },
+    { "slug": "controls", "title": "Controls: designing what you rely on", "minutes": 40, "summary": "Control types and categories, writing a control that can be tested, ownership, and keeping a control baseline honest about what is actually implemented." },
+    { "slug": "assurance", "title": "Assurance: testing, evidence and audits", "minutes": 45, "summary": "Design versus operating effectiveness, what makes evidence audit-ready, how SOC 2 Type I and Type II differ, and handling exceptions and corrective action plans." },
+    { "slug": "operating", "title": "Running the program: cadence, metrics and reporting", "minutes": 40, "summary": "The annual, quarterly and monthly rhythm of a GRC program, metrics that drive decisions, and reporting a board can hold the program to." },
+    { "slug": "beyond", "title": "Beyond the walls: third parties, incidents and change", "minutes": 40, "summary": "Third-party risk across the vendor lifecycle, how incidents feed back into risk and controls, and keeping a program current as the business changes." }
+  ],
+  "assessment": { "questions": 20, "pass": 80 }
+}

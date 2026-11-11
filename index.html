@@ -1,1318 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>AiVRIC Academy — CloudSignals+RiskOps Training</title>
-  <link rel="canonical" href="https://academy.aivric.com/">
-  <meta name="description" content="AiVRIC Academy: learn to operate CloudSignals+RiskOps as a continuous governance, assurance, cloud security, and risk operations platform. Certification-ready courses with practical labs.">
-  <link rel="icon" href="assets/images/Aivric-favicon-logo.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
-  <link href="academy.css" rel="stylesheet">
-  <script src="js/academy-theme.js"></script>
-
-  <style>
-  /* ── Index page-specific overrides ──────────────────────────── */
-
-  /* Hero ────────────────────────────────────────────────────── */
-  .idx-hero {
-    display: grid;
-    grid-template-columns: 1fr 480px;
-    gap: 0;
-    align-items: center;
-    padding: 64px 0 48px;
-    position: relative;
-    overflow: hidden;
-  }
-  @media (max-width: 900px) {
-    .idx-hero { grid-template-columns: 1fr; }
-    .idx-hero-visual { display: none; }
-  }
-  .idx-hero-text { position: relative; z-index: 2; }
-  .idx-hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 11.5px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase;
-    color: var(--ug-cyan); margin-bottom: 18px;
-    padding: 5px 12px; border-radius: 20px;
-    background: rgba(6,182,212,.1); border: 1px solid rgba(6,182,212,.25);
-  }
-  .idx-hero-eyebrow i { font-size: 10px; }
-  .idx-hero h1 {
-    font-family: 'Jost', sans-serif;
-    font-size: clamp(32px,4.5vw,52px);
-    font-weight: 800; line-height: 1.12;
-    letter-spacing: -.5px;
-    color: var(--ug-text);
-    margin: 0 0 20px;
-  }
-  .idx-hero h1 em {
-    font-style: normal;
-    background: linear-gradient(135deg, #06b6d4, #a78bfa);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .idx-hero-sub {
-    font-size: 16px; line-height: 1.7; color: var(--ug-text-2);
-    max-width: 520px; margin-bottom: 32px;
-  }
-  .idx-hero-actions {
-    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-  }
-  .idx-hero-visual {
-    position: relative; display: flex; align-items: center; justify-content: center;
-  }
-
-  /* Stat strip ───────────────────────────────────────────────── */
-  .idx-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    background: var(--ug-surface);
-    border: 1px solid var(--ug-border);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 56px;
-  }
-  @media (max-width: 640px) { .idx-stats { grid-template-columns: repeat(2, 1fr); } }
-  .idx-stat {
-    padding: 22px 24px;
-    border-right: 1px solid var(--ug-border);
-    position: relative;
-  }
-  .idx-stat:last-child { border-right: none; }
-  .idx-stat-num {
-    font-family: 'Jost', sans-serif; font-size: 30px; font-weight: 800;
-    color: var(--ug-text); line-height: 1; margin-bottom: 4px;
-  }
-  .idx-stat-num span { font-size: 18px; color: var(--ug-cyan); }
-  .idx-stat-label { font-size: 12.5px; color: var(--ug-muted-2); font-weight: 500; }
-  .idx-stat-icon {
-    position: absolute; top: 18px; right: 18px;
-    font-size: 16px; color: var(--ug-border);
-  }
-  [data-theme="light"] .idx-stats {
-    box-shadow: 0 2px 8px rgba(0,0,0,.05);
-  }
-
-  /* Section label upgrade ─────────────────────────────────────── */
-  .idx-section-label {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 11px; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; color: var(--ug-muted);
-    margin-bottom: 20px;
-  }
-  .idx-section-label::after {
-    content: ''; flex: 1; height: 1px; background: var(--ug-border);
-  }
-
-  /* Three-tier model ─────────────────────────────────────────── */
-  .idx-tier-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px; margin-bottom: 56px;
-  }
-  @media (max-width: 640px) { .idx-tier-grid { grid-template-columns: 1fr; } }
-  .idx-tier-card {
-    background: var(--ug-surface);
-    border: 1px solid var(--ug-border);
-    border-radius: 16px; overflow: hidden;
-    transition: transform .15s;
-  }
-  .idx-tier-card:hover { transform: translateY(-2px); }
-  [data-theme="light"] .idx-tier-card {
-    box-shadow: 0 2px 6px rgba(0,0,0,.05), 0 6px 20px rgba(0,0,0,.06);
-  }
-  .idx-tier-hood {
-    height: 80px; display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-  }
-  .idx-tier-hood-icon {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: rgba(255,255,255,.15); backdrop-filter: blur(4px);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; color: #fff; position: relative; z-index: 2;
-    border: 1.5px solid rgba(255,255,255,.25);
-  }
-  .idx-tier-hood-pattern {
-    position: absolute; inset: 0; opacity: .18;
-    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.6) 1px, transparent 0);
-    background-size: 18px 18px;
-  }
-  .idx-tier-body { padding: 18px 20px 22px; }
-  .idx-tier-name {
-    font-size: 11px; font-weight: 700; letter-spacing: .8px;
-    text-transform: uppercase; margin-bottom: 4px;
-  }
-  .idx-tier-time {
-    font-family: 'Jost', sans-serif; font-size: 26px; font-weight: 800;
-    color: var(--ug-text); margin-bottom: 10px; letter-spacing: -.3px;
-  }
-  .idx-tier-desc { font-size: 13px; color: var(--ug-text-2); line-height: 1.65; margin: 0; }
-
-  /* Learning path cards ───────────────────────────────────────── */
-  .idx-paths-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px; margin-bottom: 56px;
-  }
-  @media (max-width: 640px) { .idx-paths-grid { grid-template-columns: 1fr; } }
-  .idx-path-card {
-    background: var(--ug-surface);
-    border: 1px solid var(--ug-border);
-    border-radius: 16px; padding: 22px 22px 18px;
-    position: relative; overflow: hidden;
-    transition: transform .15s;
-    text-decoration: none;
-  }
-  .idx-path-card:hover { transform: translateY(-2px); }
-  [data-theme="light"] .idx-path-card {
-    box-shadow: 0 2px 6px rgba(0,0,0,.05), 0 6px 20px rgba(0,0,0,.06);
-  }
-  .idx-path-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: var(--path-color, var(--ug-cyan));
-  }
-  .idx-path-card-header {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
-  }
-  .idx-path-icon {
-    width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    background: var(--path-icon-bg, rgba(6,182,212,.12));
-    color: var(--path-color, var(--ug-cyan));
-  }
-  .idx-path-name {
-    font-size: 15px; font-weight: 700; color: var(--ug-text); line-height: 1.3;
-  }
-  .idx-path-cert {
-    font-size: 11px; font-weight: 600; color: var(--ug-muted);
-    text-transform: uppercase; letter-spacing: .5px;
-  }
-  .idx-path-steps {
-    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
-  }
-  .idx-path-step {
-    display: flex; align-items: center; gap: 6px;
-  }
-  .idx-path-pill {
-    font-size: 11.5px; font-weight: 600;
-    padding: 4px 10px; border-radius: 6px;
-    text-decoration: none; color: var(--ug-text-2);
-    background: var(--ug-surface-2); border: 1px solid var(--ug-border);
-    transition: background .12s;
-  }
-  .idx-path-pill:hover { background: var(--ug-surface-3); color: var(--ug-text); }
-  .idx-path-arrow { color: var(--path-color); font-size: 12px; }
-  .idx-path-count {
-    margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--ug-border);
-    font-size: 12px; color: var(--ug-muted);
-    display: flex; align-items: center; gap: 6px;
-  }
-  .idx-path-exam-btn {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    margin-top: 14px; padding: 10px 16px;
-    background: var(--path-color); color: #fff;
-    border-radius: 9px; font-size: 13px; font-weight: 700;
-    text-decoration: none; transition: opacity .15s;
-  }
-  .idx-path-exam-btn:hover { opacity: .88; color: #fff; }
-
-  /* Certification card redesign ───────────────────────────────── */
-  .idx-course-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px; margin-bottom: 56px;
-  }
-  .idx-course-card {
-    background: var(--ug-surface);
-    border: 1px solid var(--ug-border);
-    border-radius: 16px; overflow: hidden;
-    text-decoration: none; color: inherit;
-    display: flex; flex-direction: column;
-    transition: transform .15s, box-shadow .15s;
-    position: relative;
-  }
-  .idx-course-card:hover { transform: translateY(-3px); }
-  [data-theme="light"] .idx-course-card {
-    box-shadow: 0 2px 6px rgba(0,0,0,.05), 0 6px 20px rgba(0,0,0,.06);
-  }
-  [data-theme="light"] .idx-course-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,.09), 0 12px 32px rgba(0,0,0,.1);
-  }
-  .idx-course-hood {
-    height: 88px; display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden; flex-shrink: 0;
-  }
-  .idx-course-hood-icon {
-    width: 56px; height: 56px; border-radius: 14px;
-    background: rgba(255,255,255,.18); backdrop-filter: blur(6px);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; color: #fff; z-index: 2; position: relative;
-    border: 1.5px solid rgba(255,255,255,.28);
-    box-shadow: 0 4px 16px rgba(0,0,0,.2);
-  }
-  .idx-course-hood-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
-    background-size: 22px 22px;
-  }
-  .idx-course-body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; }
-  .idx-course-level {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase;
-    margin-bottom: 8px; padding: 3px 8px; border-radius: 5px;
-    border: 1px solid; align-self: flex-start;
-  }
-  .idx-course-title {
-    font-size: 15px; font-weight: 700; color: var(--ug-text);
-    margin-bottom: 8px; line-height: 1.35;
-  }
-  .idx-course-desc {
-    font-size: 12.5px; color: var(--ug-text-2); line-height: 1.6;
-    flex: 1; margin-bottom: 14px;
-  }
-  .idx-course-meta {
-    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-    font-size: 11.5px; color: var(--ug-muted); padding-top: 12px;
-    border-top: 1px solid var(--ug-border);
-  }
-  .idx-course-meta i { margin-right: 3px; }
-  .idx-course-cta {
-    margin-left: auto; font-size: 12px; font-weight: 700;
-    color: var(--ug-cyan);
-    display: flex; align-items: center; gap: 4px;
-    white-space: nowrap;
-  }
-
-  /* What you earn ─────────────────────────────────────────────── */
-  .idx-earn-block {
-    background: var(--ug-surface);
-    border: 1px solid var(--ug-border);
-    border-radius: 20px; padding: 40px 40px 32px;
-    margin-bottom: 56px; position: relative; overflow: hidden;
-  }
-  [data-theme="light"] .idx-earn-block {
-    box-shadow: 0 2px 8px rgba(0,0,0,.05), 0 8px 28px rgba(0,0,0,.06);
-  }
-  .idx-earn-block::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, #06b6d4, #a78bfa, #22c55e, #f59e0b);
-  }
-  .idx-earn-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 32px; align-items: center;
-  }
-  @media (max-width: 720px) { .idx-earn-grid { grid-template-columns: 1fr; } }
-  .idx-earn-items { display: flex; flex-direction: column; gap: 18px; margin-top: 24px; }
-  .idx-earn-item { display: flex; align-items: flex-start; gap: 14px; }
-  .idx-earn-icon {
-    width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 17px;
-  }
-  .idx-earn-title { font-size: 14px; font-weight: 700; color: var(--ug-text); margin-bottom: 3px; }
-  .idx-earn-sub   { font-size: 12.5px; color: var(--ug-muted-2); line-height: 1.5; }
-  .idx-earn-badges {
-    display: flex; flex-direction: column; gap: 16px; align-items: center;
-    padding: 12px 0;
-  }
-  .idx-earn-badge-row { display: flex; gap: 14px; }
-
-  /* Why Academy ─────────────────────────────────────────────── */
-  .idx-why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px; margin-bottom: 56px;
-  }
-  .idx-why-card {
-    background: var(--ug-surface);
-    border: 1px solid var(--ug-border);
-    border-radius: 16px; padding: 24px 22px;
-    transition: transform .15s;
-  }
-  .idx-why-card:hover { transform: translateY(-2px); }
-  [data-theme="light"] .idx-why-card {
-    box-shadow: 0 2px 6px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.05);
-  }
-  .idx-why-icon {
-    width: 48px; height: 48px; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; margin-bottom: 14px;
-  }
-  .idx-why-title { font-size: 14px; font-weight: 700; color: var(--ug-text); margin-bottom: 7px; }
-  .idx-why-desc  { font-size: 13px; color: var(--ug-text-2); line-height: 1.65; margin: 0; }
-
-  /* Bottom strip ──────────────────────────────────────────────── */
-  .idx-bottom-strip {
-    margin-bottom: 40px; padding: 28px 32px;
-    background: var(--ug-surface); border: 1px solid var(--ug-border);
-    border-radius: 16px;
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;
-  }
-  [data-theme="light"] .idx-bottom-strip {
-    box-shadow: 0 2px 8px rgba(0,0,0,.05);
-  }
-  .idx-bottom-strip-item { }
-  .idx-bottom-strip-label {
-    font-size: 10.5px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .8px; color: var(--ug-muted); margin-bottom: 5px;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .idx-bottom-strip-label i { font-size: 10px; }
-  .idx-bottom-strip-value { font-size: 13.5px; color: var(--ug-text-2); line-height: 1.5; }
-  .idx-bottom-strip-value a { color: var(--ug-cyan); }
-
-  /* SVG illustration animations ───────────────────────────────── */
-  .hero-node { animation: heroFloat 4s ease-in-out infinite; }
-  .hero-node:nth-child(2) { animation-delay: -.6s; }
-  .hero-node:nth-child(3) { animation-delay: -1.2s; }
-  .hero-node:nth-child(4) { animation-delay: -1.8s; }
-  .hero-node:nth-child(5) { animation-delay: -2.4s; }
-  .hero-node:nth-child(6) { animation-delay: -3.0s; }
-  @keyframes heroFloat {
-    0%,100% { transform: translateY(0); }
-    50%      { transform: translateY(-6px); }
-  }
-  .hero-dot { animation: heroDot 3s linear infinite; }
-  @keyframes heroDot {
-    0%   { opacity: 0; offset-distance: 0%; }
-    10%  { opacity: 1; }
-    90%  { opacity: 1; }
-    100% { opacity: 0; offset-distance: 100%; }
-  }
-  .hero-pulse { animation: heroPulse 2.5s ease-in-out infinite; }
-  @keyframes heroPulse {
-    0%,100% { opacity: .3; r: 32; }
-    50%      { opacity: .08; r: 40; }
-  }
-  .hero-ring { animation: heroRing 6s linear infinite; }
-  @keyframes heroRing {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-  </style>
-</head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-EG2Q8GD30V');
-</script>
-<body>
-  <header class="acad-header">
-    <div class="bar">
-      <a class="acad-brand" href="index.html">
-        <img src="assets/images/logo/aivric.svg" alt="AiVRIC">
-        <span class="acad-brand-sep"></span>
-        <span class="acad-brand-sub">Academy</span>
-      </a>
-      <div class="acad-header-spacer"></div>
-      <div class="acad-top-links">
-        <a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a>
-        <a href="https://aivric.com/">AiVRIC.com</a>
-        <a href="https://aivric.com/support.html">Support</a>
-        <a href="dashboard.html" id="nav-dashboard" style="display:none;"><i class="fas fa-user-circle"></i> My Dashboard</a>
-        <button class="acad-theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"><i class="fas fa-sun"></i></button>
-        <a href="auth.html" class="acad-cta" id="nav-signin">Sign in</a>
-      </div>
-      <button class="acad-nav-toggle" type="button" aria-label="Toggle navigation">Menu</button>
-    </div>
-  </header>
-
-  <main class="acad-home-main">
-
-    <!-- ══════════════════════════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-hero">
-      <div class="idx-hero-text">
-        <div class="idx-hero-eyebrow">
-          <i class="fas fa-shield-halved"></i>
-          AiVRIC Academy &beta;eta
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AiVRIC Learning — security, risk and compliance, taught by practitioners</title>
+    <meta name="description" content="Free courses in GRC management, information management and AI auditing, plus training and certification for the AiVRIC platform." />
+    <link rel="canonical" href="https://academy.aivric.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AiVRIC Learning — security, risk and compliance, taught by practitioners" />
+    <meta property="og:description" content="Free courses in GRC management, information management and AI auditing, plus training and certification for the AiVRIC platform." />
+    <meta property="og:url" content="https://academy.aivric.com/" />
+    <meta name="theme-color" content="#050c18" />
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="assets/brand/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@500;600;700&family=Sora:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/kit/shell.css" />
+    <link rel="stylesheet" href="assets/kit/mnav.css" />
+    <link rel="stylesheet" href="assets/kit/site.css" />
+    <link rel="stylesheet" href="assets/learn/learn.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG2Q8GD30V"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EG2Q8GD30V');</script>
+  </head>
+  <body class="is-nav-solid">
+    <script src="assets/kit/preloader.js" data-aivric-preloader></script>
+    <header class="site-header mnav" data-mnav>
+      <div class="mnav-bar">
+        <a class="mnav-brand" href="https://aivric.com/"><img src="./assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <nav class="mnav-menus" aria-label="Primary"><ul><li><button class="mnav-trigger" type="button" data-mnav-trigger="platform" aria-expanded="false" aria-controls="mnav-panel">Platform<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="portfolio" aria-expanded="false" aria-controls="mnav-panel">Portfolio<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><button class="mnav-trigger" type="button" data-mnav-trigger="resources" aria-expanded="false" aria-controls="mnav-panel">Resources<svg class="mnav-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li><a class="mnav-trigger mnav-plain" href="https://aivric.com/integrations.html">Integrations</a></li></ul></nav>
+        <div class="mnav-actions">
+          <a class="mnav-login" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a>
+          <a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a>
         </div>
-        <h1>Master <em>continuous security</em><br>governance &amp; risk operations.</h1>
-        <p class="idx-hero-sub">Hands-on courses built for security teams operating CloudSignals+RiskOps — covering cloud posture, GRC, information assurance, and AI-assisted risk intelligence. Earn practitioner badges and professional certifications.</p>
-        <div class="idx-hero-actions">
-          <a href="governance.html" class="acad-fc-cta" style="font-size:15px;padding:12px 28px;">
-            <i class="fas fa-play"></i> Start learning free
-          </a>
-          <a href="dashboard.html" class="acad-fc-cta" id="hero-dashboard" style="font-size:15px;padding:12px 28px;display:none;background:rgba(6,182,212,.15);color:var(--ug-cyan);border:1px solid rgba(6,182,212,.3);">
-            <i class="fas fa-chart-bar"></i> My progress
-          </a>
-          <a class="tag" href="#certifications">Certification tracks &darr;</a>
-          <a class="tag" href="auth.html" id="hero-signin"><i class="fas fa-user-circle"></i> Sign in</a>
-        </div>
+        <button class="mnav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav-sheet"><span></span><span></span></button>
       </div>
-
-      <!-- SVG Hero Illustration -->
-      <div class="idx-hero-visual" aria-hidden="true">
-        <svg viewBox="0 0 460 460" width="460" height="460" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
-          <defs>
-            <radialGradient id="hg_center" cx="50%" cy="50%" r="50%">
-              <stop offset="0%"   stop-color="#0ea5e9" stop-opacity=".25"/>
-              <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="hg_glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%"   stop-color="#06b6d4" stop-opacity=".4"/>
-              <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
-            </radialGradient>
-            <filter id="hf_blur" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="18"/>
-            </filter>
-            <filter id="hf_node" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="rgba(0,0,0,.35)"/>
-            </filter>
-            <linearGradient id="hg_shield" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%"   stop-color="#06b6d4"/>
-              <stop offset="100%" stop-color="#7c3aed"/>
-            </linearGradient>
-            <linearGradient id="hg_line" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stop-color="#06b6d4" stop-opacity="0"/>
-              <stop offset="50%"  stop-color="#06b6d4" stop-opacity=".5"/>
-              <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-
-          <!-- Ambient glow -->
-          <circle cx="230" cy="230" r="160" fill="url(#hg_glow)" filter="url(#hf_blur)" opacity=".6"/>
-
-          <!-- Orbit rings -->
-          <circle cx="230" cy="230" r="130" fill="none" stroke="rgba(6,182,212,.1)" stroke-width="1" stroke-dasharray="4 8"/>
-          <circle cx="230" cy="230" r="185" fill="none" stroke="rgba(167,139,250,.08)" stroke-width="1" stroke-dasharray="3 12"/>
-
-          <!-- Connection lines -->
-          <g opacity=".35">
-            <line x1="230" y1="230" x2="230" y2="100" stroke="url(#hg_line)" stroke-width="1.5"/>
-            <line x1="230" y1="230" x2="345" y2="165" stroke="url(#hg_line)" stroke-width="1.5"/>
-            <line x1="230" y1="230" x2="345" y2="295" stroke="url(#hg_line)" stroke-width="1.5"/>
-            <line x1="230" y1="230" x2="230" y2="360" stroke="url(#hg_line)" stroke-width="1.5"/>
-            <line x1="230" y1="230" x2="115" y2="295" stroke="url(#hg_line)" stroke-width="1.5"/>
-            <line x1="230" y1="230" x2="115" y2="165" stroke="url(#hg_line)" stroke-width="1.5"/>
-          </g>
-
-          <!-- Travelling dots on lines -->
-          <circle r="3" fill="#06b6d4" opacity=".8">
-            <animateMotion dur="2.4s" repeatCount="indefinite" path="M230,230 L230,100"/>
-            <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite"/>
-          </circle>
-          <circle r="3" fill="#a78bfa" opacity=".8">
-            <animateMotion dur="2.8s" begin="-0.6s" repeatCount="indefinite" path="M230,230 L345,165"/>
-            <animate attributeName="opacity" values="0;1;1;0" dur="2.8s" begin="-0.6s" repeatCount="indefinite"/>
-          </circle>
-          <circle r="3" fill="#22c55e" opacity=".8">
-            <animateMotion dur="2.6s" begin="-1.2s" repeatCount="indefinite" path="M230,230 L345,295"/>
-            <animate attributeName="opacity" values="0;1;1;0" dur="2.6s" begin="-1.2s" repeatCount="indefinite"/>
-          </circle>
-          <circle r="3" fill="#f59e0b" opacity=".8">
-            <animateMotion dur="3.0s" begin="-1.8s" repeatCount="indefinite" path="M230,230 L230,360"/>
-            <animate attributeName="opacity" values="0;1;1;0" dur="3.0s" begin="-1.8s" repeatCount="indefinite"/>
-          </circle>
-          <circle r="3" fill="#ef4444" opacity=".8">
-            <animateMotion dur="2.5s" begin="-2.4s" repeatCount="indefinite" path="M230,230 L115,295"/>
-            <animate attributeName="opacity" values="0;1;1;0" dur="2.5s" begin="-2.4s" repeatCount="indefinite"/>
-          </circle>
-          <circle r="3" fill="#0ea5e9" opacity=".8">
-            <animateMotion dur="2.7s" begin="-3.0s" repeatCount="indefinite" path="M230,230 L115,165"/>
-            <animate attributeName="opacity" values="0;1;1;0" dur="2.7s" begin="-3.0s" repeatCount="indefinite"/>
-          </circle>
-
-          <!-- Central shield -->
-          <g transform="translate(230,230)">
-            <circle r="40" fill="rgba(6,182,212,.08)" class="hero-pulse"/>
-            <circle r="46" fill="none" stroke="rgba(6,182,212,.2)" stroke-width="1" stroke-dasharray="3 6" transform-origin="0 0" class="hero-ring"/>
-            <circle r="38" fill="rgba(6,182,212,.15)" stroke="rgba(6,182,212,.4)" stroke-width="1.5"/>
-            <!-- Shield path -->
-            <path d="M0,-18 L14,-10 L14,4 C14,12 8,18 0,22 C-8,18 -14,12 -14,4 L-14,-10 Z"
-              fill="url(#hg_shield)" opacity=".95"/>
-            <path d="M-4,0 L-1,4 L5,-4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </g>
-
-          <!-- Satellite nodes -->
-          <!-- Cloud Security (top) -->
-          <g transform="translate(230,100)" class="hero-node" filter="url(#hf_node)">
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="#0c1829" stroke="rgba(6,182,212,.4)" stroke-width="1.5"/>
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="rgba(6,182,212,.1)"/>
-            <text x="0" y="7" text-anchor="middle" font-size="22" fill="#06b6d4">☁</text>
-            <text x="0" y="54" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif" font-weight="600">Cloud</text>
-          </g>
-
-          <!-- Governance (top-right) -->
-          <g transform="translate(345,165)" class="hero-node" filter="url(#hf_node)">
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="#0c1829" stroke="rgba(167,139,250,.4)" stroke-width="1.5"/>
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="rgba(167,139,250,.1)"/>
-            <text x="0" y="7" text-anchor="middle" font-size="22" fill="#a78bfa">⚖</text>
-            <text x="0" y="54" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif" font-weight="600">GRC</text>
-          </g>
-
-          <!-- Risk / Vulnerability (bottom-right) -->
-          <g transform="translate(345,295)" class="hero-node" filter="url(#hf_node)">
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="#0c1829" stroke="rgba(34,197,94,.4)" stroke-width="1.5"/>
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="rgba(34,197,94,.1)"/>
-            <text x="0" y="7" text-anchor="middle" font-size="22" fill="#22c55e">🛡</text>
-            <text x="0" y="54" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif" font-weight="600">Assurance</text>
-          </g>
-
-          <!-- AI / Vision (bottom) -->
-          <g transform="translate(230,360)" class="hero-node" filter="url(#hf_node)">
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="#0c1829" stroke="rgba(245,158,11,.4)" stroke-width="1.5"/>
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="rgba(245,158,11,.1)"/>
-            <text x="0" y="7" text-anchor="middle" font-size="22" fill="#f59e0b">✦</text>
-            <text x="0" y="54" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif" font-weight="600">AI / Vision</text>
-          </g>
-
-          <!-- Assets (bottom-left) -->
-          <g transform="translate(115,295)" class="hero-node" filter="url(#hf_node)">
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="#0c1829" stroke="rgba(239,68,68,.4)" stroke-width="1.5"/>
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="rgba(239,68,68,.1)"/>
-            <text x="0" y="7" text-anchor="middle" font-size="22" fill="#ef4444">◈</text>
-            <text x="0" y="54" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif" font-weight="600">Assets</text>
-          </g>
-
-          <!-- Risk Ops (top-left) -->
-          <g transform="translate(115,165)" class="hero-node" filter="url(#hf_node)">
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="#0c1829" stroke="rgba(14,165,233,.4)" stroke-width="1.5"/>
-            <rect x="-32" y="-32" width="64" height="64" rx="16" fill="rgba(14,165,233,.1)"/>
-            <text x="0" y="7" text-anchor="middle" font-size="22" fill="#0ea5e9">⬡</text>
-            <text x="0" y="54" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.55)" font-family="Inter,sans-serif" font-weight="600">RiskOps</text>
-          </g>
-
-          <!-- Floating metric chips -->
-          <g transform="translate(374,96)" opacity=".9">
-            <rect x="0" y="0" width="70" height="26" rx="8" fill="#0c1829" stroke="rgba(34,197,94,.4)" stroke-width="1"/>
-            <circle cx="12" cy="13" r="4" fill="#22c55e" opacity=".7"/>
-            <text x="22" y="17" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.7)" font-weight="600">94% posture</text>
-          </g>
-          <g transform="translate(14,350)" opacity=".9">
-            <rect x="0" y="0" width="76" height="26" rx="8" fill="#0c1829" stroke="rgba(167,139,250,.4)" stroke-width="1"/>
-            <circle cx="12" cy="13" r="4" fill="#a78bfa" opacity=".7"/>
-            <text x="22" y="17" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.7)" font-weight="600">3 risks treated</text>
-          </g>
-          <g transform="translate(350,372)" opacity=".9">
-            <rect x="0" y="0" width="78" height="26" rx="8" fill="#0c1829" stroke="rgba(245,158,11,.4)" stroke-width="1"/>
-            <circle cx="12" cy="13" r="4" fill="#f59e0b" opacity=".7"/>
-            <text x="22" y="17" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.7)" font-weight="600">Vision insight</text>
-          </g>
-        </svg>
+      <div class="mnav-panel" id="mnav-panel" aria-hidden="true"><div class="mnav-view" data-mnav-view="platform" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="portfolio" hidden><div class="mnav-grid mnav-cols-3"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-view" data-mnav-view="resources" hidden><div class="mnav-grid mnav-cols-2"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="./">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div></div>
+    </header>
+    <div class="mnav-sheet" id="mnav-sheet" aria-hidden="true" aria-label="Menu" role="dialog">
+      <div class="mnav-sheet-head">
+        <button type="button" class="mnav-back" hidden><span aria-hidden="true">‹</span> Menu</button>
+        <a class="mnav-brand mnav-sheet-brand" href="https://aivric.com/"><img src="./assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+        <button type="button" class="mnav-close" aria-label="Close menu">×</button>
       </div>
-    </div><!-- /.idx-hero -->
-
-    <!-- ══════════════════════════════════════════════════════════
-         STAT STRIP
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-stats">
-      <div class="idx-stat">
-        <div class="idx-stat-num">13<span>+</span></div>
-        <div class="idx-stat-label">Expert courses</div>
-        <i class="fas fa-book-open idx-stat-icon"></i>
+      <div class="mnav-sheet-body">
+        <ul class="mnav-sheet-list"><li><button type="button" class="mnav-sheet-item" data-mnav-sub="platform">Platform<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="portfolio">Portfolio<span aria-hidden="true">›</span></button></li><li><button type="button" class="mnav-sheet-item" data-mnav-sub="resources">Resources<span aria-hidden="true">›</span></button></li><li><a class="mnav-sheet-item" href="https://aivric.com/integrations.html">Integrations</a></li></ul>
+        <div class="mnav-sub" data-mnav-subview="platform" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">The AiVRIC platform</p><p class="mnav-col-desc">One job each, every decision on the record.</p><p class="mnav-label">How it works</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#apps">How the apps fit</a></li><li><a href="https://aivric.com/platform/#record">The record</a></li><li><a href="https://aivric.com/platform/#ai">AI that shows its work</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Inside the platform</p><p class="mnav-col-desc">Hosted on Google Cloud in the US.</p><p class="mnav-label">Capabilities and operations</p><ul class="mnav-links"><li><a href="https://aivric.com/platform/#aire">Governed remediation</a></li><li><a href="https://aivric.com/platform/#aisignals">AI security</a></li><li><a href="https://aivric.com/platform/#scale">How it runs</a></li><li><a href="https://aivric.com/platform/#data">Where data lives</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/platform/">Platform overview <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="portfolio" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Two apps</p><p class="mnav-col-desc">One for your company, one for your clients. Every capability runs inside them.</p><p class="mnav-label">For your company</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a></li></ul><p class="mnav-label">For your clients</p><ul class="mnav-links"><li><a href="https://aivric.com/providers/">Client Vision for Providers</a></li><li><a href="https://aivric.com/cloudsignals-msp.html">Managed Service Providers</a></li><li><a href="https://aivric.com/cloudsignals-private-equity.html">Private Equity &amp; Holdings</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Capabilities</p><p class="mnav-col-desc">Switched on from inside the app.</p><p class="mnav-label">Available now</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a></li><li><a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a></li></ul><p class="mnav-label">In build</p><ul class="mnav-links"><li><a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Use cases</p><p class="mnav-col-desc">Frameworks and the people who answer for them.</p><p class="mnav-label">Compliance</p><ul class="mnav-links"><li><a href="https://aivric.com/compliance/">Compliance overview</a></li><li><a href="https://aivric.com/compliance/hipaa/">HIPAA</a></li><li><a href="https://aivric.com/compliance/soc2/">SOC 2</a></li><li><a href="https://aivric.com/compliance/cmmc/">CMMC</a></li><li><a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a></li></ul><p class="mnav-label">Leadership</p><ul class="mnav-links"><li><a href="https://aivric.com/enterprise/ciso/">For the CISO</a></li></ul></div></div><a class="mnav-foot" href="https://aivric.com/solutions-portal.html">View all products <span aria-hidden="true">→</span></a></div><div class="mnav-sub" data-mnav-subview="resources" hidden><div class="mnav-sub-cols"><div class="mnav-col"><p class="mnav-col-title">Learn</p><p class="mnav-col-desc">Guides, courses and the Academy.</p><p class="mnav-label">Learn</p><ul class="mnav-links"><li><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a></li><li><a href="./">Academy</a></li><li><a href="https://aivric.com/blog-portal.html">Blog</a></li></ul></div><div class="mnav-col"><p class="mnav-col-title">Company</p><p class="mnav-col-desc">Who we are and how we build.</p><p class="mnav-label">Company</p><ul class="mnav-links"><li><a href="https://aivric.com/about.html">About Us</a></li><li><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a></li><li><a href="https://aivric.com/pricing.html">Pricing</a></li><li><a href="https://aivric.com/trust/">Trust Center</a></li></ul></div></div></div>
       </div>
-      <div class="idx-stat">
-        <div class="idx-stat-num">4</div>
-        <div class="idx-stat-label">Certification paths</div>
-        <i class="fas fa-route idx-stat-icon"></i>
-      </div>
-      <div class="idx-stat">
-        <div class="idx-stat-num">4</div>
-        <div class="idx-stat-label">Cloud providers</div>
-        <i class="fas fa-cloud idx-stat-icon"></i>
-      </div>
-      <div class="idx-stat">
-        <div class="idx-stat-num">80%<span></span></div>
-        <div class="idx-stat-label">Pass threshold for certification</div>
-        <i class="fas fa-certificate idx-stat-icon"></i>
-      </div>
+      <div class="mnav-sheet-cta"><a class="mnav-cta" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=aivric_com&utm_medium=web&utm_campaign=enterprise_vision&utm_content=academy_header">Book a call</a><a class="mnav-login-btn" href="https://gcp-defense.aivric.com/sign-up?plan=pkg-cloudsignals-free&source=enterprise_vision&utm_content=academy_header">Launch for Free</a></div>
     </div>
 
-    <!-- ══════════════════════════════════════════════════════════
-         STRUCTURE: THREE TIERS
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-section-label">How the Academy is structured</div>
-    <div class="idx-tier-grid">
+    <main id="main" class="sx-page lx-page">
 
-      <div class="idx-tier-card">
-        <div class="idx-tier-hood" style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
-          <div class="idx-tier-hood-pattern"></div>
-          <div class="idx-tier-hood-icon"><i class="fas fa-seedling"></i></div>
+      <section class="sx-hero center" aria-labelledby="lx-h1">
+        <div class="sx-wrap">
+          <div class="sx-hero-inner">
+            <p class="sx-eyebrow" data-reveal>AiVRIC Learning</p>
+            <h1 class="sx-h1" id="lx-h1" data-reveal style="--d:.08s">Learn the work. <span class="sx-grad">Then prove it.</span></h1>
+            <p class="sx-lede" data-reveal style="--d:.16s">Free, practitioner-written courses in governance, risk, compliance and AI assurance, and the training for running it all in AiVRIC. Read any lesson, check what you learned, and pick up where you left off.</p>
+            <div class="sx-actions" data-reveal style="--d:.24s">
+              <a class="sx-btn sx-btn-primary" href="foundations/grc-management/">Start GRC Management <span class="sx-arrow" aria-hidden="true">→</span></a>
+              <a class="sx-btn sx-btn-ghost" href="foundations/">Browse the courses</a>
+            </div>
+            <a class="lx-continue" data-continue href="#">
+              <span class="lx-continue-ring">0%</span>
+              <span><small>Continue learning</small><b data-continue-course></b><br /><span data-continue-lesson></span></span>
+            </a>
+          </div>
         </div>
-        <div class="idx-tier-body">
-          <div class="idx-tier-name" style="color:#0ea5e9;">Foundations</div>
-          <div class="idx-tier-time">60–90 min</div>
-          <p class="idx-tier-desc">Short topic courses covering core concepts, platform orientation, and the <em>why</em> behind each module. No prerequisites required. Start here.</p>
-        </div>
-      </div>
+        <canvas class="sx-scene" data-scene="rise" aria-hidden="true" data-tiers='["Learn","Check","Practise","Certify"]'></canvas>
+      </section>
 
-      <div class="idx-tier-card">
-        <div class="idx-tier-hood" style="background:linear-gradient(135deg,#047857,#22c55e);">
-          <div class="idx-tier-hood-pattern"></div>
-          <div class="idx-tier-hood-icon"><i class="fas fa-laptop-code"></i></div>
+      <section class="sx-section" aria-labelledby="lx-schools-h">
+        <div class="sx-wrap">
+          <div class="sx-head" data-reveal>
+            <p class="sx-eyebrow">Three schools</p>
+            <h2 class="sx-h" id="lx-schools-h">Start with the discipline. <span class="sx-grad">Finish in the platform.</span></h2>
+            <p class="sx-lede">Foundations teaches the work any security, risk or compliance professional needs. The Platform school teaches doing it in AiVRIC. Paths string them together for the job you have.</p>
+          </div>
+          <div class="lx-schools">
+            <a class="lx-school" href="foundations/" style="--tone:#00d1ff;--glow:rgba(0,209,255,.22);--d:0.00s" data-reveal>
+              <p class="lx-school-k">Foundations</p>
+              <h3>Vendor-neutral courses in the disciplines behind security, risk and compliance.</h3>
+              <ul><li>GRC Management Fundamentals</li><li>Information Management Fundamentals</li><li>AI Auditing &amp; Security Architecture</li></ul>
+              <span class="lx-go">Explore Foundations <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="lx-school" href="platform/" style="--tone:#a78bfa;--glow:rgba(167,139,250,.22);--d:0.08s" data-reveal>
+              <p class="lx-school-k">AiVRIC Platform</p>
+              <h3>Training and certification on AiVRIC Enterprise Vision, Client Vision and the capabilities inside them.</h3>
+              <ul><li>Enterprise Vision Practitioner</li><li>Enterprise Vision Administrator</li><li>Client Vision Partner</li></ul>
+              <span class="lx-go">Explore AiVRIC Platform <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="lx-school" href="paths/" style="--tone:#2ee59d;--glow:rgba(46,229,157,.2);--d:0.16s" data-reveal>
+              <p class="lx-school-k">Paths by role</p>
+              <h3>The order to take courses in for the job you do, or the one you're moving into.</h3>
+              <ul><li>GRC analyst</li><li>Security leader / CISO</li><li>Auditor</li><li>Security architect</li></ul>
+              <span class="lx-go">Explore Paths by role <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
         </div>
-        <div class="idx-tier-body">
-          <div class="idx-tier-name" style="color:#22c55e;">Practitioner</div>
-          <div class="idx-tier-time">3–5 hours</div>
-          <p class="idx-tier-desc">Hands-on platform workflows with in-platform walkthroughs, interactive checklists, and knowledge checks per module. Builds toward certification.</p>
-        </div>
-      </div>
+      </section>
 
-      <div class="idx-tier-card">
-        <div class="idx-tier-hood" style="background:linear-gradient(135deg,#5b21b6,#a78bfa);">
-          <div class="idx-tier-hood-pattern"></div>
-          <div class="idx-tier-hood-icon"><i class="fas fa-award"></i></div>
+      <section class="sx-section" aria-labelledby="lx-feat-h">
+        <div class="sx-wrap">
+          <div class="sx-head" data-reveal>
+            <p class="sx-eyebrow">Featured course</p>
+            <h2 class="sx-h" id="lx-feat-h">GRC Management Fundamentals</h2>
+          </div>
+          <div class="lx-feature" data-reveal>
+            <div>
+              <div class="lx-meta"><span class="lx-chip"><b>Foundations</b></span><span class="lx-chip">About 6 hours</span><span class="lx-chip">8 lessons</span><span class="lx-chip is-cyan"><span class="lx-dot"></span>Free</span></div>
+              <h3>Who decided, what could go wrong, and can we show it.</h3>
+              <p>Governance, risk and compliance are one system with three questions: who decided, what could go wrong, and can we show it. This course teaches that system the way practitioners run it, from the first policy to the board report.</p>
+              <div class="sx-actions" style="margin-top:24px">
+                <a class="sx-btn sx-btn-primary" href="foundations/grc-management/">See the course <span class="sx-arrow" aria-hidden="true">→</span></a>
+              </div>
+            </div>
+            <ol class="lx-feature-list">
+              <li>What GRC is, and why it exists<small>35 min</small></li>
+              <li>Governance: direction, accountability and policy<small>40 min</small></li>
+              <li>Frameworks, standards and regulations<small>45 min</small></li>
+              <li>Risk management: from register to decision<small>50 min</small></li>
+              <li>Controls: designing what you rely on<small>40 min</small></li>
+              <li>Assurance: testing, evidence and audits<small>45 min</small></li>
+              <li>Running the program: cadence, metrics and reporting<small>40 min</small></li>
+              <li>Beyond the walls: third parties, incidents and change<small>40 min</small></li>
+            </ol>
+          </div>
         </div>
-        <div class="idx-tier-body">
-          <div class="idx-tier-name" style="color:#a78bfa;">Certification</div>
-          <div class="idx-tier-time">90–120 min</div>
-          <p class="idx-tier-desc">40 knowledge questions + 5 scenario questions + 1 practical lab. Passing score: 80%. Downloadable certificate and LinkedIn-shareable badge issued on completion.</p>
-        </div>
-      </div>
+      </section>
 
-    </div><!-- /.idx-tier-grid -->
+      <section class="sx-section" aria-labelledby="lx-how-h">
+        <div class="sx-wrap">
+          <div class="sx-head" data-reveal>
+            <p class="sx-eyebrow">How it works</p>
+            <h2 class="sx-h" id="lx-how-h">Read. Check. <span class="sx-grad">Certify.</span></h2>
+          </div>
+          <div class="lx-how" data-reveal>
+            <div><p class="lx-how-n">01 · LEARN</p><h3>Every lesson is open</h3><p>No sign-up to read. Lessons are written by practitioners, cite the frameworks they draw on, and end with something to try on your own program.</p></div>
+            <div><p class="lx-how-n">02 · CHECK</p><h3>Knowledge checks as you go</h3><p>A short check closes each lesson, with the reasoning behind every answer. Your progress is saved in this browser, so you can pick up where you left off.</p></div>
+            <div><p class="lx-how-n">03 · CERTIFY</p><h3>Certification is coming</h3><p>Course assessments and AiVRIC platform certification return with learner accounts, with credentials anyone can verify.</p></div>
+          </div>
+        </div>
+      </section>
 
-    <!-- ══════════════════════════════════════════════════════════
-         LEARNING PATHS
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-section-label" id="paths">Learning paths</div>
-    <div class="idx-paths-grid">
+      <section class="sx-section" aria-labelledby="lx-paths-h">
+        <div class="sx-wrap">
+          <div class="sx-head" data-reveal>
+            <p class="sx-eyebrow">Paths by role</p>
+            <h2 class="sx-h" id="lx-paths-h">Where to start, <span class="sx-grad">for the job you do.</span></h2>
+          </div>
+          <div class="lx-paths">
+            <div class="lx-path" data-reveal><h3>GRC analyst</h3><ol><li><a href="foundations/grc-management/">GRC Management Fundamentals</a></li><li class="is-soon">Information Management Fundamentals</li><li class="is-soon">Enterprise Vision Practitioner</li></ol></div>
+            <div class="lx-path" data-reveal><h3>Security leader / CISO</h3><ol><li><a href="foundations/grc-management/">GRC Management Fundamentals</a></li><li class="is-soon">AI Auditing &amp; Security Architecture</li><li class="is-soon">Enterprise Vision for leaders</li></ol></div>
+            <div class="lx-path" data-reveal><h3>Auditor</h3><ol><li><a href="foundations/grc-management/">GRC Management Fundamentals</a></li><li class="is-soon">AI Auditing &amp; Security Architecture</li><li class="is-soon">Evidence and the audit trail in AiVRIC</li></ol></div>
+            <div class="lx-path" data-reveal><h3>Security architect</h3><ol><li class="is-soon">AI Auditing &amp; Security Architecture</li><li class="is-soon">Information Management Fundamentals</li><li class="is-soon">Enterprise Vision Administrator</li></ol></div>
+            <div class="lx-path" data-reveal><h3>MSP or vCISO</h3><ol><li><a href="foundations/grc-management/">GRC Management Fundamentals</a></li><li class="is-soon">Client Vision Partner</li><li class="is-soon">Running programs for many clients</li></ol></div>
+          </div>
+        </div>
+      </section>
 
-      <div class="idx-path-card" style="--path-color:#a78bfa;--path-icon-bg:rgba(167,139,250,.12);">
-        <div class="idx-path-card-header">
-          <div class="idx-path-icon"><i class="fas fa-user-shield"></i></div>
-          <div>
-            <div class="idx-path-name">Governance Leader</div>
-            <div class="idx-path-cert">Professional Certification</div>
+      <section class="sx-section sx-close" aria-labelledby="lx-close-h">
+        <div class="sx-wrap" data-reveal>
+          <h2 class="sx-h" id="lx-close-h">Put the course to work.</h2>
+          <p class="sx-lede">Everything these courses teach runs in AiVRIC Enterprise Vision: one control set for every framework, risk decisions on the record, and evidence ready before the auditor asks.</p>
+          <div class="sx-actions">
+            <a class="sx-btn sx-btn-primary" href="https://aivric.com/enterprise/?utm_source=academy&utm_medium=web&utm_campaign=learning&utm_content=home_close">See Enterprise Vision <span class="sx-arrow" aria-hidden="true">→</span></a>
+            <a class="sx-btn sx-btn-ghost" href="https://calendly.com/aivric-sales/aivric-walkthrough-demo?primary_color=00b8ff&utm_source=academy&utm_medium=web&utm_campaign=learning&utm_content=home_close">Book a walkthrough</a>
           </div>
         </div>
-        <div class="idx-path-steps">
-          <div class="idx-path-step">
-            <a href="governance.html" class="idx-path-pill">Security &amp; Privacy Governance</a>
-          </div>
-          <i class="fas fa-arrow-right idx-path-arrow" style="font-size:10px;"></i>
-          <div class="idx-path-step">
-            <a href="information-assurance.html" class="idx-path-pill">Information Assurance</a>
-          </div>
-          <i class="fas fa-arrow-right idx-path-arrow" style="font-size:10px;"></i>
-          <div class="idx-path-step">
-            <a href="asset-governance.html" class="idx-path-pill">Asset Governance</a>
-          </div>
-        </div>
-        <div class="idx-path-count"><i class="fas fa-layer-group" style="color:var(--ug-muted);"></i> 3 courses &nbsp;·&nbsp; <i class="fas fa-clock" style="color:var(--ug-muted);"></i> ~8.5 hours</div>
-        <a href="exam-governance-leader.html" class="idx-path-exam-btn"><i class="fas fa-file-certificate"></i> Take Certification Exam</a>
-      </div>
-
-      <div class="idx-path-card" style="--path-color:#06b6d4;--path-icon-bg:rgba(6,182,212,.12);">
-        <div class="idx-path-card-header">
-          <div class="idx-path-icon"><i class="fas fa-shield-halved"></i></div>
-          <div>
-            <div class="idx-path-name">Security Operator</div>
-            <div class="idx-path-cert">Professional Certification</div>
-          </div>
-        </div>
-        <div class="idx-path-steps">
-          <div class="idx-path-step">
-            <a href="cloud-security.html" class="idx-path-pill">Cloud Security</a>
-          </div>
-          <i class="fas fa-arrow-right idx-path-arrow" style="font-size:10px;color:#06b6d4;"></i>
-          <div class="idx-path-step">
-            <a href="vulnerability-management.html" class="idx-path-pill">Vulnerability Management</a>
-          </div>
-          <i class="fas fa-arrow-right idx-path-arrow" style="font-size:10px;color:#06b6d4;"></i>
-          <div class="idx-path-step">
-            <a href="web-security.html" class="idx-path-pill">Web Security</a>
-          </div>
-        </div>
-        <div class="idx-path-count"><i class="fas fa-layer-group" style="color:var(--ug-muted);"></i> 3 courses &nbsp;·&nbsp; <i class="fas fa-clock" style="color:var(--ug-muted);"></i> ~7.5 hours</div>
-        <a href="exam-security-operator.html" class="idx-path-exam-btn"><i class="fas fa-file-certificate"></i> Take Certification Exam</a>
-      </div>
-
-      <div class="idx-path-card" style="--path-color:#22c55e;--path-icon-bg:rgba(34,197,94,.12);">
-        <div class="idx-path-card-header">
-          <div class="idx-path-icon"><i class="fas fa-scale-balanced"></i></div>
-          <div>
-            <div class="idx-path-name">GRC / Audit</div>
-            <div class="idx-path-cert">Professional Certification</div>
-          </div>
-        </div>
-        <div class="idx-path-steps">
-          <div class="idx-path-step">
-            <a href="governance.html" class="idx-path-pill">Security &amp; Privacy Governance</a>
-          </div>
-          <i class="fas fa-arrow-right idx-path-arrow" style="font-size:10px;color:#22c55e;"></i>
-          <div class="idx-path-step">
-            <a href="information-assurance.html" class="idx-path-pill">Information Assurance</a>
-          </div>
-          <i class="fas fa-arrow-right idx-path-arrow" style="font-size:10px;color:#22c55e;"></i>
-          <a href="cloud-security.html" class="idx-path-pill">Cloud Security</a>
-          <i class="fas fa-arrow-right idx-path-arrow" style="font-size:10px;color:#22c55e;"></i>
-          <a href="ast-asset-governance.html" class="idx-path-pill">AST Assessor</a>
-        </div>
-        <div class="idx-path-count"><i class="fas fa-layer-group" style="color:var(--ug-muted);"></i> 4 courses &nbsp;·&nbsp; <i class="fas fa-clock" style="color:var(--ug-muted);"></i> ~11 hours</div>
-        <a href="exam-grc-audit.html" class="idx-path-exam-btn"><i class="fas fa-file-certificate"></i> Take Certification Exam</a>
-      </div>
-
-      <div class="idx-path-card" style="--path-color:#f59e0b;--path-icon-bg:rgba(245,158,11,.12);">
-        <div class="idx-path-card-header">
-          <div class="idx-path-icon"><i class="fas fa-drafting-compass"></i></div>
-          <div>
-            <div class="idx-path-name">Engineer / Architect</div>
-            <div class="idx-path-cert">Professional Certification</div>
-          </div>
-        </div>
-        <div class="idx-path-steps">
-          <div class="idx-path-step">
-            <a href="secure-engineering.html" class="idx-path-pill">Secure Engineering</a>
-          </div>
-          <i class="fas fa-arrow-right idx-path-arrow" style="font-size:10px;color:#f59e0b;"></i>
-          <div class="idx-path-step">
-            <a href="information-assurance.html" class="idx-path-pill">Information Assurance</a>
-          </div>
-          <i class="fas fa-arrow-right idx-path-arrow" style="font-size:10px;color:#f59e0b;"></i>
-          <div class="idx-path-step">
-            <a href="cloud-security.html" class="idx-path-pill">Cloud Security</a>
-          </div>
-        </div>
-        <div class="idx-path-count"><i class="fas fa-layer-group" style="color:var(--ug-muted);"></i> 3 courses &nbsp;·&nbsp; <i class="fas fa-clock" style="color:var(--ug-muted);"></i> ~9 hours</div>
-        <a href="exam-engineer-architect.html" class="idx-path-exam-btn"><i class="fas fa-file-certificate"></i> Take Certification Exam</a>
-      </div>
-
-    </div><!-- /.idx-paths-grid -->
-
-    <!-- ══════════════════════════════════════════════════════════
-         FOUNDATIONAL KNOWLEDGE COURSES
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-section-label" id="foundations">Foundational knowledge</div>
-    <p style="font-size:14px;color:var(--ug-text-2);margin:-20px 0 24px;max-width:72ch;">Platform-agnostic deep-dives into the domains that underpin every practitioner course. Start here if you're building or refreshing your security fundamentals.</p>
-    <div class="idx-course-grid" style="margin-bottom:48px;">
-
-      <a class="idx-course-card" href="intro-grc.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#5b21b6,#7c3aed);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-scale-balanced"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#a78bfa;background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Foundation
-          </div>
-          <div class="idx-course-title">Introduction to Information Security GRC</div>
-          <div class="idx-course-desc">A comprehensive introduction to Governance, Risk, and Compliance. Covers ISO 27001, NIST CSF 2.0, ISO 31000, COBIT 2019, CIS Controls, risk treatment, program operations, and GRC automation.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~3 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="intro-data-privacy.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#0e7490,#06b6d4);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-lock"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#06b6d4;background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Foundation
-          </div>
-          <div class="idx-course-title">Introduction to Data Security &amp; Privacy</div>
-          <div class="idx-course-desc">Covers the full data security and privacy domain: GDPR, CCPA/CPRA, HIPAA, ISO 27701, data classification, DLP, encryption, ROPA, DPIA, Privacy by Design, and data transfer mechanisms.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~3 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="intro-secops.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#92400e,#d97706);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-shield-halved"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#f59e0b;background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Foundation
-          </div>
-          <div class="idx-course-title">Introduction to Modern Cybersecurity Operations</div>
-          <div class="idx-course-desc">Covers SOC models, SIEM/SOAR/EDR/XDR, MITRE ATT&amp;CK, threat intelligence, vulnerability management with CVSS+EPSS+KEV, incident response (NIST 800-61), cloud security operations, and SecOps metrics.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~3 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="intro-devsecops.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#166534,#16a34a);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-code-branch"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#22c55e;background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Foundation
-          </div>
-          <div class="idx-course-title">Introduction to DevSecOps</div>
-          <div class="idx-course-desc">Shift-left security in the software development lifecycle: STRIDE threat modeling, SAST/DAST/SCA, CI/CD pipeline hardening, SBOM and supply chain security, container and Kubernetes security, and OWASP SAMM maturity.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~3 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-    </div><!-- /.idx-course-grid (foundations) -->
-
-    <!-- ══════════════════════════════════════════════════════════
-         COURSE CATALOG
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-section-label" id="certifications">Certification tracks</div>
-    <div class="idx-course-grid">
-
-      <a class="idx-course-card" href="governance.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#5b21b6,#7c3aed);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-landmark"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#a78bfa;background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Practitioner
-          </div>
-          <div class="idx-course-title">Security &amp; Privacy Governance</div>
-          <div class="idx-course-desc">Build a governance operating model using UCB, privacy readiness, evidence lineage, and RiskOps execution. Covers ISO 27701, GDPR, CCPA/CPRA, HIPAA, and AI-assisted governance.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~3 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="information-assurance.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#047857,#16a34a);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-shield-check"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#22c55e;background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Practitioner
-          </div>
-          <div class="idx-course-title">Information Assurance</div>
-          <div class="idx-course-desc">Manage assurance as an evidence-backed, AO-level continuous process. Covers Assessment Objectives, Evidence Fabric, Assurance Calendar, exceptions, compensating controls, and audit packages.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~3 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="cloud-security.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#0369a1,#0284c7);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-cloud"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#06b6d4;background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Practitioner
-          </div>
-          <div class="idx-course-title">Cloud Security</div>
-          <div class="idx-course-desc">Use CloudSignals for continuous multi-cloud posture management across AWS, Azure, GCP, and OCI. Covers CSPM, scan lifecycle, misconfigurations, compliance vs. UCB governance, and Vision-assisted investigation.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~2.5 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="asset-governance.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#0369a1,#06b6d4);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-boxes-stacked"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#06b6d4;background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Practitioner
-          </div>
-          <div class="idx-course-title">Asset Governance</div>
-          <div class="idx-course-desc">Turn asset inventory into business-context security governance. Covers ownership, criticality, crown jewels, Surface navigation, asset-to-finding-to-risk, and third-party exposure.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~2.5 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="secure-engineering.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#92400e,#b45309);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-drafting-compass"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#f59e0b;background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Practitioner
-          </div>
-          <div class="idx-course-title">Secure Engineering &amp; Architecture</div>
-          <div class="idx-course-desc">Embed security, privacy, and control requirements into design and delivery. Covers UCB-driven architecture, secure engineering workflow, architecture evidence, AI/agentic governance, and exception handling.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~3.5 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="vulnerability-management.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#9a3412,#c2410c);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-bug"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#f97316;background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Practitioner
-          </div>
-          <div class="idx-course-title">Vulnerability Management</div>
-          <div class="idx-course-desc">Operate vulnerability management as risk-based prioritization, treatment, and verification. Covers lifecycle, findings and risk signals, RiskOps treatments, POA&amp;M workflows, and executive posture reporting.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~2.5 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="web-security.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#991b1b,#dc2626);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-globe"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#ef4444;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Practitioner
-          </div>
-          <div class="idx-course-title">Web Security</div>
-          <div class="idx-course-desc">Govern web-facing risk across exposure, application controls, cloud edges, and remediation workflows. Covers attack surface mapping, common web risks, web evidence, posture linkage, and executive communication.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~2.5 hours</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="ast-asset-governance.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#0369a1,#0284c7);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#06b6d4;background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> GRC / Audit
-          </div>
-          <div class="idx-course-title">AST Assessor Procedures</div>
-          <div class="idx-course-desc">SCF AST-01 asset governance assessor procedures for enterprise and startup environments. Covers ITAM, CMDB, endpoint, DNS, cloud, SaaS, GitHub, monitoring, lifecycle, and evidence compilation.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~90 min</span>
-            <span>5 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-    </div><!-- /.idx-course-grid -->
-
-    <!-- ══════════════════════════════════════════════════════════
-         WHAT YOU EARN
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-earn-block">
-      <div class="idx-section-label" style="margin-bottom:0;">What you earn</div>
-      <div class="idx-earn-grid">
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
         <div>
-          <p style="font-size:15px;color:var(--ug-text-2);line-height:1.7;margin:16px 0 0;">Every course that includes a quiz awards a verifiable practitioner badge. Complete all courses in a path to earn a full Professional Certification — with a downloadable PDF certificate, LinkedIn credential, and public verification link.</p>
-          <div class="idx-earn-items">
-            <div class="idx-earn-item">
-              <div class="idx-earn-icon" style="background:rgba(6,182,212,.12);color:#06b6d4;"><i class="fas fa-medal"></i></div>
-              <div>
-                <div class="idx-earn-title">Course Practitioner Badge</div>
-                <div class="idx-earn-sub">Hexagonal SVG badge with your name, credential ID, and issue date. Downloadable and shareable.</div>
-              </div>
-            </div>
-            <div class="idx-earn-item">
-              <div class="idx-earn-icon" style="background:rgba(167,139,250,.12);color:#a78bfa;"><i class="fas fa-certificate"></i></div>
-              <div>
-                <div class="idx-earn-title">Professional Path Certification</div>
-                <div class="idx-earn-sub">Printable A4 certificate + LinkedIn "Add Certification" link. Valid 2 years with public verification.</div>
-              </div>
-            </div>
-            <div class="idx-earn-item">
-              <div class="idx-earn-icon" style="background:rgba(34,197,94,.12);color:#22c55e;"><i class="fas fa-shield-check"></i></div>
-              <div>
-                <div class="idx-earn-title">Public Credential Verification</div>
-                <div class="idx-earn-sub">Every credential has a unique ID employers can verify at <a href="verify.html" style="color:var(--ug-cyan);">academy.aivric.com/verify</a>.</div>
-              </div>
-            </div>
+          <a class="brand footer-brand" href="https://aivric.com/"><img src="./assets/brand/aivric-horizontal-reversed.svg" alt="AiVRIC" width="171" height="32" /></a>
+          <p>Security, compliance, and risk intelligence, hosted on Google Cloud in the US.</p>
+          <p class="footer-contact"><a href="mailto:info@aivric.com">info@aivric.com</a><br /><a href="tel:+19543426637">+1 954 342 6637</a></p>
+          <p class="footer-social"><a href="https://www.linkedin.com/company/aivric">LinkedIn</a> · <a href="https://x.com/aivric">X</a> · <a href="https://www.facebook.com/61581937785235/">Facebook</a> · <a href="https://www.instagram.com/aivrictechnologies/">Instagram</a></p>
+        </div>
+        <div>
+          <h4>Use Cases</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/compliance/">Compliance Overview</a>
+            <a href="https://aivric.com/compliance/hipaa/">HIPAA</a>
+            <a href="https://aivric.com/compliance/soc2/">SOC 2</a>
+            <a href="https://aivric.com/compliance/cmmc/">CMMC</a>
+            <a href="https://aivric.com/compliance/eu-ai-act/">EU AI Act</a>
+            <a href="https://aivric.com/enterprise/ciso/">For the CISO</a>
           </div>
         </div>
-        <!-- Mini badge previews using inline SVG -->
-        <div class="idx-earn-badges">
-          <div class="idx-earn-badge-row">
-            <!-- Practitioner badge mini preview -->
-            <svg viewBox="0 0 200 230" width="100" height="115" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 8px 20px rgba(3,105,161,.35));">
-              <defs>
-                <linearGradient id="eb1" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#0369a1"/>
-                  <stop offset="100%" stop-color="#0e4f7a"/>
-                </linearGradient>
-              </defs>
-              <polygon points="100,8 186,55 186,150 100,197 14,150 14,55" fill="url(#eb1)"/>
-              <polygon points="100,8 186,55 186,150 100,197 14,150 14,55" fill="rgba(255,255,255,.05)"/>
-              <polygon points="100,25 169,67 169,141 100,180 31,141 31,67" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
-              <text x="100" y="46" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="rgba(255,255,255,.6)" letter-spacing="2">AiVRIC ACADEMY</text>
-              <circle cx="100" cy="108" r="28" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-              <text x="100" y="116" text-anchor="middle" font-size="22" fill="rgba(255,255,255,.9)">🛡</text>
-              <rect x="62" y="142" width="76" height="17" rx="8.5" fill="rgba(255,255,255,.15)"/>
-              <text x="100" y="154" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="800" fill="rgba(255,255,255,.9)" letter-spacing="1.5">PRACTITIONER</text>
-              <text x="100" y="175" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,.8)">Cloud Security</text>
-            </svg>
-            <!-- Professional cert badge mini preview -->
-            <svg viewBox="0 0 200 230" width="100" height="115" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 8px 20px rgba(124,58,237,.35));">
-              <defs>
-                <linearGradient id="eb2" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#7c3aed"/>
-                  <stop offset="100%" stop-color="#4c1d95"/>
-                </linearGradient>
-              </defs>
-              <polygon points="100,8 186,55 186,150 100,197 14,150 14,55" fill="url(#eb2)"/>
-              <polygon points="100,25 169,67 169,141 100,180 31,141 31,67" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-              <text x="100" y="46" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="rgba(255,255,255,.6)" letter-spacing="2">AiVRIC ACADEMY</text>
-              <circle cx="100" cy="108" r="28" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-              <text x="100" y="116" text-anchor="middle" font-size="22" fill="rgba(255,255,255,.9)">⭐</text>
-              <rect x="58" y="142" width="84" height="17" rx="8.5" fill="rgba(255,255,255,.15)"/>
-              <text x="100" y="154" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="800" fill="rgba(255,255,255,.9)" letter-spacing="1.5">PROFESSIONAL</text>
-              <text x="100" y="175" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,.8)">Governance Leader</text>
-            </svg>
-          </div>
-          <div style="text-align:center;font-size:11px;color:var(--ug-muted);line-height:1.5;max-width:220px;">
-            Earn shareable badges and professional certifications as you complete courses and paths.
-          </div>
-          <a href="verify.html" style="font-size:12px;color:var(--ug-cyan);text-decoration:none;display:flex;align-items:center;gap:5px;font-weight:600;">
-            <i class="fas fa-shield-check" style="font-size:11px;"></i> Verify a credential →
-          </a>
-        </div>
-      </div>
-    </div><!-- /.idx-earn-block -->
-
-    <!-- ══════════════════════════════════════════════════════════
-         FOUNDATION RESOURCES
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-section-label">Foundation &amp; provider resources</div>
-    <div class="idx-course-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));margin-bottom:56px;">
-
-      <a class="idx-course-card" href="riskops-getting-started.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-rocket"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#06b6d4;background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Free · Foundation
-          </div>
-          <div class="idx-course-title">Getting Started with RiskOps</div>
-          <div class="idx-course-desc">The end-to-end RiskOps flow: assets → findings → business processes → treatments → governance. Start here if you're new to CloudSignals.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~45 min</span>
-            <span>5 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
+        <div>
+          <h4>Solutions</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/enterprise/">AiVRIC Enterprise Vision</a>
+            <a href="https://aivric.com/providers/">Client Vision</a>
+            <a href="https://aivric.com/solutions-portal.html#cloudsignals">CloudSignals</a>
+            <a href="https://aivric.com/solutions-portal.html#aisignals">AISignals</a>
+            <a href="https://aivric.com/solutions-portal.html#riskops">AiVRIC RiskOps</a>
+            <a href="https://aivric.com/solutions-portal.html#aire">AIRE Agentic Mesh™</a>
+            <a href="https://aivric.com/solutions-portal.html">All Products</a>
           </div>
         </div>
-      </a>
-
-      <a class="idx-course-card" href="crpm-program-guide.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#92400e,#d97706);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-book-open-reader"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#f59e0b;background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Guide
-          </div>
-          <div class="idx-course-title">CRPM Program Guide</div>
-          <div class="idx-course-desc">Curriculum map, audience routing, delivery playbook, and success metrics for the CloudSignals CRPM training program.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-book-open"></i> Reference</span>
-            <span>All roles</span>
-            <span class="idx-course-cta">View <i class="fas fa-arrow-right"></i></span>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://aivric.com/about.html">About Us</a><a href="https://aivric.com/why-aivric.html">Why AiVRIC</a><a href="https://aivric.com/pricing.html">Pricing</a><a href="https://aivric.com/blog-portal.html">Blog</a
+            ><a href="https://aivric.com/trust/">Trust Center</a><a href="https://aivric.com/AiVRIC-UserGuide/index.html">Platform Guide</a><a href="./">Academy</a>
           </div>
         </div>
-      </a>
-
-      <a class="idx-course-card" href="provider-onboarding.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#0369a1,#0284c7);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-building"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#06b6d4;background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Provider team
-          </div>
-          <div class="idx-course-title">Provider Onboarding Foundations</div>
-          <div class="idx-course-desc">Provider operating model, launch phases, client onboarding workflow, findings quality standards, and reporting cadence.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~45 min</span>
-            <span>6 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="idx-course-card" href="provider-admin.html">
-        <div class="idx-course-hood" style="background:linear-gradient(135deg,#5b21b6,#7c3aed);">
-          <div class="idx-course-hood-grid"></div>
-          <div class="idx-course-hood-icon"><i class="fas fa-cogs"></i></div>
-        </div>
-        <div class="idx-course-body">
-          <div class="idx-course-level" style="color:#a78bfa;background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.25);">
-            <i class="fas fa-circle-dot" style="font-size:8px;"></i> Provider Admin
-          </div>
-          <div class="idx-course-title">Provider Admin &amp; CRPM Operations</div>
-          <div class="idx-course-desc">Provider Console, client lifecycle, branding, GRC administration, RiskOps entitlement control, AI configuration, and operating cadence.</div>
-          <div class="idx-course-meta">
-            <span><i class="fas fa-clock"></i> ~60 min</span>
-            <span>7 modules</span>
-            <span class="idx-course-cta">Start <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </a>
-
-    </div>
-
-    <!-- ══════════════════════════════════════════════════════════
-         WHY ACADEMY
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-section-label">Why AiVRIC Academy</div>
-    <div class="idx-why-grid">
-
-      <div class="idx-why-card">
-        <div class="idx-why-icon" style="background:rgba(6,182,212,.12);color:#06b6d4;">
-          <i class="fas fa-route"></i>
-        </div>
-        <div class="idx-why-title">Process-first curriculum</div>
-        <p class="idx-why-desc">Every course teaches the <em>why</em> before the <em>how</em>. You leave with a mental model for continuous security operations, not just click-paths.</p>
       </div>
-
-      <div class="idx-why-card">
-        <div class="idx-why-icon" style="background:rgba(34,197,94,.12);color:#22c55e;">
-          <i class="fas fa-mouse-pointer"></i>
-        </div>
-        <div class="idx-why-title">In-platform walkthroughs</div>
-        <p class="idx-why-desc">Each module includes an "In the Platform" section with the exact navigation sequence to follow in your CloudSignals+RiskOps tenant — right now.</p>
+      <div class="container footer-bottom">
+        <span>&copy; 2026 AiVRIC Technologies. All Rights Reserved.</span>
+        <span class="footer-pill">ISO 27001-Aligned</span>
+        <span><a href="https://aivric.com/terms-of-use.html">Terms of Service</a> · <a href="https://aivric.com/privacy-policy.html">Privacy Policy</a></span>
       </div>
+    </footer>
 
-      <div class="idx-why-card">
-        <div class="idx-why-icon" style="background:rgba(245,158,11,.12);color:#f59e0b;">
-          <i class="fas fa-list-check"></i>
-        </div>
-        <div class="idx-why-title">Sprint-ready checklists</div>
-        <p class="idx-why-desc">Interactive checklists track your progress and double as a sprint-ready task list to carry back to your team after each module.</p>
-      </div>
-
-      <div class="idx-why-card">
-        <div class="idx-why-icon" style="background:rgba(167,139,250,.12);color:#a78bfa;">
-          <i class="fas fa-certificate"></i>
-        </div>
-        <div class="idx-why-title">Verifiable credentials</div>
-        <p class="idx-why-desc">Practitioner badges and path certifications are real, verifiable credentials — useful for training records, compliance evidence, and LinkedIn profiles.</p>
-      </div>
-
-      <div class="idx-why-card">
-        <div class="idx-why-icon" style="background:rgba(239,68,68,.12);color:#ef4444;">
-          <i class="fas fa-brain"></i>
-        </div>
-        <div class="idx-why-title">AI-integrated content</div>
-        <p class="idx-why-desc">Courses include Vision AI workflows: generating audit narratives, investigating risk signals, and validating AI outputs for governance use — not just theory.</p>
-      </div>
-
-      <div class="idx-why-card">
-        <div class="idx-why-icon" style="background:rgba(14,165,233,.12);color:#0ea5e9;">
-          <i class="fas fa-layer-group"></i>
-        </div>
-        <div class="idx-why-title">Multi-framework coverage</div>
-        <p class="idx-why-desc">Content maps to CIS, NIST CSF, ISO 27001/27701, SOC 2, GDPR, HIPAA, CCPA, PCI-DSS, and the UCB control ontology — across all courses.</p>
-      </div>
-
-    </div><!-- /.idx-why-grid -->
-
-    <!-- ══════════════════════════════════════════════════════════
-         BOTTOM STRIP
-    ═══════════════════════════════════════════════════════════ -->
-    <div class="idx-bottom-strip">
-      <div class="idx-bottom-strip-item">
-        <div class="idx-bottom-strip-label"><i class="fas fa-envelope"></i> Questions?</div>
-        <div class="idx-bottom-strip-value">Email <a href="mailto:support@aivric.com">support@aivric.com</a> or open a ticket via the platform.</div>
-      </div>
-      <div class="idx-bottom-strip-item">
-        <div class="idx-bottom-strip-label"><i class="fas fa-book"></i> Platform Guide</div>
-        <div class="idx-bottom-strip-value">Full reference docs at <a href="https://aivric.com/AiVRIC-UserGuide/index.html">aivric.com/AiVRIC-UserGuide</a></div>
-      </div>
-      <div class="idx-bottom-strip-item">
-        <div class="idx-bottom-strip-label"><i class="fas fa-calendar-check"></i> Live walkthrough</div>
-        <div class="idx-bottom-strip-value">Book a guided setup session at <a href="https://calendly.com/aivric-sales/aivric-walkthrough-demo">calendly.com/aivric-sales</a></div>
-      </div>
-      <div class="idx-bottom-strip-item">
-        <div class="idx-bottom-strip-label"><i class="fas fa-shield-check"></i> Verify a credential</div>
-        <div class="idx-bottom-strip-value">Confirm any AiVRIC Academy credential at <a href="verify.html">academy.aivric.com/verify</a></div>
-      </div>
-    </div>
-
-  </main>
-
-  <footer class="acad-footer">
-    <span>&copy; 2025 AiVRIC Technologies &mdash; <a href="https://aivric.com/privacy-policy.html">Privacy</a> &middot; <a href="https://aivric.com/AiVRIC-UserGuide/acceptable-use-policy.html">Acceptable Use</a></span>
-    <span class="tag">Academy v2</span>
-  </footer>
-
-<!-- Supabase SDK + Academy auth/progress -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="js/academy-config.js"></script>
-<script src="js/academy-auth.js"></script>
-<script src="js/academy-progress.js"></script>
-<script>
-/* ── Index page: auth-aware nav + hero ─────────────────────────────── */
-(function() {
-  function applyAuthState(signedIn) {
-    var navDash    = document.getElementById('nav-dashboard');
-    var navSignin  = document.getElementById('nav-signin');
-    var heroDash   = document.getElementById('hero-dashboard');
-    var heroSignin = document.getElementById('hero-signin');
-    if (signedIn) {
-      if (navDash)    navDash.style.display   = '';
-      if (navSignin)  navSignin.style.display  = 'none';
-      if (heroDash)   heroDash.style.display   = '';
-      if (heroSignin) heroSignin.style.display = 'none';
-    } else {
-      if (navDash)    navDash.style.display   = 'none';
-      if (navSignin)  navSignin.style.display  = '';
-      if (heroDash)   heroDash.style.display   = 'none';
-      if (heroSignin) heroSignin.style.display = '';
-    }
-  }
-  /* Magic-link / OAuth redirects land here. If Supabase reported a failure
-     (#error=...&error_description=...), hand it to the sign-in page so the
-     user sees why instead of a silent no-op. */
-  if (/[#&?](error|error_code)=/.test(window.location.hash + window.location.search)) {
-    window.location.replace('auth.html' + window.location.hash);
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    if (!window.AcademyAuth) return;
-    AcademyAuth.getUser().then(function(user) { applyAuthState(!!user); });
-    AcademyAuth.onAuthStateChange(function(event, user) { applyAuthState(!!user); });
-  });
-})();
-</script>
-</body>
+    <script type="application/json" id="lx-data">{"catalog":[{"slug":"grc-management","title":"GRC Management Fundamentals","url":"foundations/grc-management/","lessons":[{"slug":"what-grc-is","title":"What GRC is, and why it exists"}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"EducationalOrganization","name":"AiVRIC Learning","url":"https://academy.aivric.com/","parentOrganization":{"@type":"Organization","name":"AiVRIC","url":"https://aivric.com/"}}]}</script>
+    <script defer src="assets/kit/mnav.js"></script>
+    <script defer src="assets/kit/site.js"></script>
+    <script defer src="assets/learn/learn.js"></script>
+  </body>
 </html>
